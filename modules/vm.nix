@@ -1,35 +1,29 @@
+{ inputs, den, host, ... }:
 {
-  inputs,
-  pkgs,
-  ...
-}:
-{
-  perSystem =
-    { pkgs, ... }:
-    {
-      packages.vm = pkgs.writeShellApplication {
-        name = "vm";
-        text = ''
-          ${inputs.self.nixosConfigurations.seadragon.config.system.build.vm}/bin/run-seadragon-vm
+  perSystem = { pkgs, ... }: {
+    packages.vm = pkgs.writeShellApplication {
+      name = "vm";
+      text =
+        let
+          host = inputs.self.nixosConfigurations.seadragon.config;
+        in
+        ''
+          ${host.system.build.vm}/bin/run-${host.networking.hostName}-vm "$@"
         '';
-      };
     };
+  };
   den.aspects.vm = {
-    nixos = {
-
+    includes = [ (den.batteries.tty-autologin "andrec") ];
+    nixos = { pkgs, ... }: {
+      services.qemuGuest.enable = true;
       virtualisation.vmVariant = {
-        services.displayManager.gdm.enable = true;
-        services.desktopManager.gnome.enable = true;
-        virtualisation.vmware.guest.enable = pkgs.stdenv.isx86_64;
-        virtualisation.qemu.options = [
-          "-device virtio-vga"
-        ];
-        users.users.andrec.extraGroups = [
-          "video"
-          "render"
-        ];
+        virtualisation = {
+          cores = 4;
+          memorySize = 4096;
+          qemu.options = [ "-device virtio-vga-gl" "-display gtk,gl=on" ];
+        };
+        users.users.andrec.extraGroups = [ "video" "render" ];
       };
-
     };
   };
 }

@@ -8,12 +8,10 @@
 
   den.aspects.seadragon = {
     includes = [
+      (den.batteries.vm-autologin "andrec")
       den.provides.hostname
-      den.aspects.hardware.nvidia.provides.nonprime
-      den.aspects.hardware.cpu.intel
-      den.aspects.hardware.storage.ssd
-      den.aspects.display-manager
       den.aspects.vm
+      den.aspects.wm
     ];
     nixos =
       { pkgs, ... }:
