@@ -2,3 +2,4 @@
 _output.nix
 result
 *.qcow
+*.qcow2
