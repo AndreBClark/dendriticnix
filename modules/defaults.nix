@@ -2,6 +2,10 @@
   den = {
     default = {
       nixos.system.stateVersion = "25.11";
+      nixos.home-manager = {
+        backupFileExtension = "backup";
+        overwriteBackup = true;
+      };
       homeManager.home.stateVersion = "25.11";
       darwin.system.stateVersion = 6;
     };
