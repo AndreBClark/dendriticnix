@@ -5,6 +5,7 @@
     includes = [
       den.provides.primary-user
       den.aspects.base-user
+      den.aspects.wm
     ];
     user = {
       extraGroups = [
