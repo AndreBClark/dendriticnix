@@ -11,7 +11,6 @@
       (den.batteries.vm-autologin "andrec")
       den.provides.hostname
       den.aspects.vm
-      den.aspects.wm
     ];
     nixos =
       { pkgs, ... }:

@@ -1,4 +1,4 @@
-{ inputs, den, host, ... }:
+{ inputs, den, ... }:
 {
   perSystem = { pkgs, ... }: {
     packages.vm = pkgs.writeShellApplication {
@@ -13,8 +13,8 @@
     };
   };
   den.aspects.vm = {
-    includes = [ (den.batteries.tty-autologin "andrec") ];
-    nixos = { pkgs, ... }: {
+    includes = [ (den.batteries.vm-autologin "andrec") ];
+    nixos = {
       services.qemuGuest.enable = true;
       virtualisation.vmVariant = {
         virtualisation = {
