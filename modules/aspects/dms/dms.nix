@@ -1,0 +1,60 @@
+{ inputs, ... }:
+{
+  flake-file.inputs = {
+    dgop = {
+      url = "github:AvengeMedia/dgop";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    dms = {
+      url = "github:AvengeMedia/DankMaterialShell";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    danksearch = {
+      url = "github:AvengeMedia/danksearch";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    dms-plugin-registry = {
+      url = "github:AvengeMedia/dms-plugin-registry";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+  };
+  den.aspects.dms = {
+    homeManager = { pkgs, config, ... }: {
+      imports = [
+        inputs.dms.homeModules.dank-material-shell
+        inputs.danksearch.homeModules.dsearch
+        inputs.dms-plugin-registry.homeModules.default
+      ];
+      home.packages = [
+        (pkgs.callPackage ./_sync.nix {
+          inherit config;
+        })
+      ];
+      programs = {
+        dank-material-shell = {
+          enable = true;
+          systemd.enable = true;
+          enableSystemMonitoring = true;
+          enableDynamicTheming = true;
+          enableAudioWavelength = true;
+          enableCalendarEvents = true;
+          settings = builtins.fromJSON (builtins.readFile ./settings.json);
+          plugins = {
+            calculator.enable = true;
+            mediaPlayer.enable = true;
+            displayManager.enable = true;
+            niriWindows.enable = true;
+            powerUsagePlugin.enable = true;
+            nixMonitor.enable = true;
+            wallpaperDiscovery.enable = true;
+            easyEffects.enable = true;
+          };
+        };
+
+        dsearch.enable = true;
+      };
+
+    };
+  };
+}
