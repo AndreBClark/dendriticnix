@@ -3,71 +3,59 @@
   den.aspects.shell.fish = {
     includes = [
       (den.provides.user-shell "fish")
-      den.aspects.prompts.starship
+      den.aspects.shell.starship
     ];
     nixos =
       { pkgs, ... }:
       {
+        environment.systemPackages = [ pkgs.nix-your-shell ];
         programs.fish = {
           enable = true;
-
-          promptInit = ''
-            ${pkgs.any-nix-shell}/bin/any-nix-shell fish --info-right | source
+          useBabelfish = true;
+          shellInit = ''
+            nix-your-shell fish | source
           '';
+          vendor.completions.enable = true;
         };
         documentation.man.cache.enable = false;
       };
     homeManager =
-      { pkgs, ... }:
+      { pkgs, config, ... }:
       let
-        sources = import ../../npins;
+        mkFishPlugin = plugin: { inherit (plugin) src name; };
+
+        mkFishPlugins = names: map (name: mkFishPlugin pkgs.fishPlugins.${name}) names;
+
+        pluginNames = [
+          "autopair"
+          "done"
+          "sponge"
+          "grc"
+          "bang-bang"
+          "colored-man-pages"
+          "git-abbr"
+        ];
       in
       {
         programs = {
           fish = {
             enable = true;
-            plugins = [
-              {
-                inherit (pkgs.fishPlugins.autopair) src name;
-              }
-              {
-                inherit (pkgs.fishPlugins.done) src name;
-              }
-              {
-                inherit (pkgs.fishPlugins.sponge) src name;
-              }
-              {
-                inherit (pkgs.fishPlugins.grc) src name;
-              }
-              {
-                inherit (pkgs.fishPlugins.fifc) src name;
-              }
-              {
-                name = "getopts";
-                src = sources.getopts;
-              }
-              {
-                name = "colored_man_pages";
-                src = sources.colored_man_pages_fish;
-              }
-              {
-                name = "fish-abbreviation-tips";
-                src = sources.fish-abbreviation-tips;
-              }
-            ];
+            plugins = mkFishPlugins pluginNames;
+            shellAbbrs = config.home.shellAliases;
             interactiveShellInit = ''
               set --export fish_greeting
-
-              ${pkgs.any-nix-shell}/bin/any-nix-shell fish --info-right | source
             '';
-            shellAliases = {
-              ls = "eza";
-              ll = "eza -l";
-              la = "eza -A";
-              lt = "eza -T";
-              cd = "z";
-              vim = "nvim";
+
+            binds = {
+              "alt-g" = {
+                command = "cd $HOME";
+                repaint = true;
+              };
             };
+          };
+          nix-your-shell = {
+            enable = true;
+            enableFishIntegration = true;
           };
           man.generateCaches = false;
           kitty.shellIntegration.enableFishIntegration = true;
@@ -78,7 +66,8 @@
           yazi.enableFishIntegration = true;
           eza.enableFishIntegration = true;
           direnv.enableFishIntegration = true;
-          tmux.shell = "${pkgs.fish}/bin/fish";
+          devenv.enableFishIntegration = true;
+          tmux.shell = config.shellPath;
         };
         home.packages = [
           pkgs.grc

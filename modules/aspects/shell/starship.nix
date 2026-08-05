@@ -15,11 +15,8 @@ let
       ];
       right_format = lib.concatStrings [
         "$cmd_duration"
-        # "$status"
-        "$direnv"
         "$nix_shell"
         "$php"
-        #         "$python"
         "$nodejs"
         "$rust"
         "$sudo"
@@ -30,23 +27,23 @@ let
 
       os = {
         disabled = false;
-        style = "bg:base10 fg:base15";
+        style = "bg:base01 fg:base15";
         format = lib.concatStrings [
           "[ $symbol]($style)"
-          "[ ](fg:base10 bg:base15)"
+          "[ ](fg:base01 bg:base15)"
         ];
       };
 
       directory = {
-        style = "bold base10 bg:prev_bg";
+        style = "bold base01 bg:prev_bg";
         format = lib.concatStrings [
           "[$path ]($style)"
-          "[ ](fg:prev_bg bg:base00)"
+          "[ ](fg:prev_bg bg:base01)"
         ];
         repo_root_style = "bold base10 bg:prev_bg";
         repo_root_format = lib.concatStrings [
           "[ $repo_root]($repo_root_style)[$path]($style)"
-          "[ ](fg:prev_bg bg:base00)"
+          "[ ](fg:prev_bg bg:base02)"
         ];
         substitutions = {
           "GitHub" = " ";
@@ -56,13 +53,13 @@ let
         };
       };
       git_branch = {
-        style = "bg:prev_bg";
+        style = "base06 bg:prev_bg";
         format = lib.concatStrings [
           "[$symbol$branch ]($style)"
         ];
       };
       git_status = {
-        style = "bg:prev_bg";
+        style = "fg:prev_fg bg:prev_bg";
         format = lib.concatStrings [
           "[$all_status$ahead_behind]($style)"
         ];
@@ -74,33 +71,37 @@ let
           "[ ](fg:prev_bg bg:none)"
         ];
         success_symbol = lib.concatStrings [
-          "[            ](fg:prev_bg bg:green)"
+          "[  ](fg:prev_bg bg:green)"
         ];
         error_symbol = lib.concatStrings [
-          "[](fg:prev_bg bg:red)"
+          "[](bg:base0f)"
         ];
       };
       status = {
         disabled = false;
         format = lib.concatStrings [
           "[]($style fg:prev_bg)"
-          "[  $common_meaning $signal_name]($style)"
+          "[ $common_meaning$signal_name$maybe_int]($style)"
         ];
-        failure_style = "prev_fg bg:red";
+        failure_style = "prev_fg bg:base0f";
         success_style = "prev_fg bg:green";
       };
 
-      #     right side
+      # right side
       git_commit.disabled = false;
-      git_metrics.disabled = false;
+      git_metrics = {
+        disabled = false;
+        format = " ([+$added]($added_style) )([-$deleted]($deleted_style) )";
+      };
       shell = {
         format = " with $indicator ";
-        fish_indicator = "󰈺 fsh";
+        fish_indicator = "󰈺 fish";
         disabled = false;
       };
       nix_shell = {
         disabled = false;
-        format = "[$symbol(\($name\))]($style) ";
+        symbol = "❄️";
+        format = "[ $symbol$name ]($style)";
       };
       python = {
         symbol = "";
@@ -109,7 +110,7 @@ let
       };
       nodejs.format = "[$symbol$version]($style)";
       cmd_duration = {
-        format = "took $duration ";
+        format = "for $duration";
         disabled = false;
         min_time_to_notify = 45000;
       };
@@ -117,7 +118,7 @@ let
   };
 in
 {
-  den.aspects.prompts.starship = {
+  den.aspects.shell.starship = {
     nixos.programs.starship = starship;
     homeManager.programs.starship = starship;
   };

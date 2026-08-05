@@ -6,6 +6,8 @@
       den.provides.primary-user
       den.aspects.base-user
       den.aspects.wm
+      den.aspects.terminal
+      den.aspects.shell
     ];
     user = {
       extraGroups = [
