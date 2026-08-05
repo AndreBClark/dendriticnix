@@ -19,6 +19,7 @@
       services.qemuGuest.enable = true;
       virtualisation.vmVariant = {
         virtualisation = {
+          diskImage = null;
           cores = 4;
           memorySize = 4096;
           qemu.options = [
