@@ -20,17 +20,13 @@
     };
   };
   den.aspects.dms = {
-    homeManager = { pkgs, config, ... }: {
+    homeManager = {
       imports = [
         inputs.dms.homeModules.dank-material-shell
         inputs.danksearch.homeModules.dsearch
         inputs.dms-plugin-registry.homeModules.default
       ];
-      home.packages = [
-        (pkgs.callPackage ./_sync.nix {
-          inherit config;
-        })
-      ];
+
       programs = {
         dank-material-shell = {
           enable = true;
