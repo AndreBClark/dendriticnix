@@ -11,7 +11,6 @@
           tab_powerline_style = "round";
         };
       };
-      tmux.terminal = "kitty";
     };
 
   };
