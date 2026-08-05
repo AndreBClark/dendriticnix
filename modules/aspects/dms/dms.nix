@@ -1,4 +1,4 @@
-{ inputs, ... }:
+{ lib, inputs, ... }:
 {
   flake-file.inputs = {
     dgop = {
@@ -39,7 +39,7 @@
           enableDynamicTheming = true;
           enableAudioWavelength = true;
           enableCalendarEvents = true;
-          settings = builtins.fromJSON (builtins.readFile ./settings.json);
+          settings = lib.mkForce (builtins.fromJSON (builtins.readFile ./settings.json));
           plugins = {
             calculator.enable = true;
             mediaPlayer.enable = true;

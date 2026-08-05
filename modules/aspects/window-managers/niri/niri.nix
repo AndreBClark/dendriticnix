@@ -2,12 +2,7 @@
   den.aspects.wm.niri = {
     includes = [ den.aspects.dms ];
     nixos =
-      {
-        config,
-        pkgs,
-        host,
-        ...
-      }:
+      { config, pkgs, host, ... }:
       {
         environment = {
           variables.NIXOS_OZONE_WL = "1";
@@ -32,7 +27,7 @@
         };
       };
     homeManager =
-      { pkgs, user, ... }:
+      { pkgs, ... }:
       {
         wayland.windowManager.niri = {
           enable = true;
