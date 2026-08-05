@@ -2,8 +2,9 @@
   den.aspects.wm.niri = {
     includes = [ den.aspects.dms ];
     nixos =
-      { config, pkgs, host, ... }:
+      { pkgs, ... }:
       {
+        programs.niri.enable = true;
         environment = {
           variables.NIXOS_OZONE_WL = "1";
           systemPackages = builtins.attrValues {
@@ -12,17 +13,8 @@
               libsecret
               xwayland-satellite
               xdg-desktop-portal-gnome
+              rose-pine-cursor
               ;
-          };
-        };
-        programs.niri.enable = true;
-        services.displayManager = {
-          sddm.enable = false;
-          dms-greeter = {
-            enable = true;
-            compositor.name = "niri";
-            # Support multiple users - use a generic approach
-            configHome = "/home/${config.users.users.${builtins.head (builtins.attrNames host.users)}.name}";
           };
         };
       };
