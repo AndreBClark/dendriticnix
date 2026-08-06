@@ -1,4 +1,4 @@
-{ lib, inputs, ... }:
+{ lib, inputs, den, ... }:
 {
   flake-file.inputs = {
     stylix = {
@@ -26,12 +26,14 @@
           size = 24;
         };
       };
+
     in
+
     {
+      includes = [ den.aspects.fonts ];
       nixos =
-        { den, pkgs, ... }:
+        { pkgs, ... }:
         {
-          includes = [ den.aspects.fonts ];
           imports = [
             inputs.stylix.nixosModules.stylix
           ];
@@ -42,9 +44,8 @@
         };
 
       homeManager =
-        { den, pkgs, osConfig ? null, ... }:
+        { pkgs, osConfig ? null, ... }:
         {
-          includes = [ den.aspects.fonts ];
           imports = lib.optionals (osConfig == null) [
             inputs.stylix.homeModules.stylix
           ];

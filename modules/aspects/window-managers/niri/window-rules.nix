@@ -1,11 +1,11 @@
 {
   den.aspects.wm.niri = {
     homeManager =
-      { config, ... }: {
+      { user, ... }: {
         wayland.windowManager.niri.settings._children = [
           {
             window-rule = {
-              opacity = config.stylix.opacity.applications;
+              opacity = user.theme.opacity.applications;
               background-effect = {
                 blur = true;
                 xray = true;

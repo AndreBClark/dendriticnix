@@ -8,7 +8,8 @@
       den.aspects.terminal
       den.aspects.shell
       den.aspects.cli
-      den.aspects.vivaldi
+      den.aspects.nvim
+      den.aspects.apps.vivaldi
     ];
 
     # Base OS-level user settings

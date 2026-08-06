@@ -67,7 +67,7 @@
           eza.enableFishIntegration = true;
           direnv.enableFishIntegration = true;
           devenv.enableFishIntegration = true;
-          tmux.shell = config.shellPath;
+          tmux.shell = "${pkgs.fish}/bin/fish";
         };
         home.packages = [
           pkgs.grc

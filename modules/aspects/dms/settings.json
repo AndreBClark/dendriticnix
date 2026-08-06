@@ -1,7 +1,7 @@
 {
   "currentThemeName": "custom",
   "currentThemeCategory": "registry",
-  "customThemeFile": "/home/andrec/.config/DankMaterialShell/themes/tokyoNightNightMoon/theme.json",
+  "customThemeFile": "/home/andrec/.config/DankMaterialShell/stylix-theme.json",
   "registryThemeVariants": {
     "catppuccin": {
       "dark": {

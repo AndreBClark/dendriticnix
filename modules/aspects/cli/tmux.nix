@@ -4,7 +4,7 @@
       { pkgs, user, ... }:
       {
         programs.tmux = {
-          inherit (user) terminal shell;
+          inherit (user) terminal;
           enable = true;
           keyMode = "vi";
           tmuxinator.enable = true;
