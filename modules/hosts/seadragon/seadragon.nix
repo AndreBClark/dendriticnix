@@ -1,25 +1,14 @@
 { den, ... }:
 {
   den.hosts.x86_64-linux.seadragon = {
-    users.andrec = {
-      windowManager = "niri";
-    };
+    hardware = { cpu = "intel"; gpu = "nvidia-nonprime-pascal"; storage = [ "ssd" ]; };
+    users.andrec = { };
   };
 
   den.aspects.seadragon = {
     includes = [
-      (den.batteries.vm-autologin "andrec")
-      den.provides.hostname
-      den.aspects.vm
+      den.aspects.base-host
+      den.aspects.hardware.gpu
     ];
-    nixos =
-      { pkgs, ... }:
-      {
-        environment.systemPackages = [
-          pkgs.git
-        ];
-        fileSystems."/".device = "/dev/sda1";
-        boot.loader.grub.enable = true;
-      };
   };
 }
