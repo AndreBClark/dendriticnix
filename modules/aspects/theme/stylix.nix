@@ -28,19 +28,23 @@
       };
     in
     {
-      nixos = { pkgs, ... }: {
-        imports = [
-          inputs.stylix.nixosModules.stylix
-        ];
-        stylix = theme pkgs;
-        environment.systemPackages = [
-          pkgs.rose-pine-cursor
-        ];
-      };
+      nixos =
+        { den, pkgs, ... }:
+        {
+          includes = [ den.aspects.fonts ];
+          imports = [
+            inputs.stylix.nixosModules.stylix
+          ];
+          stylix = theme pkgs;
+          environment.systemPackages = [
+            pkgs.rose-pine-cursor
+          ];
+        };
 
       homeManager =
-        { pkgs, osConfig ? null, ... }:
+        { den, pkgs, osConfig ? null, ... }:
         {
+          includes = [ den.aspects.fonts ];
           imports = lib.optionals (osConfig == null) [
             inputs.stylix.homeModules.stylix
           ];
