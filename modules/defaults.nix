@@ -1,11 +1,23 @@
 { lib, ... }: {
   den = {
     default = {
-      nixos.system.stateVersion = "25.11";
-      nixos.home-manager = {
-        backupFileExtension = "backup";
-        overwriteBackup = true;
-      };
+      nixos =
+        { pkgs, ... }:
+        {
+          environment.systemPackages = [
+            pkgs.git
+            pkgs.nh
+          ];
+          networking.networkmanager.enable = true;
+          services.pipewire.enable = true;
+          security.rtkit.enable = true;
+          xdg.portal.enable = true;
+          system.stateVersion = "25.11";
+          home-manager = {
+            backupFileExtension = "backup";
+            overwriteBackup = true;
+          };
+        };
       homeManager.home.stateVersion = "25.11";
       darwin.system.stateVersion = 6;
     };
