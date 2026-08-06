@@ -23,10 +23,17 @@
     inputs.nixpkgs-lib.follows = "nixpkgs";
     url = "github:hercules-ci/flake-parts";
   };
+  hardware.url = "github:NixOS/nixos-hardware/master";
   home-manager = {
     inputs.nixpkgs.follows = "nixpkgs";
     url = "github:nix-community/home-manager";
   };
   import-tree.url = "github:vic/import-tree";
+  millennium.url = "github:SteamClientHomebrew/Millennium/e2c66a276e579ee73c5151b01897bf63503aa12c?dir=packages/nix";
   nixpkgs.url = "https://channels.nixos.org/nixpkgs-unstable/nixexprs.tar.xz";
+  nixvim.url = "github:nix-community/nixvim";
+  stylix = {
+    inputs.nixpkgs.follows = "nixpkgs";
+    url = "github:nix-community/stylix";
+  };
 }
