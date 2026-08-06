@@ -1,16 +1,21 @@
 { inputs, den, ... }:
 {
   perSystem = { pkgs, ... }: {
-    packages.vm = pkgs.writeShellApplication {
-      name = "vm";
-      text =
-        let
-          host = inputs.self.nixosConfigurations.seadragon.config;
-        in
-        ''
-          ${host.system.build.vm}/bin/run-${host.networking.hostName}-vm "$@"
-        '';
-    };
+    packages =
+      let
+        mkVm = hostName: pkgs.writeShellApplication {
+          name = "vm-${hostName}";
+          text =
+            let host = inputs.self.nixosConfigurations.${hostName}.config;
+            in ''
+              ${host.system.build.vm}/bin/run-${host.networking.hostName}-vm "$@"
+            '';
+        };
+      in
+      {
+        vm-seadragon = mkVm "seadragon";
+        vm-dragonfly = mkVm "dragonfly";
+      };
   };
   den.aspects.vm = {
     includes = [ (den.batteries.vm-autologin "andrec") ];
@@ -34,7 +39,7 @@
             }
           ];
         };
-
+        fileSystems."/".device = "/dev/sda1";
         users.users.andrec.extraGroups = [
           "video"
           "render"
