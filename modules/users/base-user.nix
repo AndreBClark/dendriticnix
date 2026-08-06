@@ -3,18 +3,25 @@
   den.aspects.base-user = {
     includes = [
       den.provides.define-user
-      (den.provides.user-shell "fish")
+      den.aspects.stylix
+      den.aspects.wm
+      den.aspects.terminal
+      den.aspects.shell
+      den.aspects.cli
     ];
 
     # Base OS-level user settings
     user = {
       initialPassword = "yolo";
+      extraGroups = [
+        "wheel"
+        "networkmanager"
+        "audio"
+        "video"
+        "greeter"
+      ];
+
     };
-    homeManager = {
-      home.sessionVariables = {
-        TERMINAL = "kitty";
-        EDITOR = "nvim";
-      };
-    };
+    homeManager = { };
   };
 }
