@@ -6,7 +6,6 @@
         {
           environment.systemPackages = [
             pkgs.git
-            pkgs.nh
           ];
           networking.networkmanager.enable = true;
           services.pipewire.enable = true;
