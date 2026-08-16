@@ -10,43 +10,37 @@
             "${config.home.homeDirectory}/nixconfig";
         dmsSync = pkgs.writeShellApplication {
           name = "dms-sync";
-          runtimeInputs = [
-            pkgs.jq
-            pkgs.dms-shell
-          ];
+          runtimeInputs = [ pkgs.jq ];
           text = ''
-            TARGET_FILE="${nixConfigRepo}/modules/aspects/dms/settings.json"
+            DMS_CONFIG="${config.home.homeDirectory}/.config/DankMaterialShell"
+            DMS_STATE="${config.home.homeDirectory}/.local/state/DankMaterialShell"
+            TARGET_DIR="${nixConfigRepo}/modules/aspects/dms"
 
-
-            CLIPBOARD_DATA=$(dms cl paste)
-
-            if ! echo "$CLIPBOARD_DATA" | jq empty 2>/dev/null; then
-              echo "Error: Clipboard data is not valid JSON" >&2
-              exit 1
-            fi
-
-            if ! echo "$CLIPBOARD_DATA" | jq -e 'has("configVersion") and has("currentThemeName")' >/dev/null 2>&1; then
-              echo "Error: Clipboard data does not appear to be DMS settings (missing required keys)" >&2
-              exit 1
-            fi
-
-            if echo "$CLIPBOARD_DATA" > "$TARGET_FILE"; then
-              echo "Successfully replaced settings.json with validated clipboard data"
-
-              cd "${nixConfigRepo}" || {
-                echo "Warning: Failed to change to repository directory" >&2
-                exit 1
-              }
-
-              if git add "$TARGET_FILE"; then
-                echo "File staged in git"
-              else
-                echo "Warning: Failed to stage file in git" >&2
+            sync_file() {
+              local src="$1" dest="$2" required_key="$3"
+              if [ ! -f "$src" ]; then
+                echo "Warning: $src not found, skipping" >&2
+                return
               fi
-            else
-              echo "Failed to write to file" >&2
-              exit 1
-            fi
+              if ! jq empty "$src" 2>/dev/null; then
+                echo "Error: $src is not valid JSON" >&2
+                return 1
+              fi
+              if [ -n "$required_key" ] && ! jq -e "has(\"$required_key\")" "$src" >/dev/null 2>&1; then
+                echo "Error: $src missing expected key $required_key" >&2
+                return 1
+              fi
+              cp "$src" "$dest"
+              echo "Synced $(basename "$dest")"
+            }
+
+            sync_file "$DMS_CONFIG/settings.json"        "$TARGET_DIR/settings.json"        "configVersion"
+            sync_file "$DMS_STATE/session.json"          "$TARGET_DIR/session.json"         "configVersion"
+            sync_file "$DMS_CONFIG/plugin_settings.json" "$TARGET_DIR/plugin_settings.json" ""
+
+            cd "${nixConfigRepo}" || exit 1
+            git add "$TARGET_DIR/settings.json" "$TARGET_DIR/session.json" 2>/dev/null || true
+            echo "Files staged in git"
           '';
         };
       in

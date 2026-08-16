@@ -1,0 +1,86 @@
+{
+  "niriWindows": {
+    "enabled": true
+  },
+  "mediaPlayer": {
+    "enabled": true
+  },
+  "calculator": {
+    "enabled": true,
+    "trigger": "="
+  },
+  "powerUsagePlugin": {
+    "enabled": true,
+    "selectedPopout": "processList"
+  },
+  "wallpaperDiscovery": {
+    "enabled": true,
+    "downloadLocation": "/home/andrec/Pictures/Wallpapers",
+    "api_wallhavencc": "evxZa5kqPQ0wHFD6St5hfeox0qNAbiUR"
+  },
+  "webSearch": {
+    "enabled": true,
+    "searchEngines": [],
+    "defaultEngine": "duckduckgo",
+    "disabledEngines": []
+  },
+  "displayManager": {
+    "enabled": true
+  },
+  "dankAudioVisualizer": {
+    "enabled": true
+  },
+  "dankObsidian": {
+    "enabled": true,
+    "isFlatpak": false
+  },
+  "dankBitwarden": {
+    "enabled": true,
+    "trigger": "["
+  },
+  "easyEffects": {
+    "enabled": true,
+    "currentOutputIndex": -1,
+    "currentInputIndex": 1
+  },
+  "dmsThemeSync": {
+    "enabled": true,
+    "qtSyncMode": "auto",
+    "qtStyle": "auto",
+    "syncTerminalFonts": true,
+    "syncKvantum": true,
+    "syncFlatpak": false,
+    "qtPlatformTheme": "preserve",
+    "applyMatugenColors": true,
+    "gtkThemeDark": "Stylix"
+  },
+  "emojiLauncher": {
+    "enabled": true
+  },
+  "volumeMixer": {
+    "enabled": true
+  },
+  "airQuality": {
+    "enabled": true
+  },
+  "audioPortSwitcher": {
+    "enabled": true
+  },
+  "wallpaperShufflerPlugin": {
+    "enabled": true,
+    "changeOnReload": true,
+    "wallpaperPath": "/home/andrec/Pictures/Wallpapers-"
+  },
+  "discordVoice": {
+    "enabled": true
+  },
+  "wallpaperCarousel": {
+    "enabled": true,
+    "borderWidth": 0,
+    "selectedScale": 117,
+    "expandSelected": "true",
+    "expandMultiplier": 120,
+    "itemWidth": 291,
+    "overlayOpacity": 79
+  }
+}

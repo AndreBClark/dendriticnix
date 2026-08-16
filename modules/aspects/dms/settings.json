@@ -1,6 +1,6 @@
 {
   "currentThemeName": "custom",
-  "currentThemeCategory": "registry",
+  "currentThemeCategory": "custom",
   "customThemeFile": "/home/andrec/.config/DankMaterialShell/themes/tokyoNightNightMoon/theme.json",
   "registryThemeVariants": {
     "catppuccin": {
@@ -356,7 +356,7 @@
   "iconThemeDark": "Dracula",
   "iconThemeLight": "System Default",
   "iconThemePerMode": false,
-  "lastAppliedIconTheme": "",
+  "lastAppliedIconTheme": "Dracula",
   "cursorSettings": {
     "dwl": {
       "cursorHideTimeout": 0
@@ -370,7 +370,7 @@
       "hideAfterInactiveMs": 0,
       "hideWhenTyping": true
     },
-    "size": 36,
+    "size": 32,
     "theme": "BreezeX-RosePine-Linux"
   },
   "launcherLogoMode": "os",
@@ -870,7 +870,11 @@
       "trigger": "cb"
     },
     "dms_settings_search": {
-      "trigger": "?"
+      "trigger": "?",
+      "enabled": true
+    },
+    "dms_qr_generator": {
+      "trigger": "qrg"
     }
   },
   "clipboardClickToPaste": false,

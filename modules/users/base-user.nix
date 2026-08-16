@@ -3,6 +3,7 @@
   den.aspects.base-user = {
     includes = [
       den.provides.define-user
+      den.aspects.folders
       den.aspects.stylix
       den.aspects.wm
       den.aspects.terminal
