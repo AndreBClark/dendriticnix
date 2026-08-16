@@ -1,4 +1,5 @@
-{ den, ... }: {
+{ den, ... }:
+{
   den.aspects.wm.niri = {
     includes = [ den.aspects.dms ];
     nixos =

@@ -23,7 +23,10 @@
       {
         output = {
           _args = [ "HDMI-A-1" ];
-          position._props = { x = 0; y = 720; };
+          position._props = {
+            x = 0;
+            y = 720;
+          };
           variable-refresh-rate._props.on-demand = true;
         };
       }
