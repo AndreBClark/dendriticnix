@@ -1,7 +1,11 @@
 { den, ... }:
 {
   den.hosts.x86_64-linux.seadragon = {
-    hardware = { cpu = "intel"; gpu = "nvidia-nonprime-pascal"; storage = [ "ssd" ]; };
+    hardware = {
+      cpu = "intel";
+      gpu = "nvidia-nonprime-pascal";
+      storage = [ "ssd" ];
+    };
     users.andrec = { };
   };
 
@@ -9,6 +13,8 @@
     includes = [
       den.aspects.base-host
       den.aspects.hardware.gpu
+      den.aspects.fs
+      den.aspects.apps.steam
     ];
   };
 }
