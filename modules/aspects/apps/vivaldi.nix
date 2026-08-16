@@ -1,6 +1,6 @@
+{ den, ... }:
 {
   den.aspects.apps.vivaldi =
-    { den, ... }:
     {
       includes = [
         (den.batteries.unfree [ "vivaldi" ])
