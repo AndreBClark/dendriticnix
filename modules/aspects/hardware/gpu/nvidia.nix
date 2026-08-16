@@ -35,29 +35,28 @@
         };
       };
       nvidia = {
-        nixos =
-          {
-            services.xserver.enable = true;
+        nixos = {
+          services.xserver.enable = true;
 
-            boot.kernelParams = [
-              "nvidia-drm.modeset=1"
-              "nvidia-drm.fbdev=1"
-              "nvidia.NVreg_PreserveVideoMemoryAllocations=1"
-              "nvidia.NVreg_TemporaryFilePath=/var/tmp"
-              "nvidia.NVreg_EnableGpuFirmware=0"
-            ];
+          boot.kernelParams = [
+            "nvidia-drm.modeset=1"
+            "nvidia-drm.fbdev=1"
+            "nvidia.NVreg_PreserveVideoMemoryAllocations=1"
+            "nvidia.NVreg_TemporaryFilePath=/var/tmp"
+            "nvidia.NVreg_EnableGpuFirmware=0"
+          ];
 
-            # Hardware configuration
-            hardware = {
-              graphics = {
-                enable = true;
-                enable32Bit = true;
-              };
-              nvidia = {
-                modesetting.enable = true;
-              };
+          # Hardware configuration
+          hardware = {
+            graphics = {
+              enable = true;
+              enable32Bit = true;
+            };
+            nvidia = {
+              modesetting.enable = true;
             };
           };
+        };
       };
     };
   };
