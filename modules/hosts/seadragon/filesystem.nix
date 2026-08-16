@@ -26,6 +26,10 @@
               "dmask=0022"
             ];
           };
+          "/home/games" = {
+            device = "/dev/disk/by-uuid/df5243df-6aa6-4a77-ae92-b71e9454548d";
+            fsType = "btrfs";
+          };
         };
         swapDevices = [{ device = "/dev/disk/by-uuid/e3335bbf-c15b-4c18-bb17-c53171dd78e7"; }];
       };
