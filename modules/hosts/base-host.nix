@@ -8,6 +8,9 @@
         den.aspects.fs.${host.name}
         den.aspects.hardware.cpu
         den.aspects.hardware.storage
+        den.aspects.network
+        den.aspects.audio
+        den.aspects.keyboard
         den.aspects.vm
       ];
       nixos = { };
