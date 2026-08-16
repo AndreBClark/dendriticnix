@@ -1,7 +1,7 @@
 {
   "currentThemeName": "custom",
   "currentThemeCategory": "registry",
-  "customThemeFile": "/home/andrec/.config/DankMaterialShell/stylix-theme.json",
+  "customThemeFile": "/home/andrec/.config/DankMaterialShell/themes/tokyoNightNightMoon/theme.json",
   "registryThemeVariants": {
     "catppuccin": {
       "dark": {
@@ -17,6 +17,11 @@
   "matugenTargetMonitor": "",
   "popupTransparency": 0.49,
   "dockTransparency": 0.5,
+  "floatingWindowSyncGlobal": true,
+  "floatingWindowTransparency": 1,
+  "floatingWindowForegroundLayers": true,
+  "floatingWindowForegroundTransparency": 1,
+  "dmsWindowsFloating": true,
   "widgetBackgroundColor": "sch",
   "widgetBackgroundCustomColor": "#6750A4",
   "widgetBackgroundCustomStrength": 0.5,
@@ -37,6 +42,33 @@
   "mangoLayoutRadiusOverride": -1,
   "mangoLayoutBorderSize": -1,
   "mangoTrackpadNaturalScrolling": true,
+  "mouseAccelProfile": "default",
+  "mouseAccelSpeed": 0,
+  "mouseLeftHanded": false,
+  "mouseMiddleEmulation": false,
+  "mouseNaturalScroll": false,
+  "mouseScrollFactor": 1,
+  "mouseScrollMethod": "default",
+  "touchpadAccelProfile": "default",
+  "touchpadAccelSpeed": 0,
+  "touchpadDisableOnExternalMouse": false,
+  "touchpadDisableWhileTyping": true,
+  "touchpadDragLock": false,
+  "touchpadMiddleEmulation": false,
+  "touchpadNaturalScroll": true,
+  "touchpadScrollFactor": 1,
+  "touchpadScrollMethod": "default",
+  "touchpadTapAndDrag": true,
+  "touchpadTapToClick": true,
+  "keyboardLayouts": "",
+  "keyboardVariants": "",
+  "keyboardModel": "",
+  "keyboardOptions": "",
+  "keyboardKeymapFile": "",
+  "keyboardTrackLayout": "",
+  "keyboardRepeatDelay": 0,
+  "keyboardRepeatRate": 0,
+  "keyboardNumlock": false,
   "firstDayOfWeek": 2,
   "showWeekNumber": false,
   "calendarBackend": "auto",
@@ -67,6 +99,7 @@
   "barElevationEnabled": false,
   "blurEnabled": true,
   "blurForegroundLayers": true,
+  "foregroundLayerTransparency": 1,
   "blurLayerOutlineOpacity": 0.12,
   "blurBorderEnabled": true,
   "blurBorderColor": "outline",
@@ -195,6 +228,7 @@
   "mediaAdaptiveWidthEnabled": true,
   "audioVisualizerEnabled": true,
   "mediaUseAlbumArtAccent": false,
+  "appleMusicAnimatedArtEnabled": false,
   "audioScrollMode": "volume",
   "audioWheelScrollAmount": 5,
   "audioDeviceScrollVolumeEnabled": false,
@@ -336,7 +370,7 @@
       "hideAfterInactiveMs": 0,
       "hideWhenTyping": true
     },
-    "size": 32,
+    "size": 36,
     "theme": "BreezeX-RosePine-Linux"
   },
   "launcherLogoMode": "os",
@@ -402,15 +436,6 @@
   "fadeToDpmsEnabled": true,
   "fadeToDpmsGracePeriod": 5,
   "launchPrefix": "",
-  "brightnessDevicePins": {},
-  "wifiNetworkPins": {},
-  "bluetoothDevicePins": {},
-  "audioInputDevicePins": {},
-  "audioOutputDevicePins": {
-    "preferredOutput": "alsa_output.pci-0000_00_1b.0.analog-surround-21"
-  },
-  "gtkThemingEnabled": false,
-  "qtThemingEnabled": false,
   "syncModeWithPortal": true,
   "terminalsAlwaysDark": true,
   "muxType": "tmux",
@@ -502,6 +527,8 @@
   "enableU2f": false,
   "u2fMode": "or",
   "lockPamPath": "",
+  "lockScreenSecurityKeyShortcut": "Ctrl+Q",
+  "lockScreenSecurityKeyShortcutEnabled": false,
   "lockPamInlineFprint": false,
   "lockPamInlineU2f": false,
   "lockPamExternallyManaged": false,
@@ -518,6 +545,7 @@
   "notificationTimeoutLow": 5000,
   "notificationTimeoutNormal": 8000,
   "notificationTimeoutCritical": 0,
+  "notificationIgnoreAppTimeout": false,
   "notificationCompactMode": false,
   "notificationShowTimeoutBar": false,
   "notificationDedupeEnabled": true,
@@ -560,6 +588,7 @@
   "customPowerActionHibernate": "",
   "customPowerActionReboot": "",
   "customPowerActionPowerOff": "",
+  "customPowerButtons": [],
   "updaterHideWidget": false,
   "updaterCheckOnStart": false,
   "updaterUseCustomCommand": true,
@@ -617,7 +646,8 @@
   },
   "niriOutputSettings": {
     "DP-2": {
-      "focusAtStartup": true
+      "focusAtStartup": true,
+      "vrrOnDemand": true
     },
     "HDMI-A-1": {
       "disabled": true
@@ -877,5 +907,5 @@
   "barInsetPaddingShared": -1,
   "barInsetPaddingSyncAll": false,
   "frameBarInsetPadding": -1,
-  "configVersion": 12
+  "configVersion": 13
 }
