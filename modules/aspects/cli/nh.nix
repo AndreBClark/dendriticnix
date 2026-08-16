@@ -10,7 +10,7 @@
             extraArgs = "--keep-since 4d --keep 3";
             dates = "monthly";
           };
-          flake = "/home/${config.home.username}/nixconfig/";
+          flake = "${config.home.homeDirectory}/nixconfig";
         };
       };
   };
