@@ -1,4 +1,8 @@
-{ lib, inputs, den, ... }:
+{ lib
+, inputs
+, den
+, ...
+}:
 {
   flake-file.inputs = {
     stylix = {
@@ -9,7 +13,14 @@
   den.aspects.stylix =
     { user, ... }:
     let
-      inherit (user.theme) colorscheme variant opacity cursorName iconTheme polarity;
+      inherit (user.theme)
+        colorscheme
+        variant
+        opacity
+        cursorName
+        iconTheme
+        polarity
+        ;
       theme = pkgs: {
         enable = true;
         inherit opacity polarity;
@@ -30,7 +41,11 @@
     in
 
     {
-      includes = [ den.aspects.fonts ];
+      includes = [
+        den.aspects.fonts
+        den.aspects.gtk
+        den.aspects.qt
+      ];
       nixos =
         { pkgs, ... }:
         {
@@ -38,13 +53,22 @@
             inputs.stylix.nixosModules.stylix
           ];
           stylix = theme pkgs;
-          environment.systemPackages = [
-            pkgs.rose-pine-cursor
-          ];
+          environment.systemPackages = builtins.attrValues {
+            inherit (pkgs)
+              rose-pine-cursor
+              adwaita-icon-theme
+              hicolor-icon-theme
+              ;
+          };
+          xdg.icons.enable = true;
+          gtk.iconCache.enable = true;
         };
 
       homeManager =
-        { pkgs, osConfig ? null, ... }:
+        { pkgs
+        , osConfig ? null
+        , ...
+        }:
         {
           imports = lib.optionals (osConfig == null) [
             inputs.stylix.homeModules.stylix
