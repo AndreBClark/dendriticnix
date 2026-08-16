@@ -11,7 +11,6 @@
       den.aspects.nvim
       den.aspects.apps.vivaldi
     ];
-
     # Base OS-level user settings
     user = {
       initialPassword = "yolo";

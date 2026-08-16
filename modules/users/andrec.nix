@@ -4,7 +4,7 @@
     includes = [
       den.provides.primary-user
       den.aspects.base-user
-
+      den.aspects.apps.spotify
     ];
     user = { };
   };
