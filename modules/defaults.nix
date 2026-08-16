@@ -16,6 +16,7 @@
             backupFileExtension = "backup";
             overwriteBackup = true;
           };
+          programs.nix-ld.enable = true;
         };
       homeManager.home.stateVersion = "25.11";
       darwin.system.stateVersion = 6;
