@@ -24,7 +24,7 @@
   };
   den.aspects.dms = {
     homeManager =
-      { pkgs, ... }:
+      { config, pkgs, ... }:
       {
         imports = [
           inputs.dms.homeModules.dank-material-shell
@@ -86,6 +86,8 @@
 
           dsearch.enable = true;
         };
+        systemd.user.services.dms.Service.ExecStartPost =
+          "${pkgs.dms-shell}/bin/dms ipc call profile setImage ${config.home.homeDirectory}/Pictures/Wallpaper-tokyo-night-dark/wallhaven.cc_nz1x2w.jpeg";
         xdg.configFile =
           let
             colorsImport = ''@import url("dank-colors.css");'';
