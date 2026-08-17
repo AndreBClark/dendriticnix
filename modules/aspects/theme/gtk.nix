@@ -1,16 +1,17 @@
 {
   den.aspects.theme.gtk = {
+    nixos = {
+      programs.dconf.enable = true;
+      gtk.iconCache.enable = true;
+    };
     homeManager =
+      { config, ... }:
       {
         gtk = {
           enable = true;
+          gtk2.configLocation = "${config.xdg.configHome}/gtk-2.0/gtkrc";
           gtk3.extraConfig.gtk-application-prefer-dark-theme = true;
           gtk4.extraConfig.gtk-application-prefer-dark-theme = true;
-        };
-        xdg.configFile = {
-          "gtk-3.0/gtk.css".force = true;
-          "gtk-4.0/gtk.css".force = true;
-
         };
       };
   };

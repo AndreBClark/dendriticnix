@@ -1,25 +1,23 @@
+{ lib, ... }:
 {
   den.aspects.theme.qt = {
     homeManager =
       { pkgs, ... }:
       let
-        qtPlatform = "qtct";
+        qtPlatform = "gtk3";
       in
       {
         home.packages =
           builtins.attrValues {
-            inherit (pkgs.kdePackages)
-              qt6ct
-              qtwayland
-              qttools;
+            inherit (pkgs.kdePackages) qt6ct;
           };
 
         qt = {
           enable = true;
-        };
-        stylix.targets.qt = {
-          enable = false;
-          platform = qtPlatform;
+          platformTheme = {
+            name = lib.mkForce qtPlatform;
+            package = pkgs.adw-gtk3;
+          };
         };
       };
   };

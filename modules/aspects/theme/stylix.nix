@@ -43,8 +43,8 @@
     {
       includes = [
         den.aspects.fonts
-        den.aspects.gtk
-        den.aspects.qt
+        den.aspects.theme.gtk
+        den.aspects.theme.qt
       ];
       nixos =
         { pkgs, ... }:
@@ -61,7 +61,6 @@
               ;
           };
           xdg.icons.enable = true;
-          gtk.iconCache.enable = true;
         };
 
       homeManager =

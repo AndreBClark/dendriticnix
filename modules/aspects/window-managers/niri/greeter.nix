@@ -1,7 +1,7 @@
 {
   den.aspects.wm.niri = {
     nixos =
-      { config, host, pkgs, ... }:
+      { config, user, host, pkgs, ... }:
       {
         services.displayManager = {
           sddm.enable = false;
@@ -26,6 +26,10 @@
             # Support multiple users - use a generic approach
             configHome = "/home/${config.users.users.${builtins.head (builtins.attrNames host.users)}.name}";
 
+          };
+          autoLogin = {
+            enable = true;
+            user = user.userName;
           };
         };
         environment.systemPackages = [ pkgs.rose-pine-cursor ];
