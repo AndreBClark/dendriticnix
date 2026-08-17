@@ -44,29 +44,44 @@
               builtins.fromJSON (builtins.readFile ./settings.json)
             );
             session = builtins.fromJSON (builtins.readFile ./settings.json);
-            plugins = lib.mapAttrs (_: lib.mkDefault)
-              {
-                calculator.enable = true;
-                mediaPlayer.enable = true;
-                displayManager.enable = true;
-                niriWindows.enable = true;
-                powerUsagePlugin.enable = true;
-                nixMonitor.enable = true;
-                wallpaperDiscovery.enable = true;
-                easyEffects.enable = true;
-                wallpaperCarousel.enable = true;
-                airQuality.enable = true;
-                audioPortSwitcher.enable = true;
-                dankAudioVisualizer.enable = true;
-                dankBitwarden.enable = true;
-                dankObsidian.enable = true;
-                discordVoice.enable = true;
-                dmsThemeSync.enable = true;
-                emojiLauncher.enable = true;
-                volumeMixer.enable = true;
-                wallpaperShufflerPlugin.enable = true;
-                webSearch.enable = true;
-              } // builtins.fromJSON (builtins.readFile ./plugin_settings.json);
+            plugins =
+              let
+                rawPluginSettings = builtins.fromJSON (builtins.readFile ./plugin_settings.json);
+
+                toPluginAttrs = lib.mapAttrs
+                  (
+                    _: entry:
+                      let
+                        enable = entry.enabled or true;
+                        settings = removeAttrs entry [ "enabled" ];
+                      in
+                      { inherit enable settings; }
+                  )
+                  rawPluginSettings;
+              in
+              lib.mapAttrs (_: lib.mkDefault)
+                {
+                  calculator.enable = true;
+                  mediaPlayer.enable = true;
+                  displayManager.enable = true;
+                  niriWindows.enable = true;
+                  powerUsagePlugin.enable = true;
+                  nixMonitor.enable = true;
+                  wallpaperDiscovery.enable = true;
+                  easyEffects.enable = true;
+                  wallpaperCarousel.enable = true;
+                  airQuality.enable = true;
+                  audioPortSwitcher.enable = true;
+                  dankAudioVisualizer.enable = true;
+                  dankBitwarden.enable = true;
+                  dankObsidian.enable = true;
+                  discordVoice.enable = true;
+                  dmsThemeSync.enable = true;
+                  emojiLauncher.enable = true;
+                  volumeMixer.enable = true;
+                  wallpaperShufflerPlugin.enable = true;
+                  webSearch.enable = true;
+                } // toPluginAttrs;
           };
 
           dsearch.enable = true;
