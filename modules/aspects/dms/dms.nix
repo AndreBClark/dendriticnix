@@ -43,7 +43,7 @@
             settings = lib.mapAttrs (_: lib.mkDefault) (
               builtins.fromJSON (builtins.readFile ./settings.json)
             );
-            session = builtins.fromJSON (builtins.readFile ./settings.json);
+            session = builtins.fromJSON (builtins.readFile ./session.json);
             plugins =
               let
                 rawPluginSettings = builtins.fromJSON (builtins.readFile ./plugin_settings.json);
