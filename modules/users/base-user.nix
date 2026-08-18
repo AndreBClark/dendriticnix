@@ -10,6 +10,7 @@
       den.aspects.shell
       den.aspects.cli
       den.aspects.nvim
+      den.aspects.apps.nautilus
       den.aspects.apps.vivaldi
     ];
     # Base OS-level user settings
