@@ -35,6 +35,10 @@
         };
       };
       nvidia = {
+        includes = [
+          (den.batteries.unfree [ "nvidia" "nvidia-*" "nvidia-x11" "nvidia-settings" "nvidia-kernel-modules" ])
+
+        ];
         nixos = {
           services.xserver.enable = true;
 
