@@ -12,6 +12,7 @@
       den.aspects.nvim
       den.aspects.apps.nautilus
       den.aspects.apps.vivaldi
+      den.aspects.apps.superfile
       den.aspects.apps.obsidian
     ];
     # Base OS-level user settings
