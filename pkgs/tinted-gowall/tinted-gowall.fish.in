@@ -1,0 +1,9 @@
+set -l __tinted_gowall_themes "@THEME_LIST@"
+
+complete -c tinted-gowall -f
+complete -c gowall -w tinted-gowall
+
+complete -c tinted-gowall -l help -d "Show help"
+complete -c tinted-gowall -x -s t -a "$__tinted_gowall_themes" -d "Theme name"
+complete -c tinted-gowall -x -s sb -l smart-batch -d "Batch wallpaper processing"
+complete -c tinted-gowall -x -n '__fish_seen_argument -s sb -l smart-batch' -s t -a "$__tinted_gowall_themes" -d "Theme name"
