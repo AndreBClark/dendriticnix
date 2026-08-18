@@ -69,10 +69,15 @@
           devenv.enableFishIntegration = true;
           tmux.shell = "${pkgs.fish}/bin/fish";
         };
-        home.packages = [
-          pkgs.grc
-          pkgs.jq
-        ];
+        home = {
+          packages = [
+            pkgs.grc
+            pkgs.jq
+          ];
+          shellAliases = {
+            swp-purge = "rm -rf ${config.home.homeDirectory}/.local/state/nvim/swap";
+          };
+        };
       };
   };
 }

@@ -15,6 +15,14 @@
           "--no-user"
         ];
       };
+
+      home.shellAliases = {
+        ls = "eza";
+        ll = "eza -l";
+        la = "eza -A";
+        lt = "eza -T";
+        tree = "eza --tree";
+      };
     };
   };
 }

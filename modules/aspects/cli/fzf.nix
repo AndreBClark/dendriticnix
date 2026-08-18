@@ -142,6 +142,10 @@
           packages = builtins.attrValues {
             inherit (pkgs) file;
           };
+          shellAliases = {
+            cat = "bat";
+            find = "fd";
+          };
         };
       };
   };

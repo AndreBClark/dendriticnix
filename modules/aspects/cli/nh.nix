@@ -12,6 +12,11 @@
           };
           flake = "${config.home.homeDirectory}/nixconfig";
         };
+        home.shellAliases = {
+          nhs = "nh search";
+          nho = "nh os switch";
+          nhh = "nh home switch";
+        };
       };
   };
 }
