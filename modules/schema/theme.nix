@@ -20,10 +20,10 @@
     opacity = lib.mkOption {
       type = lib.types.attrs;
       default = {
-        desktop = 0.900;
-        popups = 0.900;
+        desktop = 0.500;
+        popups = 0.500;
         applications = 0.900;
-        terminal = 0.900;
+        terminal = 0.800;
       };
     };
     polarity = lib.mkOption {
