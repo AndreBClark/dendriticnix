@@ -19,12 +19,6 @@
           enable = true;
           defaultEditor = true;
           nixpkgs.useGlobalPackages = true;
-          imports = [
-            ./_config/options.nix
-            ./_config/lsp.nix
-            ./_config/keymaps.nix
-            ./_config/plugins
-          ];
           userCommands = {
             W.command = "w";
             Q.command = "q";
