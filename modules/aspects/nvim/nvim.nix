@@ -1,4 +1,4 @@
-{ inputs, ... }:
+{ inputs, den, ... }:
 {
   flake-file.inputs = {
     nixvim = {
@@ -6,11 +6,13 @@
     };
   };
   den.aspects.nvim = {
+    includes = [
+      den.aspects.nvim.provides.lsp
+      den.aspects.nvim.provides.keymaps
+      den.aspects.nvim.provides.options
+      den.aspects.nvim.provides.plugins
+    ];
     homeManager =
-      { lib, config, ... }:
-      let
-        stylixEnabled = config.stylix.enable or false;
-      in
       {
         imports = [
           inputs.nixvim.homeModules.nixvim
@@ -19,18 +21,11 @@
           enable = true;
           defaultEditor = true;
           nixpkgs.useGlobalPackages = true;
-          userCommands = {
-            W.command = "w";
-            Q.command = "q";
-          };
-          colorschemes.base16 = {
-            enable = !stylixEnabled;
-            colorscheme = lib.mkDefault config.lib.stylix.colors.scheme or "tokyo-night-moon";
-            settings.lualine_bold = true;
-          };
-          dependencies = {
-            ripgrep.enable = true;
-          };
+        };
+        home.shellAliases = {
+          v = "nvim";
+          vi = "nvim";
+          vim = "nvim";
         };
       };
   };
