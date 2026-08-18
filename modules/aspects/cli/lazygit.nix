@@ -12,8 +12,8 @@
             skipDiscardChangeWarning = true;
           };
           git = {
-            pagers = [
-              { pager = "delta --paging=never --dark --syntax-theme=base16-stylix --line-numbers --hyperlinks"; }
+            diffRenderers = [
+              { command = "delta --paging=never --dark --syntax-theme=base16-stylix --line-numbers --hyperlinks"; }
             ];
             autoFetch = false;
             diffContextSize = 5;
