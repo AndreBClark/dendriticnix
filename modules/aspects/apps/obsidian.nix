@@ -1,5 +1,9 @@
+{ den, ... }:
 {
   den.aspects.apps.obsidian = {
+    includes = [
+      (den.batteries.unfree [ "obsidian" ])
+    ];
     homeManager =
       {
         programs.obsidian = {
