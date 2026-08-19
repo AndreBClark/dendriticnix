@@ -1,5 +1,5 @@
 {
-  den.aspects.wm.niri = {
+  den.aspects.niri.config = {
     homeManager =
       { user, ... }:
       {

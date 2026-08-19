@@ -1,5 +1,5 @@
 {
-  den.aspects.dms = {
+  den.aspects.dms.syncCmd = {
     homeManager =
       { pkgs, config, ... }:
       let

@@ -1,5 +1,5 @@
 {
-  den.aspects.wm.niri = {
+  den.aspects.niri.window-rules = {
     homeManager = { user, ... }: {
       wayland.windowManager.niri.settings._children = [
         {

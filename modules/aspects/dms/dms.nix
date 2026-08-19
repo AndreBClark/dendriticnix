@@ -1,4 +1,4 @@
-{ lib, inputs, ... }:
+{ den, lib, inputs, ... }:
 {
   flake-file.inputs = {
     dgop = {
@@ -23,8 +23,12 @@
 
   };
   den.aspects.dms = {
+    includes = [
+      den.aspects.dms.greeter
+      den.aspects.dms.syncCmd
+    ];
     homeManager =
-      { pkgs, ... }:
+      { user, pkgs, ... }:
       {
         imports = [
           inputs.dms.homeModules.dank-material-shell
@@ -42,6 +46,11 @@
             enableCalendarEvents = true;
             settings = lib.mapAttrs (_: lib.mkDefault) (
               builtins.fromJSON (builtins.readFile ./settings.json)
+              // {
+                cursorSettings = {
+                  theme = user.theme.cursorName;
+                };
+              }
             );
             session = builtins.fromJSON (builtins.readFile ./session.json);
             plugins =
@@ -84,7 +93,8 @@
                 } // toPluginAttrs;
           };
 
-          dsearch.enable = true;
+          dsearch.enable =
+            true;
         };
         # systemd.user.services.dms.Service.ExecStartPost =
         #   "${pkgs.dms-shell}/bin/dms ipc call profile setImage ${config.home.homeDirectory}/Pictures/Wallpaper-tokyo-night-dark/wallhaven.cc_nz1x2w.jpeg";
