@@ -1,86 +1,86 @@
 {
-  "niriWindows": {
-    "enabled": true
-  },
-  "mediaPlayer": {
-    "enabled": true
-  },
-  "calculator": {
-    "enabled": true,
-    "trigger": "="
-  },
-  "powerUsagePlugin": {
-    "enabled": true,
-    "selectedPopout": "processList"
-  },
-  "wallpaperDiscovery": {
-    "enabled": true,
-    "downloadLocation": "/home/andrec/Pictures/Wallpapers",
-    "api_wallhavencc": "evxZa5kqPQ0wHFD6St5hfeox0qNAbiUR"
-  },
-  "webSearch": {
-    "enabled": true,
-    "searchEngines": [],
-    "defaultEngine": "duckduckgo",
-    "disabledEngines": []
-  },
-  "displayManager": {
-    "enabled": true
-  },
-  "dankAudioVisualizer": {
-    "enabled": true
-  },
-  "dankObsidian": {
-    "enabled": true,
-    "isFlatpak": false
-  },
-  "dankBitwarden": {
-    "enabled": true,
-    "trigger": "["
-  },
-  "easyEffects": {
-    "enabled": true,
-    "currentOutputIndex": -1,
-    "currentInputIndex": 1
-  },
-  "dmsThemeSync": {
-    "enabled": true,
-    "qtSyncMode": "auto",
-    "qtStyle": "auto",
-    "syncTerminalFonts": true,
-    "syncKvantum": true,
-    "syncFlatpak": false,
-    "qtPlatformTheme": "preserve",
-    "applyMatugenColors": true,
-    "gtkThemeDark": "Stylix"
-  },
-  "emojiLauncher": {
-    "enabled": true
-  },
-  "volumeMixer": {
-    "enabled": true
-  },
   "airQuality": {
     "enabled": true
   },
   "audioPortSwitcher": {
     "enabled": true
   },
-  "wallpaperShufflerPlugin": {
+  "calculator": {
     "enabled": true,
-    "changeOnReload": true,
-    "wallpaperPath": "/home/andrec/Pictures/Wallpapers-"
+    "trigger": "="
+  },
+  "dankAudioVisualizer": {
+    "enabled": true
+  },
+  "dankBitwarden": {
+    "enabled": true,
+    "trigger": "["
+  },
+  "dankObsidian": {
+    "enabled": true,
+    "isFlatpak": false
   },
   "discordVoice": {
     "enabled": true
   },
-  "wallpaperCarousel": {
+  "displayManager": {
+    "enabled": true
+  },
+  "dmsThemeSync": {
+    "applyMatugenColors": true,
     "enabled": true,
+    "gtkThemeDark": "Stylix",
+    "qtPlatformTheme": "preserve",
+    "qtStyle": "auto",
+    "qtSyncMode": "auto",
+    "syncFlatpak": false,
+    "syncKvantum": true,
+    "syncTerminalFonts": true
+  },
+  "easyEffects": {
+    "currentInputIndex": 1,
+    "currentOutputIndex": -1,
+    "enabled": true
+  },
+  "emojiLauncher": {
+    "enabled": true
+  },
+  "mediaPlayer": {
+    "enabled": true
+  },
+  "niriWindows": {
+    "enabled": true
+  },
+  "powerUsagePlugin": {
+    "enabled": true,
+    "selectedPopout": "processList"
+  },
+  "volumeMixer": {
+    "enabled": true
+  },
+  "wallpaperCarousel": {
     "borderWidth": 0,
-    "selectedScale": 117,
-    "expandSelected": "true",
+    "enabled": true,
     "expandMultiplier": 120,
+    "expandSelected": "true",
     "itemWidth": 291,
-    "overlayOpacity": 79
+    "overlayOpacity": 79,
+    "selectedScale": 117
+  },
+  "wallpaperDiscovery": {
+    "api_wallhavencc": "evxZa5kqPQ0wHFD6St5hfeox0qNAbiUR",
+    "downloadLocation": "/home/andrec/Pictures/Wallpapers",
+    "enabled": true
+  },
+  "wallpaperShufflerPlugin": {
+    "changeOnReload": true,
+    "enabled": true,
+    "wallpaperPath": "/home/andrec/Pictures/Wallpapers-"
+  },
+  "webSearch": {
+    "defaultEngine": "duckduckgo",
+    "disabledEngines": [],
+    "enabled": true,
+    "searchEngines": []
   }
 }
