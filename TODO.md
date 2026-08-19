@@ -1,9 +1,11 @@
-- [ ] [snacks].nvim and [mini].[nvim] nix files
+- [x] [snacks].nvim and [mini].[nvim] nix files
 - [ ] Picture in Picture overlay shell layer [niri] [dms]
     - [ ] set icon for pip
-- [ ] fix <kbd>mod</kbd>+<kbd>T</kbd> not opening terminal [dms] [niri]
+- [ ] fix `mod+T` not opening terminal [dms] [niri]
 - [x] fix bufferline inconsistent background
 - [ ] style bufferline [nvim] [bufferline]
+    - [ ] find fun bufferline styles
+    - [ ] find alternatives?
 - [ ] wallpaper colorscheme theme key
     - [ ] convert wallpaper directory as symbolic link to Wallpaper-${wallpaper-theme} folder
     - [ ] rename wallpaper directory as wallpaper-raw
@@ -13,3 +15,8 @@
     - [ ] symbolic link image to .face
     - [ ] use .face as user icon
     - [ ] run script to sync those 2
+- [ ] more gitsigns keymaps
+- [ ] disable more of noice and just keep nui/cmdline
+    - [ ] find if theres more locations
+- [ ] passthrough home config for standalone home-manager config `nh home switch`
+- [ ] nixvim standalone package
