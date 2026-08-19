@@ -1,0 +1,15 @@
+- [ ] [snacks].nvim and [mini].[nvim] nix files
+- [ ] Picture in Picture overlay shell layer [niri] [dms]
+    - [ ] set icon for pip
+- [ ] fix <kbd>mod</kbd>+<kbd>T</kbd> not opening terminal [dms] [niri]
+- [x] fix bufferline inconsistent background
+- [ ] style bufferline [nvim] [bufferline]
+- [ ] wallpaper colorscheme theme key
+    - [ ] convert wallpaper directory as symbolic link to Wallpaper-${wallpaper-theme} folder
+    - [ ] rename wallpaper directory as wallpaper-raw
+    - [ ] set dms wallpaper to `Wallpaper-${wallpaper-theme}`
+    - [ ] create dms plugin for this
+- [ ] declarative-ish set user icon
+    - [ ] symbolic link image to .face
+    - [ ] use .face as user icon
+    - [ ] run script to sync those 2
