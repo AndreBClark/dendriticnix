@@ -11,7 +11,6 @@
           "https://devenv.cachix.org"
           "https://nix-community.cachix.org"
           "https://hercules-ci.cachix.org"
-          "https://static-rust-lang.cachix.org"
         ];
 
         extra-trusted-public-keys = [
@@ -20,8 +19,7 @@
           "niri.cachix.org-1:Wv0OmO7PsuocRKzfDoJ3mulSl7Z6oezYhGhR+3W2964="
           "devenv.cachix.org-1:w1cLUi8dv3hnoSPGAuibQv+f9TZLr6cv/Hm9XgU50cw="
           "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
-          "hercules-ci.cachix.org-1:7l2s0+56qrwLlQ7qJzGzJQpQZ8zLq0XJQJQJQJQJQJQ="
-          "static-rust-lang.cachix.org-1:5s7k7l2s0+56qrwLlQ7qJzGzJQpQZ8zLq0XJQJQJQJQ="
+          "hercules-ci.cachix.org-1:ZZeDl9Va+xe9j+KqdzoBZMFJHVQ42Uu/c/1/KMC5Lw0="
         ];
 
       };
