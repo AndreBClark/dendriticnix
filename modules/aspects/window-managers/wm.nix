@@ -6,6 +6,6 @@
       windowManager = user.windowManager or "niri";
     in
     {
-      includes = [ den.aspects.wm.${windowManager} ];
+      includes = [ den.aspects.${windowManager} ];
     };
 }
