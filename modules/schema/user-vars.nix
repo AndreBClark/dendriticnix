@@ -1,6 +1,6 @@
-{ pkgs, ... }:
+{ lib, ... }:
 {
-  den.schema.user = { lib, ... }: {
+  den.schema.user = { host, ... }: {
     options = {
       keyboard = lib.mkOption {
         type = lib.types.attrs;
@@ -31,7 +31,11 @@
       };
       windowManager = lib.mkOption {
         type = lib.types.str;
-        default = "niri";
+        default = host.windowManager;
+      };
+      desktopShell = lib.mkOption {
+        type = lib.types.str;
+        default = host.desktopShell;
       };
       theme = lib.mkOption {
         type = lib.types.submodule (import ./theme.nix);

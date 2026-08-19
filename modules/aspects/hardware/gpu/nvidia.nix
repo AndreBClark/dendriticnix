@@ -2,38 +2,36 @@
 {
   den.aspects.hardware = {
     gpu = {
-      provides = {
-        nvidia-nonprime = {
-          nixos = {
-            includes = [ den.aspects.hardware.gpu.nvidia ];
-            imports = builtins.attrValues {
-              inherit (inputs.hardware.nixosModules)
-                common-gpu-nvidia-nonprime
-                ;
-            };
-          };
-        };
-
-        # GPU variant: prime (for laptops with integrated + discrete)
-        nvidia-prime = {
-          nixos = {
-            includes = [ den.aspects.hardware.gpu.nvidia ];
-            imports = builtins.attrValues {
-              inherit (inputs.hardware.nixosModules)
-                common-gpu-nvidia
-                ;
-            };
-          };
-        };
-
-        nvidia-nonprime-pascal = {
+      nvidia-nonprime = {
+        nixos = {
           includes = [ den.aspects.hardware.gpu.nvidia ];
-          nixos.imports = [
-            inputs.hardware.nixosModules.common-gpu-nvidia-nonprime
-            "${inputs.hardware}/common/gpu/nvidia/pascal"
-          ];
+          imports = builtins.attrValues {
+            inherit (inputs.hardware.nixosModules)
+              common-gpu-nvidia-nonprime
+              ;
+          };
         };
       };
+
+      nvidia-prime = {
+        nixos = {
+          includes = [ den.aspects.hardware.gpu.nvidia ];
+          imports = builtins.attrValues {
+            inherit (inputs.hardware.nixosModules)
+              common-gpu-nvidia
+              ;
+          };
+        };
+      };
+
+      nvidia-nonprime-pascal = {
+        includes = [ den.aspects.hardware.gpu.nvidia ];
+        nixos.imports = [
+          inputs.hardware.nixosModules.common-gpu-nvidia-nonprime
+          "${inputs.hardware}/common/gpu/nvidia/pascal"
+        ];
+      };
+
       nvidia = {
         includes = [
           (den.batteries.unfree [ "nvidia" "nvidia-*" "nvidia-x11" "nvidia-settings" "nvidia-kernel-modules" ])
@@ -62,6 +60,7 @@
           };
         };
       };
+
     };
   };
 }

@@ -6,7 +6,7 @@
       {
         imports = builtins.attrValues {
           inherit (inputs.hardware.nixosModules)
-            common-cpu-intel
+            common-cpu-intel-cpu-only
             ;
         };
       };

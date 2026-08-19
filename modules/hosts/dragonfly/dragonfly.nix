@@ -3,13 +3,14 @@
   den.aspects.dragonfly = {
     includes = [
       den.aspects.base-host
-      den.aspects.hardware.provides.dragonfly
+      den.aspects.hardware.laptop.dell-xps-15-9560
+      den.aspects.apps.audacity
     ];
   };
   den.hosts.x86_64-linux.dragonfly = {
     hardware = {
-      cpu = "intel";
       storage = [ "ssd" ];
+      gpuMode = "hybrid";
     };
     users.andrec = { };
   };

@@ -3,6 +3,14 @@
     { lib, host, ... }:
     {
       options = {
+        windowManager = lib.mkOption {
+          type = lib.types.str;
+          default = "niri";
+        };
+        desktopShell = lib.mkOption {
+          type = lib.types.str;
+          default = "dms";
+        };
         hardware = {
           cpu = lib.mkOption {
             type = lib.types.enum [ "intel" ];

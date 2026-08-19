@@ -12,8 +12,6 @@
   den.aspects.seadragon = {
     includes = [
       den.aspects.base-host
-      den.aspects.hardware.gpu
-      den.aspects.fs
       den.aspects.apps.steam
     ];
   };
