@@ -23,6 +23,7 @@
               "dataview"
               "templater"
             ];
+
           };
         };
       };
