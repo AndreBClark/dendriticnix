@@ -92,6 +92,13 @@
               };
               render-markdown.enable = true;
             };
+            keymaps = [
+              { mode = "n"; key = "<leader>on"; action = "<cmd>Obsidian new<CR>"; options.desc = "New note"; }
+              { mode = "n"; key = "<leader>oo"; action = "<cmd>Obsidian quick_switch<CR>"; options.desc = "Quick switch"; }
+              { mode = "n"; key = "<leader>ob"; action = "<cmd>Obsidian backlinks<CR>"; options.desc = "Backlinks"; }
+              { mode = "n"; key = "<leader>ot"; action = "<cmd>Obsidian today<CR>"; options.desc = "Today's note"; }
+              { mode = "n"; key = "<leader>of"; action = "<cmd>Obsidian follow_link<CR>"; options.desc = "Follow link"; }
+            ];
           };
         };
     };

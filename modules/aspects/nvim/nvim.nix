@@ -22,6 +22,14 @@
           defaultEditor = true;
           nixpkgs.useGlobalPackages = true;
         };
+        stylix.targets.nixvim = {
+          plugin = "base16-nvim";
+          transparentBackground = {
+            main = true;
+            numberLine = true;
+            signColumn = true;
+          };
+        };
         home.shellAliases = {
           v = "nvim";
           vi = "nvim";

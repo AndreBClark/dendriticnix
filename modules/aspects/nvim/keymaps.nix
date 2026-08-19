@@ -20,12 +20,7 @@
               action = "";
               options.silent = true;
             }
-            {
-              mode = "n";
-              key = "<leader>w";
-              action = "<cmd>Bdelete<CR>";
-              options.desc = "Delete buffer";
-            }
+
             {
               key = "<leader>q";
               mode = "n";

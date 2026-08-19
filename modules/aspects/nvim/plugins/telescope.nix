@@ -1,3 +1,4 @@
+{ lib, ... }:
 {
   den.aspects.nvim = {
     provides.telescope = {
@@ -115,7 +116,7 @@
             };
 
             dependencies = {
-              ripgrep.enable = true;
+              ripgrep.enable = lib.mkDefault true;
             };
             keymaps = [
               {
