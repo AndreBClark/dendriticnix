@@ -293,19 +293,6 @@
   "currentThemeCategory": "custom",
   "currentThemeName": "custom",
   "cursorSettings": {
-    "dwl": {
-      "cursorHideTimeout": 0
-    },
-    "hyprland": {
-      "hideOnKeyPress": false,
-      "hideOnTouch": false,
-      "inactiveTimeout": 0
-    },
-    "niri": {
-      "hideAfterInactiveMs": 0,
-      "hideWhenTyping": true
-    },
-    "size": 32,
     "theme": "BreezeX-RosePine-Linux"
   },
   "customAnimationDuration": 200,
