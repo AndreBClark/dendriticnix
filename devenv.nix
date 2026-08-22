@@ -44,6 +44,7 @@
       };
       statix = {
         enable = true;
+        settings.ignore = [ "npins/default.nix" ];
         excludes = [ "npins/default.nix" ];
       };
       deadnix = {
