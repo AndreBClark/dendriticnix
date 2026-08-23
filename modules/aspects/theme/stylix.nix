@@ -1,7 +1,8 @@
-{ lib
-, inputs
-, den
-, ...
+{
+  lib,
+  inputs,
+  den,
+  ...
 }:
 {
   flake-file.inputs = {
@@ -64,9 +65,10 @@
         };
 
       homeManager =
-        { pkgs
-        , osConfig ? null
-        , ...
+        {
+          pkgs,
+          osConfig ? null,
+          ...
         }:
         {
           imports = lib.optionals (osConfig == null) [

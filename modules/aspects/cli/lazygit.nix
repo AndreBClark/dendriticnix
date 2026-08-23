@@ -1,5 +1,5 @@
 {
-  den.aspects.cli.provides.lazygit = {
+  den.aspects.cli.lazygit = {
     homeManager = {
       programs.lazygit = {
         enable = true;
@@ -13,7 +13,9 @@
           };
           git = {
             diffRenderers = [
-              { command = "delta --paging=never --dark --syntax-theme=base16-stylix --line-numbers --hyperlinks"; }
+              {
+                command = "delta --paging=never --dark --syntax-theme=base16-stylix --line-numbers --hyperlinks";
+              }
             ];
             autoFetch = false;
             diffContextSize = 5;

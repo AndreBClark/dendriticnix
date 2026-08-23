@@ -7,10 +7,9 @@
         qtPlatform = "gtk3";
       in
       {
-        home.packages =
-          builtins.attrValues {
-            inherit (pkgs.kdePackages) qt6ct;
-          };
+        home.packages = builtins.attrValues {
+          inherit (pkgs.kdePackages) qt6ct;
+        };
 
         qt = {
           enable = true;

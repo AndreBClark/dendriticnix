@@ -17,7 +17,7 @@
           udisks2.enable = true;
         };
         nixpkgs.overlays = [
-          (final: prev: {
+          (_: prev: {
             nautilus = prev.nautilus.overrideAttrs (nprev: {
               buildInputs =
                 nprev.buildInputs
@@ -29,12 +29,16 @@
           })
         ];
         environment = {
-          systemPackages = [ pkgs.nautilus pkgs.libheif pkgs.libheif.out ];
+          systemPackages = [
+            pkgs.nautilus
+            pkgs.libheif
+            pkgs.libheif.out
+          ];
           pathsToLink = [ "share/thumbnailers" ];
         };
       };
     homeManager = {
-      services. udiskie = {
+      services.udiskie = {
         enable = true;
       };
     };

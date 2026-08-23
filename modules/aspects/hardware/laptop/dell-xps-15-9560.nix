@@ -12,12 +12,12 @@
     dell-xps-15-9560-intel = {
       nixos.imports = [ inputs.hardware.nixosModules.dell-xps-15-9560-intel ];
     };
+
     dell-xps-15-9560 =
       { host, ... }:
       {
         includes = [
           (den.batteries.unfree [
-            "ath10k_pci"
             "nvidia"
             "nvidia-x11"
             "nvidia-settings"
@@ -28,23 +28,25 @@
         ];
 
         user.keyboard.model = "pc105";
-        nixos =
-          {
-            hardware = {
-              cpu.intel.updateMicrocode = true;
-            };
-
-            boot = {
-              initrd.availableKernelModules = [
-                "xhci_pci"
-                "ahci"
-                "nvme"
-                "rtsx_pci_sdmmc"
-              ];
-              kernelParams = [ "pci=noaer" ];
-              kernelModules = [ "kvm-intel" "ath10k_pci" ];
-            };
+        nixos = {
+          hardware = {
+            cpu.intel.updateMicrocode = true;
           };
+
+          boot = {
+            initrd.availableKernelModules = [
+              "ahci"
+              "nvme"
+              "rtsx_pci_sdmmc"
+            ];
+            kernelParams = [
+              "pci=noaer"
+            ];
+            kernelModules = [
+              "kvm-intel"
+            ];
+          };
+        };
       };
   };
 }

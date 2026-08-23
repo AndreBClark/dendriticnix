@@ -1,5 +1,5 @@
 {
-  den.aspects.cli.provides.zoxide = {
+  den.aspects.cli.zoxide = {
     homeManager = {
       home.sessionVariables = {
         _ZO_EXCLUDE_DIRS = "/nix";

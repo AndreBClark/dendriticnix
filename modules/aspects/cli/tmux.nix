@@ -1,5 +1,5 @@
 {
-  den.aspects.cli.provides.tmux = {
+  den.aspects.cli.tmux = {
     homeManager =
       { pkgs, user, ... }:
       {

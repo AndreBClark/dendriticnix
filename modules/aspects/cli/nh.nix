@@ -1,5 +1,5 @@
 {
-  den.aspects.cli.provides.nh = {
+  den.aspects.cli.nh = {
     homeManager =
       { config, ... }:
       {

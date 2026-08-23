@@ -1,5 +1,5 @@
 {
-  den.aspects.cli.provides.eza = {
+  den.aspects.cli.eza = {
     homeManager = {
       programs.eza = {
         enable = true;
@@ -20,9 +20,9 @@
         ls = "eza";
         ll = "eza -l";
         la = "eza -A";
-        lt = "eza -T";
-        tree = "eza --tree";
+        tree = "eza --tree --level 2";
       };
+
     };
   };
 }

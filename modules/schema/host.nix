@@ -21,19 +21,32 @@
             default = [ "ssd" ];
           };
           gpu = lib.mkOption {
-            type = lib.types.nullOr (lib.types.enum [
-              "nvidia-nonprime"
-              "nvidia-prime"
-              "nvidia-nonprime-pascal"
-            ]);
+            type = lib.types.nullOr (
+              lib.types.enum [
+                "nvidia-nonprime"
+                "nvidia-prime"
+                "nvidia-nonprime-pascal"
+              ]
+            );
             default = null;
           };
           formFactor = lib.mkOption {
-            type = lib.types.nullOr (lib.types.enum [ "desktop" "laptop" ]);
+            type = lib.types.nullOr (
+              lib.types.enum [
+                "desktop"
+                "laptop"
+              ]
+            );
             default = "desktop";
           };
           gpuMode = lib.mkOption {
-            type = lib.types.nullOr (lib.types.enum [ "hybrid" "nvidia" "intel" ]);
+            type = lib.types.nullOr (
+              lib.types.enum [
+                "hybrid"
+                "nvidia"
+                "intel"
+              ]
+            );
             default = if host.hardware.formFactor == "laptop" then "hybrid" else null;
           };
         };

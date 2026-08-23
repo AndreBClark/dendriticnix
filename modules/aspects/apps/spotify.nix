@@ -60,31 +60,30 @@
           };
           # https://gerg-l.github.io/spicetify-nix/extensions.html
           enabledExtensions =
-            builtins.attrValues
-              {
-                inherit (spicePkgs.extensions)
-                  allOfArtist
-                  coverAmbience
-                  keyboardShortcut
-                  fullAppDisplay
-                  shuffle
-                  hidePodcasts
-                  goToSong
-                  listPlaylistsWithSong
-                  skipStats
-                  songStats
-                  aiBandBlocker
-                  history
-                  # betterGenres sortPlay provides this functionality
-                  playNext
-                  sectionMarker
-                  autoSkip
-                  playingSource
-                  wikify
-                  sortPlay
-                  extendedCopy
-                  ;
-              }
+            builtins.attrValues {
+              inherit (spicePkgs.extensions)
+                allOfArtist
+                coverAmbience
+                keyboardShortcut
+                fullAppDisplay
+                shuffle
+                hidePodcasts
+                goToSong
+                listPlaylistsWithSong
+                skipStats
+                songStats
+                aiBandBlocker
+                history
+                # betterGenres sortPlay provides this functionality
+                playNext
+                sectionMarker
+                autoSkip
+                playingSource
+                wikify
+                sortPlay
+                extendedCopy
+                ;
+            }
             ++ [
               {
                 src = "${sources.spicetify-extensions}/playback-bar-waveform/dist";
@@ -106,8 +105,7 @@
             "Fix 'Episodes' Icon"
             "Queue Top Side Panel"
             # big NPV when song has canvas
-            /* css */
-            ''
+            /* css */ ''
               .main-nowPlayingView-container {
                   width: 50dvh !important;
               }
@@ -117,8 +115,7 @@
               }
             ''
             # hide liquid lyrics npv panel when no lyrics
-            /* css */
-            ''
+            /* css */ ''
               .main-nowPlayingView-nowPlayingGrid:has(.main-nowPlayingView-canvasVisualEnhancement .canvasVideoContainerNPV, .ll-sidebar-card-body)
               .main-nowPlayingView-contextItemInfo {
                 margin-top: 5vh !important;

@@ -1,16 +1,16 @@
-{ lib
-, stdenvNoCC
-, installShellFiles
-, makeWrapper
-, writableTmpDirAsHomeHook
-, writeShellApplication
-, writeShellScriptBin
-, python3
-, gowall
-, base16-schemes
-, nix-update-script
-, yq
-,
+{
+  lib,
+  stdenvNoCC,
+  installShellFiles,
+  makeWrapper,
+  writableTmpDirAsHomeHook,
+  writeShellApplication,
+  writeShellScriptBin,
+  python3,
+  gowall,
+  base16-schemes,
+  nix-update-script,
+  yq,
 }:
 let
   wallpaper-batch = writeShellApplication {

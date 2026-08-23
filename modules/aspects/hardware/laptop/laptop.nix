@@ -1,4 +1,4 @@
-{ lib, inputs, ... }:
+{ inputs, ... }:
 {
   den.aspects.hardware.laptop = {
     nixos =
@@ -12,6 +12,7 @@
           ];
           bluetooth.enable = true;
         };
+
         services = {
           upower.enable = true;
           blueman.enable = true;

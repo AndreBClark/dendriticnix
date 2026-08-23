@@ -26,7 +26,10 @@
         {
           output = {
             _args = [ "HDMI-A-1" ];
-            position._props = { x = 0; y = 720; };
+            position._props = {
+              x = 0;
+              y = 720;
+            };
             variable-refresh-rate._props.on-demand = true;
           };
         }
@@ -36,9 +39,14 @@
     # Optional dispatcher, parametric on host — activates only in {host} contexts
     outputs = { host, ... }: {
       includes = [
-        (if host.name == "dragonfly" then den.aspects.niri.dragonfly-output
-        else if host.name == "seadragon" then den.aspects.niri.seadragon-output
-        else { })
+        (
+          if host.name == "dragonfly" then
+            den.aspects.niri.dragonfly-output
+          else if host.name == "seadragon" then
+            den.aspects.niri.seadragon-output
+          else
+            { }
+        )
       ];
     };
   };

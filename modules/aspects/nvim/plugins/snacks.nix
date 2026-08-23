@@ -19,7 +19,16 @@
                   enabled = true;
                   indent = {
                     only_scope = true;
-                    hl = [ "SnacksIndent1" "SnacksIndent2" "SnacksIndent3" "SnacksIndent4" "SnacksIndent5" "SnacksIndent6" "SnacksIndent7" "SnacksIndent8" ];
+                    hl = [
+                      "SnacksIndent1"
+                      "SnacksIndent2"
+                      "SnacksIndent3"
+                      "SnacksIndent4"
+                      "SnacksIndent5"
+                      "SnacksIndent6"
+                      "SnacksIndent7"
+                      "SnacksIndent8"
+                    ];
                   };
                   scope.underline = true;
                 };
@@ -66,7 +75,10 @@
               options.desc = "Rename File";
             })
             ++ (lib.optional (cfg.gitbrowse.enabled or false) {
-              mode = [ "n" "v" ];
+              mode = [
+                "n"
+                "v"
+              ];
               key = "<leader>gB";
               action.__raw = "function() Snacks.gitbrowse() end";
               options.desc = "Git Browse";
@@ -84,14 +96,33 @@
               options.desc = "Dismiss All Notifications";
             })
             ++ (lib.optional (cfg.terminal.enabled or false) {
-              mode = [ "n" "t" ];
+              mode = [
+                "n"
+                "t"
+              ];
               key = "<c-/>";
               action.__raw = "function() Snacks.terminal() end";
               options.desc = "Toggle Terminal";
             })
             ++ (lib.optionals (cfg.words.enabled or false) [
-              { mode = [ "n" "t" ]; key = "]]"; action.__raw = "function() Snacks.words.jump(vim.v.count1) end"; options.desc = "Next Reference"; }
-              { mode = [ "n" "t" ]; key = "[["; action.__raw = "function() Snacks.words.jump(-vim.v.count1) end"; options.desc = "Prev Reference"; }
+              {
+                mode = [
+                  "n"
+                  "t"
+                ];
+                key = "]]";
+                action.__raw = "function() Snacks.words.jump(vim.v.count1) end";
+                options.desc = "Next Reference";
+              }
+              {
+                mode = [
+                  "n"
+                  "t"
+                ];
+                key = "[[";
+                action.__raw = "function() Snacks.words.jump(-vim.v.count1) end";
+                options.desc = "Prev Reference";
+              }
             ])
             ++ (lib.optional (cfg.zen.enabled or false) {
               mode = "n";
@@ -154,12 +185,45 @@
               options.desc = "Toggle Indent Guides";
             })
             ++ (lib.optionals (cfg.picker.enabled or false) [
-              { mode = "n"; key = "<C-p>"; action.__raw = "function() Snacks.picker.files() end"; options.desc = "Find Files"; }
-              { mode = "n"; key = "<leader>/"; action.__raw = "function() Snacks.picker.grep() end"; options.desc = "Grep"; }
-              { mode = "n"; key = "<leader>,"; action.__raw = "function() Snacks.picker.buffers() end"; options.desc = "Buffers"; }
-              { mode = "n"; key = "<leader>sB"; action.__raw = "function() Snacks.picker.grep_buffers() end"; options.desc = "Grep Open Buffers"; }
-              { mode = [ "n" "x" ]; key = "<leader>sw"; action.__raw = "function() Snacks.picker.grep_word() end"; options.desc = "Visual selection or word"; }
-              { mode = "n"; key = "<leader>su"; action.__raw = "function() Snacks.picker.undo() end"; options.desc = "Undo History"; }
+              {
+                mode = "n";
+                key = "<C-p>";
+                action.__raw = "function() Snacks.picker.files() end";
+                options.desc = "Find Files";
+              }
+              {
+                mode = "n";
+                key = "<leader>/";
+                action.__raw = "function() Snacks.picker.grep() end";
+                options.desc = "Grep";
+              }
+              {
+                mode = "n";
+                key = "<leader>,";
+                action.__raw = "function() Snacks.picker.buffers() end";
+                options.desc = "Buffers";
+              }
+              {
+                mode = "n";
+                key = "<leader>sB";
+                action.__raw = "function() Snacks.picker.grep_buffers() end";
+                options.desc = "Grep Open Buffers";
+              }
+              {
+                mode = [
+                  "n"
+                  "x"
+                ];
+                key = "<leader>sw";
+                action.__raw = "function() Snacks.picker.grep_word() end";
+                options.desc = "Visual selection or word";
+              }
+              {
+                mode = "n";
+                key = "<leader>su";
+                action.__raw = "function() Snacks.picker.undo() end";
+                options.desc = "Undo History";
+              }
             ]);
 
         };

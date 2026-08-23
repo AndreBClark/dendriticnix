@@ -1,7 +1,13 @@
 {
   den.aspects.dms.greeter = {
     nixos =
-      { config, user, host, pkgs, ... }:
+      {
+        config,
+        user,
+        host,
+        pkgs,
+        ...
+      }:
       {
         services.displayManager = {
           sddm.enable = false;

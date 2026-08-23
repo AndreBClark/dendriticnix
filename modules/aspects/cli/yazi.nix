@@ -1,5 +1,5 @@
 {
-  den.aspects.cli.provides.yazi = {
+  den.aspects.cli.yazi = {
     homeManager =
       { pkgs, ... }:
       {

@@ -1,5 +1,5 @@
 {
-  den.aspects.cli.provides.fzf = {
+  den.aspects.cli.fzf = {
     homeManager =
       { lib, pkgs, ... }:
       let
@@ -13,6 +13,7 @@
           "dosdevices"
           "*.lock"
           # Dependencies and build outputs
+          "dist"
           "node_modules"
           "target"
           "build"
@@ -33,14 +34,18 @@
           "temp"
           "*.tmp"
         ];
+
         excludesStr = lib.pipe excludesList [
           (map (p: "--exclude ${lib.escapeShellArg p}"))
           (lib.concatStringsSep " ")
         ];
 
+        excludesCSV = lib.concatStringsSep "," excludesList;
+
         fdFlags = "--hidden --color=always " + excludesStr;
         batTheme = "base16-stylix";
-        previewWindow = "--preview-window='<80(hidden),80,border-rounded'";
+        previewWindow = "--preview-window='<60(down,50%),60,border-rounded'";
+
         batWrapped = pkgs.writeShellScript "bat-wrapper" ''
           bat --color=always --style=numbers --theme=${batTheme} "$@"
         '';
@@ -52,12 +57,15 @@
         ezaWrapped = pkgs.writeShellScript "eza-wrapper" ''
           eza --color=always "$@"
         '';
+
         fdCommand = "${fdWrapped} --type f";
+
         zoxideDirWrapped = pkgs.writeShellScript "zoxide-dir-wrapper" ''
           zoxide query -l | while read -r dir; do
             printf '%s\t%s\n' "$(sed "s|^$HOME|~|" <<< "$dir")" "$dir"
           done
         '';
+
         customPreviewScript = pkgs.writeShellScript "kitty-preview.sh" ''
           file=$1
           if [[ -d "$file" ]]; then
@@ -74,21 +82,35 @@
             ${batWrapped} "$file"
           fi
         '';
+
+        nvimWrapped = pkgs.writeShellScript "fzf-nvim-become" ''
+          # Only clear kitty graphics state if a graphics escape was actually emitted
+          if [[ -n "$KITTY_WINDOW_ID" ]]; then
+            kitten icat --clear --transfer-mode=stream --stdin=no >/dev/null 2>&1
+          fi
+          exec nvim "$1"
+        '';
+
       in
       {
         programs = {
           fzf = {
             enable = true;
             defaultCommand = fdCommand;
+            enableFishIntegration = true;
             fileWidget = {
               command = fdCommand;
               options = [
+                "--bind 'enter:become(${nvimWrapped} {})'"
                 previewWindow
               ];
             };
+
             changeDirWidget = {
               command = "${zoxideDirWrapped}";
               options = [
+                "-1"
+                "-0"
                 "--delimiter '\t'"
                 "--with-nth=1"
                 "--accept-nth=2"
@@ -96,6 +118,7 @@
                 previewWindow
               ];
             };
+
             historyWidget = {
               options = [
                 "--color=header:italic"
@@ -106,6 +129,7 @@
                 "--bind=enter:accept-or-print-query"
               ];
             };
+
             defaultOptions = [
               "--ansi"
               "--style=full"
@@ -115,20 +139,23 @@
               "--color=border:blue"
               "--color=prompt:green"
               "--color=info:bright-black"
-              "--tmux=center,50%,60%"
-              "--ghost='Type to filter...'"
               "--preview '${customPreviewScript} {}'"
+              "--walker-skip=${excludesCSV}"
             ];
+
           };
 
+          kitty.enable = lib.mkDefault true;
           eza.enable = lib.mkDefault true;
           zoxide.enable = lib.mkDefault true;
+
           bat = {
             enable = true;
             config = {
               map-syntax = [ "*.astro:TypeScriptReact" ];
             };
           };
+
           fd = {
             enable = true;
             hidden = true;
@@ -138,6 +165,7 @@
             ignores = excludesList;
           };
         };
+
         home = {
           packages = builtins.attrValues {
             inherit (pkgs) file;
@@ -147,6 +175,7 @@
             find = "fd";
           };
         };
+
       };
   };
 }

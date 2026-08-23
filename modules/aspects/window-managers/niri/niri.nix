@@ -4,10 +4,15 @@
     { user, ... }:
     {
       includes = [
-        (if user.desktopShell == "dms" then [
-          den.aspects.dms
-          den.aspects.dms.niri-includes
-        ] else { })
+        (
+          if user.desktopShell == "dms" then
+            [
+              den.aspects.dms
+              den.aspects.dms.niri-includes
+            ]
+          else
+            { }
+        )
         den.aspects.niri.binds
         den.aspects.niri.config
         den.aspects.niri.outputs

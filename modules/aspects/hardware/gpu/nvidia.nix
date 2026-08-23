@@ -34,7 +34,13 @@
 
       nvidia = {
         includes = [
-          (den.batteries.unfree [ "nvidia" "nvidia-*" "nvidia-x11" "nvidia-settings" "nvidia-kernel-modules" ])
+          (den.batteries.unfree [
+            "nvidia"
+            "nvidia-*"
+            "nvidia-x11"
+            "nvidia-settings"
+            "nvidia-kernel-modules"
+          ])
 
         ];
         nixos = {

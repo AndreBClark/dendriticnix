@@ -1,5 +1,5 @@
 {
-  den.aspects.fs.provides = {
+  den.aspects.fs = {
     dragonfly = {
       nixos = {
         fileSystems = {
@@ -27,7 +27,7 @@
             ];
           };
         };
-        swapDevices = [{ device = "/dev/disk/by-uuid/3e14e991-8c6a-4e28-a852-f0504232fdc2"; }];
+        swapDevices = [ { device = "/dev/disk/by-uuid/3e14e991-8c6a-4e28-a852-f0504232fdc2"; } ];
       };
     };
   };

@@ -1,5 +1,5 @@
 {
-  den.aspects.cli.provides.git = {
+  den.aspects.cli.git = {
     homeManager = {
       programs = {
         git = {

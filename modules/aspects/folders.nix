@@ -2,16 +2,31 @@
 {
   den.aspects.folders = {
     homeManager =
-      { host, pkgs, config, ... }:
+      {
+        host,
+        pkgs,
+        config,
+        ...
+      }:
 
       let
         homeDir = config.home.homeDirectory;
 
         directories = [
-          { path = "vaults"; icon = "folder-obsidian"; }
-          { path = "repos"; icon = "folder-github"; }
-        ] ++ lib.optionals (host.name == "dragonfly") [
-          { path = "audio"; icon = "folder-sound"; }
+          {
+            path = "vaults";
+            icon = "folder-obsidian";
+          }
+          {
+            path = "repos";
+            icon = "folder-github";
+          }
+        ]
+        ++ lib.optionals (host.name == "dragonfly") [
+          {
+            path = "audio";
+            icon = "folder-sound";
+          }
         ];
 
         mkDirectoryFile = dir: {
@@ -30,12 +45,10 @@
       {
         home = {
           packages = [ pkgs.xdg-user-dirs ];
-          file =
-            lib.listToAttrs (map mkDirectoryFile directories) //
-            {
-              "config" = mkLink ".config";
-              "local-share" = mkLink ".local/share";
-            };
+          file = lib.listToAttrs (map mkDirectoryFile directories) // {
+            "config" = mkLink ".config";
+            "local-share" = mkLink ".local/share";
+          };
         };
 
         xdg.dataFile."mime/packages/inode-directory.xml".text = ''

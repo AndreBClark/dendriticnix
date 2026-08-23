@@ -56,14 +56,46 @@
                     };
                   };
                   spec = [
-                    { __unkeyed-1 = "<leader>f"; group = "Find"; icon = "󰈞 "; }
-                    { __unkeyed-1 = "<leader>g"; group = "Git"; icon = "󰊢 "; }
-                    { __unkeyed-1 = "<leader>x"; group = "Diagnostics/Trouble"; icon = "󰀪 "; }
-                    { __unkeyed-1 = "<leader>s"; group = "Search"; icon = "󰍉 "; }
-                    { __unkeyed-1 = "<leader>c"; group = "Code"; icon = "󰅩 "; }
-                    { __unkeyed-1 = "<leader>u"; group = "UI/Toggles"; icon = "󰙵 "; }
-                    { __unkeyed-1 = "<leader>o"; group = "Obsidian"; icon = "󱓧 "; }
-                    { __unkeyed-1 = "<leader>b"; group = "Buffer"; icon = "󰓩 "; }
+                    {
+                      __unkeyed-1 = "<leader>f";
+                      group = "Find";
+                      icon = "󰈞 ";
+                    }
+                    {
+                      __unkeyed-1 = "<leader>g";
+                      group = "Git";
+                      icon = "󰊢 ";
+                    }
+                    {
+                      __unkeyed-1 = "<leader>x";
+                      group = "Diagnostics/Trouble";
+                      icon = "󰀪 ";
+                    }
+                    {
+                      __unkeyed-1 = "<leader>s";
+                      group = "Search";
+                      icon = "󰍉 ";
+                    }
+                    {
+                      __unkeyed-1 = "<leader>c";
+                      group = "Code";
+                      icon = "󰅩 ";
+                    }
+                    {
+                      __unkeyed-1 = "<leader>u";
+                      group = "UI/Toggles";
+                      icon = "󰙵 ";
+                    }
+                    {
+                      __unkeyed-1 = "<leader>o";
+                      group = "Obsidian";
+                      icon = "󱓧 ";
+                    }
+                    {
+                      __unkeyed-1 = "<leader>b";
+                      group = "Buffer";
+                      icon = "󰓩 ";
+                    }
                   ];
                 };
               };
@@ -99,16 +131,39 @@
                 options.desc = "Toggle Diagnostics (Trouble)";
               })
               ++ (lib.optional (cfg.refactoring.enable or false) {
-                mode = [ "n" "v" ];
+                mode = [
+                  "n"
+                  "v"
+                ];
                 key = "<leader>re";
                 action.__raw = "function() require('refactoring').select_refactor() end";
                 options.desc = "Select Refactor";
               })
               ++ (lib.optionals (cfg.smart-splits.enable or false) [
-                { mode = "n"; key = "<C-h>"; action.__raw = "function() require('smart-splits').move_cursor_left() end"; options.desc = "Move to left split"; }
-                { mode = "n"; key = "<C-j>"; action.__raw = "function() require('smart-splits').move_cursor_down() end"; options.desc = "Move to below split"; }
-                { mode = "n"; key = "<C-k>"; action.__raw = "function() require('smart-splits').move_cursor_up() end"; options.desc = "Move to above split"; }
-                { mode = "n"; key = "<C-l>"; action.__raw = "function() require('smart-splits').move_cursor_right() end"; options.desc = "Move to right split"; }
+                {
+                  mode = "n";
+                  key = "<C-h>";
+                  action.__raw = "function() require('smart-splits').move_cursor_left() end";
+                  options.desc = "Move to left split";
+                }
+                {
+                  mode = "n";
+                  key = "<C-j>";
+                  action.__raw = "function() require('smart-splits').move_cursor_down() end";
+                  options.desc = "Move to below split";
+                }
+                {
+                  mode = "n";
+                  key = "<C-k>";
+                  action.__raw = "function() require('smart-splits').move_cursor_up() end";
+                  options.desc = "Move to above split";
+                }
+                {
+                  mode = "n";
+                  key = "<C-l>";
+                  action.__raw = "function() require('smart-splits').move_cursor_right() end";
+                  options.desc = "Move to right split";
+                }
               ]);
           };
         };

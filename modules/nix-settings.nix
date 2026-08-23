@@ -2,7 +2,10 @@
   den.default.nixos = {
     nix = {
       settings = {
-        experimental-features = [ "nix-command" "flakes" ];
+        experimental-features = [
+          "nix-command"
+          "flakes"
+        ];
         download-buffer-size = 524288000;
         substituters = [
           "https://cache.nixos.org"
@@ -29,7 +32,10 @@
 
   den.default.includes = [
     ({ user, ... }: {
-      nixos.nix.settings.trusted-users = [ "admin" user.userName ];
+      nixos.nix.settings.trusted-users = [
+        "admin"
+        user.userName
+      ];
     })
   ];
 }
