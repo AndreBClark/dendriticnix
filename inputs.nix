@@ -40,4 +40,5 @@
     inputs.nixpkgs.follows = "nixpkgs";
     url = "github:nix-community/stylix";
   };
+  treefmt-nix.url = "github:numtide/treefmt-nix";
 }
