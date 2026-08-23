@@ -6,6 +6,9 @@
   ];
   den.schema.user.includes = [ den.provides.define-user ];
   den.schema.flake-system.includes = [ den.aspects.my-packages ];
+
+  _module.args.__findFile = den.lib.__findFile;
+
   # other inputs may be defined at a module using them.
   flake-file.inputs = {
     den.url = "github:vic/den";

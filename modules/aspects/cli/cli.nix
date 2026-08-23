@@ -1,15 +1,15 @@
-{ den, ... }:
+{ __findFile, ... }:
 {
   den.aspects.cli = {
     includes = [
-      den.aspects.cli.devenv
-      den.aspects.cli.eza
-      den.aspects.cli.fzf
-      den.aspects.cli.git
-      den.aspects.cli.lazygit
-      den.aspects.cli.nh
-      den.aspects.cli.tmux
-      den.aspects.cli.zoxide
+      <cli/devenv>
+      <cli/eza>
+      <cli/fzf>
+      <cli/git>
+      <cli/lazygit>
+      <cli/nh>
+      <cli/tmux>
+      <cli/zoxide>
     ];
     homeManager =
       { pkgs, ... }:

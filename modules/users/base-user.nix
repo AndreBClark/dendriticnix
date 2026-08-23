@@ -1,19 +1,19 @@
-{ den, ... }:
+{ __findFile, ... }:
 {
   den.aspects.base-user = {
     includes = [
-      den.provides.define-user
-      den.aspects.folders
-      den.aspects.stylix
-      den.aspects.wm
-      den.aspects.terminal
-      den.aspects.shell
-      den.aspects.cli
-      den.aspects.nvim
-      den.aspects.apps.nautilus
-      den.aspects.apps.vivaldi
-      den.aspects.apps.superfile
-      den.aspects.apps.obsidian
+      <den/define-user>
+      <folders>
+      <stylix>
+      <wm>
+      <terminal>
+      <shell>
+      <cli>
+      <nvim>
+      <apps/nautilus>
+      <apps/vivaldi>
+      <apps/superfile>
+      <apps/obsidian>
     ];
     # Base OS-level user settings
     user = {
