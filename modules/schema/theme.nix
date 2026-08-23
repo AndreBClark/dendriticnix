@@ -24,7 +24,10 @@
             default = "rose-pine-cursor";
           };
 
-          size = lib.mkOption { type = lib.types.int; default = 32; };
+          size = lib.mkOption {
+            type = lib.types.int;
+            default = 32;
+          };
         };
       };
 
@@ -38,10 +41,22 @@
     opacity = lib.mkOption {
       type = lib.types.submodule {
         options = {
-          desktop = lib.mkOption { type = lib.types.float; default = 1.000; };
-          popups = lib.mkOption { type = lib.types.float; default = 1.000; };
-          applications = lib.mkOption { type = lib.types.float; default = 1.000; };
-          terminal = lib.mkOption { type = lib.types.float; default = 1.000; };
+          desktop = lib.mkOption {
+            type = lib.types.float;
+            default = 1.000;
+          };
+          popups = lib.mkOption {
+            type = lib.types.float;
+            default = 1.000;
+          };
+          applications = lib.mkOption {
+            type = lib.types.float;
+            default = 1.000;
+          };
+          terminal = lib.mkOption {
+            type = lib.types.float;
+            default = 1.000;
+          };
         };
       };
 
@@ -54,7 +69,11 @@
     };
 
     polarity = lib.mkOption {
-      type = lib.types.enum [ "either" "dark" "light" ];
+      type = lib.types.enum [
+        "either"
+        "dark"
+        "light"
+      ];
       default = "dark";
     };
   };

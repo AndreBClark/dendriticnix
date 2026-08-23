@@ -1,13 +1,23 @@
-{ __findFile, ... }:
+{
+  # deadnix: skip # enable <den/brackets> syntax for demo.
+  __findFile ? __findFile,
+  ...
+}:
+
 {
   den.aspects.niri =
     { user, ... }:
     {
       includes = [
-        (if user.desktopShell == "dms" then [
-          <dms>
-          <dms/niri-includes>
-        ] else { })
+        (
+          if user.desktopShell == "dms" then
+            [
+              <dms>
+              <dms/niri-includes>
+            ]
+          else
+            { }
+        )
         <niri/binds>
         <niri/config>
         <niri/outputs>

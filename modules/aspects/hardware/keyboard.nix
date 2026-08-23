@@ -1,11 +1,10 @@
 {
   den.aspects.keyboard = {
-    homeManager =
-      { user, ... }: {
-        home = {
-          inherit (user) keyboard;
-        };
+    homeManager = { user, ... }: {
+      home = {
+        inherit (user) keyboard;
       };
+    };
     nixos =
       { user, ... }:
       {

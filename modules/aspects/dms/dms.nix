@@ -74,28 +74,28 @@
                   }
                 ) rawPluginSettings;
               in
-              lib.mapAttrs (_: lib.mkDefault)
-                {
-                  airQuality.enable = true;
-                  audioPortSwitcher.enable = true;
-                  calculator.enable = true;
-                  dankAudioVisualizer.enable = true;
-                  dankBitwarden.enable = true;
-                  dankObsidian.enable = true;
-                  discordVoice.enable = true;
-                  displayManager.enable = true;
-                  dmsThemeSync.enable = true;
-                  easyEffects.enable = true;
-                  emojiLauncher.enable = true;
-                  mediaPlayer.enable = true;
-                  niriWindows.enable = true;
-                  powerUsagePlugin.enable = true;
-                  volumeMixer.enable = true;
-                  wallpaperCarousel.enable = true;
-                  wallpaperDiscovery.enable = true;
-                  wallpaperShufflerPlugin.enable = true;
-                  webSearch.enable = true;
-                } // toPluginAttrs;
+              lib.mapAttrs (_: lib.mkDefault) {
+                airQuality.enable = true;
+                audioPortSwitcher.enable = true;
+                calculator.enable = true;
+                dankAudioVisualizer.enable = true;
+                dankBitwarden.enable = true;
+                dankObsidian.enable = true;
+                discordVoice.enable = true;
+                displayManager.enable = true;
+                dmsThemeSync.enable = true;
+                easyEffects.enable = true;
+                emojiLauncher.enable = true;
+                mediaPlayer.enable = true;
+                niriWindows.enable = true;
+                powerUsagePlugin.enable = true;
+                volumeMixer.enable = true;
+                wallpaperCarousel.enable = true;
+                wallpaperDiscovery.enable = true;
+                wallpaperShufflerPlugin.enable = true;
+                webSearch.enable = true;
+              }
+              // toPluginAttrs;
           };
 
           dsearch.enable = true;

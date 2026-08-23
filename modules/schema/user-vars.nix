@@ -64,7 +64,10 @@
         message = "theme.opacity values must be between 0.0 and 1.0";
       }
       {
-        assertion = lib.elem config.polarity [ "dark" "light" ];
+        assertion = lib.elem config.polarity [
+          "dark"
+          "light"
+        ];
         message = "theme.polarity must be either \"dark\" or \"light\"";
       }
     ];
