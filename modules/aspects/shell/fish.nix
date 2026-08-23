@@ -83,10 +83,6 @@
             pkgs.grc
             pkgs.jq
           ];
-
-          shellAliases = {
-            swp-purge = "rm -rf ${config.home.homeDirectory}/.local/state/nvim/swap";
-          };
         };
       };
   };

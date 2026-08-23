@@ -12,28 +12,31 @@
       den.aspects.nvim.provides.options
       den.aspects.nvim.provides.plugins
     ];
-    homeManager = {
-      imports = [
-        inputs.nixvim.homeModules.nixvim
-      ];
-      programs.nixvim = {
-        enable = true;
-        defaultEditor = true;
-        nixpkgs.useGlobalPackages = true;
-      };
-      stylix.targets.nixvim = {
-        plugin = "base16-nvim";
-        transparentBackground = {
-          main = true;
-          numberLine = true;
-          signColumn = true;
+    homeManager =
+      { config, ... }:
+      {
+        imports = [
+          inputs.nixvim.homeModules.nixvim
+        ];
+        programs.nixvim = {
+          enable = true;
+          defaultEditor = true;
+          nixpkgs.useGlobalPackages = true;
+        };
+        stylix.targets.nixvim = {
+          plugin = "base16-nvim";
+          transparentBackground = {
+            main = true;
+            numberLine = true;
+            signColumn = true;
+          };
+        };
+        home.shellAliases = {
+          v = "nvim";
+          vi = "nvim";
+          vim = "nvim";
+          nvim-purge = "rm -rf ${config.home.homeDirectory}/.local/state/nvim/swap";
         };
       };
-      home.shellAliases = {
-        v = "nvim";
-        vi = "nvim";
-        vim = "nvim";
-      };
-    };
   };
 }
