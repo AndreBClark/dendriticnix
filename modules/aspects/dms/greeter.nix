@@ -20,8 +20,8 @@
                   skip-at-startup
                 }
                 cursor {
-                  xcursor-theme "${user.theme.cursorName}"
-                  xcursor-size 32
+                  xcursor-theme "${user.theme.cursor.name}"
+                  xcursor-size ${user.theme.cursor.size}
                 }
                 debug {
                   disable-cursor-plane

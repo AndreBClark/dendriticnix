@@ -1,3 +1,4 @@
+{ lib, ... }:
 {
   den.aspects.niri.config = {
     homeManager =
@@ -6,14 +7,15 @@
         wayland.windowManager.niri = {
           settings = {
             input.keyboard.xkb = {
-              layout = user.keyboard.layout;
-              model = user.keyboard.model;
-              options = user.keyboard.options;
+              inherit (user.keyboard) layout model variant;
+              options = lib.concatStringsSep "," user.keyboard.options;
             };
+
             hotkey-overlay = {
               skip-at-startup = true;
               hide-not-bound = true;
             };
+
             prefer-no-csd = { };
 
             layout = {

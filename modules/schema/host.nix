@@ -50,12 +50,24 @@
             default = if host.hardware.formFactor == "laptop" then "hybrid" else null;
           };
         };
-        config.assertions = [
-          {
-            assertion = host.hardware.gpuMode == null || host.formFactor == "laptop";
-            message = "hardware.gpuMode is only meaningful for formFactor = \"laptop\" hosts";
-          }
-        ];
       };
+      config.assertions = [
+        {
+          assertion = host.hardware.gpuMode == null || host.hardware.formFactor == "laptop";
+          message = "hardware.gpuMode is only meaningful for formFactor = \"laptop\" hosts";
+        }
+        {
+          assertion = host.hardware.gpu == null || host.hardware.gpuMode != null;
+          message = "hardware.gpu is set but hardware.gpuMode is null — a GPU mode (hybrid/nvidia/intel) must be chosen when a discrete GPU is present";
+        }
+        {
+          assertion = host.hardware.gpuMode != "nvidia" || host.hardware.gpu != null;
+          message = "hardware.gpuMode = \"nvidia\" requires hardware.gpu to be set to one of the nvidia variants";
+        }
+        {
+          assertion = host.hardware.formFactor == "laptop" || host.hardware.gpuMode == null;
+          message = "hardware.gpuMode should only be set for laptop formFactor; desktops don't switch GPU modes";
+        }
+      ];
     };
 }

@@ -16,26 +16,20 @@
     let
       inherit (user.theme)
         colorscheme
-        variant
         opacity
-        cursorName
+        cursor
         iconTheme
         polarity
         ;
       theme = pkgs: {
         enable = true;
-        inherit opacity polarity;
-        base16Scheme = "${pkgs.base16-schemes}/share/themes/${colorscheme}-${variant}.yaml";
+        inherit opacity polarity cursor;
+        base16Scheme = "${pkgs.base16-schemes}/share/themes/${colorscheme}.yaml";
         icons = {
           enable = true;
           dark = lib.mkForce iconTheme;
           light = iconTheme;
           package = pkgs.dracula-icon-theme;
-        };
-        cursor = {
-          name = cursorName;
-          package = pkgs.rose-pine-cursor;
-          size = 24;
         };
       };
 
