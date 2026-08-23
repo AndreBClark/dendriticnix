@@ -1,4 +1,4 @@
-{ den, ... }:
+{ lib, den, ... }:
 {
   den.aspects.cli.lazygit = {
     includes = [
@@ -20,15 +20,18 @@
             showDivergenceFromBaseBranch = "arrowAndNumber";
             expandFocusedSidePanel = true;
             expandedSidePanelWeight = 3;
+            commitAuthorLongLength = 17;
+            commitAuthorShortLength = 5;
+            commitHashLength = 6;
           };
 
           git = {
             diffRenderers = [
-              { command = "delta --hyperlinks-file-link-format=\"lazygit-edit://{path}:{line}\""; }
               {
-                type = "rawGit";
-                args = [ "--color-words" ];
-                name = "color-words";
+                command = lib.concatStringsSep " " [
+                  "delta"
+                  "--hyperlinks-file-link-format=\"lazygit-edit://{path}:{line}\""
+                ];
               }
             ];
 
