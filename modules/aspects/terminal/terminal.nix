@@ -3,9 +3,9 @@
   den.aspects.terminal =
     { user, ... }:
     let
-      terminalName = user.terminal or "kitty";
+      inherit (user) terminal;
     in
     {
-      includes = [ den.aspects.terminal.${terminalName} ];
+      includes = [ den.aspects.terminal.${terminal} ];
     };
 }

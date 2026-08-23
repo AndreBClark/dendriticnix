@@ -3,7 +3,7 @@
   den.aspects.wm =
     { user, ... }:
     let
-      windowManager = user.windowManager or "niri";
+      inherit (user) windowManager;
     in
     {
       includes = [ den.aspects.${windowManager} ];

@@ -3,7 +3,7 @@
   den.aspects.shell =
     { user, ... }:
     let
-      shell = user.shell or "fish";
+      inherit (user) shell;
     in
     {
       includes = [ den.aspects.shell.${shell} ];
