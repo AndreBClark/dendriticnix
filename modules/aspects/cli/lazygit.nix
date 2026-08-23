@@ -18,16 +18,34 @@
             skipDiscardChangeWarning = true;
             showNumstatInFilesView = true;
             showDivergenceFromBaseBranch = "arrowAndNumber";
+            expandFocusedSidePanel = true;
+            expandedSidePanelWeight = 3;
           };
 
           git = {
             diffRenderers = [
-              { command = "delta"; }
+              { command = "delta --hyperlinks-file-link-format=\"lazygit-edit://{path}:{line}\""; }
+              {
+                type = "rawGit";
+                args = [ "--color-words" ];
+                name = "color-words";
+              }
             ];
 
             autoFetch = false;
             diffContextSize = 5;
             parseEmoji = true;
+            autoRefresh = true;
+            autoDetectExternalChanges = true;
+            autoStageResolvedConflicts = true;
+            ignoreWhitespaceInDiffView = true;
+            renameSimilarityThreshold = 50;
+            localBranchSortOrder = "recency";
+
+            log = {
+              order = "topo-order";
+              showWholeGraph = true;
+            };
 
             mainBranches = [
               "main"

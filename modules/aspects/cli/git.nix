@@ -41,10 +41,7 @@
             dark = true;
             syntax-theme = "base16-stylix";
             hyperlinks = true;
-            diff-so-fancy = true;
             line-numbers = true;
-            navigate = true;
-            side-by-side = true;
           };
         };
 
