@@ -1,5 +1,9 @@
+{ den, ... }:
 {
   den.aspects.cli.eza = {
+    includes = [
+      (den.batteries.shell-integrations [ "eza" ])
+    ];
     homeManager = {
       programs.eza = {
         enable = true;

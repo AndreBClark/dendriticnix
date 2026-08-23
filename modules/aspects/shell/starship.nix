@@ -1,8 +1,9 @@
-{ lib, ... }:
+{ den, lib, ... }:
 
 let
   starship = {
     enable = true;
+
     settings = {
       add_newline = false;
       format = lib.concatStrings [
@@ -13,6 +14,7 @@ let
         "$status"
         "$character"
       ];
+
       right_format = lib.concatStrings [
         "$cmd_duration"
         "$nix_shell"
@@ -52,18 +54,21 @@ let
           "Pictures" = " ";
         };
       };
+
       git_branch = {
         style = "base06 bg:prev_bg";
         format = lib.concatStrings [
           "[$symbol$branch ]($style)"
         ];
       };
+
       git_status = {
         style = "fg:prev_fg bg:prev_bg";
         format = lib.concatStrings [
           "[$all_status$ahead_behind]($style)"
         ];
       };
+
       character = {
         disabled = false;
         format = lib.concatStrings [
@@ -77,6 +82,7 @@ let
           "[](bg:base0f)"
         ];
       };
+
       status = {
         disabled = false;
         format = lib.concatStrings [
@@ -89,36 +95,47 @@ let
 
       # right side
       git_commit.disabled = false;
+
       git_metrics = {
         disabled = false;
         format = " ([+$added]($added_style) )([-$deleted]($deleted_style) )";
       };
+
       shell = {
-        format = " with $indicator ";
+        format = " $indicator ";
         fish_indicator = "󰈺 fish";
         disabled = false;
       };
+
       nix_shell = {
         disabled = false;
         symbol = "❄️";
         format = "[ $symbol$name ]($style)";
       };
+
       python = {
         symbol = "";
         style = "bold yellow";
         format = "[$symbol $version]($style)";
       };
+
       nodejs.format = "[$symbol$version]($style)";
+
       cmd_duration = {
         format = "for $duration";
         disabled = false;
         min_time_to_notify = 45000;
       };
+
     };
   };
 in
 {
   den.aspects.shell.starship = {
+    includes = [
+      (den.batteries.shell-integrations [ "starship" ])
+    ];
+
     nixos.programs.starship = starship;
     homeManager.programs.starship = starship;
   };

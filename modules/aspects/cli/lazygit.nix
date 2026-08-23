@@ -1,6 +1,12 @@
+{ den, ... }:
 {
   den.aspects.cli.lazygit = {
+    includes = [
+      (den.batteries.shell-integrations [ "lazygit" ])
+    ];
+
     homeManager = {
+
       programs.lazygit = {
         enable = true;
         settings = {

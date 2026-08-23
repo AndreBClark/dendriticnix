@@ -1,9 +1,19 @@
-{ den, ... }:
+{ den, lib, ... }:
 {
   den.aspects.shell.fish = {
     includes = [
       (den.provides.user-shell "fish")
       den.aspects.shell.starship
+      (den.batteries.shell-integrations [
+        "direnv"
+        "devenv"
+        "eza"
+        "fzf"
+        "lazygit"
+        "starship"
+        "yazi"
+        "zoxide"
+      ])
     ];
     nixos =
       { pkgs, ... }:
@@ -37,6 +47,8 @@
         ];
       in
       {
+        home.shell.enableFishIntegration = lib.mkDefault true;
+
         programs = {
           fish = {
             enable = true;
@@ -53,27 +65,25 @@
               };
             };
           };
+
           nix-your-shell = {
             enable = true;
-            enableFishIntegration = true;
+            enableFishIntegration = lib.mkDefault true;
           };
+
           man.generateCaches = false;
-          kitty.shellIntegration.enableFishIntegration = true;
-          starship.enableFishIntegration = true;
-          zoxide.enableFishIntegration = true;
-          fzf.enableFishIntegration = true;
-          lazygit.enableFishIntegration = true;
-          yazi.enableFishIntegration = true;
-          eza.enableFishIntegration = true;
-          direnv.enableFishIntegration = true;
-          devenv.enableFishIntegration = true;
+
+          kitty.shellIntegration.enableFishIntegration = lib.mkDefault true;
+
           tmux.shell = "${pkgs.fish}/bin/fish";
         };
+
         home = {
           packages = [
             pkgs.grc
             pkgs.jq
           ];
+
           shellAliases = {
             swp-purge = "rm -rf ${config.home.homeDirectory}/.local/state/nvim/swap";
           };

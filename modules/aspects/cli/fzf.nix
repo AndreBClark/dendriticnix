@@ -1,5 +1,14 @@
+{ den, ... }:
 {
   den.aspects.cli.fzf = {
+    includes = [
+      (den.batteries.shell-integrations [
+        "eza"
+        "fzf"
+        "zoxide"
+      ])
+    ];
+
     homeManager =
       { lib, pkgs, ... }:
       let
@@ -97,7 +106,6 @@
           fzf = {
             enable = true;
             defaultCommand = fdCommand;
-            enableFishIntegration = true;
             fileWidget = {
               command = fdCommand;
               options = [
