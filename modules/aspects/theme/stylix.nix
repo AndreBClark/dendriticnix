@@ -23,7 +23,12 @@
         ;
       theme = pkgs: {
         enable = true;
-        inherit opacity polarity cursor;
+        inherit opacity polarity;
+        cursor = {
+          inherit (cursor) name size;
+          package = pkgs.${cursor.package};
+        };
+
         base16Scheme = "${pkgs.base16-schemes}/share/themes/${colorscheme}.yaml";
         icons = {
           enable = true;
@@ -37,10 +42,11 @@
 
     {
       includes = [
-        den.aspects.fonts
+        den.aspects.theme.fonts
         den.aspects.theme.gtk
         den.aspects.theme.qt
       ];
+
       nixos =
         { pkgs, ... }:
         {

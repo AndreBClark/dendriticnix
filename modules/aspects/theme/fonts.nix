@@ -1,5 +1,5 @@
 {
-  den.aspects.fonts = {
+  den.aspects.theme.fonts = {
     nixos =
       { pkgs, ... }:
       {

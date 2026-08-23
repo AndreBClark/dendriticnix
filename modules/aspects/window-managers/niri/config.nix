@@ -6,10 +6,7 @@
       {
         wayland.windowManager.niri = {
           settings = {
-            input.keyboard.xkb = {
-              inherit (user.keyboard) layout model variant;
-              options = lib.concatStringsSep "," user.keyboard.options;
-            };
+            input.keyboard.xkb = user.keyboard;
 
             hotkey-overlay = {
               skip-at-startup = true;

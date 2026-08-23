@@ -1,4 +1,4 @@
-{ lib, pkgs, ... }:
+{ lib, ... }:
 {
   options = {
     colorscheme = lib.mkOption {
@@ -20,18 +20,17 @@
           };
 
           package = lib.mkOption {
-            type = lib.types.package;
-            default = pkgs.rose-pine-cursor;
+            type = lib.types.str;
+            default = "rose-pine-cursor";
           };
 
           size = lib.mkOption { type = lib.types.int; default = 32; };
         };
-        default = { };
       };
 
       default = {
         name = "BreezeX-RosePine-Linux";
-        package = pkgs.rose-pine-cursor;
+        package = "rose-pine-cursor";
         size = 32;
       };
     };

@@ -57,6 +57,7 @@
         default = { };
       };
     };
+
     config.assertions = [
       {
         assertion = lib.all (v: v >= 0.0 && v <= 1.0) (lib.attrValues config.opacity);

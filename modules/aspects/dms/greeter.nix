@@ -21,7 +21,7 @@
                 }
                 cursor {
                   xcursor-theme "${user.theme.cursor.name}"
-                  xcursor-size ${user.theme.cursor.size}
+                  xcursor-size ${toString user.theme.cursor.size}
                 }
                 debug {
                   disable-cursor-plane
@@ -38,7 +38,9 @@
           };
 
         };
-        environment.systemPackages = [ pkgs.rose-pine-cursor ];
+        environment.systemPackages = [
+          pkgs.${user.theme.cursor.package}
+        ];
       };
   };
 }
