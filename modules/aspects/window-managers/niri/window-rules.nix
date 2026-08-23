@@ -9,8 +9,12 @@
               blur = true;
               xray = true;
             };
+            popups = {
+              opacity = 1.0;
+            };
           };
         }
+
         {
           window-rule._children = [
             { match._props.app-id = "(?i)Bitwarden"; }
@@ -19,6 +23,7 @@
             { open-floating = true; }
           ];
         }
+
         {
           window-rule._children = [
             { match._props.title = "(?i)^Picture in picture$"; }
