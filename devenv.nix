@@ -1,8 +1,6 @@
+{ pkgs, ... }:
 {
-  pkgs,
-  ...
-}:
-{
+  name = "Nix";
   # Nix development tools and the Nix language server.
   languages = {
     nix = {
@@ -30,7 +28,7 @@
   files = {
     ".envrc".text = ''
       eval "$(devenv direnvrc)"
-      use devenv --quiet
+      devenv
     '';
   };
 
