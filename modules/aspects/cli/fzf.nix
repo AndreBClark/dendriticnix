@@ -92,14 +92,6 @@
           fi
         '';
 
-        nvimWrapped = pkgs.writeShellScript "fzf-nvim-become" ''
-          # Only clear kitty graphics state if a graphics escape was actually emitted
-          if [[ -n "$KITTY_WINDOW_ID" ]]; then
-            kitten icat --clear --transfer-mode=stream --stdin=no >/dev/null 2>&1
-          fi
-          exec nvim "$1"
-        '';
-
       in
       {
         programs = {
@@ -109,7 +101,6 @@
             fileWidget = {
               command = fdCommand;
               options = [
-                "--bind 'enter:become(${nvimWrapped} {})'"
                 previewWindow
               ];
             };
