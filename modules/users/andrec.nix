@@ -7,5 +7,17 @@
       den.aspects.apps.spotify
     ];
     user = { };
+    homeManager = {
+      programs =
+        {
+          git = {
+            signing.format = "openpgp";
+            settings.user = {
+              name = "AndreBClark";
+              email = "andre@cosmicdivision.dev";
+            };
+          };
+        };
+    };
   };
 }
