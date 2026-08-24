@@ -1,7 +1,7 @@
 - [x] [snacks].nvim and [mini].[nvim] nix files
 - [ ] Picture in Picture overlay shell layer [niri] [dms]
     - [ ] set icon for pip
-- [ ] fix `mod+T` not opening terminal [dms] [niri]
+- [x] fix `mod+T` not opening terminal [dms] [niri]
 - [x] fix bufferline inconsistent background
 - [ ] style bufferline [nvim] [bufferline]
     - [ ] find fun bufferline styles
