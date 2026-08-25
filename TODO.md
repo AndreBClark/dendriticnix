@@ -2,6 +2,7 @@
 - [ ] Picture in Picture overlay shell layer [niri] [dms]
     - [ ] set icon for pip
 - [x] fix `mod+T` not opening terminal [dms] [niri]
+- [x] passthrough home config for standalone home-manager config `nh home switch`
 - [x] fix bufferline inconsistent background
 - [ ] style bufferline [nvim] [bufferline]
     - [ ] find fun bufferline styles
@@ -18,5 +19,4 @@
 - [ ] more gitsigns keymaps
 - [ ] disable more of noice and just keep nui/cmdline
     - [ ] find if theres more locations
-- [ ] passthrough home config for standalone home-manager config `nh home switch`
 - [ ] nixvim standalone package
