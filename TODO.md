@@ -12,6 +12,8 @@
 - [x] more gitsigns keymaps
     - [ ] have deepwiki teach me the keymaps
 - [ ] nixvim standalone package
+- [x] disable more of noice and just keep nui/cmdline
+    - [x] find if theres more locations
 
 ### Design
 - [ ] wallpaper colorscheme theme key
@@ -33,6 +35,3 @@
     - ~pin above all~
     - ~overlay shell layer~
     - ~set icon for pip~
-- [ ] disable more of noice and just keep nui/cmdline
-    - [ ] find if theres more locations
-- [ ] nixvim standalone package

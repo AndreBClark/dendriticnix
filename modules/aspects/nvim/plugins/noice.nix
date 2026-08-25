@@ -14,7 +14,7 @@
 
                 messages = {
                   enabled = true;
-                  view = "notify";
+                  view = "mini";
                 };
 
                 popupmenu = {
@@ -36,7 +36,7 @@
                 };
 
                 notify = {
-                  enabled = true;
+                  enabled = false;
                   view = "notify";
                 };
               };
