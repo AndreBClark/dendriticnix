@@ -6,12 +6,15 @@
     };
   };
   den.aspects.nvim = {
-    includes = [
-      den.aspects.nvim.provides.lsp
-      den.aspects.nvim.provides.keymaps
-      den.aspects.nvim.provides.options
-      den.aspects.nvim.provides.plugins
-    ];
+    includes = builtins.attrValues {
+      inherit (den.aspects.nvim)
+        lsp
+        keymaps
+        options
+        plugins
+        ;
+    };
+
     homeManager =
       { config, ... }:
       {
@@ -23,6 +26,7 @@
           defaultEditor = true;
           nixpkgs.useGlobalPackages = true;
         };
+
         stylix.targets.nixvim = {
           plugin = "base16-nvim";
           transparentBackground = {
@@ -31,11 +35,12 @@
             signColumn = true;
           };
         };
+
         home.shellAliases = {
           v = "nvim";
           vi = "nvim";
           vim = "nvim";
-          nvim-purge = "rm -rf ${config.home.homeDirectory}/.local/state/nvim/swap";
+          nvpurge = "rm -rf ${config.home.homeDirectory}/.local/state/nvim/swap";
         };
       };
   };

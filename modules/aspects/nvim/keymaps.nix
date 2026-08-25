@@ -42,13 +42,11 @@
 
             {
               mode = "n";
-              key = "<C-p>";
-              action = "<cmd>FzfLua files<CR>";
-              options = {
-                desc = "FZF file search";
-                silent = true;
-              };
+              key = "<C-a>";
+              action = "ggVG";
+              options.desc = "Select all";
             }
+
           ];
         };
       };
