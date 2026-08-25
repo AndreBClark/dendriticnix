@@ -10,36 +10,50 @@
             "${config.home.homeDirectory}/nixconfig";
         dmsSync = pkgs.writeShellApplication {
           name = "dms-sync";
-          runtimeInputs = [ pkgs.jq ];
+          runtimeInputs = [
+            pkgs.jq
+            pkgs.coreutils
+          ];
           text = ''
-            DMS_CONFIG="${config.home.homeDirectory}/.config/DankMaterialShell"
-            DMS_STATE="${config.home.homeDirectory}/.local/state/DankMaterialShell"
             TARGET_DIR="${nixConfigRepo}/modules/aspects/dms"
+            DMS="${pkgs.dms-shell}/bin/dms"
 
-            sync_file() {
-              local src="$1" dest="$2" required_key="$3"
-              if [ ! -f "$src" ]; then
-                echo "Warning: $src not found, skipping" >&2
-                return
-              fi
-              if ! jq empty "$src" 2>/dev/null; then
-                echo "Error: $src is not valid JSON" >&2
-                return 1
-              fi
-              if [ -n "$required_key" ] && ! jq -e "has(\"$required_key\")" "$src" >/dev/null 2>&1; then
-                echo "Error: $src missing expected key $required_key" >&2
-                return 1
-              fi
-              cp "$src" "$dest"
-              echo "Synced $(basename "$dest")"
+            sync_from_clipboard() {
+              local name="$1" required_expr="$2"
+              local target_file="$TARGET_DIR/$name.json"
+
+              HISTORY=$("$DMS" cl history --json 2>/dev/null)
+              IDS=$(echo "$HISTORY" | jq -r '.[].id' | head -n 20)
+
+              for id in $IDS; do
+                ENTRY_JSON=$("$DMS" cl get "$id" --json 2>/dev/null)
+                DATA_B64=$(echo "$ENTRY_JSON" | jq -r '.data // empty')
+                [ -z "$DATA_B64" ] && continue
+
+                DECODED=$(echo "$DATA_B64" | base64 -d 2>/dev/null) || continue
+
+                echo "$DECODED" | jq empty 2>/dev/null || continue
+
+                if [ -n "$required_expr" ] && ! echo "$DECODED" | jq -e "$required_expr" >/dev/null 2>&1; then
+                  continue
+                fi
+
+                echo "$DECODED" > "$target_file"
+                echo "Successfully replaced $name.json using clipboard entry $id"
+                git add "$target_file"
+                return 0
+              done
+
+              echo "No $name.json entry found in clipboard history, skipping" >&2
+              return 1
             }
 
-            sync_file "$DMS_CONFIG/settings.json"        "$TARGET_DIR/settings.json"        "configVersion"
-            sync_file "$DMS_STATE/session.json"          "$TARGET_DIR/session.json"         "configVersion"
-            sync_file "$DMS_CONFIG/plugin_settings.json" "$TARGET_DIR/plugin_settings.json" ""
+            cd "${nixConfigRepo}" || { echo "Failed to cd to repo" >&2; exit 1; }
 
-            cd "${nixConfigRepo}" || exit 1
-            git add "$TARGET_DIR/settings.json" "$TARGET_DIR/session.json" 2>/dev/null || true
+            sync_from_clipboard "settings"        'has("configVersion") and has("currentThemeName")'
+            sync_from_clipboard "session"         'has("configVersion") and has("pinnedApps")'
+            sync_from_clipboard "plugin_settings" 'has("airQuality") or has("dmsThemeSync")'
+
             echo "Files staged in git"
           '';
         };

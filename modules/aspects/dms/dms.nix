@@ -63,43 +63,60 @@
               }
             );
             session = builtins.fromJSON (builtins.readFile ./session.json);
-            plugins =
-              let
-                rawPluginSettings = builtins.fromJSON (builtins.readFile ./plugin_settings.json);
-
-                toPluginAttrs = lib.mapAttrs (
-                  _: entry:
-                  let
-                    enable = entry.enabled or true;
-                    settings = removeAttrs entry [ "enabled" ];
-                  in
-                  {
-                    inherit enable settings;
-                  }
-                ) rawPluginSettings;
-              in
-              lib.mapAttrs (_: lib.mkDefault) {
-                airQuality.enable = true;
-                audioPortSwitcher.enable = true;
-                calculator.enable = true;
-                dankAudioVisualizer.enable = true;
-                dankBitwarden.enable = true;
-                dankObsidian.enable = true;
-                discordVoice.enable = true;
-                displayManager.enable = true;
-                dmsThemeSync.enable = true;
-                easyEffects.enable = true;
-                emojiLauncher.enable = true;
-                mediaPlayer.enable = true;
-                niriWindows.enable = true;
-                powerUsagePlugin.enable = true;
-                volumeMixer.enable = true;
-                wallpaperCarousel.enable = true;
-                wallpaperDiscovery.enable = true;
-                wallpaperShufflerPlugin.enable = true;
-                webSearch.enable = true;
-              }
-              // toPluginAttrs;
+            plugins = {
+              airQuality.enable = true;
+              audioPortSwitcher.enable = true;
+              calculator.enable = true;
+              dankAudioVisualizer.enable = true;
+              dankBitwarden.enable = true;
+              dankObsidian.enable = true;
+              displayManager.enable = true;
+              emojiLauncher.enable = true;
+              mediaPlayer.enable = true;
+              niriWindows.enable = true;
+              powerUsagePlugin.enable = true;
+              volumeMixer.enable = true;
+              webSearch.enable = true;
+              dmsThemeSync = {
+                enable = true;
+                settings = {
+                  applyMatugenColors = true;
+                  gtkThemeDark = "Stylix";
+                  qtPlatformTheme = "preserve";
+                  qtStyle = "auto";
+                  qtSyncMode = "auto";
+                  syncFlatpak = false;
+                  syncKvantum = true;
+                  syncTerminalFonts = true;
+                };
+              };
+              easyEffects = {
+                enable = true;
+                settings = {
+                  currentInputIndex = 1;
+                  currentOutputIndex = -1;
+                };
+              };
+              wallpaperCarousel = {
+                enable = true;
+                settings = {
+                  borderWidth = 0;
+                  enable = true;
+                  expandMultiplier = 150;
+                  expandSelected = "true";
+                  itemWidth = 300;
+                  overlayOpacity = 79;
+                  selectedScale = 117;
+                };
+              };
+              wallpaperDiscovery = {
+                enable = true;
+                settings = {
+                  api_wallhavencc = "evxZa5kqPQ0wHFD6St5hfeox0qNAbiUR";
+                  downloadLocation = "/home/andrec/Pictures/Wallpapers";
+                };
+              };
+            };
           };
 
           dsearch.enable = true;
