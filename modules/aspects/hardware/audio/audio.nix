@@ -1,6 +1,6 @@
 { lib, ... }:
 {
-  den.aspects.audio = {
+  den.aspects.hardware.audio = {
     nixos =
       { pkgs, ... }:
       {

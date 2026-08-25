@@ -1,5 +1,5 @@
 {
-  den.aspects.keyboard = {
+  den.aspects.hardware.keyboard = {
     homeManager = { user, ... }: {
       home = {
         inherit (user) keyboard;

@@ -1,6 +1,6 @@
 { lib, ... }:
 {
-  den.aspects.network = {
+  den.aspects.hardware.network = {
     nixos = {
       networking = {
         networkmanager.enable = true;
