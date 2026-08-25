@@ -5,10 +5,11 @@
 
 
 ### Neovim
+- [x] style bufferline [nvim] [bufferline]
+    - [x] find fun bufferline styles
+    - [x] find alternatives?
 - [x] fix bufferline inconsistent background
-- [ ] style bufferline [nvim] [bufferline]
-    - [ ] find fun bufferline styles
-    - [ ] find alternatives?
+- [x] [snacks].nvim and [mini].[nvim] nix files
 - [x] more gitsigns keymaps
     - [ ] have deepwiki teach me the keymaps
 - [ ] nixvim standalone package
@@ -16,6 +17,7 @@
     - [x] find if theres more locations
 
 ### Design
+- [ ] less distracting background, more blur
 - [ ] wallpaper colorscheme theme key
     - [ ] convert wallpaper directory as symbolic link to Wallpaper-${wallpaper-theme} folder
     - [ ] rename wallpaper directory as wallpaper-raw
