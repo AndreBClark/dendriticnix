@@ -7,11 +7,13 @@
 - [x] add keybind for FG
 
 
+### Neovim
 - [x] fix bufferline inconsistent background
 - [ ] style bufferline [nvim] [bufferline]
     - [ ] find fun bufferline styles
     - [ ] find alternatives?
 
+### Design
 - [ ] wallpaper colorscheme theme key
     - [ ] convert wallpaper directory as symbolic link to Wallpaper-${wallpaper-theme} folder
     - [ ] rename wallpaper directory as wallpaper-raw
@@ -24,6 +26,13 @@
     - [x] run script to sync those 2
 
 
+### Blocked by upstream
+
+- ~sync user icon with greeter~
+- ~Picture in Picture [niri] [dms]~
+    - ~pin above all~
+    - ~overlay shell layer~
+    - ~set icon for pip~
 - [ ] more gitsigns keymaps
 - [ ] disable more of noice and just keep nui/cmdline
     - [ ] find if theres more locations
