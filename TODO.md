@@ -4,6 +4,9 @@
 - [x] fix `mod+T` not opening terminal [dms] [niri]
 - [x] passthrough home config for standalone home-manager config `nh home switch`
 - [x] add keybind for wallpaper wallpaperCarousel
+- [x] add keybind for FG
+
+
 - [x] fix bufferline inconsistent background
 - [ ] style bufferline [nvim] [bufferline]
     - [ ] find fun bufferline styles

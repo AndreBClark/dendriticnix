@@ -63,6 +63,11 @@
                 command = "cd $HOME";
                 repaint = true;
               };
+              "ctrl-o" = {
+                command = "fg";
+                repaint = true;
+                silent = true;
+              };
             };
           };
 
