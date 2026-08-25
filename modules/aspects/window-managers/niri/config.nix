@@ -1,4 +1,3 @@
-{ lib, ... }:
 {
   den.aspects.niri.config = {
     homeManager =
@@ -11,6 +10,12 @@
             hotkey-overlay = {
               skip-at-startup = true;
               hide-not-bound = true;
+            };
+
+            blur = {
+              offset = 4;
+              passes = 4;
+              noise = 0.03;
             };
 
             prefer-no-csd = { };

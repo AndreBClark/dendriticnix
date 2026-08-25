@@ -17,7 +17,9 @@
     - [x] find if theres more locations
 
 ### Design
-- [ ] less distracting background, more blur
+- [ ] figure out why fonts on my terminal are not bold
+- [x] less distracting background, more blur
+- [ ] convert niri config back to kdl for portability and use a toKdl readfile on settings
 - [ ] wallpaper colorscheme theme key
     - [ ] convert wallpaper directory as symbolic link to Wallpaper-${wallpaper-theme} folder
     - [ ] rename wallpaper directory as wallpaper-raw
