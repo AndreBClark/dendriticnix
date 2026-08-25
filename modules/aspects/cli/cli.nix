@@ -1,16 +1,19 @@
-{ __findFile, ... }:
+{ den, ... }:
 {
   den.aspects.cli = {
-    includes = [
-      <cli/devenv>
-      <cli/eza>
-      <cli/fzf>
-      <cli/git>
-      <cli/lazygit>
-      <cli/nh>
-      <cli/tmux>
-      <cli/zoxide>
-    ];
+    includes = builtins.attrValues {
+      inherit (den.aspects.cli)
+        devenv
+        eza
+        fzf
+        git
+        lazygit
+        nh
+        tmux
+        zoxide
+        ;
+    };
+
     homeManager =
       { pkgs, ... }:
       {

@@ -1,20 +1,24 @@
-{ __findFile, ... }:
+{ den, ... }:
 {
   den.aspects.base-user = {
-    includes = [
-      <den/define-user>
-      <folders>
-      <stylix>
-      <wm>
-      <terminal>
-      <shell>
-      <cli>
-      <nvim>
-      <apps/nautilus>
-      <apps/vivaldi>
-      <apps/superfile>
-      <apps/obsidian>
-    ];
+    includes = builtins.attrValues {
+      inherit (den.aspects)
+        folders
+        stylix
+        wm
+        terminal
+        shell
+        cli
+        nvim
+        ;
+      inherit (den.aspects.apps)
+        nautilus
+        vivaldi
+        superfile
+        obsidian
+        ;
+      inherit (den.batteries) define-user;
+    };
     # Base OS-level user settings
     user = {
       initialPassword = "yolo";

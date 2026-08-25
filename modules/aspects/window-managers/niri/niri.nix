@@ -1,28 +1,24 @@
-{
-  # deadnix: skip # enable <den/brackets> syntax for demo.
-  __findFile ? __findFile,
-  ...
-}:
-
+{ den, ... }:
 {
   den.aspects.niri =
     { user, ... }:
     {
-      includes = [
+      includes =
         (
           if user.desktopShell == "dms" then
-            [
-              <dms>
-              <dms/niri-includes>
-            ]
+            builtins.attrValues { inherit (den.aspects.dms) niri-includes; } ++ [ den.aspects.dms ]
           else
-            { }
+            [ ]
         )
-        <niri/binds>
-        <niri/config>
-        <niri/outputs>
-        <niri/window-rules>
-      ];
+        ++ builtins.attrValues {
+          inherit (den.aspects.niri)
+            binds
+            config
+            outputs
+            window-rules
+            ;
+        };
+
       nixos =
         { pkgs, ... }:
         {
