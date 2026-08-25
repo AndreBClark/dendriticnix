@@ -29,10 +29,10 @@
               colors.base01
               colors.base05
 
-              colors.base0A
+              colors.base0E
               colors.base0C
               colors.base0D
-              colors.base0E
+              colors.base0A
               colors.base14
               colors.base15
               colors.base16
@@ -58,9 +58,10 @@
             tab_bar_margin_color = "none";
           };
           extraConfig = ''
-            active_tab_background   ${colors.base02}
+            tab_background ${colors.base01}
+            active_tab_background   ${colors.base03}
             active_tab_foreground   ${colors.base05}
-            inactive_tab_background ${colors.base01}
+            inactive_tab_background ${colors.base02}
             inactive_tab_foreground ${colors.base04}
           '';
         };
