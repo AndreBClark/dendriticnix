@@ -1,8 +1,12 @@
+{ lib, ... }:
 {
   den.aspects.nvim = {
     provides.lsp = {
       homeManager =
-        { pkgs, ... }:
+        { pkgs, config, ... }:
+        let
+          cfg = config.programs.nixvim;
+        in
         {
           programs.nixvim = {
             lsp = {
@@ -53,6 +57,12 @@
               lspconfig.enable = true;
               lsp-format.enable = true;
               lspkind.enable = true;
+
+              fastaction = {
+                enable = true;
+                settings.register_ui_select = true;
+              };
+
               none-ls = {
                 enable = true;
                 sources = {
@@ -61,20 +71,32 @@
                     biome.enable = true;
                     stylua.enable = true;
                   };
+
                   diagnostics = {
                     statix.enable = true;
                     deadnix.enable = true;
                   };
+
                   code_actions = {
                     refactoring.enable = true;
                     gitsigns.enable = true;
                     statix.enable = true;
+                    ts_node_action.enable = true;
                   };
                 };
               };
               lint.lintersByFt = {
                 json = [ "jq" ];
               };
+            };
+            keymaps = lib.optional (cfg.plugins.fastaction.enable or false) {
+              mode = [
+                "n"
+                "v"
+              ];
+              key = "<leader>ca";
+              action.__raw = "function() require('fastaction').code_action() end";
+              options.desc = "Code action";
             };
             extraPackages = [
               pkgs.jq
