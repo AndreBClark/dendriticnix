@@ -1,3 +1,4 @@
+{ lib, ... }:
 {
   den.aspects.dms.niri-includes = {
     homeManager =
@@ -7,7 +8,9 @@
       in
       {
         xdg.configFile = {
-          "niri/dms.kdl".source = "${dmsSrc}.kdl";
+          "niri/dms.kdl".text = lib.concatStringsSep "\n" (
+            lib.lists.dropEnd 7 (lib.splitString "\n" (builtins.readFile "${dmsSrc}.kdl"))
+          );
           "niri/dms/alttab.kdl".source = "${dmsSrc}-alttab.kdl";
           "niri/dms/binds.kdl".source = "${dmsSrc}-binds.kdl";
           "niri/dms/input.kdl".source = "${dmsSrc}-input.kdl";
