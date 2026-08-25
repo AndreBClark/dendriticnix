@@ -1,6 +1,3 @@
-- [x] [snacks].nvim and [mini].[nvim] nix files
-- [ ] Picture in Picture overlay shell layer [niri] [dms]
-    - [ ] set icon for pip
 - [x] fix `mod+T` not opening terminal [dms] [niri]
 - [x] passthrough home config for standalone home-manager config `nh home switch`
 - [x] add keybind for wallpaper wallpaperCarousel
@@ -12,6 +9,9 @@
 - [ ] style bufferline [nvim] [bufferline]
     - [ ] find fun bufferline styles
     - [ ] find alternatives?
+- [x] more gitsigns keymaps
+    - [ ] have deepwiki teach me the keymaps
+- [ ] nixvim standalone package
 
 ### Design
 - [ ] wallpaper colorscheme theme key
@@ -33,7 +33,6 @@
     - ~pin above all~
     - ~overlay shell layer~
     - ~set icon for pip~
-- [ ] more gitsigns keymaps
 - [ ] disable more of noice and just keep nui/cmdline
     - [ ] find if theres more locations
 - [ ] nixvim standalone package
