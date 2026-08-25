@@ -2,7 +2,6 @@
   den.aspects.dms.greeter = {
     nixos =
       {
-        config,
         user,
         host,
         pkgs,
@@ -29,8 +28,10 @@
                 }
               '';
             };
-            configHome = "/home/${config.users.users.${builtins.head (builtins.attrNames host.users)}.name}";
-
+            configHome = "/home/${user.userName}";
+            configFiles = [
+              "/home/${user.userName}/.face"
+            ];
           };
           autoLogin = {
             enable = false;

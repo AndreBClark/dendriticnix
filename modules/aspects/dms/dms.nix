@@ -28,17 +28,21 @@
 
   };
   den.aspects.dms = {
-    includes = [
-      den.aspects.dms.greeter
-      den.aspects.dms.syncCmd
-    ];
+    includes = builtins.attrValues {
+      inherit (den.aspects.dms)
+        greeter
+        syncCmd
+        facePicker
+        ;
+    };
+
     homeManager =
       { user, pkgs, ... }:
       {
         imports = [
           inputs.dms.homeModules.dank-material-shell
-          inputs.danksearch.homeModules.dsearch
           inputs.dms-plugin-registry.homeModules.default
+          inputs.danksearch.homeModules.dsearch
         ];
 
         programs = {
@@ -100,8 +104,6 @@
 
           dsearch.enable = true;
         };
-        # systemd.user.services.dms.Service.ExecStartPost =
-        #   "${pkgs.dms-shell}/bin/dms ipc call profile setImage ${config.home.homeDirectory}/Pictures/Wallpaper-tokyo-night-dark/wallhaven.cc_nz1x2w.jpeg";
         xdg.configFile =
           let
             colorsImport = ''@import url("dank-colors.css");'';

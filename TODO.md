@@ -11,15 +11,19 @@
 - [ ] style bufferline [nvim] [bufferline]
     - [ ] find fun bufferline styles
     - [ ] find alternatives?
+
 - [ ] wallpaper colorscheme theme key
     - [ ] convert wallpaper directory as symbolic link to Wallpaper-${wallpaper-theme} folder
     - [ ] rename wallpaper directory as wallpaper-raw
     - [ ] set dms wallpaper to `Wallpaper-${wallpaper-theme}`
     - [ ] create dms plugin for this
-- [ ] declarative-ish set user icon
-    - [ ] symbolic link image to .face
-    - [ ] use .face as user icon
-    - [ ] run script to sync those 2
+- [x] declarative-ish set user icon
+    - [x] grab first image in dir
+    - [x] symbolic link image to .face
+    - [x] use .face as user icon
+    - [x] run script to sync those 2
+
+
 - [ ] more gitsigns keymaps
 - [ ] disable more of noice and just keep nui/cmdline
     - [ ] find if theres more locations
