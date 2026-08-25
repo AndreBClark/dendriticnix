@@ -11,7 +11,7 @@
 - [x] fix bufferline inconsistent background
 - [x] [snacks].nvim and [mini].[nvim] nix files
 - [x] more gitsigns keymaps
-    - [ ] have deepwiki teach me the keymaps
+    - [x] have deepwiki teach me the keymaps
 - [ ] nixvim standalone package
 - [x] disable more of noice and just keep nui/cmdline
     - [x] find if theres more locations
