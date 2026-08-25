@@ -1,6 +1,25 @@
 {
-  "appDrawerLastMode": "apps",
-  "appOverrides": {},
+  "terminalOverride": "kitty",
+  "wallpaperPath": "/home/andrec/Pictures/Wallpaper-tokyo-night-terminal-storm/John Harris_Science-fiction-John-Harris-1970-9.jpg",
+  "wallpaperPathLight": "/home/andrec/Pictures/Wallpapers-tokyonight/g7xdxl.jpeg",
+  "wallpaperPathDark": "/home/andrec/Pictures/Wallpapers-tokyonight/g7xdxl.jpeg",
+  "includedTransitions": [
+    "fade"
+  ],
+  "wallpaperCyclingEnabled": true,
+  "wallpaperCyclingRandom": true,
+  "wallpaperCyclingInterval": 900,
+  "weatherLocation": "",
+  "pinnedApps": [
+    "kitty",
+    "steam",
+    "vivaldi-stable",
+    "spotify",
+    "discord",
+    "org.gnome.Nautilus",
+    "dms_settings",
+    "obsidian"
+  ],
   "barPinnedApps": [
     "dms_settings",
     "spotify",
@@ -8,15 +27,13 @@
     "kitty",
     "steam"
   ],
-  "brightnessExponentValues": {},
-  "brightnessExponentialDevices": {},
-  "brightnessUserSetValues": {},
-  "configVersion": 3,
-  "deviceMaxVolumes": {},
-  "doNotDisturb": false,
-  "doNotDisturbUntil": 0,
-  "dockLauncherPosition": 0,
-  "enabledGpuPciIds": [],
+  "recentColors": [
+    "#d0d0d9",
+    "#7aa2f7",
+    "#4d2e21"
+  ],
+  "showThirdPartyPlugins": true,
+  "pluginBrowserSortMode": "category",
   "hiddenApps": [
     "nvim",
     "xterm",
@@ -29,22 +46,23 @@
     "khal",
     "qt5ct"
   ],
-  "hiddenInputDeviceNames": [],
+  "lastPlayerIdentity": "Spotify",
   "hiddenOutputDeviceNames": [
     "easyeffects_sink"
   ],
-  "hiddenTrayIds": [],
-  "includedTransitions": [
-    "fade"
-  ],
-  "isLightMode": false,
-  "lastBrightnessDevice": "",
-  "lastPlayerIdentity": "Spotify",
-  "latitude": 0,
-  "launchPrefix": "",
-  "launcherLastFileSearchType": "all",
-  "launcherLastMode": "all",
-  "launcherLastQuery": "",
+  "niriOutputSettings": {
+    "DP-2": {
+      "focusAtStartup": true,
+      "vrrOnDemand": true
+    },
+    "HDMI-A-1": {
+      "disabled": true
+    }
+  },
+  "activeDisplayProfile": {
+    "niri": "profile_1780711633882_2dn7oix"
+  },
+  "lastAppliedIconTheme": "Dracula",
   "launcherQueryHistory": [
     "xter,",
     "=3390.82+",
@@ -90,75 +108,6 @@
     "iv",
     "crash"
   ],
-  "locale": "",
-  "longitude": 0,
-  "monitorCyclingSettings": {},
-  "monitorWallpaperFillModes": {},
-  "monitorWallpapers": {},
-  "monitorWallpapersDark": {},
-  "monitorWallpapersLight": {},
-  "nightModeAutoEnabled": false,
-  "nightModeAutoMode": "time",
-  "nightModeEnabled": false,
-  "nightModeEndHour": 6,
-  "nightModeEndMinute": 0,
-  "nightModeHighTemperature": 6500,
-  "nightModeLocationProvider": "",
-  "nightModeStartHour": 18,
-  "nightModeStartMinute": 0,
-  "nightModeTemperature": 4500,
-  "nightModeUseIPLocation": false,
-  "niriOverviewLastMode": "apps",
-  "nonNvidiaGpuTempEnabled": false,
-  "notepadLastMode": "",
-  "nvidiaGpuTempEnabled": false,
-  "perModeWallpaper": false,
-  "perMonitorWallpaper": false,
-  "pinnedApps": [
-    "kitty",
-    "steam",
-    "vivaldi-stable",
-    "spotify",
-    "discord",
-    "obsidian",
-    "org.gnome.Nautilus",
-    "dms_settings"
-  ],
-  "pluginBrowserInstalledFirst": false,
-  "pluginBrowserSortMode": "category",
-  "recentColors": [
-    "#d0d0d9",
-    "#7aa2f7",
-    "#4d2e21"
-  ],
-  "searchAppActions": true,
-  "selectedGpuIndex": 0,
-  "settingsSidebarCollapsedIds": ",",
   "settingsSidebarExpandedIds": ",displays,dock_launcher,system,workspaces_widgets,applications,power_security,",
-  "showConfigReloadToast": true,
-  "showThirdPartyPlugins": true,
-  "terminalOverride": "kitty",
-  "themeModeAutoEnabled": false,
-  "themeModeAutoMode": "time",
-  "themeModeEndHour": 6,
-  "themeModeEndMinute": 0,
-  "themeModeShareGammaSettings": true,
-  "themeModeStartHour": 18,
-  "themeModeStartMinute": 0,
-  "timeLocale": "",
-  "trayItemOrder": [],
-  "vpnLastConnected": "",
-  "wallpaperCyclingEnabled": true,
-  "wallpaperCyclingInterval": 900,
-  "wallpaperCyclingMode": "interval",
-  "wallpaperCyclingRandom": true,
-  "wallpaperCyclingTime": "06:00",
-  "wallpaperPath": "/home/andrec/Pictures/Wallpaper-tokyo-night-terminal-storm/FallingFrontier_Anders.Station.png",
-  "wallpaperPathDark": "/home/andrec/Pictures/Wallpapers-tokyonight/g7xdxl.jpeg",
-  "wallpaperPathLight": "/home/andrec/Pictures/Wallpapers-tokyonight/g7xdxl.jpeg",
-  "wallpaperTransition": "fade",
-  "weatherCoordinates": "40.7128,-74.0060",
-  "weatherHourlyDetailed": true,
-  "weatherLocation": "",
-  "wifiDeviceOverride": ""
+  "configVersion": 4
 }
