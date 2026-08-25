@@ -1,18 +1,21 @@
 { den, lib, ... }:
 {
   den.aspects.nvim = {
-    provides.plugins = {
-      includes = [
-        den.aspects.nvim._.bufferline
-        den.aspects.nvim._.cmp
-        den.aspects.nvim._.gitsigns
-        den.aspects.nvim._.lualine
-        den.aspects.nvim._.noice
-        den.aspects.nvim._.treesitter
-        den.aspects.nvim._.obsidian
-        den.aspects.nvim._.mini
-        den.aspects.nvim._.snacks
-      ];
+    plugins = {
+      includes = builtins.attrValues {
+        inherit (den.aspects.nvim)
+          barbar
+          cmp
+          gitsigns
+          lualine
+          noice
+          treesitter
+          obsidian
+          mini
+          snacks
+          ;
+      };
+
       homeManager =
         { config, ... }:
         {
@@ -30,6 +33,7 @@
               kitty-navigator.enable = true;
               trouble.enable = true;
               trim.enable = true;
+              barbecue.enable = true;
               web-devicons.enable = true;
               tiny-inline-diagnostic = {
                 enable = true;
@@ -44,6 +48,7 @@
                 enable = true;
                 enableTelescope = lib.mkDefault false;
               };
+
               which-key = {
                 enable = true;
                 settings = {
