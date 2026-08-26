@@ -26,7 +26,7 @@
               "@PILL_RIGHT@"
             ]
             [
-              colors.base01
+              colors.base02
               colors.base05
 
               colors.base0E
@@ -48,21 +48,27 @@
       {
         programs.kitty = {
           enable = true;
-          settings = {
-            tab_title_template = "{tab.active_wd}{activity_symbol}";
-            tab_title_max_length = 0;
-            tab_bar_edge = "top";
-            tab_bar_style = "custom";
-            tab_bar_margin_height = "0 0";
-            tab_fade = "0 0";
-            tab_bar_margin_color = "none";
-          };
+          settings =
+            let
+              monoName = config.stylix.fonts.monospace.name;
+            in
+            {
+              font_family = ''family="${monoName}" style=SemiBold'';
+              bold_font = ''family="${monoName}" style="ExtraBold"'';
+              bold_italic_font = ''family="${monoName}" style="ExtraBold Italic"'';
+              tab_bar_edge = "top";
+              tab_bar_style = "custom";
+              tab_bar_margin_height = "1 1";
+              tab_bar_margin_color = "none";
+              active_tab_font_style = "bold-italic";
+              inactive_tab_font_style = "bold";
+
+            };
           extraConfig = ''
-            tab_background ${colors.base01}
-            active_tab_background   ${colors.base03}
-            active_tab_foreground   ${colors.base05}
+            active_tab_background  ${colors.base03}
+            active_tab_foreground  ${colors.base05}
             inactive_tab_background ${colors.base02}
-            inactive_tab_foreground ${colors.base04}
+            inactive_tab_foreground  ${colors.base04}
           '';
         };
 

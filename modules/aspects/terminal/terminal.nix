@@ -6,6 +6,8 @@
       inherit (user) terminal;
     in
     {
-      includes = [ den.aspects.terminal.${terminal} ];
+      includes = [
+        den.aspects.terminal.${terminal}
+      ];
     };
 }

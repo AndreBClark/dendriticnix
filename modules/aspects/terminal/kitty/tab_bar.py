@@ -36,6 +36,7 @@ def draw_tab(draw_data, screen, tab, before, max_title_length, index, is_last, e
     def draw_index():
         screen.cursor.bg = index_bg
         screen.cursor.fg = INDEX_FG
+        screen.cursor.bold = True
         screen.draw(f" {index} ")
         return screen.cursor.x
 
@@ -56,10 +57,10 @@ def draw_tab(draw_data, screen, tab, before, max_title_length, index, is_last, e
     extra = screen.cursor.x - index_end - max_title_length
     if extra >= 0:
         screen.cursor.x -= extra + 3
-        screen.draw("…")
+        screen.draw("+")
     elif extra == -1:
         screen.cursor.x -= 2
-        screen.draw("…")
+        screen.draw("+")
     screen.draw(" ")
     draw_sep(PILL_RIGHT)
     draw_sep(" ")
