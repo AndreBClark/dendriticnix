@@ -30,12 +30,12 @@
                       "SnacksIndent8"
                     ];
                   };
-                  scope.underline = true;
                 };
                 notifier.enabled = true;
                 picker = {
                   enabled = true;
-                  sources.explorer.layout.layout.position = "right";
+                  layout.preset = "telescope";
+                  sources.explorer.layout.preset = "right";
                 };
                 scope.enabled = true;
                 rename.enabled = true;
@@ -50,13 +50,7 @@
             let
               cfg = config.programs.nixvim.plugins.snacks.settings;
             in
-            (lib.optional (cfg.picker.enabled or false) {
-              mode = "n";
-              key = "<leader><space>";
-              action.__raw = "function() Snacks.picker.smart() end";
-              options.desc = "Smart Find Files";
-            })
-            ++ (lib.optional (cfg.explorer.enabled or false) {
+            (lib.optional (cfg.explorer.enabled or false) {
               mode = "n";
               key = "<leader>e";
               action.__raw = "function() Snacks.explorer() end";
@@ -104,6 +98,18 @@
               action.__raw = "function() Snacks.terminal() end";
               options.desc = "Toggle Terminal";
             })
+            ++ (lib.optional (cfg.dim.enabled or false) {
+              mode = "n";
+              key = "<leader>uD";
+              action.__raw = ''function() Snacks.toggle.dim():map("<leader>uD") end'';
+              options.desc = "Toggle Dim";
+            })
+            ++ (lib.optional (cfg.indent.enabled or false) {
+              mode = "n";
+              key = "<leader>ug";
+              action.__raw = ''function() Snacks.toggle.indent():map("<leader>ug") end'';
+              options.desc = "Toggle Indent Guides";
+            })
             ++ (lib.optionals (cfg.words.enabled or false) [
               {
                 mode = [
@@ -136,55 +142,49 @@
               action.__raw = "function() Snacks.scratch() end";
               options.desc = "Toggle Scratch Buffer";
             })
-            ++ (lib.optional (cfg.picker.enabled or false) {
-              mode = "n";
-              key = "<leader>fc";
-              action.__raw = ''function() Snacks.picker.files({ cwd = vim.fn.stdpath("config") }) end'';
-              options.desc = "Find Config File";
-            })
-            ++ (lib.optional (cfg.picker.enabled or false) {
-              mode = "n";
-              key = "<leader>fr";
-              action.__raw = "function() Snacks.picker.recent() end";
-              options.desc = "Recent Files";
-            })
-            ++ (lib.optional (cfg.picker.enabled or false) {
-              mode = "n";
-              key = "<leader>gs";
-              action.__raw = "function() Snacks.picker.git_status() end";
-              options.desc = "Git Status";
-            })
-            ++ (lib.optional (cfg.picker.enabled or false) {
-              mode = "n";
-              key = "<leader>sd";
-              action.__raw = "function() Snacks.picker.diagnostics() end";
-              options.desc = "Diagnostics";
-            })
-            ++ (lib.optional (cfg.picker.enabled or false) {
-              mode = "n";
-              key = "<leader>sh";
-              action.__raw = "function() Snacks.picker.help() end";
-              options.desc = "Help Pages";
-            })
-            ++ (lib.optional (cfg.picker.enabled or false) {
-              mode = "n";
-              key = "<leader>sR";
-              action.__raw = "function() Snacks.picker.resume() end";
-              options.desc = "Resume Last Picker";
-            })
-            ++ (lib.optional (cfg.dim.enabled or false) {
-              mode = "n";
-              key = "<leader>uD";
-              action.__raw = ''function() Snacks.toggle.dim():map("<leader>uD") end'';
-              options.desc = "Toggle Dim";
-            })
-            ++ (lib.optional (cfg.indent.enabled or false) {
-              mode = "n";
-              key = "<leader>ug";
-              action.__raw = ''function() Snacks.toggle.indent():map("<leader>ug") end'';
-              options.desc = "Toggle Indent Guides";
-            })
             ++ (lib.optionals (cfg.picker.enabled or false) [
+              {
+                mode = "n";
+                key = "<leader><space>";
+                action.__raw = "function() Snacks.picker.smart() end";
+                options.desc = "Smart Find Files";
+              }
+              {
+                mode = "n";
+                key = "<leader>fc";
+                action.__raw = ''function() Snacks.picker.files({ cwd = vim.fn.stdpath("config") }) end'';
+                options.desc = "Find Config File";
+              }
+              {
+                mode = "n";
+                key = "<leader>fr";
+                action.__raw = "function() Snacks.picker.recent() end";
+                options.desc = "Recent Files";
+              }
+              {
+                mode = "n";
+                key = "<leader>gs";
+                action.__raw = "function() Snacks.picker.git_status() end";
+                options.desc = "Git Status";
+              }
+              {
+                mode = "n";
+                key = "<leader>sd";
+                action.__raw = "function() Snacks.picker.diagnostics() end";
+                options.desc = "Diagnostics";
+              }
+              {
+                mode = "n";
+                key = "<leader>sh";
+                action.__raw = "function() Snacks.picker.help() end";
+                options.desc = "Help Pages";
+              }
+              {
+                mode = "n";
+                key = "<leader>sR";
+                action.__raw = "function() Snacks.picker.resume() end";
+                options.desc = "Resume Last Picker";
+              }
               {
                 mode = "n";
                 key = "<C-p>";
@@ -224,8 +224,37 @@
                 action.__raw = "function() Snacks.picker.undo() end";
                 options.desc = "Undo History";
               }
+              {
+                mode = "n";
+                key = "<leader>ss";
+                action.__raw = "function() Snacks.picker.lsp_symbols() end";
+                options.desc = "LSP Symbols";
+              }
+              {
+                mode = "n";
+                key = "<leader>sS";
+                action.__raw = "function() Snacks.picker.lsp_workspace_symbols() end";
+                options.desc = "LSP Workspace Symbols";
+              }
+              {
+                mode = "n";
+                key = "gr";
+                action.__raw = "function() Snacks.picker.lsp_references() end";
+                options.desc = "LSP References";
+              }
+              {
+                mode = "n";
+                key = "<leader>sk";
+                action.__raw = "function() Snacks.picker.keymaps() end";
+                options.desc = "Keymaps";
+              }
+              {
+                mode = "n";
+                key = "<leader>sz";
+                action.__raw = "function() Snacks.picker.zoxide() end";
+                options.desc = "Zoxide";
+              }
             ]);
-
         };
       };
   };
