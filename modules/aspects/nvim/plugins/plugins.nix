@@ -29,11 +29,10 @@
               nix-develop.enable = true;
               render-markdown.enable = lib.mkDefault true;
               smart-splits.enable = true;
-              tmux-navigator.enable = true;
               kitty-navigator.enable = true;
               trouble.enable = true;
               trim.enable = true;
-              barbecue.enable = true;
+              dropbar.enable = true;
               web-devicons.enable = true;
               tiny-inline-diagnostic = {
                 enable = true;
