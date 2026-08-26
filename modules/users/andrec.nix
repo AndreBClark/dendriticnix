@@ -5,6 +5,7 @@
       den.provides.primary-user
       den.aspects.base-user
       den.aspects.apps.spotify
+      den.aspects.apps.discord
     ];
     user = { };
     homeManager = {

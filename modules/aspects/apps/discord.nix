@@ -1,5 +1,7 @@
 {
   den.aspects.apps.discord = {
-    programs.concord.enable = true;
+    homeManager = {
+      programs.concord.enable = true;
+    };
   };
 }
