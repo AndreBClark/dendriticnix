@@ -102,8 +102,8 @@ let
       };
 
       shell = {
-        format = " $indicator ";
-        fish_indicator = "󰈺 fish";
+        format = "$indicator";
+        fish_indicator = "";
         disabled = false;
       };
 
