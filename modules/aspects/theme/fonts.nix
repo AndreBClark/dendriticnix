@@ -4,7 +4,7 @@
       { pkgs, ... }:
       {
         fonts = {
-          enableDefaultPackages = true;
+          enableDefaultPackages = false;
           fontconfig = {
             defaultFonts = {
               monospace = [
