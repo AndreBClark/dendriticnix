@@ -29,7 +29,9 @@
                         left = pillRight;
                         right = pillLeft;
                       };
-                      gui = "bold";
+                      color = {
+                        gui = "bold";
+                      };
                     }
                   ];
                   lualine_b = [
