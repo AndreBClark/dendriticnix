@@ -79,7 +79,6 @@
 
                   code_actions = {
                     refactoring.enable = true;
-                    gitsigns.enable = true;
                     statix.enable = true;
                     ts_node_action.enable = true;
                   };
