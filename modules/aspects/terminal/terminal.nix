@@ -8,6 +8,7 @@
     {
       includes = [
         den.aspects.terminal.${terminal}
+        den.aspects.terminal.ghostty
       ];
     };
 }
