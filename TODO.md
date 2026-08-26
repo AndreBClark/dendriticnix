@@ -1,3 +1,7 @@
+- [x] global whichkey?
+    - [ ] as a dank OSD?
+    - [ ] [wlr-which-key nixos options](https://search.nixos.org/options?channel=unstable&query=wlr-which-key&source=home_manager&type=options)
+    - [ ] [wlr-which-key](https://github.com/MaxVerevkin/wlr-which-key)
 - [x] fix `mod+T` not opening terminal [dms] [niri]
 - [x] passthrough home config for standalone home-manager config `nh home switch`
 - [x] add keybind for wallpaper wallpaperCarousel
@@ -5,6 +9,8 @@
 
 
 ### Neovim
+- [ ] use more contrasting palette order for tab_bar
+- [x] interactive breadcrumbs
 - [x] style bufferline [nvim] [bufferline]
     - [x] find fun bufferline styles
     - [x] find alternatives?
@@ -12,14 +18,16 @@
 - [x] [snacks].nvim and [mini].[nvim] nix files
 - [x] more gitsigns keymaps
     - [x] have deepwiki teach me the keymaps
-- [ ] nixvim standalone package
 - [x] disable more of noice and just keep nui/cmdline
     - [x] find if theres more locations
+- [ ] audit keymaps
+    - [ ] make sure they fit which key groups
+    - [ ] remove redundant, overlapping, not useful keymaps
 
 ### Design
-- [ ] figure out why fonts on my terminal are not bold
+- [x] figure out why fonts on my terminal are not bold
+- [x] reduce the amount of jetbrains variants installed
 - [x] less distracting background, more blur
-- [ ] convert niri config back to kdl for portability and use a toKdl readfile on settings
 - [ ] wallpaper colorscheme theme key
     - [ ] convert wallpaper directory as symbolic link to Wallpaper-${wallpaper-theme} folder
     - [ ] rename wallpaper directory as wallpaper-raw
@@ -31,6 +39,10 @@
     - [x] use .face as user icon
     - [x] run script to sync those 2
 
+### Yak Shaving
+
+- [ ] convert niri config back to kdl for portability and use a toKdl readfile on settings
+- [ ] nixvim standalone package
 
 ### Blocked by upstream
 
