@@ -13,59 +13,45 @@
 
             barbar = {
               enable = true;
-              settings =
-                let
-                  pillLeft = "";
-                  pillRight = "";
-                in
-                {
-                  animation = true;
-                  auto_hide = -1;
-                  clickable = true;
-                  tabpages = true;
-
-                  icons = {
-                    preset = "powerline";
-                    button = false;
-                    buffer_index = true;
-                    current = {
-                      separator = {
-                        left = pillRight;
-                        right = pillLeft;
-                      };
-                      gitsigns = {
-                        added.enabled = true;
-                        changed.enabled = true;
-                        deleted.enabled = true;
-                      };
-                    };
-                    diagnostics = {
-                      "vim.diagnostic.severity.ERROR".enabled = true;
-                      "vim.diagnostic.severity.WARN".enabled = true;
-                    };
-
-                  };
-                  modified.button = "●";
-                  pinned = {
-                    button = "";
-                    filename = true;
-                  };
-
-                  focus_on_close = "left";
-                  insert_at_end = true;
-                  maximum_padding = 2;
-                  minimum_padding = 1;
-                  semantic_letters = true;
-                  letters = "asdfjkl;ghnmxcvbziowerutyqp";
-
-                  sidebar_filetypes = {
-                    NvimTree = true;
-                    undotree = {
-                      text = "undotree";
-                      align = "center";
+              settings = {
+                animation = true;
+                auto_hide = 1;
+                clickable = true;
+                tabpages = true;
+                icons = {
+                  preset = "powerline";
+                  button = false;
+                  buffer_index = true;
+                  current = {
+                    gitsigns = {
+                      added.enabled = true;
+                      changed.enabled = true;
+                      deleted.enabled = true;
                     };
                   };
+                  diagnostics = {
+                    "vim.diagnostic.severity.ERROR".enabled = true;
+                    "vim.diagnostic.severity.WARN".enabled = true;
+                  };
+
                 };
+                modified.button = "●";
+                pinned = {
+                  filename = true;
+                };
+
+                focus_on_close = "left";
+                insert_at_end = true;
+                maximum_padding = 2;
+                minimum_padding = 1;
+                semantic_letters = true;
+                letters = "asdfjkl;ghnmxcvbziowerutyqp";
+
+                sidebar_filetypes = {
+                  snacks_picker_list = true;
+                  NvimTree = true;
+                };
+              };
 
               keymaps = {
                 next.key = "<Tab>";
