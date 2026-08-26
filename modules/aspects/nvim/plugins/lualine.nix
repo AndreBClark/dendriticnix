@@ -40,9 +40,9 @@
                   ];
                   lualine_c = [
                     "filename"
+                    "diagnostics"
                   ];
                   lualine_x = [
-                    "diagnostics"
                     "encoding"
                     {
                       __unkeyed-1 = "fileformat";
@@ -53,19 +53,21 @@
                         mac = "CR";
                       };
                     }
-                    "filetype"
                   ];
-                  lualine_y = [ "progress" ];
+                  lualine_y = [
+                    "filetype"
+                    "lsp_status"
+                  ];
                   lualine_z = [
                     {
                       __unkeyed-1 = "location";
                       separator.right = pillLeft;
+                      gui = "bold";
                     }
                   ];
                 };
 
                 inactive_sections = {
-                  lualine_c = [ "filename" ];
                   lualine_x = [ "location" ];
                 };
               };
