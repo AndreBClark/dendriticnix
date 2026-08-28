@@ -7,16 +7,17 @@
             enable = true;
             settings =
               let
-                # Powerline "pill" glyphs (Nerd Font, U+E0B6 / U+E0B4)
-                pillLeft = "";
-                pillRight = "";
+                separator = {
+                  left = "";
+                  right = "";
+                };
               in
               {
                 options = {
                   component_separators = "";
                   section_separators = {
-                    left = pillLeft;
-                    right = pillRight;
+                    left = separator.right;
+                    right = separator.left;
                   };
                   globalstatus = true;
                 };
@@ -24,11 +25,8 @@
                 sections = {
                   lualine_a = [
                     {
+                      inherit separator;
                       __unkeyed-1 = "mode";
-                      separator = {
-                        left = pillRight;
-                        right = pillLeft;
-                      };
                       color = {
                         gui = "bold";
                       };
@@ -39,7 +37,10 @@
                     "diff"
                   ];
                   lualine_c = [
-                    "filename"
+                    {
+                      __unkeyed-1 = "filename";
+                      path = 3;
+                    }
                     "diagnostics"
                   ];
                   lualine_x = [
@@ -56,20 +57,26 @@
                   ];
                   lualine_y = [
                     "filetype"
-                    "lsp_status"
+                    {
+                      __unkeyed-1 = "lsp_status";
+                      padding = {
+                        left = 0;
+                        right = 1;
+                      };
+                      icon = "";
+                      ignore_lsp = [ "null-ls" ];
+                    }
                   ];
                   lualine_z = [
                     {
+                      inherit separator;
+                      padding = 0;
                       __unkeyed-1 = "location";
-                      separator.right = pillLeft;
-                      gui = "bold";
+                      color.gui = "bold";
                     }
                   ];
                 };
 
-                inactive_sections = {
-                  lualine_x = [ "location" ];
-                };
               };
           };
         };
