@@ -1,54 +1,47 @@
 {
-  den.aspects.theme.fonts = {
-    nixos =
-      { pkgs, ... }:
-      {
-        fonts = {
-          enableDefaultPackages = false;
-          fontconfig = {
-            defaultFonts = {
-              monospace = [
-                "JetBrainsMono Nerd Font"
-              ];
-              emoji = [
-                "Noto Color Emoji"
-              ];
-            };
+  den.aspects.theme.fonts =
+    let
+      stylixFonts =
+        pkgs:
+        let
+          monospace = {
+            package = pkgs.nerd-fonts.jetbrains-mono;
+            name = "JetBrainsMono Nerd Font";
           };
-          packages = builtins.attrValues {
-            inherit (pkgs.nerd-fonts)
-              jetbrains-mono
-              fira-code
-              ;
-            inherit (pkgs)
-              noto-fonts-color-emoji
-              ;
-          };
-        };
-      };
-
-    homeManager =
-      { pkgs, config, ... }:
-      {
-        stylix = {
+        in
+        {
           fonts = {
-            monospace = {
-              package = pkgs.nerd-fonts.jetbrains-mono;
-              name = "JetBrainsMono Nerd Font";
-            };
-
-            emoji = {
-              package = pkgs.noto-fonts-color-emoji;
-              name = "Noto Color Emoji";
-            };
-            serif = config.stylix.fonts.monospace;
-            sansSerif = config.stylix.fonts.monospace;
+            inherit monospace;
+            serif = monospace;
+            sansSerif = monospace;
           };
           targets = {
             font-packages.enable = true;
             fontconfig.enable = true;
           };
         };
-      };
-  };
+    in
+    {
+      nixos =
+        { pkgs, ... }:
+        {
+          stylix = stylixFonts pkgs;
+          fonts.enableDefaultPackages = false;
+          environment.systemPackages = [
+            pkgs.nerd-fonts.symbols-only
+            pkgs.noto-fonts-color-emoji
+          ];
+        };
+
+      #   homeManager =
+      #     { pkgs, ... }:
+      #     {
+      #       stylix = stylixFonts pkgs;
+      #       home.packages = [
+      #         pkgs.nerd-fonts.symbols-only
+      #         pkgs.noto-fonts-color-emoji
+      #       ];
+      #     };
+      # };
+    };
 }

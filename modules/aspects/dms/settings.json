@@ -81,17 +81,13 @@
   "iconThemeDark": "Dracula",
   "cursorSettings": {
     "cursor": 32,
-    "theme": "BreezeX-RosePine-Linux",
-    "niri": {
-      "hideAfterInactiveMs": 5000,
-      "hideWhenTyping": true
-    }
+    "theme": "BreezeX-RosePine-Linux"
   },
   "launcherLogoMode": "os",
   "launcherLogoColorOverride": "primary",
   "launcherLogoSizeOffset": 12,
-  "fontFamily": "JetBrainsMono Nerd Font Mono",
-  "monoFontFamily": "JetBrainsMono Nerd Font Mono",
+  "fontFamily": "JetBrainsMono Nerd Font",
+  "monoFontFamily": "JetBrainsMono Nerd Font",
   "fontWeight": 900,
   "soundsEnabled": false,
   "acMonitorTimeout": 600,
@@ -212,8 +208,8 @@
           "id": "weather"
         },
         {
-          "id": "clock",
-          "enabled": true
+          "enabled": true,
+          "id": "clock"
         },
         {
           "enabled": true,
