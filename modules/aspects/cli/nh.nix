@@ -15,6 +15,7 @@
         home.shellAliases = {
           nhs = "nh search";
           nho = "nh os switch";
+          nht = "nh os test";
           nhh = "nh home switch";
         };
       };
