@@ -98,12 +98,6 @@
           fzf = {
             enable = true;
             defaultCommand = fdCommand;
-            fileWidget = {
-              command = fdCommand;
-              options = [
-                previewWindow
-              ];
-            };
 
             changeDirWidget = {
               command = "${zoxideDirWrapped}";
@@ -114,7 +108,6 @@
                 "--with-nth=1"
                 "--accept-nth=2"
                 "--preview '${ezaWrapped} --tree {2}'"
-                previewWindow
               ];
             };
 
@@ -138,6 +131,7 @@
               "--color=border:blue"
               "--color=prompt:green"
               "--color=info:bright-black"
+              previewWindow
               "--preview '${customPreviewScript} {}'"
               "--walker-skip=${excludesCSV}"
             ];
@@ -170,7 +164,6 @@
             inherit (pkgs) file;
           };
           shellAliases = {
-            cat = "bat";
             find = "fd";
           };
         };
