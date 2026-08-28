@@ -7,6 +7,7 @@
         pillRight = "";
         pillLeft = "";
         tabBarPy =
+          file:
           builtins.replaceStrings
             [
               "@BODY_BG@"
@@ -43,7 +44,7 @@
               pillLeft
               pillRight
             ]
-            (builtins.readFile ./tab_bar.py);
+            (builtins.readFile file);
       in
       {
         programs.kitty = {
@@ -72,7 +73,7 @@
           '';
         };
 
-        xdg.configFile."kitty/tab_bar.py".text = tabBarPy;
+        xdg.configFile."kitty/tab_bar.py".text = tabBarPy ./tab_bar.py;
       };
   };
 }
