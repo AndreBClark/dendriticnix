@@ -64,7 +64,7 @@
                 repaint = true;
               };
               "ctrl-o" = {
-                command = "fg";
+                command = "fg 2>/dev/null || fzf | xargs nvim";
                 repaint = true;
                 silent = true;
               };
