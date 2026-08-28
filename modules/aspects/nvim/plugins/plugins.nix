@@ -32,7 +32,7 @@
               kitty-navigator.enable = true;
               trouble.enable = true;
               trim.enable = true;
-              dropbar.enable = true;
+              # dropbar.enable = true;
               web-devicons.enable = true;
               tiny-inline-diagnostic = {
                 enable = true;
