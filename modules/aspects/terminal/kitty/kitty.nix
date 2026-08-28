@@ -65,6 +65,9 @@
               inactive_tab_font_style = "bold";
 
             };
+          keybindings = {
+            "ctrl+shift+T" = "new_tab_with_cwd";
+          };
           extraConfig = ''
             active_tab_background  ${colors.base03}
             active_tab_foreground  ${colors.base05}
