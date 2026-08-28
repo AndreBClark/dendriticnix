@@ -8,7 +8,7 @@
           # https://ghostty.zerebos.com
 
           background-blur = true;
-          font-style = "black";
+          font-style = "extrabold";
           gtk-titlebar-style = "tabs";
           gtk-toolbar-style = "flat";
           scrollbar = "never";
