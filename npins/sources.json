@@ -38,9 +38,9 @@
       },
       "branch": "main",
       "submodules": false,
-      "revision": "69dbb54495fb2217838d3bfbb6fdbae4e4d30b00",
-      "url": "https://github.com/NMWplays/Liquify/archive/69dbb54495fb2217838d3bfbb6fdbae4e4d30b00.tar.gz",
-      "hash": "sha256-+/uJFp834gK2EiJO9rWOJMcRIXtLroUzV9C1dMhggvM="
+      "revision": "54af61761fd0bb11383ee3315a7c6a3d56afea76",
+      "url": "https://github.com/NMWplays/Liquify/archive/54af61761fd0bb11383ee3315a7c6a3d56afea76.tar.gz",
+      "hash": "sha256-Q3wlADFwvS5QGdhPGl/5ttrgXa1XQDgUiRa3BYhoYtU="
     },
     "danksearch": {
       "type": "Git",
@@ -51,9 +51,9 @@
       },
       "branch": "master",
       "submodules": false,
-      "revision": "d95d611e25f60542d34cad2ef8eed2c31dff7666",
-      "url": "https://github.com/AvengeMedia/danksearch/archive/d95d611e25f60542d34cad2ef8eed2c31dff7666.tar.gz",
-      "hash": "sha256-bKM3F2Ka4knTLeKEiuy0oLTgr0lhuC/Srq1b+LaUtyM="
+      "revision": "7154c880141d50f8817a0c3247e7ee2d4e5f16d7",
+      "url": "https://github.com/AvengeMedia/danksearch/archive/7154c880141d50f8817a0c3247e7ee2d4e5f16d7.tar.gz",
+      "hash": "sha256-I9QrXZEYX40wUofcDVWZzIs9FmTgxIHUS/yNgKzwKOo="
     },
     "dgop": {
       "type": "Git",
@@ -77,9 +77,9 @@
       },
       "branch": "master",
       "submodules": false,
-      "revision": "d9462c5484bf87979302a9edf19ab738ce8c11ee",
-      "url": "https://github.com/AvengeMedia/DankMaterialShell/archive/d9462c5484bf87979302a9edf19ab738ce8c11ee.tar.gz",
-      "hash": "sha256-/xYXzXJVtQf8xGZYulW+fYk9kjATPkocjRp4keJHa0c="
+      "revision": "8354113c347a5f2693c2cab8d72dafe127059fdf",
+      "url": "https://github.com/AvengeMedia/DankMaterialShell/archive/8354113c347a5f2693c2cab8d72dafe127059fdf.tar.gz",
+      "hash": "sha256-ySID2BJg8q1zgTiMzeD5F/PVS4gj6VYK+zhal1f2J6Q="
     },
     "dms-plugin-registry": {
       "type": "Git",
@@ -90,9 +90,9 @@
       },
       "branch": "master",
       "submodules": false,
-      "revision": "d5f2fbe3365a433b2b7b639ed22b6041d24837ed",
-      "url": "https://github.com/AvengeMedia/dms-plugin-registry/archive/d5f2fbe3365a433b2b7b639ed22b6041d24837ed.tar.gz",
-      "hash": "sha256-JFmbQx92QuB+4Po4hqmFUgwvopzFM8y/kXhdhYv1N+U="
+      "revision": "7a76e68df370d5ac504a86ec984f5fee49af73f3",
+      "url": "https://github.com/AvengeMedia/dms-plugin-registry/archive/7a76e68df370d5ac504a86ec984f5fee49af73f3.tar.gz",
+      "hash": "sha256-WMEeohBVSKRZuUss5q0troJc8+qbM8CkMHpXBa92/iM="
     },
     "flake-parts": {
       "type": "Git",
@@ -129,9 +129,9 @@
       },
       "branch": "master",
       "submodules": false,
-      "revision": "6840c9a8f50722944eb106ce8bb237c138584f2a",
-      "url": "https://github.com/nix-community/home-manager/archive/6840c9a8f50722944eb106ce8bb237c138584f2a.tar.gz",
-      "hash": "sha256-9168tNt0NZdtlx5RM5huEuc9NCWMLACJA9O4UK/l2Zc="
+      "revision": "99c9ec63390f1d8c14d95d9e8b17cc29cfbd4e11",
+      "url": "https://github.com/nix-community/home-manager/archive/99c9ec63390f1d8c14d95d9e8b17cc29cfbd4e11.tar.gz",
+      "hash": "sha256-8+Q7NOB7RPajRjA4pbCDLzqH+MTjnG9x6LUPLfL2joA="
     },
     "niri": {
       "type": "GitRelease",
@@ -166,8 +166,8 @@
       "type": "Channel",
       "name": "nixpkgs-unstable",
       "artifact": "nixexprs.tar.xz",
-      "url": "https://releases.nixos.org/nixpkgs/nixpkgs-26.11pre1061294.ac6b2166e7a9/nixexprs.tar.xz",
-      "hash": "sha256-ZEByVBPrWjUOLKInvr2aOGcy13/ObSLNEt/1o5ThyzA="
+      "url": "https://releases.nixos.org/nixpkgs/nixpkgs-26.11pre1062790.c27cdad491a9/nixexprs.tar.xz",
+      "hash": "sha256-4Opnii0iGg8Dk8/rZ2IYh/HCHvg1B+Us5+Qg+Qy5c18="
     },
     "nixpkgs_2": {
       "type": "Git",
@@ -178,9 +178,9 @@
       },
       "branch": "nixos-unstable",
       "submodules": false,
-      "revision": "56c02bc00adcf003215cc4bd996d6efaf4cff188",
-      "url": "https://github.com/nixos/nixpkgs/archive/56c02bc00adcf003215cc4bd996d6efaf4cff188.tar.gz",
-      "hash": "sha256-9i/VTdusq/+NM/tz+J1Re+ojkMB8MBf0QshnYfzHz30="
+      "revision": "9fbb54b33e91ee4ca368e35a78e0613c720600b3",
+      "url": "https://github.com/nixos/nixpkgs/archive/9fbb54b33e91ee4ca368e35a78e0613c720600b3.tar.gz",
+      "hash": "sha256-cV5xEJJK3BvhU8rEd4mC9UsmDi5qscv/kzGPhBRC5WA="
     },
     "nixvim": {
       "type": "Git",
@@ -191,9 +191,9 @@
       },
       "branch": "main",
       "submodules": false,
-      "revision": "6936df86ee44236ee55725b3b2e2a7213e1c29df",
-      "url": "https://github.com/nix-community/nixvim/archive/6936df86ee44236ee55725b3b2e2a7213e1c29df.tar.gz",
-      "hash": "sha256-JzAp6bfS6o6nsUfjAh5dpZW0ezuNZnW8XqcYOLaggSM="
+      "revision": "8c096abcf376137527c134da4ee210332b08ccc0",
+      "url": "https://github.com/nix-community/nixvim/archive/8c096abcf376137527c134da4ee210332b08ccc0.tar.gz",
+      "hash": "sha256-dL1Tv7LekaTWUJxHRckjbupWczDdc3QOgRuVCM+WAvQ="
     },
     "sortPlay": {
       "type": "Git",
@@ -204,9 +204,9 @@
       },
       "branch": "main",
       "submodules": false,
-      "revision": "bc9cb194f255edb58970c606bbabc3f790374e3c",
-      "url": "https://github.com/hoeci/sort-play/archive/bc9cb194f255edb58970c606bbabc3f790374e3c.tar.gz",
-      "hash": "sha256-JnIwBpXAYk6p30jvvbQsAtuiuZ4fdpDVutCdS8WCMUw="
+      "revision": "390fd485718a4392f6d0fd00ed0a831f29bc5384",
+      "url": "https://github.com/hoeci/sort-play/archive/390fd485718a4392f6d0fd00ed0a831f29bc5384.tar.gz",
+      "hash": "sha256-2zIx8TBPgE8hFMAREUQCWiIfodhjcSoIB7EK/OeATb0="
     },
     "spicetify-apps": {
       "type": "Git",
@@ -256,9 +256,9 @@
       },
       "branch": "master",
       "submodules": false,
-      "revision": "a9e5a76a1b75b137f266e4f445e1eaba82e9783e",
-      "url": "https://github.com/nix-community/stylix/archive/a9e5a76a1b75b137f266e4f445e1eaba82e9783e.tar.gz",
-      "hash": "sha256-tzNjlb0loxeWlipvxSNAUUihloeTZoyGFhEen87yM9k="
+      "revision": "5e3809851f486e7fc7e84b40f174c74b60ecc784",
+      "url": "https://github.com/nix-community/stylix/archive/5e3809851f486e7fc7e84b40f174c74b60ecc784.tar.gz",
+      "hash": "sha256-DkkJSBOXWV/mja5Vy8az5g1KpZlsbUwlmH0BsQhowaQ="
     },
     "system": {
       "type": "Git",
