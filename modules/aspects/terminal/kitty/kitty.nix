@@ -31,13 +31,13 @@
               colors.base05
 
               colors.base0E
-              colors.base0C
               colors.base0D
+              colors.base0C
+              colors.base0B
               colors.base0A
+              colors.base08
+              colors.base13
               colors.base14
-              colors.base15
-              colors.base16
-              colors.base17
 
               colors.base01
 
@@ -68,12 +68,13 @@
           keybindings = {
             "ctrl+shift+T" = "new_tab_with_cwd";
           };
-          extraConfig = ''
-            active_tab_background  ${colors.base03}
-            active_tab_foreground  ${colors.base05}
-            inactive_tab_background ${colors.base02}
-            inactive_tab_foreground  ${colors.base04}
-          '';
+          extraConfig =
+            ''
+              active_tab_background  ${colors.base03}
+              active_tab_foreground  ${colors.base08}
+              inactive_tab_background ${colors.base00}
+              inactive_tab_foreground  ${colors.base03}
+            '';
         };
 
         xdg.configFile."kitty/tab_bar.py".text = tabBarPy ./tab_bar.py;
