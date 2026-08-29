@@ -1,6 +1,6 @@
 {
   "terminalOverride": "kitty",
-  "wallpaperPath": "/home/andrec/Pictures/Wallpaper-tokyo-night-terminal-storm/John Harris_Science-fiction-John-Harris-1970-9.jpg",
+  "wallpaperPath": "/home/andrec/Pictures/Wallpaper-tokyo-night-storm/AC6_1305418.jpeg",
   "wallpaperPathLight": "/home/andrec/Pictures/Wallpapers-tokyonight/g7xdxl.jpeg",
   "wallpaperPathDark": "/home/andrec/Pictures/Wallpapers-tokyonight/g7xdxl.jpeg",
   "includedTransitions": [
@@ -9,6 +9,7 @@
   "wallpaperCyclingEnabled": true,
   "wallpaperCyclingRandom": true,
   "wallpaperCyclingInterval": 900,
+  "wallpaperCyclingFolderPath": "/home/andrec/Pictures/Wallpaper-tokyo-night-storm",
   "weatherLocation": "",
   "pinnedApps": [
     "kitty",
