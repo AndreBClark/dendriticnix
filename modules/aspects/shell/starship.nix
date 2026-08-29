@@ -101,7 +101,7 @@ let
 
       git_metrics = {
         disabled = false;
-        format = " [+$added ]($added_style)[-$deleted ]($deleted_style)";
+        format = " ([+$added]($added_style) )([-$deleted]($deleted_style) )";
       };
 
       shell = {
