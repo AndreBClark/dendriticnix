@@ -10,6 +10,7 @@
         shell
         cli
         nvim
+        my-packages
         ;
       inherit (den.aspects.apps)
         nautilus

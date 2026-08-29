@@ -12,6 +12,7 @@
   nix-update-script,
   yq,
 }:
+
 let
   wallpaper-batch = writeShellApplication {
     name = "wallpaper-batch";
@@ -79,10 +80,8 @@ stdenvNoCC.mkDerivation {
   '';
 
   meta = {
-    inherit (gowall.meta) license;
+    inherit (gowall.meta) license homepage changelog;
     description = "Wrapper for gowall with base16-schemes support and simpler commands for bulk processing";
-    homepage = gowall.meta.homepage;
-    changelog = "https://github.com/Achno/gowall/releases/tag/v${gowall.version}";
     mainProgram = "tinted-gowall";
     maintainers = gowall.meta.maintainers;
     platforms = lib.platforms.unix;

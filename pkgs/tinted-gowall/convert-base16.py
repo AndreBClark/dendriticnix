@@ -7,6 +7,7 @@ from glob import glob
 
 def to_kebab_case(name):
     """Convert theme name to kebab-case."""
+    name = re.sub(r'[()]', '', name)      # strip parentheses
     name = re.sub(r'[\s_]+', '-', name)
     return name.lower()
 
