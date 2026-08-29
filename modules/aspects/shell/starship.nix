@@ -43,7 +43,7 @@ let
       };
 
       directory = {
-        style = "bold base00 bg:prev_bg";
+        style = "bold base02 bg:prev_bg";
         format = lib.concatStrings [
           "[ $path]($style)"
           "[${separator.right}](fg:prev_bg bg:prev_fg)"
