@@ -21,18 +21,38 @@
         {
           programs.nixvim = {
             plugins = {
+              lz-n.enable = true;
               emmet.enable = true;
-              glance.enable = true;
-              goto-preview.enable = true;
+              glance = {
+                enable = true;
+                lazyLoad.settings.cmd = "Glance";
+              };
+              goto-preview = {
+                enable = true;
+                lazyLoad.settings.keys = [
+                  { __unkeyed-1 = "gp"; }
+                ];
+              };
               illuminate.enable = true;
               lint.enable = true;
               nix-develop.enable = true;
               render-markdown.enable = lib.mkDefault true;
-              smart-splits.enable = true;
+              smart-splits = {
+                enable = true;
+                lazyLoad.settings.keys = [
+                  { __unkeyed-1 = "<C-h>"; }
+                  { __unkeyed-1 = "<C-j>"; }
+                  { __unkeyed-1 = "<C-k>"; }
+                  { __unkeyed-1 = "<C-l>"; }
+                ];
+              };
               kitty-navigator.enable = true;
-              trouble.enable = true;
+              trouble = {
+                enable = true;
+                lazyLoad.settings.cmd = "Trouble";
+              };
+
               trim.enable = true;
-              # dropbar.enable = true;
               web-devicons.enable = true;
               tiny-inline-diagnostic = {
                 enable = true;
@@ -45,7 +65,16 @@
 
               refactoring = {
                 enable = true;
-                enableTelescope = lib.mkDefault false;
+                enableTelescope = false;
+                lazyLoad.settings.keys = [
+                  {
+                    __unkeyed-1 = "<leader>cr";
+                    mode = [
+                      "n"
+                      "v"
+                    ];
+                  }
+                ];
               };
 
               which-key = {
@@ -139,7 +168,7 @@
                   "n"
                   "v"
                 ];
-                key = "<leader>re";
+                key = "<leader>cr";
                 action.__raw = "function() require('refactoring').select_refactor() end";
                 options.desc = "Select Refactor";
               })

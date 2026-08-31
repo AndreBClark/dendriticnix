@@ -8,6 +8,10 @@
               enable = true;
               settings = {
                 legacy_commands = false;
+                lazyLoad.settings = {
+                  cmd = "Obsidian";
+                  ft = "markdown";
+                };
                 templates = {
                   subdir = "templates";
                   substitutions = {
