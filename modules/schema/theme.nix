@@ -64,7 +64,7 @@
         desktop = 0.500;
         popups = 0.500;
         applications = 0.900;
-        terminal = 0.800;
+        terminal = 0.700;
       };
     };
 
