@@ -186,6 +186,11 @@
                 options.desc = "Resume Last Picker";
               }
               {
+                key = "<leader>sH";
+                action.__raw = "function() Snacks.picker.highlights() end";
+                options.desc = "Highlights";
+              }
+              {
                 mode = "n";
                 key = "<C-p>";
                 action.__raw = "function() Snacks.picker.files() end";
