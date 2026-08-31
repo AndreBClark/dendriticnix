@@ -39,7 +39,7 @@
         { pkgs, ... }:
         {
           stylix = stylixFonts pkgs;
-          # fonts.enableDefaultPackages = false;
+          fonts.enableDefaultPackages = false;
           environment.systemPackages = fontPackages pkgs;
         };
 

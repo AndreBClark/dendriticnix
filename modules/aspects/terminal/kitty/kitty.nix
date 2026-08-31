@@ -53,13 +53,13 @@
         programs.kitty = {
           enable = true;
           settings =
-            # let
-            #   monoName = config.stylix.fonts.monospace.name;
-            # in
+            let
+              monoName = config.stylix.fonts.monospace.name;
+            in
             {
-              # font_family = "family='${monoName}' style=SemiBold";
-              # bold_font = "family='${monoName}' style=ExtraBold";
-              # bold_italic_font = "family='${monoName}' style='ExtraBold Italic'";
+              font_family = "family='${monoName}' style=SemiBold";
+              bold_font = "family='${monoName}' style=ExtraBold";
+              bold_italic_font = "family='${monoName}' style='ExtraBold Italic'";
               tab_bar_edge = "top";
               tab_bar_style = "custom";
               window_padding_width = 6;
