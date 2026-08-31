@@ -25,7 +25,7 @@
             }
             {
               mode = "n";
-              key = "<leader>gs";
+              key = "<leader>ga";
               action = "<cmd>Gitsigns stage_hunk<CR>";
               options = {
                 silent = true;
