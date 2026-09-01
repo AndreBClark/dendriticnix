@@ -36,7 +36,7 @@ let
         style = "bg:prev_fg fg:base15";
         symbols.NixOS = " ";
         format = lib.concatStrings [
-          "[${separator.left}](fg:base02 bg:none)"
+          "[${separator.left}](fg:base01 bg:none)"
           "[$symbol]($style)"
           "[${separator.right}](fg:prev_bg bg:prev_fg)"
         ];
