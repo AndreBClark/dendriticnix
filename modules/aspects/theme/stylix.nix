@@ -7,73 +7,77 @@
     };
   };
 
-  den.aspects.stylix =
-    { user, ... }:
-    let
-      theme = den.profiles.${user.name}.theme or user.theme;
-      inherit (theme)
-        colorscheme
-        opacity
-        cursor
-        iconTheme
-        polarity
-        ;
-      stylix = pkgs: {
-        enable = true;
-        inherit opacity polarity;
-        cursor = {
-          inherit (cursor) name size;
-          package = pkgs.${cursor.package};
-        };
-
-        base16Scheme = "${pkgs.base16-schemes}/share/themes/${colorscheme}.yaml";
-        icons = {
+  den = {
+    aspects.stylix =
+      { user, ... }:
+      let
+        theme = den.profiles.${user.name}.theme or user.theme;
+        inherit (theme)
+          colorscheme
+          opacity
+          cursor
+          iconTheme
+          polarity
+          ;
+        stylix = pkgs: {
           enable = true;
-          dark = iconTheme;
-          light = iconTheme;
-          package = pkgs.dracula-icon-theme;
-        };
-      };
-    in
-    {
-      includes = builtins.attrValues {
-        inherit (den.aspects.theme) fonts gtk qt;
-      };
-
-      nixos =
-        { pkgs, ... }:
-        {
-          imports = [
-            inputs.stylix.nixosModules.stylix
-          ];
-
-          stylix = stylix pkgs;
-
-          environment.systemPackages = builtins.attrValues {
-            inherit (pkgs)
-              rose-pine-cursor
-              adwaita-icon-theme
-              hicolor-icon-theme
-              ;
+          inherit opacity polarity;
+          cursor = {
+            inherit (cursor) name size;
+            package = pkgs.${cursor.package};
           };
-          xdg.icons.enable = true;
+
+          base16Scheme = "${pkgs.base16-schemes}/share/themes/${colorscheme}.yaml";
+          icons = {
+            enable = true;
+            dark = iconTheme;
+            light = iconTheme;
+            package = pkgs.dracula-icon-theme;
+          };
+        };
+      in
+      {
+        includes = builtins.attrValues {
+          inherit (den.aspects.theme) fonts gtk qt;
         };
 
-      homeManager =
-        { pkgs, ... }:
-        {
-          stylix = stylix pkgs;
+        nixos =
+          { pkgs, ... }:
+          {
+            imports = [
+              inputs.stylix.nixosModules.stylix
+            ];
 
-          home.packages = [
-            pkgs.${cursor.package}
-          ];
-        };
+            stylix = stylix pkgs;
 
-    };
-  den.schema.home.instantiate =
-    { pkgs, modules }:
-    inputs.home-manager.lib.homeManagerConfiguration {
-      inherit pkgs;
-      modules = modules ++ [ inputs.stylix.homeModules.stylix ];
-    };
+            environment.systemPackages = [
+              pkgs.${cursor.package}
+            ]
+            ++ builtins.attrValues {
+              inherit (pkgs)
+                adwaita-icon-theme
+                hicolor-icon-theme
+                ;
+            };
+            xdg.icons.enable = true;
+          };
+
+        homeManager =
+          { pkgs, ... }:
+          {
+            stylix = stylix pkgs;
+
+            home.packages = [
+              pkgs.${cursor.package}
+            ];
+          };
+
+      };
+    schema.home.instantiate =
+      { pkgs, modules }:
+      inputs.home-manager.lib.homeManagerConfiguration {
+        inherit pkgs;
+        modules = modules ++ [ inputs.stylix.homeModules.stylix ];
+      };
+  };
 }
