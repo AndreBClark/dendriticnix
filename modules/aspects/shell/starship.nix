@@ -192,6 +192,7 @@ in
   den.aspects.shell.starship = {
     includes = [
       (den.batteries.shell-integrations [ "starship" ])
+      den.aspects.shell.starship.palette_tester
     ];
 
     nixos.programs.starship = starship // {
