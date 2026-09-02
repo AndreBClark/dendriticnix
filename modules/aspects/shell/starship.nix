@@ -18,7 +18,6 @@ let
           "$git_branch"
           "$git_status"
           "$status"
-          "$character"
         ];
 
         right_format = lib.concatStrings [
@@ -36,10 +35,13 @@ let
         os = {
           disabled = false;
           style = "bg:base02 fg:cyan bold";
-          symbols.NixOS = " ";
+          symbols.NixOS = " ";
           format = lib.concatStrings [
             "[${separator.left}](fg:base02 bg:none)"
             "[$symbol]($style)"
+            "[${separator.right}](fg:prev_bg bg:purple)"
+            "[${separator.right}](fg:prev_bg bg:blue)"
+            "[${separator.right}](fg:blue bg:cyan)"
           ];
         };
 
@@ -51,14 +53,11 @@ let
             inherit style;
             repo_root_style = style;
             format = lib.concatStrings [
-              "[${separator.right}](fg:prev_bg bg:blue)"
-              "[${separator.right}](fg:blue bg:cyan)"
+
               "[ $path ]($style)"
             ];
             before_repo_root_style = "bg:blue black dimmed";
             repo_root_format = lib.concatStrings [
-              "[${separator.right}](fg:prev_bg bg:blue)"
-              "[${separator.right}](fg:blue bg:cyan)"
               "[  $repo_root ]($repo_root_style)"
               "[$path]($style)"
             ];
@@ -120,23 +119,30 @@ let
           disabled = false;
           format = lib.concatStrings [
             "[${separator.right}]($style fg:prev_bg)"
-            "[ $common_meaning$signal_name$maybe_int]($style bold black)"
+            "[$symbol$common_meaning$signal_name$maybe_int]($style)"
+            "[${separator.right} ](bg:none fg:prev_bg)"
           ];
-          failure_style = "bg:red";
-          success_style = "bg:green";
+          success_symbol = "    ";
+          symbol = " ";
+          failure_style = "bg:red bold black";
+          success_style = "bg:green bold black";
         };
 
         character = {
           disabled = false;
           format = lib.concatStrings [
             "$symbol"
-            "[${separator.right} ](bg:none fg:prev_bg)"
+            "[ ](bg:none fg:none)"
           ];
           success_symbol = lib.concatStrings [
-            "[${separator.right}   ](fg:prev_bg bg:green)"
+            "[${separator.left}](fg:green bg:none)"
+            "[ ](bg:green fg:black bold)"
+            "[${separator.right}](bg:none fg:green)"
           ];
           error_symbol = lib.concatStrings [
-            "[](fg:prev_bg bg:red)"
+            "[${separator.left}](fg:red bg:none)"
+            "[ ](bg:red fg:black bold)"
+            "[${separator.right}](bg:none fg:red)"
           ];
         };
 
@@ -151,7 +157,7 @@ let
         nix_shell = {
           disabled = false;
           style = "bg:blue fg:black bold";
-          symbol = " ";
+          symbol = " ";
           format = lib.concatStrings [
             "[${separator.left}](fg:blue)"
             "[ $symbol$name ]($style)"
@@ -196,7 +202,10 @@ in
     ];
 
     nixos.programs.starship = starship // {
-      transientPrompt.enable = true;
+      transientPrompt = {
+        enable = true;
+        left = "starship module character $argv";
+      };
     };
     homeManager.programs.starship = starship // {
       enableTransience = true;
