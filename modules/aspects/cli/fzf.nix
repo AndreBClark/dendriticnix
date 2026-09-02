@@ -64,7 +64,7 @@
         '';
 
         ezaWrapped = pkgs.writeShellScript "eza-wrapper" ''
-          eza --color=always --follow-symlinks --short-nix"$@"
+          eza --color=always --follow-symlinks --short-nix "$@"
         '';
 
         fdCommand = "${fdWrapped} --type f";
