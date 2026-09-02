@@ -23,6 +23,8 @@
     };
 
     # find colorschems: https://tinted-theming.github.io/tinted-gallery/
-    profiles.andrec.theme.colorscheme = "eris";
+    profiles.andrec = {
+      theme.colorscheme = "tokyo-city-dark";
+    };
   };
 }
