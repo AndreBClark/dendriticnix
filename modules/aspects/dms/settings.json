@@ -1,7 +1,7 @@
 {
   "currentThemeName": "custom",
   "currentThemeCategory": "custom",
-  "customThemeFile": "/nix/store/qs6450yl9wbr3fxzq8df9hxx5mz25dar-dankMaterialShell-stylix-color-theme.json",
+  "customThemeFile": "/nix/store/p6lgvrx90jnpsskm5fvy9gna4ayqbd0x-dankMaterialShell-stylix-color-theme.json",
   "registryThemeVariants": {
     "catppuccin": {
       "dark": {
@@ -127,6 +127,7 @@
   "dockBorderColor": "primary",
   "dockLauncherEnabled": true,
   "dockLauncherLogoMode": "os",
+  "dockLauncherLogoColorOverride": "primary",
   "dockMaxVisibleApps": 20,
   "dockMaxVisibleRunningApps": 10,
   "notificationOverlayEnabled": true,
