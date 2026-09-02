@@ -1,3 +1,4 @@
+# pyright: reportMissingImports=false
 from kitty.fast_data_types import Screen
 from kitty.tab_bar import DrawData, ExtraData, TabBarData, draw_attributed_string, apply_title_template, as_rgb
 from kitty.rgb import to_color
