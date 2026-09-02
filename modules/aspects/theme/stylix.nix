@@ -1,9 +1,4 @@
-{
-  lib,
-  inputs,
-  den,
-  ...
-}:
+{ inputs, den, ... }:
 {
   flake-file.inputs = {
     stylix = {
@@ -33,7 +28,7 @@
         base16Scheme = "${pkgs.base16-schemes}/share/themes/${colorscheme}.yaml";
         icons = {
           enable = true;
-          dark = lib.mkForce iconTheme;
+          dark = iconTheme;
           light = iconTheme;
           package = pkgs.dracula-icon-theme;
         };
