@@ -15,6 +15,9 @@
         };
         themes = { };
       };
+      home.shellAliases = {
+        spf = "superfile";
+      };
     };
   };
 }
