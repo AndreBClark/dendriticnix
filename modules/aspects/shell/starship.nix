@@ -39,9 +39,10 @@ let
           format = lib.concatStrings [
             "[${separator.left}](fg:base02 bg:none)"
             "[$symbol]($style)"
-            "[${separator.right}](fg:prev_bg bg:purple)"
+            "[${separator.right}](fg:prev_bg bg:cyan)"
             "[${separator.right}](fg:prev_bg bg:blue)"
-            "[${separator.right}](fg:blue bg:cyan)"
+            "[${separator.right}](fg:prev_bg bg:purple)"
+            "[${separator.right}](fg:prev_bg bg:cyan)"
           ];
         };
 
@@ -135,14 +136,10 @@ let
             "[ ](bg:none fg:none)"
           ];
           success_symbol = lib.concatStrings [
-            "[${separator.left}](fg:green bg:none)"
-            "[ ](bg:green fg:black bold)"
-            "[${separator.right}](bg:none fg:green)"
+            ''[\[SUCCESS\]](fg:green bold)''
           ];
           error_symbol = lib.concatStrings [
-            "[${separator.left}](fg:red bg:none)"
-            "[ ](bg:red fg:black bold)"
-            "[${separator.right}](bg:none fg:red)"
+            ''[\[FAILED\]](fg:red bold)''
           ];
         };
 
