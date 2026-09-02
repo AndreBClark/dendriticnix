@@ -1,6 +1,6 @@
 { lib, ... }:
 {
-  den.aspects.nvim.provides.snacks = {
+  den.aspects.nvim.snacks = {
     homeManager =
       { config, ... }:
       {
@@ -34,8 +34,11 @@
                 notifier.enabled = true;
                 picker = {
                   enabled = true;
-                  layout.preset = "telescope";
-                  sources.explorer.layout.preset = "right";
+                  sources = {
+                    explorer.layout.preset = "right";
+                    buffers.layout.preset = "sidebar";
+                  };
+
                 };
                 scope.enabled = true;
                 rename.enabled = true;
@@ -154,6 +157,11 @@
                 key = "<leader>fc";
                 action.__raw = ''function() Snacks.picker.files({ cwd = vim.fn.stdpath("config") }) end'';
                 options.desc = "Find Config File";
+              }
+              {
+                key = "<leader>sq";
+                action.__raw = "function() Snacks.picker.qflist() end";
+                options.desc = "Quickfix List";
               }
               {
                 mode = "n";

@@ -1,46 +1,44 @@
 {
-  den.aspects.nvim = {
-    provides.treesitter = {
-      homeManager =
-        { pkgs, ... }:
-        {
-          programs.nixvim = {
-            plugins = {
-              treesitter = {
-                enable = true;
-                nixGrammars = true;
-                grammarPackages = builtins.attrValues {
-                  inherit (pkgs.vimPlugins.nvim-treesitter.builtGrammars)
-                    nix
-                    javascript
-                    typescript
-                    lua
-                    astro
-                    json
-                    yaml
-                    kdl
-                    html
-                    css
-                    ;
-                };
-                folding.enable = true;
-                settings = {
-                  highlight.enable = true;
-                  indent.enable = true;
-                };
+  den.aspects.nvim.treesitter = {
+    homeManager =
+      { pkgs, ... }:
+      {
+        programs.nixvim = {
+          plugins = {
+            treesitter = {
+              enable = true;
+              nixGrammars = true;
+              grammarPackages = builtins.attrValues {
+                inherit (pkgs.vimPlugins.nvim-treesitter.builtGrammars)
+                  nix
+                  javascript
+                  typescript
+                  lua
+                  astro
+                  json
+                  yaml
+                  kdl
+                  html
+                  css
+                  ;
               };
-              treesitter-context.enable = true;
+              folding.enable = true;
+              settings = {
+                highlight.enable = true;
+                indent.enable = true;
+              };
+            };
+            treesitter-context.enable = true;
 
-              ts-context-commentstring.enable = true;
-              comment = {
-                enable = true;
-                settings = {
-                  pre_hook = "require('ts_context_commentstring.integrations.comment_nvim').create_pre_hook()";
-                };
+            ts-context-commentstring.enable = true;
+            comment = {
+              enable = true;
+              settings = {
+                pre_hook = "require('ts_context_commentstring.integrations.comment_nvim').create_pre_hook()";
               };
             };
           };
         };
-    };
+      };
   };
 }

@@ -1,44 +1,42 @@
 {
-  den.aspects.nvim = {
-    provides.noice = {
-      homeManager = {
-        programs.nixvim = {
-          plugins = {
-            noice = {
-              enable = true;
-              settings = {
-                cmdline = {
-                  enabled = true;
-                  view = "cmdline_popup";
-                };
+  den.aspects.nvim.noice = {
+    homeManager = {
+      programs.nixvim = {
+        plugins = {
+          noice = {
+            enable = true;
+            settings = {
+              cmdline = {
+                enabled = true;
+                view = "cmdline_popup";
+              };
 
-                messages = {
+              messages = {
+                enabled = true;
+                view = "mini";
+              };
+
+              popupmenu = {
+                enabled = true;
+                backend = "nui";
+              };
+
+              lsp = {
+                progress = {
                   enabled = true;
                   view = "mini";
                 };
-
-                popupmenu = {
+                hover = {
                   enabled = true;
-                  backend = "nui";
                 };
+                signature = {
+                  enabled = true;
+                };
+              };
 
-                lsp = {
-                  progress = {
-                    enabled = true;
-                    view = "mini";
-                  };
-                  hover = {
-                    enabled = true;
-                  };
-                  signature = {
-                    enabled = true;
-                  };
-                };
-
-                notify = {
-                  enabled = false;
-                  view = "notify";
-                };
+              notify = {
+                enabled = false;
+                view = "notify";
               };
             };
           };
