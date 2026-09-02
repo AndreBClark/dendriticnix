@@ -18,6 +18,7 @@
               name = "Noto Emoji";
               package = pkgs.noto-fonts-monochrome-emoji;
             };
+            sizes.terminal = 14;
           };
           targets = {
             font-packages.enable = true;
