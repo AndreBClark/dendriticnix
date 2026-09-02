@@ -15,6 +15,5 @@
       };
       users.andrec = { };
     };
-    homes.x86_64-linux."andrec@dragonfly" = { };
   };
 }

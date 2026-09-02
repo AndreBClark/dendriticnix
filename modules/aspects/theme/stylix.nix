@@ -10,14 +10,15 @@
   den.aspects.stylix =
     { user, ... }:
     let
-      inherit (user.theme)
+      theme = den.profiles.${user.name}.theme or user.theme;
+      inherit (theme)
         colorscheme
         opacity
         cursor
         iconTheme
         polarity
         ;
-      theme = pkgs: {
+      stylix = pkgs: {
         enable = true;
         inherit opacity polarity;
         cursor = {
@@ -46,7 +47,7 @@
             inputs.stylix.nixosModules.stylix
           ];
 
-          stylix = theme pkgs;
+          stylix = stylix pkgs;
 
           environment.systemPackages = builtins.attrValues {
             inherit (pkgs)
@@ -61,7 +62,7 @@
       homeManager =
         { pkgs, ... }:
         {
-          stylix = theme pkgs;
+          stylix = stylix pkgs;
 
           home.packages = [
             pkgs.${cursor.package}

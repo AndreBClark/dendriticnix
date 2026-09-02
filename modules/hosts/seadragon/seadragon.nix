@@ -16,7 +16,5 @@
         den.aspects.apps.steam
       ];
     };
-
-    homes.x86_64-linux."andrec@seadragon" = { };
   };
 }

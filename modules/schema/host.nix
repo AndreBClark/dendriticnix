@@ -11,6 +11,10 @@
           type = lib.types.str;
           default = "dms";
         };
+        theme = lib.mkOption {
+          type = lib.types.submodule (import ./theme.nix);
+          default = { };
+        };
         hardware = {
           cpu = lib.mkOption {
             type = lib.types.enum [ "intel" ];
