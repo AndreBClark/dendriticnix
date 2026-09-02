@@ -26,7 +26,8 @@
         };
       fontPackages = pkgs: [
         pkgs.nerd-fonts.symbols-only
-        pkgs.noto-fonts
+        pkgs.noto-fonts-lgc-plus
+        pkgs.dejavu_fonts
         pkgs.unifont
         pkgs.freefont_ttf
         pkgs.liberation_ttf
