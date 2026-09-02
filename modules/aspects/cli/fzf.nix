@@ -64,7 +64,7 @@
         '';
 
         ezaWrapped = pkgs.writeShellScript "eza-wrapper" ''
-          eza --color=always "$@"
+          eza --color=always --follow-symlinks --short-nix"$@"
         '';
 
         fdCommand = "${fdWrapped} --type f";
@@ -123,6 +123,12 @@
             };
 
             defaultOptions = [
+              "--height=40%"
+              "--min-height=20+"
+              "--bind=ctrl-z:ignore"
+              "--reverse"
+              "--walker=file,dir,follow,hidden"
+              "--scheme=path"
               "--ansi"
               "--style=full"
               "--filepath-word"
