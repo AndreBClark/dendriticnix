@@ -8,6 +8,7 @@
       programs.eza = {
         enable = true;
         icons = "auto";
+        git = true;
         colors = "always";
         extraOptions = [
           "--classify"
@@ -17,6 +18,8 @@
           "--smart-group"
           "--no-permissions"
           "--no-user"
+          "--short-nix"
+          "--follow-symlinks"
         ];
       };
 
