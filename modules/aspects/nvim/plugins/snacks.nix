@@ -36,10 +36,11 @@
                   enabled = true;
                   sources = {
                     explorer.layout.preset = "right";
-                    buffers.layout.preset = "sidebar";
+                    buffers.layout.preset = "right";
                   };
 
                 };
+                zen.enabled = true;
                 scope.enabled = true;
                 rename.enabled = true;
                 words.enabled = true;
@@ -70,21 +71,6 @@
               key = "<leader>cR";
               action.__raw = "function() Snacks.rename.rename_file() end";
               options.desc = "Rename File";
-            })
-            ++ (lib.optional (cfg.gitbrowse.enabled or false) {
-              mode = [
-                "n"
-                "v"
-              ];
-              key = "<leader>gB";
-              action.__raw = "function() Snacks.gitbrowse() end";
-              options.desc = "Git Browse";
-            })
-            ++ (lib.optional (cfg.lazygit.enabled or false) {
-              mode = "n";
-              key = "<leader>gg";
-              action.__raw = "function() Snacks.lazygit() end";
-              options.desc = "Lazygit";
             })
             ++ (lib.optional (cfg.notifier.enabled or false) {
               mode = "n";
@@ -151,12 +137,6 @@
                 key = "<leader><space>";
                 action.__raw = "function() Snacks.picker.smart() end";
                 options.desc = "Smart Find Files";
-              }
-              {
-                mode = "n";
-                key = "<leader>fc";
-                action.__raw = ''function() Snacks.picker.files({ cwd = vim.fn.stdpath("config") }) end'';
-                options.desc = "Find Config File";
               }
               {
                 key = "<leader>sq";
