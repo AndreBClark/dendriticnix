@@ -40,8 +40,11 @@
           }
 
           {
-            mode = "n";
-            key = "<C-a>";
+            mode = [
+              "n"
+              "v"
+            ];
+            key = "<leader>a";
             action = "ggVG";
             options.desc = "Select all";
           }
