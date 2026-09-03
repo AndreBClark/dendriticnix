@@ -15,6 +15,7 @@ let
         format = lib.concatStrings [
           "$os"
           "$directory"
+          "[${separator.right}](fg:prev_bg bg:base02)"
           "$git_branch"
           "$git_status"
           "$status"
@@ -38,7 +39,7 @@ let
           symbols.NixOS = " ";
           format = lib.concatStrings [
             "[${separator.left}](fg:base02 bg:none)"
-            "[$symbol]($style)"
+            "[ $symbol ]($style)"
             "[${separator.right}](fg:prev_bg bg:cyan)"
             "[${separator.right}](fg:prev_bg bg:blue)"
             "[${separator.right}](fg:prev_bg bg:purple)"
@@ -54,12 +55,11 @@ let
             inherit style;
             repo_root_style = style;
             format = lib.concatStrings [
-
-              "[ $path ]($style)"
+              "[ $path]($style)"
             ];
             before_repo_root_style = "bg:blue black dimmed";
             repo_root_format = lib.concatStrings [
-              "[  $repo_root ]($repo_root_style)"
+              "[  $repo_root]($repo_root_style)"
               "[$path]($style)"
             ];
             substitutions = [
@@ -104,7 +104,6 @@ let
         git_branch = {
           style = "bg:base02 fg:blue";
           format = lib.concatStrings [
-            "[${separator.right}](fg:prev_bg bg:base02)"
             "[ $symbol$branch]($style)"
           ];
         };
@@ -132,14 +131,14 @@ let
         character = {
           disabled = false;
           format = lib.concatStrings [
-            "$symbol"
+            ''\[$symbol\]''
             "[ ](bg:none fg:none)"
           ];
           success_symbol = lib.concatStrings [
-            ''[\[SUCCESS\]](fg:green bold)''
+            "[SUCCESS](fg:green)"
           ];
           error_symbol = lib.concatStrings [
-            ''[\[FAILED\]](fg:red bold)''
+            "[FAILED](fg:red)"
           ];
         };
 
