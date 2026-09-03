@@ -1,7 +1,7 @@
 {
   "currentThemeName": "custom",
   "currentThemeCategory": "custom",
-  "customThemeFile": "/nix/store/p6lgvrx90jnpsskm5fvy9gna4ayqbd0x-dankMaterialShell-stylix-color-theme.json",
+  "customThemeFile": "/nix/store/j273mvdfdsl3j7hywn8ixh6k7095zfvv-dankMaterialShell-stylix-color-theme.json",
   "registryThemeVariants": {
     "catppuccin": {
       "dark": {
@@ -65,6 +65,7 @@
   "workspaceAppIconSizeOffset": 4,
   "showOccupiedWorkspacesOnly": true,
   "workspaceActiveAppHighlightEnabled": true,
+  "mediaUseAlbumArtAccent": true,
   "runningAppsCurrentWorkspace": false,
   "runningAppsGroupByApp": true,
   "clockDateFormat": "yyyy-MM-dd ddd",
@@ -135,7 +136,6 @@
   "notificationTimeoutNormal": 8000,
   "notificationFocusedMonitor": true,
   "osdAlwaysShowValue": true,
-  "osdPosition": 4,
   "osdMediaPlaybackEnabled": true,
   "osdPowerProfileEnabled": true,
   "powerMenuActions": [

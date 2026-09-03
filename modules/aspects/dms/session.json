@@ -47,7 +47,7 @@
     "khal",
     "qt5ct"
   ],
-  "lastPlayerIdentity": "Spotify",
+  "lastPlayerIdentity": "Vivaldi",
   "hiddenOutputDeviceNames": [
     "easyeffects_sink"
   ],
@@ -65,6 +65,7 @@
   },
   "lastAppliedIconTheme": "Dracula",
   "launcherQueryHistory": [
+    "viv",
     "xter,",
     "=3390.82+",
     "=",
@@ -75,7 +76,6 @@
     "=85*.6",
     "`",
     "=1440/16",
-    "viv",
     "v",
     "term",
     "nvim",
