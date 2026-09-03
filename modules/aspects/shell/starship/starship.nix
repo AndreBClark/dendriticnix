@@ -155,9 +155,9 @@ let
           style = "bg:blue fg:black bold";
           symbol = " ";
           format = lib.concatStrings [
-            "[${separator.left}](fg:blue)"
+            "[ ${separator.left}](fg:blue)"
             "[ $symbol$name ]($style)"
-            "[${separator.right}](fg:blue)"
+            "[${separator.right} ](fg:blue)"
           ];
         };
 
