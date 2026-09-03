@@ -1,41 +1,57 @@
+{ den, ... }:
 {
   den.aspects.nvim.treesitter = {
+    includes = [
+      (den.batteries.unfree [ "wildfire.nvim" ])
+    ];
     homeManager =
       { pkgs, ... }:
       {
-        programs.nixvim = {
-          plugins = {
-            treesitter = {
-              enable = true;
-              nixGrammars = true;
-              grammarPackages = builtins.attrValues {
-                inherit (pkgs.vimPlugins.nvim-treesitter.builtGrammars)
-                  nix
-                  javascript
-                  typescript
-                  lua
-                  astro
-                  json
-                  yaml
-                  kdl
-                  html
-                  css
-                  ;
-              };
-              folding.enable = true;
-              settings = {
-                highlight.enable = true;
-                indent.enable = true;
-              };
+        programs.nixvim.plugins = {
+          treesitter = {
+            enable = true;
+            nixGrammars = true;
+            grammarPackages = builtins.attrValues {
+              inherit (pkgs.vimPlugins.nvim-treesitter.builtGrammars)
+                nix
+                javascript
+                typescript
+                lua
+                astro
+                json
+                yaml
+                kdl
+                html
+                css
+                ;
             };
-            treesitter-context.enable = true;
+            folding.enable = true;
+            settings = {
+              highlight.enable = true;
+              indent.enable = true;
+            };
+          };
 
-            ts-context-commentstring.enable = true;
-            comment = {
-              enable = true;
-              settings = {
-                pre_hook = "require('ts_context_commentstring.integrations.comment_nvim').create_pre_hook()";
-              };
+          treesitter-context = {
+            enable = true;
+            settings = {
+              max_lines = 6;
+            };
+          };
+          wildfire = {
+            enable = true;
+            settings.keymaps = {
+              init_selection = "<CR>";
+              node_incremental = "<CR>";
+              node_decremental = "<BS>";
+            };
+          };
+          ts-context-commentstring.enable = true;
+
+          comment = {
+            enable = true;
+            settings = {
+              pre_hook = "require('ts_context_commentstring.integrations.comment_nvim').create_pre_hook()";
             };
           };
         };
