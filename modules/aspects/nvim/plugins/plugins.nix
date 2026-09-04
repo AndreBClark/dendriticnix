@@ -33,6 +33,7 @@
                   { __unkeyed-1 = "gp"; }
                 ];
               };
+              cutlass-nvim.enable = true;
               illuminate.enable = true;
               lint.enable = true;
               nix-develop.enable = true;
