@@ -1,6 +1,6 @@
 {
   "terminalOverride": "kitty",
-  "wallpaperPath": "/home/andrec/Pictures/Wallpaper-tokyo-night-storm/AC6_1305418.jpeg",
+  "wallpaperPath": "/home/andrec/Pictures/Wallpaper-tokyo-night-dark/AC6_1305418.jpeg",
   "wallpaperPathLight": "/home/andrec/Pictures/Wallpapers-tokyonight/g7xdxl.jpeg",
   "wallpaperPathDark": "/home/andrec/Pictures/Wallpapers-tokyonight/g7xdxl.jpeg",
   "includedTransitions": [
@@ -9,7 +9,7 @@
   "wallpaperCyclingEnabled": true,
   "wallpaperCyclingRandom": true,
   "wallpaperCyclingInterval": 900,
-  "wallpaperCyclingFolderPath": "/home/andrec/Pictures/Wallpaper-tokyo-night-storm",
+  "wallpaperCyclingFolderPath": "/home/andrec/Pictures/Wallpaper-tokyo-night-dark",
   "weatherLocation": "",
   "pinnedApps": [
     "kitty",
@@ -29,6 +29,7 @@
     "steam"
   ],
   "recentColors": [
+    "#2e3138",
     "#d0d0d9",
     "#7aa2f7",
     "#4d2e21"

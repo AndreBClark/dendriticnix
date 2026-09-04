@@ -1,7 +1,7 @@
 {
   "currentThemeName": "custom",
   "currentThemeCategory": "custom",
-  "customThemeFile": "/nix/store/j273mvdfdsl3j7hywn8ixh6k7095zfvv-dankMaterialShell-stylix-color-theme.json",
+  "customThemeFile": "/nix/store/gkn65mdd7ps06xwrhq305v6c3m6sk7s8-dankMaterialShell-stylix-color-theme.json",
   "registryThemeVariants": {
     "catppuccin": {
       "dark": {
@@ -65,6 +65,7 @@
   "workspaceAppIconSizeOffset": 4,
   "showOccupiedWorkspacesOnly": true,
   "workspaceActiveAppHighlightEnabled": true,
+  "scrollTitleEnabled": false,
   "mediaUseAlbumArtAccent": true,
   "runningAppsCurrentWorkspace": false,
   "runningAppsGroupByApp": true,
@@ -353,5 +354,5 @@
   "frameShowOnOverview": true,
   "frameCloseGaps": false,
   "frameLauncherArcExtender": true,
-  "configVersion": 16
+  "configVersion": 17
 }
