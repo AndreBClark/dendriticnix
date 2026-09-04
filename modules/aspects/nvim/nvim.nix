@@ -12,6 +12,7 @@
         keymaps
         options
         plugins
+        highlight
         ;
     };
 
