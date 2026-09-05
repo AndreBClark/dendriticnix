@@ -10,6 +10,7 @@
         programs.nixvim = {
           lsp = {
             inlayHints.enable = true;
+            codelens.enable = true;
             servers = {
               ts_ls.enable = true;
               biome = {
@@ -44,9 +45,7 @@
                   };
                 };
               };
-              nixd = {
-                enable = true;
-              };
+              nixd.enable = true;
               dockerls.enable = true;
               bashls.enable = true;
               yamlls.enable = true;
