@@ -1,0 +1,22 @@
+system: "base16"
+name: "Tokyo Night Neon"
+author: "Andre Clark (https://github.com/andrebclark), based on Tokyo Night Storm by Michaël Ball"
+description: "remixed Tokyo Night scheme with more varied accents and linear background brightness increase"
+variant: "dark"
+palette:
+  base00: "#24283B" #             Tokyo Night Storm base01
+  base01: "#2C3147"
+  base02: "#343A52" #             Tokyo Night Storm base{02..05+7}
+  base03: "#444B6A"
+  base04: "#787C99"
+  base05: "#A9B1D6"
+  base06: "#C0CAF5" #             Tokyo Night Storm          base08
+  base07: "#D5D6DB" # foreground
+  base08: "#F7768E" # Red         Tokyo Night Storm          base0F
+  base09: "#FF9E64" # Orange      Tokyo Night Terminal Storm base09
+  base0A: "#2AC3DE" # turquoise
+  base0B: "#C3E88D" # neon Green
+  base0C: "#B4F9F8" # Cyan
+  base0D: "#82AAFF" # Soft Blue   Tokyo Night Moon           base0D
+  base0E: "#BB9AF7" # Neon Violet Tokyo Night Moon           base0E
+  base0F: "#BB9AF8"

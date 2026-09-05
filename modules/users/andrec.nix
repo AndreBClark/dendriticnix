@@ -24,7 +24,7 @@
 
     # find colorschems: https://tinted-theming.github.io/tinted-gallery/
     profiles.andrec = {
-      theme.colorscheme = "tokyo-city-dark";
+      theme.colorscheme = "tokyo-night-storm";
     };
   };
 }
