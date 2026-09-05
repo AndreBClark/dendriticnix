@@ -10,6 +10,7 @@
         };
 
         tabBarPy =
+          with colors;
           file:
           builtins.replaceStrings
             [
@@ -30,19 +31,19 @@
               "@PILL_RIGHT@"
             ]
             [
-              colors.base02
-              colors.base05
+              base02
+              base05
 
-              colors.base0E
-              colors.base0D
-              colors.base0C
-              colors.base0B
-              colors.base0A
-              colors.base08
-              colors.base13
-              colors.base14
+              base0E
+              base0D
+              base0C
+              base0B
+              base0A
+              base08
+              base13
+              base14
 
-              colors.base01
+              base01
 
               separator.left
               separator.right
@@ -63,6 +64,9 @@
               tab_bar_edge = "top";
               tab_bar_style = "custom";
               window_padding_width = 6;
+              cursor_shape = "block";
+              cursor_trail = 1;
+              shell_integration = "no-rc no-cursor";
             };
           keybindings = {
             "ctrl+shift+T" = "new_tab_with_cwd";
