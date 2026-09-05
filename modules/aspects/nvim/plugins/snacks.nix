@@ -9,8 +9,9 @@
             snacks = {
               enable = true;
               settings = {
+                animate.enable = true;
+                bigFile.enable = true;
                 bufdelete.enabled = true;
-                dashboard.enabled = true;
                 dim.enabled = true;
                 explorer.enabled = true;
                 quickfile.enabled = true;
