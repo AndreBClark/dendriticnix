@@ -25,8 +25,8 @@
       url = "github:AvengeMedia/dms-plugin-registry";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
   };
+
   den.aspects.dms = {
     includes = builtins.attrValues {
       inherit (den.aspects.dms)
@@ -121,6 +121,9 @@
 
           dsearch.enable = true;
         };
+
+        home.packages = [ pkgs.dgop ];
+
         xdg.configFile =
           let
             colorsImport = ''@import url("dank-colors.css");'';
