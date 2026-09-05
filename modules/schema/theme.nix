@@ -6,9 +6,29 @@
       default = "tokyo-night-storm";
     };
 
-    iconTheme = lib.mkOption {
-      type = lib.types.str;
-      default = "Dracula";
+    icons = lib.mkOption {
+      type = lib.types.submodule {
+        options =
+          let
+            defaultName = "Dracula";
+          in
+          {
+            dark = lib.mkOption {
+              type = lib.types.str;
+              default = defaultName;
+            };
+
+            light = lib.mkOption {
+              type = lib.types.str;
+              default = defaultName;
+            };
+            package = lib.mkOption {
+              type = lib.types.str;
+              default = "dracula-icon-theme";
+            };
+            default = { };
+          };
+      };
     };
 
     cursor = lib.mkOption {
