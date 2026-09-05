@@ -26,14 +26,11 @@
           };
         };
       fontPackages = pkgs: [
-        pkgs.nerd-fonts.symbols-only
         pkgs.noto-fonts-lgc-plus
         pkgs.dejavu_fonts
         pkgs.unifont
         pkgs.freefont_ttf
         pkgs.liberation_ttf
-        pkgs.noto-fonts-color-emoji
-        pkgs.noto-fonts-monochrome-emoji
       ];
     in
     {
