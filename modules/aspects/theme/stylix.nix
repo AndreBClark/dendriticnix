@@ -1,4 +1,9 @@
-{ inputs, den, ... }:
+{
+  inputs,
+  den,
+  lib,
+  ...
+}:
 {
   flake-file.inputs = {
     stylix = {
@@ -13,28 +18,37 @@
       let
         theme = den.profiles.${user.name}.theme or user.theme;
         inherit (theme)
-          colorscheme
           opacity
           cursor
-          iconTheme
+          icons
           polarity
           ;
-        stylix = pkgs: {
-          enable = true;
-          inherit opacity polarity;
-          cursor = {
-            inherit (cursor) name size;
-            package = pkgs.${cursor.package};
-          };
-
-          base16Scheme = "${pkgs.base16-schemes}/share/themes/${colorscheme}.yaml";
-          icons = {
+        stylix =
+          pkgs:
+          let
+            base16Scheme = ./tokyo-night-neon.yaml;
+            # base16Scheme = "${pkgs.base16-schemes}/share/themes/${colorscheme}.yaml";
+          in
+          {
             enable = true;
-            dark = iconTheme;
-            light = iconTheme;
-            package = pkgs.dracula-icon-theme;
+            inherit opacity polarity base16Scheme;
+
+            cursor = {
+              inherit (cursor) name size;
+              package = pkgs.${cursor.package};
+            };
+            icons = {
+              enable = true;
+              inherit (icons) dark light;
+              package = pkgs.${icons.package};
+            };
+
+            targets = {
+              gtksourceview.enable = lib.mkDefault false;
+              gnome.enable = lib.mkDefault false;
+              gnome-text-editor.enable = lib.mkDefault false;
+            };
           };
-        };
       in
       {
         includes = builtins.attrValues {
@@ -65,7 +79,11 @@
         homeManager =
           { pkgs, ... }:
           {
-            stylix = stylix pkgs;
+            stylix = stylix pkgs // {
+              targets = {
+                blender.enable = lib.mkDefault false;
+              };
+            };
 
             home.packages = [
               pkgs.${cursor.package}
