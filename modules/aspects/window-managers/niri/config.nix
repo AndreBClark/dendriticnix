@@ -13,9 +13,9 @@
             };
 
             blur = {
-              offset = 4;
-              passes = 4;
-              noise = 0.03;
+              offset = 6;
+              passes = 5;
+              noise = 0.04;
             };
 
             prefer-no-csd = { };
