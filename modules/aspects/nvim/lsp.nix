@@ -58,7 +58,18 @@
 
             fastaction = {
               enable = true;
-              settings.register_ui_select = true;
+              settings = {
+                register_ui_select = true;
+                priority = {
+                  default = [
+                    {
+                      key = "o";
+                      order = 1;
+                      pattern = "organize import";
+                    }
+                  ];
+                };
+              };
             };
 
             none-ls = {
