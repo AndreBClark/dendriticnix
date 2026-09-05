@@ -77,9 +77,9 @@
       },
       "branch": "master",
       "submodules": false,
-      "revision": "2008c39af3014d03d35b6aa291b4035c0ae08cc7",
-      "url": "https://github.com/AvengeMedia/DankMaterialShell/archive/2008c39af3014d03d35b6aa291b4035c0ae08cc7.tar.gz",
-      "hash": "sha256-JRQAM8U36/7PxzoYQn9y7QE/AdrpfeG+Zo3MlpMtzXI="
+      "revision": "e4793327b8b21d104d46bf53414b228d80986585",
+      "url": "https://github.com/AvengeMedia/DankMaterialShell/archive/e4793327b8b21d104d46bf53414b228d80986585.tar.gz",
+      "hash": "sha256-bK2ikO7yYqgff8WU7JkB1clafCuS9pGcN22wm7Xwf+k="
     },
     "dms-plugin-registry": {
       "type": "Git",
@@ -90,9 +90,9 @@
       },
       "branch": "master",
       "submodules": false,
-      "revision": "900398fbc01b1d48dbd3332b8e0f817632d441dd",
-      "url": "https://github.com/AvengeMedia/dms-plugin-registry/archive/900398fbc01b1d48dbd3332b8e0f817632d441dd.tar.gz",
-      "hash": "sha256-82gY3/Is98y7Ibpk5JopgSZubPqPH/Ba8s56azGY5B4="
+      "revision": "ffe4ee96b1d7ec9021c9f9930f29e466bd3a3a4f",
+      "url": "https://github.com/AvengeMedia/dms-plugin-registry/archive/ffe4ee96b1d7ec9021c9f9930f29e466bd3a3a4f.tar.gz",
+      "hash": "sha256-4B3cuVK/DUaNGWGXvmsAnFaG0qgdgBcFVKNfPttQ+5k="
     },
     "flake-parts": {
       "type": "Git",
@@ -129,9 +129,9 @@
       },
       "branch": "master",
       "submodules": false,
-      "revision": "aa308770461dcf22c333a5e8a31c8bddbde5bee9",
-      "url": "https://github.com/nix-community/home-manager/archive/aa308770461dcf22c333a5e8a31c8bddbde5bee9.tar.gz",
-      "hash": "sha256-UZTAlg8iKVEmyEXakzKmukrzFIKrXezYsRy9vajDrGw="
+      "revision": "693e8ce0fb240a73c116a03cfd7b19269c87af88",
+      "url": "https://github.com/nix-community/home-manager/archive/693e8ce0fb240a73c116a03cfd7b19269c87af88.tar.gz",
+      "hash": "sha256-Ro/e1N4ZR8/XaFF+sF9SgfPK79HM5YNEppzFj8p+0Ak="
     },
     "niri": {
       "type": "GitRelease",
@@ -166,8 +166,8 @@
       "type": "Channel",
       "name": "nixpkgs-unstable",
       "artifact": "nixexprs.tar.xz",
-      "url": "https://releases.nixos.org/nixpkgs/nixpkgs-26.11pre1066425.9387b3fcc0c2/nixexprs.tar.xz",
-      "hash": "sha256-4ua7nluyuvF5SVIa2nBTCTW9ZiuzYuSBZQk4EdwOWhI="
+      "url": "https://releases.nixos.org/nixpkgs/nixpkgs-26.11pre1066699.5545adfad2e9/nixexprs.tar.xz",
+      "hash": "sha256-v4ZEET1Ah1K9+wMaIwPH/JTQK3MwW/gZC/SyjnlBX74="
     },
     "nixvim": {
       "type": "Git",
