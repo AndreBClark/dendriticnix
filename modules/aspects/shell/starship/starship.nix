@@ -139,12 +139,15 @@ let
 
         nix_shell = {
           disabled = false;
-          style = "bg:blue fg:black bold";
+          style = "bg:blue fg:bright-black bold";
           symbol = " ";
           format = lib.concatStrings [
-            "[ ${separator.left}](fg:blue)"
-            "[ $symbol$name ]($style)"
-            "[${separator.right} ](fg:blue)"
+            "[ ]()"
+            "[${separator.left}](fg:bright-black)"
+            "[$symbol](fg:blue bg:bright-black)"
+            "[${separator.right}](fg:bright-black bg:blue)"
+            "[ $name]($style)"
+            "[${separator.right}](fg:blue)"
           ];
         };
 
@@ -153,14 +156,26 @@ let
           format = "[$symbol $version]($style)";
         };
 
-        nodejs.format = "[$symbol$version]($style)";
+        nodejs = {
+          symbol = "󰎙 ";
+          style = "bg:green bold fg:bright-black";
+          format = lib.concatStrings [
+            "[ ]()"
+            "[${separator.left}](bg:none fg:bright-black)"
+            "[$symbol](bg:prev_fg fg:green)"
+            "[${separator.right}](bg:green fg:bright-black)"
+            "[ $version]($style)"
+            "[${separator.right}](bg:none fg:green)"
+          ];
+        };
 
         git_metrics = {
           disabled = false;
-          added_style = "bg:green bold black";
-          deleted_style = "bg:red bold black";
+          added_style = "bg:green bold bright-black";
+          deleted_style = "bg:red bold bright-black";
           format = lib.concatStrings [
             "("
+            "[ ]()"
             "[${separator.left}](fg:green)"
             "[+$added]($added_style)"
             "[${separator.right}](fg:prev_bg)"
@@ -171,6 +186,14 @@ let
             ")"
           ];
         };
+        character =
+          let
+            symbol = ">";
+          in
+          {
+            error_symbol = "[${symbol}](bold red)";
+            success_symbol = "[${symbol}](bold green)";
+          };
 
         cmd_duration.disabled = true;
 
