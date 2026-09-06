@@ -65,7 +65,7 @@
                     {
                       key = "o";
                       order = 1;
-                      pattern = "organize import";
+                      pattern = "organize imports";
                     }
                   ];
                 };
