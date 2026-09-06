@@ -20,6 +20,7 @@
           inccommand = "nosplit";
           list = true;
           mouse = "a";
+          mousemodel = "popup";
           pumblend = 10;
           pumheight = 10;
           scrolloff = 4;

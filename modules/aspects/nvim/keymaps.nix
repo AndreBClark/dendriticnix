@@ -48,7 +48,24 @@
             action = "ggVG";
             options.desc = "Select all";
           }
-
+          {
+            key = "<ScrollWheelLeft>";
+            action = "<Nop>";
+            mode = [
+              "n"
+              "i"
+              "v"
+            ];
+          }
+          {
+            key = "<ScrollWheelRight>";
+            action = "<Nop>";
+            mode = [
+              "n"
+              "i"
+              "v"
+            ];
+          }
         ];
       };
     };
