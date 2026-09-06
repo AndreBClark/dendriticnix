@@ -128,24 +128,11 @@ let
           success_style = "bg:green bold black";
         };
 
-        character = {
-          disabled = false;
-          format = lib.concatStrings [
-            ''\[$symbol\]''
-            "[ ](bg:none fg:none)"
-          ];
-          success_symbol = lib.concatStrings [
-            "[SUCCESS](fg:green)"
-          ];
-          error_symbol = lib.concatStrings [
-            "[FAILED](fg:red)"
-          ];
-        };
-
         # right side
         git_commit.disabled = false;
 
         shell = {
+          format = "[$indicator]($style)";
           fish_indicator = "";
           disabled = false;
         };
