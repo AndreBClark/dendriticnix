@@ -11,7 +11,7 @@
     hosts.x86_64-linux.dragonfly = {
       hardware = {
         storage = [ "ssd" ];
-        gpuMode = "hybrid";
+        gpuMode = "intel";
       };
       users.andrec = { };
     };
