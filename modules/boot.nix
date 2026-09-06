@@ -10,7 +10,7 @@
           timeout = 5;
         };
         # initrd.systemd.enable = true;
-        kernelPackages = pkgs.linuxPackages_latest;
+        kernelPackages = pkgs.linuxPackages_xanmod_stable;
         kernelParams = [
           "cgroup_no_v1=all"
           "systemd.unified_cgroup_hierarchy=yes"
