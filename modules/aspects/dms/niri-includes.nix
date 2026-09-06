@@ -9,7 +9,7 @@
       {
         xdg.configFile = {
           "niri/dms.kdl".text = lib.concatStringsSep "\n" (
-            lib.lists.dropEnd 7 (lib.splitString "\n" (builtins.readFile "${dmsSrc}.kdl"))
+            lib.lists.dropEnd 9 (lib.splitString "\n" (builtins.readFile "${dmsSrc}.kdl"))
           );
           "niri/dms/alttab.kdl".source = "${dmsSrc}-alttab.kdl";
           "niri/dms/binds.kdl".source = "${dmsSrc}-binds.kdl";
