@@ -25,7 +25,6 @@ let
         ];
 
         right_format = lib.concatStrings [
-          "$cmd_duration"
           "$nix_shell"
           "$php"
           "$nodejs"
@@ -194,8 +193,6 @@ let
             error_symbol = "[${symbol}](bold red)";
             success_symbol = "[${symbol}](bold green)";
           };
-
-        cmd_duration.disabled = true;
 
       };
   };
