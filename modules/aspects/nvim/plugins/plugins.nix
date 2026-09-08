@@ -33,7 +33,15 @@
                   { __unkeyed-1 = "gp"; }
                 ];
               };
-              cutlass-nvim.enable = true;
+
+              cutlass-nvim = {
+                enable = true;
+                settings = {
+                  cut_key = "x";
+                  override_del = true;
+                };
+              };
+
               illuminate.enable = true;
               nix-develop.enable = true;
               render-markdown.enable = lib.mkDefault true;
