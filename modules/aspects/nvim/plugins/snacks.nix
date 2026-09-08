@@ -140,6 +140,11 @@
                 options.desc = "Smart Find Files";
               }
               {
+                key = ''<leader>s"'';
+                action.__raw = "function() Snacks.picker.registers() end";
+                options.desc = "Registers";
+              }
+              {
                 key = "<leader>sq";
                 action.__raw = "function() Snacks.picker.qflist() end";
                 options.desc = "Quickfix List";
