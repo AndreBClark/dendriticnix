@@ -35,7 +35,6 @@
               };
               cutlass-nvim.enable = true;
               illuminate.enable = true;
-              lint.enable = true;
               nix-develop.enable = true;
               render-markdown.enable = lib.mkDefault true;
               smart-splits = {
@@ -53,7 +52,6 @@
                 lazyLoad.settings.cmd = "Trouble";
               };
 
-              trim.enable = true;
               web-devicons.enable = true;
               tiny-inline-diagnostic = {
                 enable = true;

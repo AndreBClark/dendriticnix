@@ -34,7 +34,6 @@
                 package = pkgs.astro-language-server;
               };
               jsonls.enable = true;
-              # phpactor.enable = true;
               svelte.enable = true;
               pyright.enable = true;
               marksman = {
@@ -45,8 +44,13 @@
                   };
                 };
               };
-              nixd.enable = true;
-              dockerls.enable = true;
+              nixd = {
+                enable = true;
+                config = {
+                  formatting.command = [ "nixfmt" ];
+                  nixpkgs.expr = "import (builtins.getFlake \"pkgs\") { }";
+                };
+              };
               bashls.enable = true;
               yamlls.enable = true;
             };
@@ -56,19 +60,13 @@
             lsp-format.enable = true;
             lspkind.enable = true;
 
+            lint.enable = true;
+            trim.enable = true;
+
             fastaction = {
               enable = true;
               settings = {
                 register_ui_select = true;
-                priority = {
-                  default = [
-                    {
-                      key = "o";
-                      order = 1;
-                      pattern = "organize imports";
-                    }
-                  ];
-                };
               };
             };
 
@@ -76,7 +74,7 @@
               enable = true;
               sources = {
                 formatting = {
-                  nixpkgs_fmt.enable = true;
+                  nixfmt.enable = true;
                   biome.enable = true;
                   stylua.enable = true;
                 };
