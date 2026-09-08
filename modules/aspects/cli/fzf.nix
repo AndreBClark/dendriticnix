@@ -10,7 +10,12 @@
     ];
 
     homeManager =
-      { lib, pkgs, ... }:
+      {
+        lib,
+        pkgs,
+        config,
+        ...
+      }:
       let
         excludesList = [
           ".git"
@@ -44,35 +49,19 @@
           "*.tmp"
         ];
 
+        colors = config.lib.stylix.colors.withHashtag;
+
         excludesStr = lib.pipe excludesList [
           (map (p: "--exclude ${lib.escapeShellArg p}"))
           (lib.concatStringsSep " ")
         ];
 
         excludesCSV = lib.concatStringsSep "," excludesList;
-
-        fdFlags = "--hidden --color=always " + excludesStr;
         batTheme = "base16-stylix";
         previewWindow = "--preview-window='<60(down,50%),60,border-rounded'";
 
         batWrapped = pkgs.writeShellScript "bat-wrapper" ''
           bat --color=always --style=numbers --theme=${batTheme} "$@"
-        '';
-
-        fdWrapped = pkgs.writeShellScript "fd-wrapper" ''
-          fd "$@" ${fdFlags}
-        '';
-
-        ezaWrapped = pkgs.writeShellScript "eza-wrapper" ''
-          eza --color=always --follow-symlinks --short-nix "$@"
-        '';
-
-        fdCommand = "${fdWrapped} --type f";
-
-        zoxideDirWrapped = pkgs.writeShellScript "zoxide-dir-wrapper" ''
-          zoxide query -l | while read -r dir; do
-            printf '%s\t%s\n' "$(sed "s|^$HOME|~|" <<< "$dir")" "$dir"
-          done
         '';
 
         customPreviewScript = pkgs.writeShellScript "kitty-preview.sh" ''
@@ -92,22 +81,100 @@
           fi
         '';
 
+        fzf = {
+          defaultOptions = [
+            "--height=40%"
+            "--min-height=20+"
+            "--bind=ctrl-z:ignore"
+            "--reverse"
+            "--walker=file,dir,follow,hidden"
+            "--scheme=path"
+            "--ansi"
+            "--style=full"
+            "--filepath-word"
+            "--cycle"
+            "--scroll-off=3"
+            previewWindow
+            "--walker-skip=${excludesCSV}"
+            "-1"
+            "-0"
+          ];
+
+          colors = with colors; {
+            "bg" = base00;
+            "bg+" = base01;
+            "fg" = base04;
+            "fg+" = base06;
+            "header" = base0C;
+            "hl" = base0D;
+            "hl+" = base0D;
+            "info" = base0A;
+            "marker" = base0E;
+            "pointer" = base0E;
+            "prompt" = base0D;
+            "spinner" = base0E;
+            "border" = base0D;
+          };
+        };
+
+        fzfColorsStr =
+          "--color="
+          + lib.concatStringsSep "," (lib.mapAttrsToList (name: value: "${name}:${value}") fzf.colors);
+
+        fzfDefaultOptionsPiped = lib.concatStringsSep " " fzf.defaultOptions;
+
+        fzfWrapped = pkgs.writeShellScript "fzf-wrapper" ''
+          FZF_DEFAULT_OPTS="${"$"}{FZF_DEFAULT_OPTS:-} ${fzfDefaultOptionsPiped} ${fzfColorsStr}" \
+            ${pkgs.fzf}/bin/fzf "$@"
+        '';
+
+        fdFlags = "--hidden --color=always " + excludesStr;
+
+        fdWrapped = pkgs.writeShellScript "fd-wrapper" ''
+          fd "$@" ${fdFlags}
+        '';
+
+        ezaWrapped = pkgs.writeShellScript "eza-wrapper" ''
+          eza --color=always --follow-symlinks --short-nix "$@"
+        '';
+
+        fdCommand = "${fdWrapped} --type f";
+
+        zoxideDirWrapped = pkgs.writeShellScript "zoxide-dir-wrapper" ''
+          zoxide query -l | while read -r dir; do
+            printf '%s\t%s\n' "$(sed "s|^$HOME|~|" <<< "$dir")" "$dir"
+          done
+        '';
+
+        zoxideDirWidget = ''
+          set -l fzf_query (commandline -b)
+          set -l dir (${zoxideDirWrapped} | ${fzfWrapped} \
+            --query "$fzf_query" \
+            --delimiter '\t' --with-nth=1 --accept-nth=2 \
+            --preview '${ezaWrapped} --tree {2}')
+          if test -n "$dir"
+            cd "$dir"
+          end
+        '';
+
       in
       {
+        stylix.targets.fzf.enable = false;
         programs = {
           fzf = {
+            inherit (fzf) defaultOptions colors;
             enable = true;
             defaultCommand = fdCommand;
-
-            changeDirWidget = {
-              command = "${zoxideDirWrapped}";
+            fileWidget = {
+              command = fdCommand;
               options = [
-                "-1"
-                "-0"
-                "--delimiter '\t'"
-                "--with-nth=1"
-                "--accept-nth=2"
-                "--preview '${ezaWrapped} --tree {2}'"
+                "--preview '${customPreviewScript} {}'"
+              ];
+            };
+            changeDirWidget = {
+              command = "${fdWrapped} --type d";
+              options = [
+                "--preview '${ezaWrapped} --tree {1}'"
               ];
             };
 
@@ -121,27 +188,6 @@
                 "--bind=enter:accept-or-print-query"
               ];
             };
-
-            defaultOptions = [
-              "--height=40%"
-              "--min-height=20+"
-              "--bind=ctrl-z:ignore"
-              "--reverse"
-              "--walker=file,dir,follow,hidden"
-              "--scheme=path"
-              "--ansi"
-              "--style=full"
-              "--filepath-word"
-              "--cycle"
-              "--scroll-off=3"
-              "--color=border:blue"
-              "--color=prompt:green"
-              "--color=info:bright-black"
-              previewWindow
-              "--preview '${customPreviewScript} {}'"
-              "--walker-skip=${excludesCSV}"
-            ];
-
           };
 
           kitty.enable = lib.mkDefault true;
@@ -163,15 +209,29 @@
             ];
             ignores = excludesList;
           };
+
+          fish.binds = {
+            "ctrl-o" = {
+              command = "fg 2>/dev/null || ${fzfWrapped} | xargs -r nvim";
+              repaint = true;
+              silent = true;
+            };
+
+            "alt-z" = {
+              command = [
+                zoxideDirWidget
+              ];
+              repaint = true;
+              silent = true;
+            };
+          };
         };
 
         home = {
           packages = builtins.attrValues {
             inherit (pkgs) file;
           };
-          shellAliases = {
-            find = "fd";
-          };
+          shellAliases.fzf = "${fzfWrapped}";
         };
 
       };
