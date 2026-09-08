@@ -37,10 +37,10 @@ let
 
         os = {
           disabled = false;
-          style = "bg:base02 fg:cyan bold";
+          style = "bg:base01 fg:cyan bold";
           symbols.NixOS = " ";
           format = lib.concatStrings [
-            "[${separator.left}](fg:base02 bg:none)"
+            "[${separator.left}](fg:base01 bg:none)"
             "[ $symbol ]($style)"
             "[${separator.right}](fg:prev_bg bg:prev_fg)"
           ];
