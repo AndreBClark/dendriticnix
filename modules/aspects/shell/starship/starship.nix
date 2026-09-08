@@ -14,6 +14,9 @@ let
         add_newline = false;
         format = lib.concatStrings [
           "$os"
+          "[${separator.right}](fg:prev_bg bg:blue)"
+          "[${separator.right}](fg:prev_bg bg:purple)"
+          "[${separator.right}](fg:prev_bg bg:cyan)"
           "$directory"
           "[${separator.right}](fg:prev_bg bg:base02)"
           "$git_branch"
@@ -40,10 +43,7 @@ let
           format = lib.concatStrings [
             "[${separator.left}](fg:base02 bg:none)"
             "[ $symbol ]($style)"
-            "[${separator.right}](fg:prev_bg bg:cyan)"
-            "[${separator.right}](fg:prev_bg bg:blue)"
-            "[${separator.right}](fg:prev_bg bg:purple)"
-            "[${separator.right}](fg:prev_bg bg:cyan)"
+            "[${separator.right}](fg:prev_bg bg:prev_fg)"
           ];
         };
 
