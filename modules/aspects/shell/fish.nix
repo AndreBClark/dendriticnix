@@ -27,7 +27,6 @@
           '';
           vendor.completions.enable = true;
         };
-        documentation.man.cache.enable = false;
       };
     homeManager =
       { pkgs, config, ... }:
@@ -47,7 +46,15 @@
         ];
       in
       {
-        home.shell.enableFishIntegration = lib.mkDefault true;
+        home = {
+          shell.enableFishIntegration = lib.mkDefault true;
+
+          packages = [
+            pkgs.grc
+            pkgs.jq
+          ];
+
+        };
 
         programs = {
           fish = {
@@ -63,11 +70,6 @@
                 command = "cd $HOME";
                 repaint = true;
               };
-              "ctrl-o" = {
-                command = "fg 2>/dev/null || fzf | xargs nvim";
-                repaint = true;
-                silent = true;
-              };
             };
           };
 
@@ -76,19 +78,11 @@
             enableFishIntegration = lib.mkDefault true;
           };
 
-          man.generateCaches = false;
-
           kitty.shellIntegration.enableFishIntegration = lib.mkDefault true;
 
           tmux.shell = "${pkgs.fish}/bin/fish";
         };
 
-        home = {
-          packages = [
-            pkgs.grc
-            pkgs.jq
-          ];
-        };
       };
   };
 }
