@@ -1,23 +1,21 @@
-{ den, ... }:
+{ lib, den, ... }:
 {
   den.aspects.niri =
     { user, ... }:
     {
       includes =
-        (
-          if user.desktopShell == "dms" then
-            builtins.attrValues { inherit (den.aspects.dms) niri-includes; } ++ [ den.aspects.dms ]
-          else
-            [ ]
-        )
-        ++ builtins.attrValues {
+        builtins.attrValues {
           inherit (den.aspects.niri)
             binds
             config
             outputs
             window-rules
             ;
-        };
+        }
+        ++ lib.optionals (user.desktopShell == "dms") [
+          den.aspects.dms.niri-includes
+          den.aspects.dms
+        ];
 
       nixos =
         { pkgs, ... }:
