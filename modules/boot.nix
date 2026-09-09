@@ -11,20 +11,15 @@
             configurationLimit = 20;
           };
 
-          systemd-boot.enable = false;
           efi.canTouchEfiVariables = true;
-          timeout = 5;
         };
 
         kernelPackages = pkgs.linuxPackages_xanmod_stable;
         kernelParams = [
-          "cgroup_no_v1=all"
-          "systemd.unified_cgroup_hierarchy=yes"
           "console=tty1"
           "mitigations=off"
           "nowatchdog"
           "tsc=reliable"
-          "b43.allhwsupport=1"
           "quiet"
         ];
         kernelModules = [ "tcp_bbr" ];
