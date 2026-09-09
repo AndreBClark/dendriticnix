@@ -7,11 +7,7 @@
         folders
         stylix
         wm
-        terminal
-        shell
-        cli
-        nvim
-        my-packages
+        development
         ;
       inherit (den.aspects.apps)
         nautilus
