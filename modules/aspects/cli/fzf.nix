@@ -64,6 +64,18 @@
           bat --color=always --style=numbers --theme=${batTheme} "$@"
         '';
 
+        fdFlags = "--hidden --color=always " + excludesStr;
+
+        fdWrapped = pkgs.writeShellScript "fd-wrapper" ''
+          fd "$@" ${fdFlags}
+        '';
+
+        ezaWrapped = pkgs.writeShellScript "eza-wrapper" ''
+          eza --color=always --follow-symlinks --short-nix "$@"
+        '';
+
+        fdCommand = "${fdWrapped} --type f";
+
         customPreviewScript = pkgs.writeShellScript "kitty-preview.sh" ''
           file=$1
           if [[ -d "$file" ]]; then
@@ -83,12 +95,11 @@
 
         fzf = {
           defaultOptions = [
-            "--height=40%"
+            "--height=-1"
             "--min-height=20+"
             "--bind=ctrl-z:ignore"
             "--reverse"
             "--walker=file,dir,follow,hidden"
-            "--scheme=path"
             "--ansi"
             "--style=full"
             "--filepath-word"
@@ -115,7 +126,24 @@
             "spinner" = base0E;
             "border" = base0D;
           };
+
+          fileWidget = {
+            command = fdCommand;
+            options = [
+              "--scheme=path"
+              "--preview '${customPreviewScript} {}'"
+            ];
+          };
+
+          changeDirWidget = {
+            command = "${fdWrapped} --type d";
+            options = [
+              "--preview '${ezaWrapped} --tree {1}'"
+            ];
+          };
         };
+
+        fileWidgetOptions = lib.concatStringsSep " " fzf.fileWidget.options;
 
         fzfColorsStr =
           "--color="
@@ -127,18 +155,6 @@
           FZF_DEFAULT_OPTS="${"$"}{FZF_DEFAULT_OPTS:-} ${fzfDefaultOptionsPiped} ${fzfColorsStr}" \
             ${pkgs.fzf}/bin/fzf "$@"
         '';
-
-        fdFlags = "--hidden --color=always " + excludesStr;
-
-        fdWrapped = pkgs.writeShellScript "fd-wrapper" ''
-          fd "$@" ${fdFlags}
-        '';
-
-        ezaWrapped = pkgs.writeShellScript "eza-wrapper" ''
-          eza --color=always --follow-symlinks --short-nix "$@"
-        '';
-
-        fdCommand = "${fdWrapped} --type f";
 
         zoxideDirWrapped = pkgs.writeShellScript "zoxide-dir-wrapper" ''
           zoxide query -l | while read -r dir; do
@@ -162,21 +178,14 @@
         stylix.targets.fzf.enable = false;
         programs = {
           fzf = {
-            inherit (fzf) defaultOptions colors;
+            inherit (fzf)
+              defaultOptions
+              colors
+              fileWidget
+              changeDirWidget
+              ;
             enable = true;
             defaultCommand = fdCommand;
-            fileWidget = {
-              command = fdCommand;
-              options = [
-                "--preview '${customPreviewScript} {}'"
-              ];
-            };
-            changeDirWidget = {
-              command = "${fdWrapped} --type d";
-              options = [
-                "--preview '${ezaWrapped} --tree {1}'"
-              ];
-            };
 
             historyWidget = {
               options = [
@@ -212,15 +221,13 @@
 
           fish.binds = {
             "ctrl-o" = {
-              command = "fg 2>/dev/null || ${fzfWrapped} | xargs -r nvim";
+              command = "fg 2>/dev/null || ${fzfWrapped} ${fileWidgetOptions} | xargs -r nvim";
               repaint = true;
               silent = true;
             };
 
             "alt-z" = {
-              command = [
-                zoxideDirWidget
-              ];
+              command = zoxideDirWidget;
               repaint = true;
               silent = true;
             };
@@ -231,9 +238,11 @@
           packages = builtins.attrValues {
             inherit (pkgs) file;
           };
-          shellAliases.fzf = "${fzfWrapped}";
+          shellAliases = {
+            fzf = "${fzfWrapped}";
+            bat = "${batWrapped}";
+          };
         };
-
       };
   };
 }
