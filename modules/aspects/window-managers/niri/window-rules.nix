@@ -66,6 +66,23 @@
         }
         {
           window-rule._children = [
+            {
+              match._props = {
+                app-id = "steam";
+                title = ''r#"^notificationtoasts_\d+_desktop$#'';
+              };
+            }
+            {
+              default-floating-position._props = {
+                x = 10;
+                y = 10;
+                relative-to = "bottom-right";
+              };
+            }
+          ];
+        }
+        {
+          window-rule._children = [
             { match._props.app-id = "(?i)spotify"; }
             { open-on-workspace = "3"; }
             { open-on-output = "HDMI-A-1"; }
