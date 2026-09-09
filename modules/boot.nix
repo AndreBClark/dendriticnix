@@ -21,6 +21,7 @@
           "nowatchdog"
           "tsc=reliable"
           "quiet"
+          "systemd.show_status=false"
         ];
         kernelModules = [ "tcp_bbr" ];
 
