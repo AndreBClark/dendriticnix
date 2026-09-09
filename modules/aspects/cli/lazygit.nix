@@ -21,7 +21,7 @@
             expandFocusedSidePanel = true;
             expandedSidePanelWeight = 3;
             commitAuthorLongLength = 17;
-            commitAuthorShortLength = 5;
+            commitAuthorShortLength = 7;
             commitHashLength = 6;
           };
 
@@ -36,7 +36,7 @@
             ];
 
             autoFetch = false;
-            diffContextSize = 5;
+            diffContextSize = 7;
             parseEmoji = true;
             autoRefresh = true;
             autoDetectExternalChanges = true;
