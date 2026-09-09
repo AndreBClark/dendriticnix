@@ -58,7 +58,7 @@
 
         excludesCSV = lib.concatStringsSep "," excludesList;
         batTheme = "base16-stylix";
-        previewWindow = "--preview-window='<60(down,50%),60,border-rounded'";
+        previewWindow = "--preview-window='right,border-rounded,wrap,60%,<60(down,50%)'";
 
         batWrapped = pkgs.writeShellScript "bat-wrapper" ''
           bat --color=always --style=numbers --theme=${batTheme} "$@"
