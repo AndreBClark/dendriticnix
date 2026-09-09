@@ -4,17 +4,23 @@
     {
       boot = {
         loader = {
+          grub = {
+            enable = true;
+            efiSupport = true;
+            devices = [ "nodev" ];
+            configurationLimit = 20;
+          };
 
-          systemd-boot.enable = true;
+          systemd-boot.enable = false;
           efi.canTouchEfiVariables = true;
           timeout = 5;
         };
-        # initrd.systemd.enable = true;
+
         kernelPackages = pkgs.linuxPackages_xanmod_stable;
         kernelParams = [
           "cgroup_no_v1=all"
           "systemd.unified_cgroup_hierarchy=yes"
-          # "console=tty1"
+          "console=tty1"
           "mitigations=off"
           "nowatchdog"
           "tsc=reliable"
