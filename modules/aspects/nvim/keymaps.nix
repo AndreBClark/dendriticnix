@@ -45,7 +45,7 @@
               "v"
             ];
             key = "<leader>a";
-            action = "ggVG";
+            action = "ggV$G";
             options.desc = "Select all";
           }
           {
