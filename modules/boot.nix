@@ -17,8 +17,6 @@
         kernelPackages = pkgs.linuxPackages_xanmod_stable;
         kernelParams = [
           "console=tty1"
-          "mitigations=off"
-          "nowatchdog"
           "tsc=reliable"
           "quiet"
           "systemd.show_status=false"
@@ -65,11 +63,6 @@
           "net.ipv4.tcp_congestion_control" = "bbr";
           "net.core.default_qdisc" = "cake";
 
-          # added to resolve weird wine/proton errors
-          "vm.max_map_count" = 1048576;
-          "fs.file-max" = 524288;
-          "kernel.pid_max" = 4194303;
-          "kernel.threads-max" = 524288;
         };
         supportedFilesystems = lib.mkForce [
           "btrfs"

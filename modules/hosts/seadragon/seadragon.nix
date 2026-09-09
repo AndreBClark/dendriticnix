@@ -13,7 +13,7 @@
     aspects.seadragon = {
       includes = [
         den.aspects.base-host
-        den.aspects.apps.steam
+        den.aspects.gaming
       ];
     };
   };
