@@ -5,7 +5,10 @@
     (inputs.den.flakeModules.dendritic or { })
     (inputs.treefmt-nix.flakeModule or { })
   ];
-  den.schema.user.includes = [ den.provides.define-user ];
+  den.schema.user.includes = [
+    den.provides.define-user
+    den.schema.profile
+  ];
   den.schema.flake-system.includes = [ den.aspects.my-packages ];
 
   # other inputs may be defined at a module using them.
