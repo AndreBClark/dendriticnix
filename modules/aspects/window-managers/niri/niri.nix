@@ -25,22 +25,16 @@
             variables.NIXOS_OZONE_WL = "1";
             systemPackages = builtins.attrValues {
               inherit (pkgs)
-                wayland-utils
                 libsecret
-                xwayland-satellite
-                xdg-desktop-portal-gnome
-                rose-pine-cursor
                 ;
             };
           };
         };
-      homeManager =
-        { pkgs, ... }:
-        {
-          wayland.windowManager.niri.enable = true;
-          home.packages = [
-            pkgs.rose-pine-cursor
-          ];
+      homeManager = {
+        wayland.windowManager.niri = {
+          enable = true;
+          systemd.enable = true;
         };
+      };
     };
 }
