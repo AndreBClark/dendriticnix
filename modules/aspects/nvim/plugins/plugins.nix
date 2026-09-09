@@ -45,15 +45,7 @@
               illuminate.enable = true;
               nix-develop.enable = true;
               render-markdown.enable = lib.mkDefault true;
-              smart-splits = {
-                enable = true;
-                lazyLoad.settings.keys = [
-                  { __unkeyed-1 = "<C-h>"; }
-                  { __unkeyed-1 = "<C-j>"; }
-                  { __unkeyed-1 = "<C-k>"; }
-                  { __unkeyed-1 = "<C-l>"; }
-                ];
-              };
+              smart-splits.enable = true;
               kitty-navigator.enable = true;
               trouble = {
                 enable = true;
@@ -73,17 +65,7 @@
               refactoring = {
                 enable = true;
                 enableTelescope = false;
-                lazyLoad.settings.keys = [
-                  {
-                    __unkeyed-1 = "<leader>cr";
-                    mode = [
-                      "n"
-                      "v"
-                    ];
-                  }
-                ];
               };
-
             };
             keymaps =
               let
