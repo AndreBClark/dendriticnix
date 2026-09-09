@@ -2,6 +2,7 @@
 {
   den.aspects.base-user = {
     includes = builtins.attrValues {
+      inherit (den.batteries) define-user;
       inherit (den.aspects)
         folders
         stylix
@@ -18,7 +19,6 @@
         superfile
         obsidian
         ;
-      inherit (den.batteries) define-user;
     };
     # Base OS-level user settings
     user = {
