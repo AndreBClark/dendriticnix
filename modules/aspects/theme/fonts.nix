@@ -26,7 +26,7 @@
           };
         };
       fontPackages = pkgs: [
-        pkgs.noto-fonts-lgc-plus
+        pkgs.noto-fonts
         pkgs.dejavu_fonts
         pkgs.unifont
         pkgs.freefont_ttf
