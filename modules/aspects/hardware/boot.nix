@@ -1,5 +1,5 @@
 {
-  den.default.nixos =
+  den.aspects.hardware.boot.nixos =
     { lib, pkgs, ... }:
     {
       boot = {
