@@ -5,6 +5,7 @@
       den.batteries.hostname
       den.aspects.fs.${host.name}
       den.aspects.hardware
+      den.aspects.vm
       den.aspects.development
     ];
 
