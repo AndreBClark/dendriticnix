@@ -5,5 +5,10 @@
       {
         home.packages = [ pkgs.audacity ];
       };
+    nixos =
+      { pkgs, ... }:
+      {
+        environment.systemPackages = [ pkgs.audacity ];
+      };
   };
 }
