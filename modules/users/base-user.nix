@@ -4,6 +4,7 @@
     includes = builtins.attrValues {
       inherit (den.batteries) define-user;
       inherit (den.aspects)
+        shell
         folders
         stylix
         wm
