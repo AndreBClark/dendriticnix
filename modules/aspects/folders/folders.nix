@@ -3,7 +3,6 @@
   den.aspects.folders = {
     homeManager =
       {
-        host,
         pkgs,
         config,
         ...
@@ -21,8 +20,6 @@
             path = "repos";
             icon = "folder-github";
           }
-        ]
-        ++ lib.optionals (host.name == "dragonfly") [
           {
             path = "audio";
             icon = "folder-sound";
