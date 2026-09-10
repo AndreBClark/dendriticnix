@@ -5,7 +5,6 @@
     in
     {
       time.timeZone = "America/Los_Angeles";
-      # Select internationalisation properties.
       i18n.defaultLocale = locale;
 
       i18n.extraLocaleSettings = {
