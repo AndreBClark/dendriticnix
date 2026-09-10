@@ -3,9 +3,8 @@
   den.aspects.base-host = { host, ... }: {
     includes = [
       den.batteries.hostname
-      den.aspects.fs.${host.name}
+      (den.aspects.fs.${host.name} or { })
       den.aspects.hardware
-      den.aspects.vm
       den.aspects.development
     ];
 
