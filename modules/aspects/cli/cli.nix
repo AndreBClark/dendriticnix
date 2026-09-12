@@ -9,7 +9,6 @@
         git
         lazygit
         nh
-        tmux
         zoxide
         ;
     };
