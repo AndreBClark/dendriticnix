@@ -18,7 +18,7 @@
       { pkgs, ... }:
       {
         home.packages = builtins.attrValues {
-          inherit (pkgs) code2prompt;
+          inherit (pkgs) code2prompt ghgrab;
         };
 
       };
