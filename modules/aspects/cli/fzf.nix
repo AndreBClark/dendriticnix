@@ -199,7 +199,6 @@
               ];
             };
           };
-
           kitty.enable = lib.mkDefault true;
           eza.enable = lib.mkDefault true;
           zoxide.enable = lib.mkDefault true;
@@ -235,7 +234,7 @@
             "alt-n" = {
               command = ''
                 manix "" | grep '^# ' | sed 's/^# \(.*\) (.*/\1/;s/ (.*//;s/^# //' \
-                  | fzf --preview="manix '{}' | bat --color=always --language=md --plain" \
+                  | ${fzfWrapped} --preview="manix '{}' | bat --color=always --language=md --plain" \
                   | xargs manix'';
               repaint = true;
               silent = true;
