@@ -71,7 +71,7 @@
               };
             };
           };
-
+          man.generateCaches = false;
           nix-your-shell = {
             enable = true;
             enableFishIntegration = lib.mkDefault true;
