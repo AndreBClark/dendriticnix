@@ -3,6 +3,7 @@
   den.aspects.nvim.mini = {
     homeManager = {
       programs.nixvim.plugins = {
+        mini-ai.enable = true;
         mini-basics.enable = true;
         mini.mockDevIcons = true;
         mini-diff.enable = true;
