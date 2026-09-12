@@ -29,7 +29,7 @@
         };
       };
     homeManager =
-      { pkgs, config, ... }:
+      { pkgs, ... }:
       let
         mkFishPlugin = plugin: { inherit (plugin) src name; };
 
@@ -60,7 +60,6 @@
           fish = {
             enable = true;
             plugins = mkFishPlugins pluginNames;
-            shellAbbrs = config.home.shellAliases;
             interactiveShellInit = ''
               set --export fish_greeting
             '';
