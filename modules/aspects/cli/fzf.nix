@@ -18,6 +18,7 @@
       }:
       let
         excludesList = [
+          "Music/*"
           ".git"
           ".direnv"
           ".cache"
@@ -99,7 +100,7 @@
             "--min-height=20+"
             "--bind=ctrl-z:ignore"
             "--reverse"
-            "--walker=file,dir,follow,hidden"
+            "--walker=file,dir,follow"
             "--ansi"
             "--style=full"
             "--filepath-word"
@@ -231,12 +232,21 @@
               repaint = true;
               silent = true;
             };
+            "alt-n" = {
+              command = ''
+                manix "" | grep '^# ' | sed 's/^# \(.*\) (.*/\1/;s/ (.*//;s/^# //' \
+                  | fzf --preview="manix '{}' | bat --color=always --language=md --plain" \
+                  | xargs manix'';
+              repaint = true;
+              silent = true;
+            };
           };
         };
 
+        manual.json.enable = true;
         home = {
           packages = builtins.attrValues {
-            inherit (pkgs) file;
+            inherit (pkgs) file manix;
           };
           shellAliases = {
             fzf = "${fzfWrapped}";
