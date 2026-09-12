@@ -1,7 +1,7 @@
 {
   "currentThemeName": "custom",
   "currentThemeCategory": "custom",
-  "customThemeFile": "/nix/store/gkn65mdd7ps06xwrhq305v6c3m6sk7s8-dankMaterialShell-stylix-color-theme.json",
+  "customThemeFile": "/nix/store/kvlf6gj8xixzigdv2mwfmhgvjyrna5i0-dankMaterialShell-stylix-color-theme.json",
   "registryThemeVariants": {
     "catppuccin": {
       "dark": {
@@ -14,7 +14,7 @@
   "popupTransparency": 0.5,
   "dockTransparency": 0.5,
   "widgetColorMode": "colorful",
-  "cornerRadius": 8,
+  "cornerRadius": 18,
   "firstDayOfWeek": 2,
   "clockFormat": "24h",
   "useFahrenheit": true,
@@ -354,5 +354,5 @@
   "frameShowOnOverview": true,
   "frameCloseGaps": false,
   "frameLauncherArcExtender": true,
-  "configVersion": 17
+  "configVersion": 18
 }
