@@ -3,8 +3,7 @@
   den.aspects.nvim.plugins = {
     includes = builtins.attrValues {
       inherit (den.aspects.nvim)
-        barbar
-          cmp
+        blink-cmp
         gitsigns
         lualine
         noice
@@ -25,7 +24,6 @@
             glance = {
               enable = true;
             };
-
             modicator = {
               enable = true;
               settings = {
@@ -64,11 +62,7 @@
             web-devicons.enable = true;
             tiny-inline-diagnostic = {
               enable = true;
-              settings = {
-                virt_texts = {
-                  priority = 2048;
-                };
-              };
+              settings.virt_texts.priority = 2048;
             };
 
             refactoring = {
