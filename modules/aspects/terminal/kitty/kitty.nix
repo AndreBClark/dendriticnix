@@ -67,6 +67,7 @@
               cursor_shape = "block";
               cursor_trail = 1;
               shell_integration = "no-rc no-cursor";
+              bell = false;
             };
           keybindings = {
             "ctrl+shift+T" = "new_tab_with_cwd";
