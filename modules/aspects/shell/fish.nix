@@ -70,6 +70,12 @@
                 repaint = true;
               };
             };
+            functions = {
+              codecontext = ''
+                code2prompt $argv --no-codeblock --token-map --hidden | fish_clipboard_copy
+              '';
+            };
+
           };
           man.generateCaches = false;
           nix-your-shell = {
@@ -79,7 +85,6 @@
 
           kitty.shellIntegration.enableFishIntegration = lib.mkDefault true;
 
-          tmux.shell = "${pkgs.fish}/bin/fish";
         };
 
       };
