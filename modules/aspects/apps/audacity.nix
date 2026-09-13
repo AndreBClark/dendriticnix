@@ -3,12 +3,12 @@
     homeManager =
       { pkgs, ... }:
       {
-        home.packages = [ pkgs.audacity ];
+        home.packages = [ pkgs.audacity_3 ];
       };
     nixos =
       { pkgs, ... }:
       {
-        environment.systemPackages = [ pkgs.audacity ];
+        environment.systemPackages = [ pkgs.audacity_3 ];
       };
   };
 }
