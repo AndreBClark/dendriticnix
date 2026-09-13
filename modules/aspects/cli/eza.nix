@@ -24,9 +24,6 @@
       };
 
       home.shellAliases = {
-        ls = "eza";
-        ll = "eza -l";
-        la = "eza -A";
         tree = "eza --tree --level 2";
       };
 

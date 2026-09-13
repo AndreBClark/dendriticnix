@@ -3,11 +3,17 @@
   den.aspects.cli.fzf = {
     includes = [
       (den.batteries.shell-integrations [
-        "eza"
         "fzf"
-        "zoxide"
       ])
-    ];
+    ]
+    ++ builtins.attrValues {
+      inherit (den.aspects.cli)
+        bat
+        fd
+        eza
+        zoxide
+        ;
+    };
 
     homeManager =
       {
@@ -17,67 +23,36 @@
         ...
       }:
       let
-        excludesList = [
-          "Music/*"
-          ".git"
-          ".direnv"
-          ".cache"
-          ".pki"
-          ".dotnet"
-          "pfx"
-          "dosdevices"
-          "*.lock"
-          # Dependencies and build outputs
-          "dist"
-          "node_modules"
-          "target"
-          "build"
-          "dist"
-          "out"
-          "result"
-          # IDE and editor files
-          ".vscode"
-          ".idea"
-          "*.swp"
-          "*.swo"
-          "*~"
-          # OS-specific
-          ".DS_Store"
-          "Thumbs.db"
-          # Cache and temporary
-          "tmp"
-          "temp"
-          "*.tmp"
-        ];
-
         colors = config.lib.stylix.colors.withHashtag;
 
-        excludesStr = lib.pipe excludesList [
-          (map (p: "--exclude ${lib.escapeShellArg p}"))
-          (lib.concatStringsSep " ")
-        ];
+        excludesList = config.programs.fd.ignores;
 
         excludesCSV = lib.concatStringsSep "," excludesList;
-        batTheme = "base16-stylix";
         previewWindow = "--preview-window='right,border-rounded,wrap,60%,<60(down,50%)'";
 
-        batWrapped = pkgs.writeShellScript "bat-wrapper" ''
-          bat --color=always --style=numbers --theme=${batTheme} "$@"
-        '';
-
-        fdFlags = "--hidden --color=always " + excludesStr;
+        fdArgs = lib.optional config.programs.fd.hidden "--hidden" ++ config.programs.fd.extraOptions;
 
         fdWrapped = pkgs.writeShellScript "fd-wrapper" ''
-          fd "$@" ${fdFlags}
+          fd "$@" ${lib.escapeShellArgs fdArgs}
         '';
+
+        ezaArgs =
+          lib.optionals (config.programs.eza.icons != null) [
+            "--icons"
+            config.programs.eza.icons
+          ]
+          ++ lib.optionals (config.programs.eza.colors != null) [
+            "--color"
+            config.programs.eza.colors
+          ]
+          ++ lib.optional config.programs.eza.git "--git"
+          ++ config.programs.eza.extraOptions;
 
         ezaWrapped = pkgs.writeShellScript "eza-wrapper" ''
-          eza --color=always --follow-symlinks --short-nix "$@"
+          eza ${lib.escapeShellArgs ezaArgs} "$@"
         '';
 
-        fdCommand = "${fdWrapped} --type f";
-
-        customPreviewScript = pkgs.writeShellScript "kitty-preview.sh" ''
+        customPreviewScript = pkgs.writeShellScript "kitty-preview" ''
           file=$1
           if [[ -d "$file" ]]; then
             exit 0
@@ -90,67 +65,19 @@
           elif [[ $type =~ =binary ]]; then
             file "$file"
           else
-            ${batWrapped} "$file"
+            bat "$file"
           fi
         '';
 
-        fzf = {
-          defaultOptions = [
-            "--height=-1"
-            "--min-height=20+"
-            "--bind=ctrl-z:ignore"
-            "--reverse"
-            "--walker=file,dir,follow"
-            "--ansi"
-            "--style=full"
-            "--filepath-word"
-            "--cycle"
-            "--scroll-off=3"
-            previewWindow
-            "--walker-skip=${excludesCSV}"
-            "-1"
-            "-0"
-          ];
-
-          colors = with colors; {
-            "bg" = base00;
-            "bg+" = base01;
-            "fg" = base04;
-            "fg+" = base06;
-            "header" = base0C;
-            "hl" = base0D;
-            "hl+" = base0D;
-            "info" = base0A;
-            "marker" = base0E;
-            "pointer" = base0E;
-            "prompt" = base0D;
-            "spinner" = base0E;
-            "border" = base0D;
-          };
-
-          fileWidget = {
-            command = fdCommand;
-            options = [
-              "--scheme=path"
-              "--preview '${customPreviewScript} {}'"
-            ];
-          };
-
-          changeDirWidget = {
-            command = "${fdWrapped} --type d";
-            options = [
-              "--preview '${ezaWrapped} --tree {1}'"
-            ];
-          };
-        };
-
-        fileWidgetOptions = lib.concatStringsSep " " fzf.fileWidget.options;
+        fileWidgetOptions = lib.concatStringsSep " " config.programs.fzf.fileWidget.options;
 
         fzfColorsStr =
           "--color="
-          + lib.concatStringsSep "," (lib.mapAttrsToList (name: value: "${name}:${value}") fzf.colors);
+          + lib.concatStringsSep "," (
+            lib.mapAttrsToList (name: value: "${name}:${value}") config.programs.fzf.colors
+          );
 
-        fzfDefaultOptionsPiped = lib.concatStringsSep " " fzf.defaultOptions;
+        fzfDefaultOptionsPiped = lib.concatStringsSep " " config.programs.fzf.defaultOptions;
 
         fzfWrapped = pkgs.writeShellScript "fzf-wrapper" ''
           FZF_DEFAULT_OPTS="${"$"}{FZF_DEFAULT_OPTS:-} ${fzfDefaultOptionsPiped} ${fzfColorsStr}" \
@@ -173,20 +100,60 @@
             cd "$dir"
           end
         '';
-
       in
       {
         stylix.targets.fzf.enable = false;
         programs = {
           fzf = {
-            inherit (fzf)
-              defaultOptions
-              colors
-              fileWidget
-              changeDirWidget
-              ;
             enable = true;
-            defaultCommand = fdCommand;
+            defaultCommand = "${fdWrapped} --type f";
+            defaultOptions = [
+              "--height=-1"
+              "--min-height=20+"
+              "--bind=ctrl-z:ignore"
+              "--reverse"
+              "--walker=file,dir,follow"
+              "--ansi"
+              "--style=full"
+              "--filepath-word"
+              "--cycle"
+              "--scroll-off=3"
+              previewWindow
+              "--walker-skip=${excludesCSV}"
+              "-1"
+              "-0"
+            ];
+
+            colors = with colors; {
+              "bg" = base00;
+              "bg+" = base01;
+              "fg" = base04;
+              "fg+" = base06;
+              "header" = base0C;
+              "hl" = base0D;
+              "hl+" = base0D;
+              "info" = base0A;
+              "marker" = base0E;
+              "pointer" = base0E;
+              "prompt" = base0D;
+              "spinner" = base0E;
+              "border" = base0D;
+            };
+
+            fileWidget = {
+              command = "${fdWrapped} --type f";
+              options = [
+                "--scheme=path"
+                "--preview '${customPreviewScript} {}'"
+              ];
+            };
+
+            changeDirWidget = {
+              command = "${fdWrapped} --type d";
+              options = [
+                "--preview '${ezaWrapped} --tree {1}'"
+              ];
+            };
 
             historyWidget = {
               options = [
@@ -199,25 +166,10 @@
               ];
             };
           };
+
           kitty.enable = lib.mkDefault true;
           eza.enable = lib.mkDefault true;
           zoxide.enable = lib.mkDefault true;
-
-          bat = {
-            enable = true;
-            config = {
-              map-syntax = [ "*.astro:TypeScriptReact" ];
-            };
-          };
-
-          fd = {
-            enable = true;
-            hidden = true;
-            extraOptions = [
-              "--color=always"
-            ];
-            ignores = excludesList;
-          };
 
           fish.binds = {
             "ctrl-o" = {
@@ -231,11 +183,13 @@
               repaint = true;
               silent = true;
             };
+
             "alt-n" = {
               command = ''
-                manix "" | grep '^# ' | sed 's/^# \(.*\) (.*/\1/;s/ (.*//;s/^# //' \
-                  | ${fzfWrapped} --preview="manix '{}' | bat --color=always --language=md --plain" \
-                  | xargs manix'';
+                manix "" | rg '^# ' | sed 's/^# \(.*\) (.*/\1/;s/ (.*//;s/^# //' \
+                  | ${fzfWrapped} --preview="manix '{}' | bat --language=md --plain" \
+                  | xargs manix
+              '';
               repaint = true;
               silent = true;
             };
@@ -245,11 +199,7 @@
         manual.json.enable = true;
         home = {
           packages = builtins.attrValues {
-            inherit (pkgs) file manix;
-          };
-          shellAliases = {
-            fzf = "${fzfWrapped}";
-            bat = "${batWrapped}";
+            inherit (pkgs) file manix ripgrep;
           };
         };
       };
