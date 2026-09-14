@@ -24,6 +24,7 @@
               code2prompt
               ghgrab
               ripgrep
+              fastfetch
               ;
           };
         };
