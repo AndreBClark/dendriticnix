@@ -49,10 +49,13 @@
         home = {
           shell.enableFishIntegration = lib.mkDefault true;
 
-          packages = [
-            pkgs.grc
-            pkgs.jq
-          ];
+          packages = builtins.attrValues {
+            inherit (pkgs)
+              grc
+              jq
+              fastfetch
+              ;
+          };
 
         };
 
@@ -71,6 +74,9 @@
               };
             };
             functions = {
+              fish_greeting = ''
+                fastfetch
+              '';
               codecontext = ''
                 code2prompt $argv --no-codeblock --token-map --hidden | fish_clipboard_copy
               '';
