@@ -6,7 +6,13 @@
   "modules": [
     {
       "type": "chassis",
-      "key": "╭─󰌢",
+      "key": "╭─󰇅",
+      "keyColor": "green",
+      "format": "{type} {vendor}"
+    },
+    {
+      "type": "host",
+      "key": "├─󰌢",
       "keyColor": "green"
     },
     {
@@ -22,7 +28,8 @@
     {
       "type": "disk",
       "key": "├─",
-      "keyColor": "green"
+      "keyColor": "green",
+      "showExternal": false
     },
     {
       "type": "memory",
@@ -107,12 +114,7 @@
     },
     {
       "type": "icons",
-      "key": "├─󰀻",
-      "keyColor": "yellow"
-    },
-    {
-      "type": "wallpaper",
-      "key": "╰─󰸉",
+      "key": "╰─󰀻",
       "keyColor": "yellow"
     },
     "break",
@@ -124,7 +126,7 @@
     },
     {
       "type": "os",
-      "key": "├─{icon}", // Just get your distro's logo off nerdfonts.com
+      "key": "├─",
       "keyColor": "blue"
     },
     {

@@ -4,7 +4,7 @@
     homeManager = {
       programs.fastfetch = {
         enable = true;
-        settings = builtins.fromJSON builtins.readFile ./6.jsonc;
+        settings = builtins.fromJSON (builtins.readFile ./6.jsonc);
       };
     };
   };

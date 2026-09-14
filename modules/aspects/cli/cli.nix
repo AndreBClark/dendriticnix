@@ -12,6 +12,7 @@
         lazygit
         nh
         zoxide
+        fastfetch
         ;
     };
 
@@ -24,7 +25,6 @@
               code2prompt
               ghgrab
               ripgrep
-              fastfetch
               ;
           };
         };
