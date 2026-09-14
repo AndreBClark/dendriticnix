@@ -198,9 +198,17 @@
 
         manual.json.enable = true;
         home = {
-          packages = builtins.attrValues {
-            inherit (pkgs) file manix ripgrep;
-          };
+          packages =
+            builtins.attrValues {
+              inherit (pkgs)
+                file
+                manix
+                ripgrep
+                ;
+            }
+            ++ [
+              fzfWrapped
+            ];
         };
       };
   };
