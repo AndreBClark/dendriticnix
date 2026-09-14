@@ -9,9 +9,10 @@
             efiSupport = true;
             devices = [ "nodev" ];
             configurationLimit = 20;
+            efiInstallAsRemovable = true;
           };
 
-          efi.canTouchEfiVariables = true;
+          efi.canTouchEfiVariables = false;
         };
 
         kernelPackages = pkgs.linuxPackages_xanmod_stable;
