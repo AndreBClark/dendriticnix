@@ -7,7 +7,7 @@
             gitsigns = {
               enable = true;
               settings = {
-                signcolumn = true;
+                signcolumn = false;
                 numhl = true;
                 current_line_blame = true;
               };

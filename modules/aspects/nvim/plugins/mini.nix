@@ -6,7 +6,6 @@
         mini-ai.enable = true;
         mini-basics.enable = true;
         mini.mockDevIcons = true;
-        mini-diff.enable = true;
         mini-pairs.enable = true;
         mini-surround.enable = true;
         mini-hipatterns.enable = lib.mkDefault true;
