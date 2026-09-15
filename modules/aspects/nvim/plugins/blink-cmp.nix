@@ -6,10 +6,9 @@
           enable = true;
           setupLspCapabilities = true;
           settings = {
-            keymap.preset = "default";
+            keymap.preset = "super-tab";
             signature.enabled = true;
             snippets.preset = "mini_snippets";
-
             completion = {
               menu = {
                 border = "rounded";
@@ -17,9 +16,12 @@
               };
 
               documentation = {
-                border = "rounded";
                 auto_show = true;
               };
+            };
+            cmdline = {
+              keymap.preset = "inherit";
+              completion.menu.auto_show = true;
             };
             sources = {
               default = [

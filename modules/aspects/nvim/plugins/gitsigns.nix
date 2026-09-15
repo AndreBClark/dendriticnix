@@ -8,7 +8,7 @@
               enable = true;
               settings = {
                 signcolumn = true;
-                numhl = false;
+                numhl = true;
                 current_line_blame = true;
               };
             };

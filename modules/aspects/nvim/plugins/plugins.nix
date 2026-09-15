@@ -11,6 +11,7 @@
         obsidian
         mini
         snacks
+        picker-snacks
         ;
     };
 
