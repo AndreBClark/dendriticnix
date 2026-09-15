@@ -1,6 +1,6 @@
 { lib, ... }:
 {
-  den.aspects.nvim.telescope = {
+  den.aspects.nvim.picker-telescope = {
     homeManager = {
       programs.nixvim = {
         plugins = {

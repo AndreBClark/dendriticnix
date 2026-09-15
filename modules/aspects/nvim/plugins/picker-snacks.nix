@@ -16,47 +16,45 @@
                 enabled = true;
                 sources = {
                   explorer = {
-                    layout.preset = "vscode";
+                    layout = {
+                      preset = "vscode";
+                      footer_keys = true;
+                    };
                     auto_close = true;
                     jump.close = true;
                     focus = "input";
                   };
+
                   buffers = {
                     main.current = true;
                     formatters.file = {
                       truncate = "left";
-                      min_width = 12;
+                      min_width = 10;
                       filename_first = true;
                     };
                     layout = {
                       preview = "main";
-                      on_show.__raw = ''
-                        function(picker)
-                          picker:show_preview()
-                        end
-                      '';
                       layout = {
+                        box = "vertical";
+                        position = "float";
+                        border = "rounded";
                         backdrop = false;
-                        min_width = 28;
                         width = 0.25;
                         height = 0.3;
                         row = -1;
                         col = -1;
-                        position = "float";
-                        border = "rounded";
-                        box = "vertical";
-                        title = "{title} {live} {flags}";
-                        title_pos = "center";
+                        # title = "{title} {live} {flags}";
+                        # title_pos = "center";
                         footer_keys = true;
-                        __unkeyed-1 = {
-                          win = "input";
-                          height = 1;
-                          border = "bottom";
-                        };
-                        __unkeyed-2 = {
-                          win = "list";
-                          border = "none";
-                        };
+                        # __unkeyed-1 = {
+                        #   win = "input";
+                        #   height = 1;
+                        #   border = "bottom";
+                        # };
+                        # __unkeyed-2 = {
+                        #   win = "list";
+                        #   border = "none";
+                        #   };
                       };
                     };
                   };
@@ -69,12 +67,6 @@
               cfg = config.programs.nixvim.plugins.snacks.settings;
             in
             [
-              (lib.optional (cfg.explorer.enabled or false) {
-                mode = "n";
-                key = "<leader>e";
-                action.__raw = "function() Snacks.explorer() end";
-                options.desc = "File Explorer";
-              })
               {
                 mode = "n";
                 key = "<leader><space>";
@@ -195,7 +187,13 @@
                 action.__raw = "function() Snacks.picker.zoxide() end";
                 options.desc = "Zoxide";
               }
-            ];
+            ]
+            ++ (lib.optional (cfg.explorer.enabled or false) {
+              mode = "n";
+              key = "<leader>e";
+              action.__raw = "function() Snacks.explorer() end";
+              options.desc = "File Explorer";
+            });
         };
       };
   };
