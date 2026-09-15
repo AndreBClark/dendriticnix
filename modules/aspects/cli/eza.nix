@@ -20,11 +20,12 @@
           "--no-user"
           "--short-nix"
           "--follow-symlinks"
+          "--git-ignore"
         ];
       };
 
       home.shellAliases = {
-        tree = "eza --tree --level 2";
+        tree = "eza --tree";
       };
 
     };
