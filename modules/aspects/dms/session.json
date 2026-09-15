@@ -1,6 +1,6 @@
 {
   "terminalOverride": "kitty",
-  "wallpaperPath": "/home/andrec/Pictures/Wallpaper-tokyo-night-dark/AC6_1305418.jpeg",
+  "wallpaperPath": "/home/andrec/Pictures/Wallpaper-tokyo-night-dark/wallhaven.cc_v9w8r5.jpeg",
   "wallpaperPathLight": "/home/andrec/Pictures/Wallpapers-tokyonight/g7xdxl.jpeg",
   "wallpaperPathDark": "/home/andrec/Pictures/Wallpapers-tokyonight/g7xdxl.jpeg",
   "includedTransitions": [
@@ -48,24 +48,50 @@
     "khal",
     "qt5ct"
   ],
-  "lastPlayerIdentity": "Vivaldi",
+  "lastPlayerIdentity": "Spotify",
   "hiddenOutputDeviceNames": [
     "easyeffects_sink"
   ],
   "niriOutputSettings": {
     "DP-2": {
       "focusAtStartup": true,
-      "vrrOnDemand": true
+      "vrrOnDemand": true,
+      "hotCorners": {
+        "corners": [
+          "top-right",
+          "bottom-right"
+        ]
+      }
     },
     "HDMI-A-1": {
-      "disabled": true
+      "disabled": false,
+      "vrrOnDemand": true,
+      "hotCorners": {
+        "corners": [
+          "bottom-left",
+          "top-left"
+        ]
+      }
     }
   },
   "activeDisplayProfile": {
-    "niri": "profile_1780711633882_2dn7oix"
+    "niri": "profile_1780712333822_nbsu56u"
+  },
+  "activeDisplayProfileModes": {
+    "niri": {
+      "DP-2": {
+        "mode": "2560x1440@59.951"
+      },
+      "HDMI-A-1": {
+        "mode": "1920x1080@60.000"
+      }
+    }
   },
   "lastAppliedIconTheme": "Dracula",
+  "launcherLastQuery": "not",
   "launcherQueryHistory": [
+    "not",
+    ":e diamond",
     "viv",
     "xter,",
     "=3390.82+",
@@ -110,6 +136,7 @@
     "iv",
     "crash"
   ],
-  "settingsSidebarExpandedIds": ",displays,dock_launcher,system,workspaces_widgets,applications,power_security,",
+  "settingsSidebarExpandedIds": ",displays,dock_launcher,workspaces_widgets,applications,power_security,",
+  "settingsSidebarCollapsedIds": ",system,",
   "configVersion": 4
 }
