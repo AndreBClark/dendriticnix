@@ -1,7 +1,6 @@
 {
   "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
   "display": {
-    "stat": true,
     "key": {
       "type": "both",
       "paddingLeft": 2
@@ -11,8 +10,8 @@
   "modules": [
     {
       "type": "title",
-      "format": "{user-name}@{host-name}",
-      "keyColor": "blue"
+      "keyColor": "blue",
+      "keyIcon": "󰒍"
     },
     {
       "type": "os",
@@ -34,11 +33,6 @@
       "type": "localip",
       "compact": true,
       "keyColor": "blue"
-    },
-    {
-      "type": "publicip",
-      "keyColor": "blue",
-      "timeout": 1000
     },
     {
       "type": "wifi",
