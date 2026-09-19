@@ -1,13 +1,27 @@
-{ inputs, den, ... }:
+{
+  inputs,
+  den,
+  ...
+}:
 {
   imports = [
     (inputs.flake-file.flakeModules.dendritic or { })
     (inputs.den.flakeModules.dendritic or { })
     (inputs.treefmt-nix.flakeModule or { })
+    inputs.den.flakeModule
   ];
-  den.schema.user.includes = [ den.provides.define-user ];
-  den.schema.flake-system.includes = [ den.aspects.my-packages ];
-
+  den = {
+    schema = {
+      flake-system = {
+        includes = [
+          den.aspects.my
+        ];
+      };
+      user = {
+        includes = [ den.provides.define-user ];
+      };
+    };
+  };
   # other inputs may be defined at a module using them.
   flake-file.inputs = {
     den.url = "github:vic/den";

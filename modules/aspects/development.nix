@@ -6,7 +6,7 @@
         terminal
         cli
         nvim
-        my-packages
+        my
         ;
     };
   };

@@ -1,14 +1,10 @@
 {
-  den.aspects.my-packages =
+  den.aspects.my =
     let
       myPackages = pkgs: {
         tinted-gowall = pkgs.callPackage ../../../pkgs/tinted-gowall/package.nix {
           inherit (pkgs) gowall yq;
         };
-        # nvim = inputs.nixvim.legacyPackages.${pkgs.stdenv.hostPlatform.system}.makeNixvimWithModule {
-        #   inherit pkgs;
-        #   module = { };
-        # };
       };
     in
     {
