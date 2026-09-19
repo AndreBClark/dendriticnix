@@ -1,13 +1,9 @@
-{ den, ... }:
 {
   den.aspects.nvim.treesitter = {
-    includes = [
-      (den.batteries.unfree [ "wildfire.nvim" ])
-    ];
-    homeManager =
+    nixvim =
       { pkgs, ... }:
       {
-        programs.nixvim.plugins = {
+        plugins = {
           treesitter = {
             enable = true;
             nixGrammars = true;
@@ -28,6 +24,15 @@
             folding.enable = true;
             highlight.enable = true;
             indent.enable = true;
+            settings.incremental_selection = {
+              enable = true;
+              keymaps = {
+                init_selection = "v<CR>";
+                node_incremental = "<CR>";
+                node_decremental = "<BS>";
+                scope_incremental = "<C-CR>";
+              };
+            };
           };
 
           treesitter-context = {
@@ -36,20 +41,14 @@
               max_lines = 6;
             };
           };
-          wildfire = {
-            enable = true;
-            settings.keymaps = {
-              init_selection = "<CR>";
-              node_incremental = "<CR>";
-              node_decremental = "<BS>";
-            };
-          };
           ts-context-commentstring.enable = true;
 
           comment = {
             enable = true;
             settings = {
-              pre_hook = "require('ts_context_commentstring.integrations.comment_nvim').create_pre_hook()";
+              pre_hook = /* lua */ ''
+                require('ts_context_commentstring.integrations.comment_nvim').create_pre_hook()
+              '';
             };
           };
         };

@@ -1,9 +1,6 @@
 {
   den.aspects.nvim.highlight = {
-    homeManager =
-      { config, ... }:
-      {
-        programs.nixvim = {
+    nixvim = {
       highlightOverride = {
         Visual.link = "lualine_a_visual";
         lualine_a_mode_command = {
