@@ -13,84 +13,84 @@
   };
 
   den = {
-    aspects.stylix =
+    lib.theme.stylixConfig =
       { user, ... }:
       let
-        theme = den.profiles.${user.name}.theme or user.theme;
+        theme = den.lib.theme.resolveTheme { inherit user; };
         inherit (theme)
           opacity
           cursor
           icons
           polarity
           ;
-        stylix =
-          pkgs:
+        base16Scheme =
           let
-            base16Scheme = ./tokyo-night-neon.yaml;
-            # base16Scheme = "${pkgs.base16-schemes}/share/themes/${colorscheme}.yaml";
+            attempt = builtins.tryEval theme.colorscheme;
           in
-          {
-            enable = true;
-            inherit opacity polarity base16Scheme;
-
-            cursor = {
-              inherit (cursor) name size;
-              package = pkgs.${cursor.package};
-            };
-            icons = {
-              enable = true;
-              inherit (icons) dark light;
-              package = pkgs.${icons.package};
-            };
-
-            targets = {
-              gtksourceview.enable = lib.mkDefault false;
-              gnome.enable = lib.mkDefault false;
-              gnome-text-editor.enable = lib.mkDefault false;
-            };
-          };
+          if attempt.success then attempt.value else "tokyo-night-moon";
       in
       {
-        includes = builtins.attrValues {
-          inherit (den.aspects.theme) fonts gtk qt;
+        enable = true;
+        inherit
+          opacity
+          polarity
+          base16Scheme
+          cursor
+          icons
+          ;
+
+        targets = {
+          gtksourceview.enable = lib.mkDefault false;
+          gnome.enable = lib.mkDefault false;
+          gnome-text-editor.enable = lib.mkDefault false;
         };
+      };
+
+    aspects.stylix =
+      { user, ... }:
+      let
+        stylix = den.lib.theme.stylixConfig { inherit user; };
+        stylixPackages = pkgs: {
+          cursor = {
+            inherit (stylix.cursor) name size;
+            package = pkgs.${stylix.cursor.package};
+          };
+          icons = {
+            inherit (stylix.icons) enable dark light;
+            package = pkgs.${stylix.icons.package};
+          };
+        };
+      in
+      {
+        includes = builtins.attrValues { inherit (den.aspects.theme) fonts gtk qt; };
 
         nixos =
           { pkgs, ... }:
           {
-            imports = [
-              inputs.stylix.nixosModules.stylix
-            ];
-
-            stylix = stylix pkgs;
-
-            environment.systemPackages = [
-              pkgs.${cursor.package}
-            ]
-            ++ builtins.attrValues {
-              inherit (pkgs)
-                adwaita-icon-theme
-                hicolor-icon-theme
-                ;
+            imports = [ inputs.stylix.nixosModules.stylix ];
+            stylix = stylix // {
+              inherit (stylixPackages pkgs) cursor icons;
+              homeManagerIntegration.autoImport = false;
             };
+            environment.systemPackages = [
+              pkgs.${stylix.cursor.package}
+            ]
+            ++ builtins.attrValues { inherit (pkgs) adwaita-icon-theme hicolor-icon-theme; };
             xdg.icons.enable = true;
           };
 
         homeManager =
           { pkgs, ... }:
           {
-            stylix = stylix pkgs // {
-              targets = {
-                blender.enable = lib.mkDefault false;
-              };
+            imports = [ inputs.stylix.homeModules.stylix ];
+            stylix = stylix // {
+              inherit (stylixPackages pkgs) cursor icons;
+              targets.blender.enable = lib.mkDefault false;
             };
-
-            home.packages = [
-              pkgs.${cursor.package}
-            ];
+            home.packages = [ pkgs.${stylix.cursor.package} ];
           };
-
       };
+
     schema.home.instantiate =
       { pkgs, modules }:
       inputs.home-manager.lib.homeManagerConfiguration {

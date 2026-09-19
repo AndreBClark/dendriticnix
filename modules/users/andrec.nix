@@ -24,7 +24,7 @@
 
     # find colorschems: https://tinted-theming.github.io/tinted-gallery/
     profiles.andrec = {
-      theme.colorscheme = "tokyo-night-storm";
+      theme.colorscheme = ../aspects/theme/tokyo-night-neon.yaml;
     };
   };
 }

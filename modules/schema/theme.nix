@@ -2,8 +2,14 @@
 {
   options = {
     colorscheme = lib.mkOption {
-      type = lib.types.str;
-      default = "tokyo-night-storm";
+      type =
+        with lib.types;
+        oneOf [
+          path
+          lines
+          attrs
+        ];
+      default = "tokyo-night-dark";
     };
 
     icons = lib.mkOption {
@@ -13,6 +19,10 @@
             defaultName = "Dracula";
           in
           {
+            enable = lib.mkOption {
+              type = lib.types.bool;
+              default = true;
+            };
             dark = lib.mkOption {
               type = lib.types.str;
               default = defaultName;
@@ -26,7 +36,6 @@
               type = lib.types.str;
               default = "dracula-icon-theme";
             };
-            default = { };
           };
       };
     };
