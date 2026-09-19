@@ -13,6 +13,7 @@
           xdg.portal.enable = true;
           system.stateVersion = "25.11";
           home-manager = {
+            useGlobalPkgs = true;
             backupFileExtension = "backup";
             overwriteBackup = true;
           };
