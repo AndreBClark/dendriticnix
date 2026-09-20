@@ -16,7 +16,7 @@
           "niri/dms/input.kdl".source = "${dmsSrc}-input.kdl";
           "niri/dms/layout.kdl".source = "${dmsSrc}-layout.kdl";
         };
-        wayland.windowManager.niri.extraConfigEarly = ''
+        wayland.windowManager.niri.extraConfig = lib.mkBefore ''
           include optional=true "dms/niri.kdl"
           include optional=true "dms/alttab.kdl"
           include optional=true "dms/binds.kdl"
