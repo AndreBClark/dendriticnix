@@ -4,7 +4,7 @@
     "brightColor": true,
     "key": {
       "type": "both",
-      "width": 12,
+      "width": 14,
       "paddingLeft": 2
     },
     "common": {
@@ -118,7 +118,8 @@
     },
     {
       "type": "lm",
-      "keyColor": "yellow"
+      "keyColor": "yellow",
+      "key": "Login"
     },
     {
       "type": "de",
@@ -126,11 +127,14 @@
     },
     {
       "type": "wm",
-      "keyColor": "yellow"
+      "keyColor": "yellow",
+      "key": "WM",
+      "format": "{pretty-name} {version}"
     },
     {
       "type": "theme",
-      "keyColor": "yellow"
+      "keyColor": "yellow",
+      "format": "{theme1} {theme2}"
     },
     {
       "type": "icons",
