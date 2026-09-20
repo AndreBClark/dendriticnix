@@ -40,6 +40,7 @@
           ;
 
         targets = {
+          nixos-icons.enable = false;
           gtksourceview.enable = lib.mkDefault false;
           gnome.enable = lib.mkDefault false;
           gnome-text-editor.enable = lib.mkDefault false;
