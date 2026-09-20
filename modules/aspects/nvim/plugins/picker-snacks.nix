@@ -28,7 +28,6 @@
                   main.current = true;
                   formatters.file = {
                     truncate = "left";
-                    min_width = 10;
                     filename_first = true;
                   };
                   layout = {
@@ -36,7 +35,8 @@
                     layout = {
                       box = "vertical";
                       position = "float";
-                      border = "rounded";
+                      border = "none";
+                      min_width = 10;
                       backdrop = false;
                       width = 0.25;
                       height = 0.3;
