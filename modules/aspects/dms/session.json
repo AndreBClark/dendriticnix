@@ -1,6 +1,7 @@
 {
-  "terminalOverride": "kitty",
   "wallpaperPath": "/home/andrec/Pictures/Wallpaper-tokyo-night-dark/wallhaven.cc_v9w8r5.jpeg",
+  "weatherLocation": "",
+  "terminalOverride": "kitty",
   "wallpaperPathLight": "/home/andrec/Pictures/Wallpapers-tokyonight/g7xdxl.jpeg",
   "wallpaperPathDark": "/home/andrec/Pictures/Wallpapers-tokyonight/g7xdxl.jpeg",
   "includedTransitions": [
@@ -10,17 +11,18 @@
   "wallpaperCyclingRandom": true,
   "wallpaperCyclingInterval": 900,
   "wallpaperCyclingFolderPath": "/home/andrec/Pictures/Wallpaper-tokyo-night-dark",
-  "weatherLocation": "",
-  "pinnedApps": [
-    "kitty",
-    "steam",
-    "vivaldi-stable",
-    "spotify",
-    "discord",
-    "org.gnome.Nautilus",
-    "dms_settings",
-    "obsidian"
-  ],
+  "dockPins": {
+    "dock": [
+      "kitty",
+      "steam",
+      "vivaldi-stable",
+      "spotify",
+      "discord",
+      "org.gnome.Nautilus",
+      "dms_settings",
+      "obsidian"
+    ]
+  },
   "barPinnedApps": [
     "dms_settings",
     "spotify",
@@ -55,35 +57,32 @@
   "niriOutputSettings": {
     "DP-2": {
       "focusAtStartup": true,
-      "vrrOnDemand": true,
       "hotCorners": {
         "corners": [
           "top-right",
           "bottom-right"
         ]
-      }
+      },
+      "vrrOnDemand": true
     },
     "HDMI-A-1": {
       "disabled": false,
-      "vrrOnDemand": true,
       "hotCorners": {
         "corners": [
           "bottom-left",
           "top-left"
         ]
-      }
+      },
+      "vrrOnDemand": true
     }
   },
   "activeDisplayProfile": {
-    "niri": "profile_1780712333822_nbsu56u"
+    "niri": "auto_5af6115"
   },
   "activeDisplayProfileModes": {
     "niri": {
-      "DP-2": {
-        "mode": "2560x1440@59.951"
-      },
-      "HDMI-A-1": {
-        "mode": "1920x1080@60.000"
+      "eDP-1": {
+        "mode": "1920x1080@59.963"
       }
     }
   },
@@ -136,7 +135,5 @@
     "iv",
     "crash"
   ],
-  "settingsSidebarExpandedIds": ",displays,dock_launcher,workspaces_widgets,applications,power_security,",
-  "settingsSidebarCollapsedIds": ",system,",
-  "configVersion": 4
+  "configVersion": 6
 }
