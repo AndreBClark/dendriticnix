@@ -65,9 +65,13 @@
               tab_bar_style = "custom";
               window_padding_width = 6;
               cursor_shape = "block";
-              cursor_trail = 1;
+              cursor_trail = 50;
+              tab_bar_margin_width = 6;
+              tab_title_max_length = 0;
+              tab_bar_min_tabs = 0;
               shell_integration = "no-rc no-cursor";
               bell = false;
+
             };
           keybindings = {
             "ctrl+shift+T" = "new_tab_with_cwd";
@@ -77,6 +81,7 @@
             active_tab_foreground  ${colors.base0C}
             inactive_tab_background ${colors.base00}
             inactive_tab_foreground  ${colors.base03}
+            custom_shaders cursor-trail-blaze
           '';
         };
 

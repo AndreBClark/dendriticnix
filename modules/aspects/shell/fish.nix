@@ -1,98 +1,106 @@
 { den, lib, ... }:
 {
-  den.aspects.shell.fish = {
-    includes = [
-      (den.provides.user-shell "fish")
-      den.aspects.shell.starship
-      (den.batteries.shell-integrations [
-        "direnv"
-        "devenv"
-        "eza"
-        "fzf"
-        "lazygit"
-        "starship"
-        "yazi"
-        "zoxide"
-      ])
-    ];
-    nixos =
-      { pkgs, ... }:
-      {
-        environment.systemPackages = [ pkgs.nix-your-shell ];
-        programs.fish = {
-          enable = true;
-          useBabelfish = true;
-          shellInit = ''
-            nix-your-shell fish | source
-          '';
-          vendor.completions.enable = true;
-        };
-      };
-    homeManager =
-      { pkgs, ... }:
-      let
-        mkFishPlugin = plugin: { inherit (plugin) src name; };
-
-        mkFishPlugins = names: map (name: mkFishPlugin pkgs.fishPlugins.${name}) names;
-
-        pluginNames = [
-          "autopair"
-          "done"
-          "sponge"
-          "grc"
-          "bang-bang"
-          "colored-man-pages"
-          "git-abbr"
-        ];
-      in
-      {
-        home = {
-          shell.enableFishIntegration = lib.mkDefault true;
-
-          packages = builtins.attrValues {
-            inherit (pkgs)
-              grc
-              jq
-              fastfetch
-              ;
-          };
-
-        };
-
-        programs = {
-          fish = {
+  den.aspects.shell.fish =
+    let
+      interactiveShellInit = ''
+        set --export fish_greeting
+        set fish_prompt_pwd_dir_length 0
+        set fish_prompt_pwd_full_dirs 3
+      '';
+    in
+    {
+      includes = [
+        (den.provides.user-shell "fish")
+        den.aspects.shell.starship
+        (den.batteries.shell-integrations [
+          "direnv"
+          "devenv"
+          "eza"
+          "fzf"
+          "lazygit"
+          "starship"
+          "yazi"
+          "zoxide"
+        ])
+      ];
+      nixos =
+        { pkgs, ... }:
+        {
+          environment.systemPackages = [ pkgs.nix-your-shell ];
+          programs.fish = {
             enable = true;
-            plugins = mkFishPlugins pluginNames;
-            interactiveShellInit = ''
-              set --export fish_greeting
+            useBabelfish = true;
+            inherit interactiveShellInit;
+            shellInit = ''
+              nix-your-shell fish | source
             '';
 
-            binds = {
-              "alt-g" = {
-                command = "cd $HOME";
-                repaint = true;
-              };
-            };
-            functions = {
-              fish_greeting = ''
+            vendor.completions.enable = true;
+          };
+        };
+      homeManager =
+        { pkgs, ... }:
+        let
+          mkFishPlugin = plugin: { inherit (plugin) src name; };
+
+          mkFishPlugins = names: map (name: mkFishPlugin pkgs.fishPlugins.${name}) names;
+
+          pluginNames = [
+            "autopair"
+            "done"
+            "sponge"
+            "grc"
+            "bang-bang"
+            "colored-man-pages"
+            "git-abbr"
+          ];
+        in
+        {
+          home = {
+            shell.enableFishIntegration = lib.mkDefault true;
+
+            packages = builtins.attrValues {
+              inherit (pkgs)
+                grc
+                jq
                 fastfetch
-              '';
-              codecontext = ''
-                code2prompt $argv --no-codeblock --token-map --hidden | fish_clipboard_copy
-              '';
+                ;
             };
 
           };
-          man.generateCaches = false;
-          nix-your-shell = {
-            enable = true;
-            enableFishIntegration = lib.mkDefault true;
-          };
 
-          kitty.shellIntegration.enableFishIntegration = lib.mkDefault true;
+          programs = {
+            fish = {
+              enable = true;
+              plugins = mkFishPlugins pluginNames;
+              inherit interactiveShellInit;
+              binds = {
+                "alt-g" = {
+                  command = "cd $HOME";
+                  repaint = true;
+                };
+              };
+              functions = {
+                fish_greeting = ''
+                  fastfetch
+                '';
+                codecontext = ''
+                  code2prompt $argv --no-codeblock --token-map --hidden | fish_clipboard_copy
+                '';
+              };
+
+            };
+            man.generateCaches = false;
+            nix-your-shell = {
+              enable = true;
+              enableFishIntegration = lib.mkDefault true;
+
+            };
+
+            kitty.shellIntegration.enableFishIntegration = lib.mkDefault true;
+
+          };
 
         };
-
-      };
-  };
+    };
 }
