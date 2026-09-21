@@ -28,7 +28,9 @@
 
           lint.enable = true;
           trim.enable = true;
-          fastaction.enable = true;
+          fastaction = {
+            enable = true;
+          };
 
           none-ls.enable = true;
           lint.lintersByFt = {
@@ -41,7 +43,11 @@
             "v"
           ];
           key = "<leader>ca";
-          action.__raw = "function() require('fastaction').code_action() end";
+          action.__raw = ''
+            function() require('fastaction').code_action({
+              filter = function(action) return not action.disabled end,
+            }) end
+          '';
           options.desc = "Code action";
         };
         extraPackages = [
