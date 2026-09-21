@@ -68,13 +68,13 @@
             {
               mode = "n";
               key = "gd";
-              action = "<cmd>Glance Definitions<CR>";
+              action = "<cmd>Glance definitions<CR>";
               options.desc = "Peek Definition";
             }
             {
               mode = "n";
               key = "gr";
-              action = "<cmd>Glance References<CR>";
+              action = "<cmd>Glance references<CR>";
               options.desc = "Peek References";
             }
           ])
