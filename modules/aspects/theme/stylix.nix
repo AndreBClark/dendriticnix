@@ -40,10 +40,10 @@
           ;
 
         targets = {
-          nixos-icons.enable = false;
-          gtksourceview.enable = lib.mkDefault false;
-          gnome.enable = lib.mkDefault false;
-          gnome-text-editor.enable = lib.mkDefault false;
+          nixos-icons.enable = lib.mkForce false;
+          gtksourceview.enable = lib.mkForce false;
+          gnome.enable = lib.mkForce false;
+          gnome-text-editor.enable = false;
         };
       };
 
@@ -86,7 +86,10 @@
             imports = [ inputs.stylix.homeModules.stylix ];
             stylix = stylix // {
               inherit (stylixPackages pkgs) cursor icons;
-              targets.blender.enable = lib.mkDefault false;
+              targets = {
+                blender.enable = lib.mkDefault false;
+                rofi.enable = false;
+              };
             };
             home.packages = [ pkgs.${stylix.cursor.package} ];
           };
