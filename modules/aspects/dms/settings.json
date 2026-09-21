@@ -10,15 +10,17 @@
     },
     "rosePine": "rosePine"
   },
-  "radiusStrength": 54,
+  "radiusStrength": 60,
   "clockFormat": "24h",
   "useFahrenheit": true,
+  "enableRippleEffects": false,
   "blurBorderOpacity": 0.5,
   "wallpaperBackgroundColorMode": "surface",
   "lockDateFormat": "dddd, MMMM d",
   "useAutoLocation": true,
   "fontFamily": "JetBrainsMono Nerd Font",
   "monoFontFamily": "JetBrainsMono Nerd Font",
+  "displayFontFamily": "JetBrainsMono Nerd Font",
   "fontWeight": 900,
   "powerMenuActions": [
     "reboot",
@@ -40,21 +42,21 @@
         }
       ],
       "showOnLastDisplay": true,
-      "position": 2,
-      "mode": "compact",
-      "taskbarAlign": "center",
-      "widgetExpansion": "popout",
-      "iconSize": 48,
+      "position": 3,
+      "mode": "taskbar",
+      "taskbarAlign": "end",
+      "widgetExpansion": "inline",
+      "iconSize": 42,
       "spacing": 8,
-      "itemSpacing": 4,
+      "itemSpacing": 8,
       "margin": 0,
       "bottomGap": 0,
       "transparency": 0.5,
       "followInterfaceStyle": true,
       "autoHide": false,
-      "smartAutoHide": true,
+      "smartAutoHide": false,
       "useOverlayLayer": true,
-      "editOnRightClick": false,
+      "editOnRightClick": true,
       "showOnFullscreen": false,
       "openOnOverview": true,
       "groupByApp": true,
@@ -82,18 +84,55 @@
       "order": [],
       "widgets": [
         {
+          "enabled": true,
           "id": "dock_launcher",
-          "widgetId": "dockLauncher",
-          "enabled": true
+          "widgetId": "dockLauncher"
         },
         {
-          "id": "dock_apps",
-          "widgetId": "appsDock",
-          "enabled": true
-        },
-        {
+          "enabled": true,
           "id": "dock_trash",
-          "widgetId": "dockTrash",
+          "widgetId": "dockTrash"
+        },
+        {
+          "id": "dock_1789947026734",
+          "widgetId": "appsDock",
+          "enabled": true,
+          "appsDockColorizeActive": true,
+          "appsDockIconSizePercentage": 100
+        },
+        {
+          "id": "dock_1789947159039",
+          "widgetId": "clipboard",
+          "enabled": true
+        },
+        {
+          "id": "dock_1789947166868",
+          "widgetId": "notepadButton",
+          "enabled": true
+        },
+        {
+          "id": "dock_1789947185099",
+          "widgetId": "volumeMixer",
+          "enabled": true
+        },
+        {
+          "id": "dock_1789948639740",
+          "widgetId": "colorPicker",
+          "enabled": true
+        },
+        {
+          "id": "dock_1789948662040",
+          "widgetId": "controlCenterButton",
+          "enabled": true
+        },
+        {
+          "id": "dock_1789948703363",
+          "widgetId": "clock",
+          "enabled": true
+        },
+        {
+          "id": "dock_1789948719245",
+          "widgetId": "powerMenuButton",
           "enabled": true
         }
       ]
@@ -101,13 +140,16 @@
   ],
   "currentThemeCategory": "custom",
   "popupTransparency": 0.5,
+  "widgetBackgroundColor": "s",
   "widgetColorMode": "colorful",
+  "controlCenterTileColorMode": "surfaceVariant",
   "firstDayOfWeek": 2,
-  "motionEffect": 1,
+  "motionEffect": 2,
   "m3ElevationColorMode": "surfaceVariant",
   "barElevationEnabled": false,
   "blurEnabled": true,
   "foregroundLayerTransparency": 0.5,
+  "focusRingWidth": 4,
   "blurredWallpaperLayer": true,
   "blurWallpaperOnOverview": true,
   "systemTrayIconTintMode": "primary",
@@ -116,47 +158,106 @@
   "controlCenterWidgets": [
     {
       "enabled": true,
+      "h": 1,
       "id": "volumeSlider",
-      "w": 8,
-      "h": 1
+      "w": 8
     },
     {
       "enabled": true,
+      "h": 1,
       "id": "wifi",
-      "w": 4,
-      "h": 1
+      "w": 4
     },
     {
       "enabled": true,
+      "h": 1,
       "id": "audioOutput",
-      "w": 4,
-      "h": 1
+      "w": 4
     },
     {
       "enabled": true,
+      "h": 1,
       "id": "audioInput",
-      "w": 4,
-      "h": 1
+      "w": 4
     },
     {
       "enabled": true,
+      "h": 1,
       "id": "idleInhibitor",
-      "w": 4,
-      "h": 1
+      "w": 4
     }
   ],
-  "scrollTitleEnabled": false,
+  "audioWheelScrollAmount": 10,
+  "mediaLyricsProviders": [
+    {
+      "id": "betterlyrics",
+      "enabled": true
+    },
+    {
+      "id": "lyricsplus",
+      "enabled": true
+    },
+    {
+      "id": "lrclib",
+      "enabled": true
+    },
+    {
+      "id": "unison",
+      "enabled": true
+    }
+  ],
   "clockDateFormat": "yyyy-MM-dd ddd",
-  "appLauncherGridColumns": 5,
+  "appLauncherGridColumns": 6,
   "spotlightSectionViewModes": {
     "apps": "grid"
   },
+  "dankLauncherV2ShowSourceBadges": false,
+  "dankLauncherV2IncludeFoldersInAll": true,
   "launcherUseOverlayLayer": true,
   "spotlightBarShowModeChips": true,
+  "dashTabs": [
+    {
+      "id": "overview",
+      "enabled": true
+    },
+    {
+      "id": "media",
+      "enabled": true
+    },
+    {
+      "id": "wallpaper",
+      "enabled": true
+    },
+    {
+      "id": "weather",
+      "enabled": true
+    },
+    {
+      "id": "notifications",
+      "enabled": true
+    }
+  ],
+  "dashOptions": {
+    "clock": {
+      "numbers": true,
+      "date": true,
+      "tone": ""
+    },
+    "media": {
+      "playerStyle": "material"
+    },
+    "weather": {
+      "forecast": "cards"
+    }
+  },
   "iconThemeDark": "Dracula",
   "cursorSettings": {
     "cursor": 32,
-    "theme": "BreezeX-RosePine-Linux"
+    "theme": "BreezeX-RosePine-Linux",
+    "size": 24,
+    "niri": {
+      "hideWhenTyping": true
+    }
   },
   "launcherLogoMode": "os",
   "launcherLogoColorOverride": "primary",
@@ -176,7 +277,6 @@
   "matugenTemplateGhostty": false,
   "matugenTemplateFoot": false,
   "matugenTemplateAlacritty": false,
-  "matugenTemplateNeovim": true,
   "matugenTemplateWezterm": false,
   "matugenTemplateEmacs": false,
   "matugenTemplateNeovimSettings": {
@@ -190,12 +290,15 @@
     }
   },
   "notificationOverlayEnabled": true,
+  "notificationPopupBodyInvokesAction": true,
   "maxFprintTries": 3,
   "notificationTimeoutNormal": 8000,
+  "notificationCompactMode": true,
   "notificationFocusedMonitor": true,
   "osdAlwaysShowValue": true,
   "osdMediaPlaybackEnabled": true,
   "osdPowerProfileEnabled": true,
+  "osdWorkspaceEnabled": true,
   "updaterUseCustomCommand": true,
   "updaterCustomCommand": "nh os switch ~/nixconfig",
   "updaterIntervalSeconds": 86400,
@@ -203,12 +306,7 @@
     "lockScreen": [
       "DP-2"
     ],
-    "notepad": [
-      {
-        "model": "E24-C1 ",
-        "name": "HDMI-A-1"
-      }
-    ],
+    "notepad": [],
     "notifications": [
       {
         "model": "K272HUL",
@@ -249,20 +347,14 @@
       "bottomGap": 0,
       "centerWidgets": [
         {
-          "enabled": true,
-          "id": "weather"
-        },
-        {
-          "enabled": true,
-          "id": "clock"
-        },
-        {
-          "enabled": true,
           "id": "music",
+          "enabled": true,
+          "mediaAdaptiveWidthEnabled": true,
           "mediaSize": 3
         }
       ],
       "enabled": true,
+      "followInterfaceStyle": true,
       "fontScale": 1,
       "gothCornerRadiusOverride": false,
       "gothCornersEnabled": false,
@@ -277,12 +369,12 @@
         {
           "enabled": true,
           "id": "workspaceSwitcher",
+          "showOccupiedWorkspacesOnly": true,
+          "showWorkspaceApps": true,
           "showWorkspaceIndex": true,
           "showWorkspacePadding": true,
-          "showWorkspaceApps": true,
-          "workspaceAppIconSizeOffset": 4,
-          "showOccupiedWorkspacesOnly": true,
-          "workspaceActiveAppHighlightEnabled": true
+          "workspaceActiveAppHighlightEnabled": true,
+          "workspaceAppIconSizeOffset": 4
         },
         {
           "enabled": true,
@@ -300,33 +392,8 @@
       "position": 0,
       "rightWidgets": [
         {
-          "enabled": true,
-          "id": "colorPicker"
-        },
-        {
-          "enabled": true,
-          "id": "clipboard"
-        },
-        {
-          "enabled": true,
-          "id": "notificationButton"
-        },
-        {
-          "enabled": true,
-          "id": "systemTray"
-        },
-        {
-          "enabled": true,
-          "id": "controlCenterButton",
-          "showVpnIcon": false
-        },
-        {
-          "enabled": true,
-          "id": "battery"
-        },
-        {
-          "enabled": true,
-          "id": "powerMenuButton"
+          "id": "clock",
+          "enabled": true
         }
       ],
       "screenPreferences": [
@@ -354,12 +421,14 @@
       "widgetOutlineOpacity": 1,
       "widgetOutlineThickness": 2,
       "widgetTransparency": 0.5,
-      "followInterfaceStyle": true
+      "attachToScreenEdge": false,
+      "widgetStyle": "pills"
     }
   ],
   "builtInPluginSettings": {
     "dms_clipboard_search": {
-      "trigger": "cb"
+      "trigger": "cb",
+      "enabled": false
     },
     "dms_qr_generator": {
       "trigger": "qrg"
@@ -367,10 +436,19 @@
     "dms_settings_search": {
       "enabled": true,
       "trigger": "?"
+    },
+    "dms_power": {
+      "trigger": "pw"
     }
   },
   "launcherPluginVisibility": {
     "dankObsidian": {
+      "allowWithoutTrigger": false
+    },
+    "dms_vpn": {
+      "allowWithoutTrigger": false
+    },
+    "dms_clipboard_search": {
       "allowWithoutTrigger": false
     }
   },
