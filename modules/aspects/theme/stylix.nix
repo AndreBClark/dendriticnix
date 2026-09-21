@@ -43,7 +43,7 @@
           nixos-icons.enable = lib.mkForce false;
           gtksourceview.enable = lib.mkForce false;
           gnome.enable = lib.mkForce false;
-          gnome-text-editor.enable = false;
+          gnome-text-editor.enable = lib.mkForce false;
         };
       };
 
