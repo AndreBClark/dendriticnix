@@ -1,5 +1,5 @@
 {
-  "wallpaperPath": "/home/andrec/Pictures/Wallpaper-tokyo-night-dark/wallhaven.cc_v9w8r5.jpeg",
+  "wallpaperPath": "/home/andrec/Pictures/Wallpaper-tokyo-night-dark/wallhaven.cc_6q3eqw.jpeg",
   "weatherLocation": "",
   "terminalOverride": "kitty",
   "wallpaperPathLight": "/home/andrec/Pictures/Wallpapers-tokyonight/g7xdxl.jpeg",
@@ -37,7 +37,6 @@
     "#4d2e21"
   ],
   "showThirdPartyPlugins": true,
-  "pluginBrowserSortMode": "category",
   "hiddenApps": [
     "nvim",
     "xterm",
@@ -48,7 +47,8 @@
     "Lossless Scaling",
     "qt6ct",
     "khal",
-    "qt5ct"
+    "qt5ct",
+    "samrewritten"
   ],
   "lastPlayerIdentity": "Spotify",
   "hiddenOutputDeviceNames": [
@@ -77,17 +77,20 @@
     }
   },
   "activeDisplayProfile": {
-    "niri": "auto_5af6115"
+    "niri": "profile_1780712333822_nbsu56u"
   },
   "activeDisplayProfileModes": {
     "niri": {
-      "eDP-1": {
-        "mode": "1920x1080@59.963"
+      "DP-2": {
+        "mode": "2560x1440@59.951"
+      },
+      "HDMI-A-1": {
+        "mode": "1920x1080@60.000"
       }
     }
   },
   "lastAppliedIconTheme": "Dracula",
-  "launcherLastQuery": "not",
+  "launcherLastMode": "apps",
   "launcherQueryHistory": [
     "not",
     ":e diamond",

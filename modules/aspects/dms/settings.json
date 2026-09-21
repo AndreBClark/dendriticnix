@@ -212,6 +212,7 @@
     "apps": "grid"
   },
   "dankLauncherV2ShowSourceBadges": false,
+  "dankLauncherV2BorderEnabled": true,
   "dankLauncherV2IncludeFoldersInAll": true,
   "launcherUseOverlayLayer": true,
   "spotlightBarShowModeChips": true,
@@ -356,8 +357,8 @@
       "enabled": true,
       "followInterfaceStyle": true,
       "fontScale": 1,
-      "gothCornerRadiusOverride": false,
-      "gothCornersEnabled": false,
+      "gothCornerRadiusOverride": true,
+      "gothCornersEnabled": true,
       "iconScale": 1,
       "id": "default",
       "innerPadding": 4,
@@ -422,7 +423,44 @@
       "widgetOutlineThickness": 2,
       "widgetTransparency": 0.5,
       "attachToScreenEdge": false,
-      "widgetStyle": "pills"
+      "widgetStyle": "pills",
+      "gothCornerRadiusValue": 10,
+      "islandHomeLayout": [
+        {
+          "id": "media",
+          "enabled": true
+        },
+        {
+          "id": "clock",
+          "enabled": true
+        },
+        {
+          "id": "weather",
+          "enabled": false
+        },
+        {
+          "id": "status",
+          "enabled": false
+        },
+        {
+          "id": "volume",
+          "enabled": false
+        },
+        {
+          "id": "brightness",
+          "enabled": false
+        },
+        {
+          "id": "notifications",
+          "enabled": false
+        }
+      ],
+      "islandHomeCompactTight": true,
+      "islandNotificationPopups": true,
+      "islandNotificationExpand": true,
+      "islandSatellitePosition": "edges",
+      "islandSatellitesEnabled": true,
+      "islandSatelliteBackground": false
     }
   ],
   "builtInPluginSettings": {
@@ -454,6 +492,8 @@
   },
   "frameShowOnOverview": true,
   "frameCloseGaps": false,
+  "frameLauncherEmergeSide": "top",
   "frameLauncherArcExtender": true,
+  "frameBarInsetPadding": 0,
   "configVersion": 28
 }

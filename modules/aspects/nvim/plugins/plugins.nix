@@ -19,11 +19,8 @@
       { config, ... }:
       {
         plugins = {
-          lz-n.enable = true;
           emmet.enable = true;
-          glance = {
-            enable = true;
-          };
+          glance.enable = true;
           modicator = {
             enable = true;
             settings = {
@@ -34,12 +31,7 @@
             };
           };
 
-          goto-preview = {
-            enable = true;
-            lazyLoad.settings.keys = [
-              { __unkeyed-1 = "gp"; }
-            ];
-          };
+          goto-preview.enable = true;
 
           cutlass-nvim = {
             enable = true;
@@ -54,10 +46,7 @@
           render-markdown.enable = lib.mkDefault true;
           smart-splits.enable = true;
           kitty-navigator.enable = true;
-          trouble = {
-            enable = true;
-            lazyLoad.settings.cmd = "Trouble";
-          };
+          trouble.enable = true;
 
           web-devicons.enable = true;
           tiny-inline-diagnostic = {

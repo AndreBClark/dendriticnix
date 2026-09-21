@@ -1,6 +1,9 @@
-{ lib, ... }:
+{ den, lib, ... }:
 {
   den.aspects.nvim.lsp = {
+    includes = builtins.attrValues {
+      inherit (den.aspects.nvim.lsp) web nix;
+    };
     nixvim =
       { pkgs, config, ... }:
       {
@@ -8,41 +11,11 @@
           inlayHints.enable = true;
           codelens.enable = true;
           servers = {
-            ts_ls.enable = true;
-            biome = {
-              enable = true;
-              config = {
-                linter = {
-                  enabled = true;
-                  rules.recommended = true;
-                };
-                assist = {
-                  enabled = true;
-                  actions.source.organizeImports = "on";
-                };
-              };
-            };
-            cssls.enable = true;
-            tailwindcss.enable = true;
-            html.enable = true;
-            astro.enable = true;
             jsonls.enable = true;
-            svelte.enable = true;
             pyright.enable = true;
             marksman = {
               enable = true;
-              config = {
-                markdown = {
-                  preferredLinkStyle = "wiki";
-                };
-              };
-            };
-            nixd = {
-              enable = true;
-              config = {
-                formatting.command = [ "nixfmt" ];
-                nixpkgs.expr = "import (builtins.getFlake \"pkgs\") { }";
-              };
+              config.markdown.preferredLinkStyle = "wiki";
             };
             bashls.enable = true;
             yamlls.enable = true;
@@ -55,35 +28,9 @@
 
           lint.enable = true;
           trim.enable = true;
+          fastaction.enable = true;
 
-          fastaction = {
-            enable = true;
-            settings = {
-              register_ui_select = true;
-            };
-          };
-
-          none-ls = {
-            enable = true;
-            sources = {
-              formatting = {
-                nixfmt.enable = true;
-                biome.enable = true;
-                stylua.enable = true;
-              };
-
-              diagnostics = {
-                statix.enable = true;
-                deadnix.enable = true;
-              };
-
-              code_actions = {
-                refactoring.enable = true;
-                statix.enable = true;
-                ts_node_action.enable = true;
-              };
-            };
-          };
+          none-ls.enable = true;
           lint.lintersByFt = {
             json = [ "jq" ];
           };
@@ -101,5 +48,62 @@
           pkgs.jq
         ];
       };
+    nix.nixvim = {
+      lsp.servers.nixd = {
+        enable = true;
+        config = {
+          formatting.command = [ "nixfmt" ];
+          nixpkgs.expr = "import (builtins.getFlake \"pkgs\") { }";
+        };
+      };
+      plugins.none-ls = {
+        enable = true;
+        sources = {
+          formatting = {
+            nixfmt.enable = true;
+            stylua.enable = true;
+          };
+
+          diagnostics = {
+            statix.enable = true;
+            deadnix.enable = true;
+          };
+
+          code_actions = {
+            statix.enable = true;
+          };
+        };
+      };
+    };
+
+    web.nixvim = {
+      lsp.servers = {
+        ts_ls.enable = true;
+        biome = {
+          enable = true;
+          config = {
+            linter = {
+              enabled = true;
+              rules.recommended = true;
+            };
+            assist = {
+              enabled = true;
+              actions.source.organizeImports = "on";
+            };
+          };
+        };
+        cssls.enable = true;
+        tailwindcss.enable = true;
+        html.enable = true;
+        astro.enable = true;
+        svelte.enable = true;
+      };
+      plugins = {
+        none-ls = {
+          enable = true;
+          sources.formatting.biome.enable = true;
+        };
+      };
+    };
   };
 }
