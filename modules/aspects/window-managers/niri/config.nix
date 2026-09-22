@@ -20,7 +20,7 @@
               "input.kdl"
               "window-rules.kdl"
               "binds.kdl"
-              "output-${host.name}"
+              "output-${host.name}.kdl"
             ];
           };
         xdg.configFile =

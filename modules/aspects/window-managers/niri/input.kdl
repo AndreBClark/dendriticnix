@@ -25,6 +25,9 @@ input {
         // click-method "clickfinger"
         // left-handed
         disabled-on-external-mouse
-        middle-emulation false
     }
+}
+
+clipboard {
+    disable-primary
 }

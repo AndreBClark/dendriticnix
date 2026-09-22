@@ -29,6 +29,7 @@
         wayland.windowManager.niri = {
           enable = true;
           systemd.enable = true;
+          checkConfig = false;
         };
       };
     };
