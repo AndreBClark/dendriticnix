@@ -1,3 +1,4 @@
+{ lib, ... }:
 {
   den.aspects.niri.config = {
     homeManager =
@@ -39,15 +40,12 @@
             "niri/input.kdl".text = mkConfigFile {
               path = ./input.kdl;
               variables = [
-                "@@XKB_LAYOUT"
-                "@@XKB_VARIANT@@"
-                "@@XKB_OPTIONS@@"
+                "@XKB_LAYOUT@"
+                "@XKB_MODEL@"
+                "@XKB_VARIANT@"
+                "@XKB_OPTIONS@"
               ];
-              values = [
-                user.keyboard.layout
-                user.keyboard.variant
-                user.keyboard.options
-              ];
+              values = map (set: set.value) (lib.attrsToList user.keyboard);
             };
             "niri/binds.kdl".text = mkConfigFile {
               path = ./binds.kdl;
