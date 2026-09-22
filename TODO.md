@@ -9,7 +9,7 @@
 
 
 ### Neovim
-- [ ] use more contrasting palette order for tab_bar
+- [x] use more contrasting palette order for tab_bar
 - [x] interactive breadcrumbs
 - [x] style bufferline [nvim] [bufferline]
     - [x] find fun bufferline styles
@@ -20,9 +20,9 @@
     - [x] have deepwiki teach me the keymaps
 - [x] disable more of noice and just keep nui/cmdline
     - [x] find if theres more locations
-- [ ] audit keymaps
-    - [ ] make sure they fit which key groups
-    - [ ] remove redundant, overlapping, not useful keymaps
+- [x] audit keymaps
+    - [x] make sure they fit which key groups
+    - [x] remove redundant, overlapping, not useful keymaps
 
 ### Design
 - [x] figure out why fonts on my terminal are not bold
@@ -41,8 +41,8 @@
 
 ### Yak Shaving
 
-- [ ] convert niri config back to kdl for portability and use a toKdl readfile on settings
-- [ ] nixvim standalone package
+- [x] convert niri config back to kdl for portability and use a toKdl readfile on settings
+- [x] nixvim standalone package
 
 ### Blocked by upstream
 
