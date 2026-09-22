@@ -2,10 +2,12 @@
 {
   den.aspects.shell.fish =
     let
-      interactiveShellInit = ''
-        set --export fish_greeting
+      shellInit = ''
         set fish_prompt_pwd_dir_length 0
         set fish_prompt_pwd_full_dirs 3
+        set fish_prompt_pwd_use_path true
+        functions -e __fish_prompt_pwd
+        functions -e fish_prompt
       '';
     in
     {
@@ -30,9 +32,9 @@
           programs.fish = {
             enable = true;
             useBabelfish = true;
-            inherit interactiveShellInit;
             shellInit = ''
               nix-your-shell fish | source
+              ${shellInit}
             '';
 
             vendor.completions.enable = true;
@@ -73,7 +75,7 @@
             fish = {
               enable = true;
               plugins = mkFishPlugins pluginNames;
-              inherit interactiveShellInit;
+              inherit shellInit;
               binds = {
                 "alt-g" = {
                   command = "cd $HOME";
@@ -84,9 +86,12 @@
                 fish_greeting = ''
                   fastfetch
                 '';
-                codecontext = ''
-                  code2prompt $argv --no-codeblock --token-map --hidden | fish_clipboard_copy
-                '';
+                codecontext = {
+                  body = ''
+                    code2prompt $argv --no-codeblock --token-map --hidden | fish_clipboard_copy
+                  '';
+                  description = "copy code files";
+                };
               };
 
             };
