@@ -42,18 +42,7 @@
                       height = 0.3;
                       row = -1;
                       col = -1;
-                      # title = "{title} {live} {flags}";
-                      # title_pos = "center";
                       footer_keys = true;
-                      # __unkeyed-1 = {
-                      #   win = "input";
-                      #   height = 1;
-                      #   border = "bottom";
-                      # };
-                      # __unkeyed-2 = {
-                      #   win = "list";
-                      #   border = "none";
-                      #   };
                     };
                   };
                 };
