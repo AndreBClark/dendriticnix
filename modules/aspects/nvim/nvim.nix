@@ -1,47 +1,38 @@
 {
   den,
   lib,
+  inputs,
   ...
 }:
 {
-  den = {
-    aspects.nvim = {
-      includes = builtins.attrValues {
-        inherit (den.aspects.nvim)
-          lsp
-          keymaps
-          options
-          plugins
-          highlight
-          ;
-      };
+  flake-file.inputs.nixvim.url = "github:nix-community/nixvim";
 
-      nixvim = {
+  den.aspects.nvim =
+    let
+      mkColorscheme =
+        {
+          user,
+          pkgs,
+          lib,
+        }:
+        let
+          colorscheme = den.lib.theme.palette { inherit pkgs lib user; };
+        in
+        {
+          base16 = {
+            enable = true;
+            inherit colorscheme;
+          };
+        };
+
+      nixvimConfig = {
         viAlias = true;
         vimAlias = true;
-
-        highlightOverride =
-          let
-            transparentBackground = {
-              main = true;
-              signColumn = false;
-              numberLine = false;
-            };
-            transparent = {
-              bg = "none";
-              ctermbg = "none";
-            };
-          in
-          {
-            Normal = lib.mkIf transparentBackground.main transparent;
-            NonText = lib.mkIf transparentBackground.main transparent;
-            SignColumn = lib.mkIf transparentBackground.signColumn transparent;
-            LineNr = lib.mkIf transparentBackground.numberLine transparent;
-            LineNrAbove = lib.mkIf transparentBackground.numberLine transparent;
-            LineNrBelow = lib.mkIf transparentBackground.numberLine transparent;
-          };
+        dependencies.ripgrep.enable = true;
+        imports = [ (inputs.import-tree ./_config) ];
       };
-
+    in
+    {
       homeManager =
         {
           user,
@@ -50,14 +41,13 @@
           ...
         }:
         {
-          imports = [
-            { programs.nixvim = den.lib.nixvim.module den.aspects.nvim; }
-            { programs.nixvim = den.lib.nixvim.mkColorscheme { inherit user pkgs lib; }; }
-          ];
+          imports = [ inputs.nixvim.homeModules.nixvim ];
 
-          programs.nixvim = {
+          programs.nixvim = nixvimConfig // {
             enable = true;
             defaultEditor = true;
+            colorschemes = mkColorscheme { inherit user pkgs lib; };
+            nixpkgs.config.allowUnfree = true;
           };
 
           stylix.targets.nixvim = {
@@ -69,26 +59,54 @@
             v = "nvim";
             nvpurge = "rm -rf ${config.home.homeDirectory}/.local/state/nvim/swap";
           };
+
+        };
+      packages =
+        { pkgs, ... }:
+        let
+          system = pkgs.stdenv.hostPlatform.system;
+          pkgsUnfree = import pkgs.path {
+            inherit system;
+            config.allowUnfree = true;
+          };
+          user = den.hosts.${system}.seadragon.users.andrec;
+        in
+        {
+          nixvim =
+            (inputs.nixvim.lib.evalNixvim {
+              modules = [
+                (
+                  nixvimConfig
+                  // {
+                    performance = {
+                      byteCompileLua = {
+                        enable = true;
+                        nvimRuntime = true;
+                        luaLib = true;
+                        initLua = true;
+                        plugins = true;
+                        excludedPlugins = [
+                          "nvim-treesitter"
+                        ];
+                      };
+
+                      combinedPlugins = {
+                        enable = true;
+                        standalonePlugins = [ "nvim-treesitter" ];
+                      };
+                    };
+                    colorschemes = mkColorscheme {
+                      inherit user lib;
+                      pkgs = pkgsUnfree;
+                    };
+                  }
+                )
+                { nixpkgs.pkgs = pkgsUnfree; }
+              ];
+            }).config.build.package.overrideAttrs
+              (_: {
+                pname = "nixvim";
+              });
         };
     };
-    aspects.my.packages =
-      { pkgs, ... }:
-      let
-        system = pkgs.stdenv.hostPlatform.system;
-        pkgsUnfree = import pkgs.path {
-          inherit system;
-          config.allowUnfree = true;
-        };
-        user = den.hosts.${system}.seadragon.users.andrec;
-      in
-      {
-        nixvim = den.lib.nixvim.package pkgsUnfree den.aspects.nvim [
-          (den.lib.nixvim.mkColorscheme {
-            inherit user;
-            pkgs = pkgsUnfree;
-            inherit lib;
-          })
-        ];
-      };
-  };
 }
