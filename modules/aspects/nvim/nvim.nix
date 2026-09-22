@@ -78,23 +78,30 @@
                 (
                   nixvimConfig
                   // {
-                    performance = {
-                      byteCompileLua = {
-                        enable = true;
-                        nvimRuntime = true;
-                        luaLib = true;
-                        initLua = true;
-                        plugins = true;
+                    enablePrintInit = false;
+                    enableMan = false;
+                    performance =
+                      let
                         excludedPlugins = [
                           "nvim-treesitter"
+                          "snacks.nvim"
                         ];
-                      };
+                      in
+                      {
+                        byteCompileLua = {
+                          enable = true;
+                          nvimRuntime = true;
+                          luaLib = true;
+                          initLua = true;
+                          plugins = true;
+                          inherit excludedPlugins;
+                        };
 
-                      combinedPlugins = {
-                        enable = true;
-                        standalonePlugins = [ "nvim-treesitter" ];
+                        combinePlugins = {
+                          enable = true;
+                          standalonePlugins = excludedPlugins;
+                        };
                       };
-                    };
                     colorschemes = mkColorscheme {
                       inherit user lib;
                       pkgs = pkgsUnfree;
