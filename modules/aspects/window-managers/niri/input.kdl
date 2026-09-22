@@ -3,8 +3,8 @@ input {
         xkb {
             layout "@XKB_LAYOUT@"
             model "@XKB_MODEL@"
-            variant "@XKB_VARIANT@"
             options "@XKB_OPTIONS@"
+            variant "@XKB_VARIANT@"
         }
     }
 

@@ -42,8 +42,8 @@
               variables = [
                 "@XKB_LAYOUT@"
                 "@XKB_MODEL@"
-                "@XKB_VARIANT@"
                 "@XKB_OPTIONS@"
+                "@XKB_VARIANT@"
               ];
               values = map (set: set.value) (lib.attrsToList user.keyboard);
             };
