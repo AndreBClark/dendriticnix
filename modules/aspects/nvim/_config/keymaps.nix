@@ -1,8 +1,8 @@
 { lib, ... }:
 {
   userCommands = {
-    W.command = "w";
-    Q.command = "q";
+    W.command = "wall";
+    Q.command = "qall";
   };
   globals.mapleader = lib.mkDefault " ";
   keymaps = [
@@ -13,10 +13,13 @@
     }
     {
       key = "<space>";
-      action = "";
+      action = "<Nop>";
       options.silent = true;
     }
-
+    {
+      key = "<MiddleMouse>";
+      action = "<Nop";
+    }
     {
       key = "<leader>q";
       mode = "n";
