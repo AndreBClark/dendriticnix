@@ -1,0 +1,4 @@
+binds {
+    Mod+T hotkey-overlay-title="Open Terminal" { spawn-sh "@@TERMINAL@@"; }
+    Alt+Y hotkey-overlay-title="Toggle wallpaper Carousel" { spawn-sh "dms ipc wallpaperCarousel toggle"; }
+}

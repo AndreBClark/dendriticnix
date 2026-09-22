@@ -1,64 +1,66 @@
 {
   den.aspects.niri.config = {
     homeManager =
-      { user, ... }:
+      { user, host, ... }:
       {
-        wayland.windowManager.niri = {
-          settings = {
-            input.keyboard.xkb = user.keyboard;
-
-            hotkey-overlay = {
-              skip-at-startup = true;
-              hide-not-bound = true;
-            };
-
-            blur = {
-              offset = 6;
-              passes = 5;
-              noise = 0.04;
-            };
-
-            prefer-no-csd = { };
-
-            layout = {
-              gaps = 16;
-              struts = {
-                left = -14;
-                right = -14;
-                top = -14;
-                bottom = -14;
-              };
-              border.width = 0;
-            };
-
-            _children = [
-              {
-                layer-rule = {
-                  _children = [
-                    { match._props.namespace = "dms:blurwallpaper"; }
-                    { place-within-backdrop = true; }
-                  ];
+        wayland.windowManager.niri =
+          let
+            mkIncludes =
+              files:
+              map (f: {
+                include = {
+                  _args = [ f ];
+                  _props.optional = true;
                 };
-              }
-              {
-                workspace = {
-                  _args = [ "1" ];
-                };
-              }
-              {
-                workspace = {
-                  _args = [ "2" ];
-                };
-              }
-              {
-                workspace = {
-                  _args = [ "3" ];
-                };
-              }
+              }) files;
+          in
+          {
+            settings._children = mkIncludes [
+              "layout.kdl"
+              "input.kdl"
+              "window-rules.kdl"
+              "binds.kdl"
+              "output-${host.name}"
             ];
-
           };
-        };
+        xdg.configFile =
+          let
+            mkConfigFile =
+              {
+                path,
+                variables,
+                values,
+              }:
+              builtins.replaceStrings variables values (builtins.readFile path);
+          in
+          {
+            "niri/layout.kdl".source = ./layout.kdl;
+
+            "niri/input.kdl".text = mkConfigFile {
+              path = ./input.kdl;
+              variables = [
+                "@@XKB_LAYOUT"
+                "@@XKB_VARIANT@@"
+                "@@XKB_OPTIONS@@"
+              ];
+              values = [
+                user.keyboard.layout
+                user.keyboard.variant
+                user.keyboard.options
+              ];
+            };
+            "niri/binds.kdl".text = mkConfigFile {
+              path = ./binds.kdl;
+              variables = [ "@@TERMINAL@@" ];
+              values = [ user.terminal ];
+            };
+            "niri/window-rules.kdl".text = mkConfigFile {
+              path = ./window-rules.kdl;
+              variables = [ "@@OPACITY_APPLICATIONS@@" ];
+              values = [ (toString user.theme.opacity.applications) ];
+            };
+            "niri/output-${host.name}.kdl".source = ./output-${host.name}.kdl;
+          };
       };
   };
 }

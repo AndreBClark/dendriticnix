@@ -1,0 +1,8 @@
+output "DP-2" {
+    focus-at-startup
+    variable-refresh-rate on-demand=true
+}
+output "HDMI-A-1" {
+    position x=0 y=720
+    variable-refresh-rate on-demand=true
+}

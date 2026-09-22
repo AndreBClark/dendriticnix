@@ -5,12 +5,7 @@
     {
       includes =
         builtins.attrValues {
-          inherit (den.aspects.niri)
-            binds
-            config
-            outputs
-            window-rules
-            ;
+          inherit (den.aspects.niri) config;
         }
         ++ lib.optionals (user.desktopShell == "dms") [
           den.aspects.dms.niri-includes
