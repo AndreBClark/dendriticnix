@@ -63,7 +63,7 @@
       "separatePinnedAndRunningApps": false,
       "restoreSpecialWorkspaceOnClick": false,
       "isolateDisplays": false,
-      "indicatorStyle": "circle",
+      "indicatorStyle": "line",
       "borderEnabled": false,
       "borderColor": "primary",
       "borderOpacity": 1,
@@ -94,46 +94,49 @@
           "widgetId": "dockTrash"
         },
         {
+          "appsDockColorizeActive": true,
+          "appsDockIconSizePercentage": 100,
+          "enabled": true,
           "id": "dock_1789947026734",
           "widgetId": "appsDock",
+          "appsDockHideIndicators": true,
+          "appsDockEnlargeOnHover": false,
+          "runningAppsCurrentWorkspace": false
+        },
+        {
           "enabled": true,
-          "appsDockColorizeActive": true,
-          "appsDockIconSizePercentage": 100
-        },
-        {
           "id": "dock_1789947159039",
-          "widgetId": "clipboard",
-          "enabled": true
+          "widgetId": "clipboard"
         },
         {
+          "enabled": true,
           "id": "dock_1789947166868",
-          "widgetId": "notepadButton",
-          "enabled": true
+          "widgetId": "notepadButton"
         },
         {
+          "enabled": true,
           "id": "dock_1789947185099",
-          "widgetId": "volumeMixer",
-          "enabled": true
+          "widgetId": "volumeMixer"
         },
         {
+          "enabled": true,
           "id": "dock_1789948639740",
-          "widgetId": "colorPicker",
-          "enabled": true
+          "widgetId": "colorPicker"
         },
         {
+          "enabled": true,
           "id": "dock_1789948662040",
-          "widgetId": "controlCenterButton",
-          "enabled": true
+          "widgetId": "controlCenterButton"
         },
         {
+          "enabled": true,
           "id": "dock_1789948703363",
-          "widgetId": "clock",
-          "enabled": true
+          "widgetId": "clock"
         },
         {
+          "enabled": true,
           "id": "dock_1789948719245",
-          "widgetId": "powerMenuButton",
-          "enabled": true
+          "widgetId": "powerMenuButton"
         }
       ]
     }
@@ -190,20 +193,52 @@
   "audioWheelScrollAmount": 10,
   "mediaLyricsProviders": [
     {
-      "id": "betterlyrics",
-      "enabled": true
+      "enabled": true,
+      "id": "betterlyrics"
     },
     {
-      "id": "lyricsplus",
-      "enabled": true
+      "enabled": true,
+      "id": "lyricsplus"
     },
     {
-      "id": "lrclib",
-      "enabled": true
+      "enabled": true,
+      "id": "lrclib"
     },
     {
-      "id": "unison",
-      "enabled": true
+      "enabled": true,
+      "id": "unison"
+    }
+  ],
+  "appIdSubstitutions": [
+    {
+      "pattern": "Spotify",
+      "replacement": "spotify",
+      "type": "exact"
+    },
+    {
+      "pattern": "beepertexts",
+      "replacement": "beeper",
+      "type": "exact"
+    },
+    {
+      "pattern": "home assistant desktop",
+      "replacement": "homeassistant-desktop",
+      "type": "exact"
+    },
+    {
+      "pattern": "com.transmissionbt.transmission",
+      "replacement": "transmission-gtk",
+      "type": "contains"
+    },
+    {
+      "pattern": "^steam_app_(\\d+)$",
+      "replacement": "steam_icon_$1",
+      "type": "regex"
+    },
+    {
+      "pattern": "",
+      "replacement": "",
+      "type": "exact"
     }
   ],
   "clockDateFormat": "yyyy-MM-dd ddd",
@@ -218,30 +253,62 @@
   "spotlightBarShowModeChips": true,
   "dashTabs": [
     {
-      "id": "overview",
-      "enabled": true
+      "enabled": true,
+      "id": "overview"
     },
     {
-      "id": "media",
-      "enabled": true
+      "enabled": true,
+      "id": "media"
     },
     {
-      "id": "wallpaper",
-      "enabled": true
+      "enabled": true,
+      "id": "wallpaper"
+    },
+    {
+      "enabled": true,
+      "id": "weather"
+    },
+    {
+      "enabled": true,
+      "id": "notifications"
+    }
+  ],
+  "dashCards": [
+    {
+      "id": "clock",
+      "w": 2,
+      "h": 1
     },
     {
       "id": "weather",
-      "enabled": true
+      "w": 1,
+      "h": 1
+    },
+    {
+      "id": "user",
+      "w": 3,
+      "h": 1
     },
     {
       "id": "notifications",
-      "enabled": true
+      "w": 3,
+      "h": 3
+    },
+    {
+      "id": "calendar",
+      "w": 3,
+      "h": 3
+    },
+    {
+      "id": "media",
+      "w": 6,
+      "h": 1
     }
   ],
   "dashOptions": {
     "clock": {
-      "numbers": true,
       "date": true,
+      "numbers": true,
       "tone": ""
     },
     "media": {
@@ -254,11 +321,7 @@
   "iconThemeDark": "Dracula",
   "cursorSettings": {
     "cursor": 32,
-    "theme": "BreezeX-RosePine-Linux",
-    "size": 24,
-    "niri": {
-      "hideWhenTyping": true
-    }
+    "theme": "BreezeX-RosePine-Linux"
   },
   "launcherLogoMode": "os",
   "launcherLogoColorOverride": "primary",
@@ -339,6 +402,7 @@
   "displayProfileAutoSelect": true,
   "barConfigs": [
     {
+      "attachToScreenEdge": false,
       "autoHide": false,
       "autoHideDelay": 250,
       "borderColor": "primary",
@@ -348,20 +412,57 @@
       "bottomGap": 0,
       "centerWidgets": [
         {
-          "id": "music",
+          "id": "clock",
           "enabled": true,
-          "mediaAdaptiveWidthEnabled": true,
-          "mediaSize": 3
+          "clockDateOrder": "timeFirst",
+          "clockCompactMode": false
         }
       ],
       "enabled": true,
       "followInterfaceStyle": true,
       "fontScale": 1,
       "gothCornerRadiusOverride": true,
+      "gothCornerRadiusValue": 10,
       "gothCornersEnabled": true,
       "iconScale": 1,
       "id": "default",
       "innerPadding": 4,
+      "islandHomeCompactTight": true,
+      "islandHomeLayout": [
+        {
+          "enabled": true,
+          "id": "media"
+        },
+        {
+          "enabled": true,
+          "id": "clock"
+        },
+        {
+          "enabled": false,
+          "id": "weather"
+        },
+        {
+          "enabled": false,
+          "id": "status"
+        },
+        {
+          "enabled": false,
+          "id": "volume"
+        },
+        {
+          "enabled": false,
+          "id": "brightness"
+        },
+        {
+          "enabled": false,
+          "id": "notifications"
+        }
+      ],
+      "islandNotificationExpand": true,
+      "islandNotificationPopups": true,
+      "islandSatelliteBackground": false,
+      "islandSatellitePosition": "edges",
+      "islandSatellitesEnabled": true,
       "leftWidgets": [
         {
           "enabled": true,
@@ -393,8 +494,10 @@
       "position": 0,
       "rightWidgets": [
         {
-          "id": "clock",
-          "enabled": true
+          "id": "music",
+          "enabled": true,
+          "mediaSize": 3,
+          "mediaAdaptiveWidthEnabled": true
         }
       ],
       "screenPreferences": [
@@ -421,52 +524,17 @@
       "widgetOutlineEnabled": false,
       "widgetOutlineOpacity": 1,
       "widgetOutlineThickness": 2,
-      "widgetTransparency": 0.5,
-      "attachToScreenEdge": false,
       "widgetStyle": "pills",
-      "gothCornerRadiusValue": 10,
-      "islandHomeLayout": [
-        {
-          "id": "media",
-          "enabled": true
-        },
-        {
-          "id": "clock",
-          "enabled": true
-        },
-        {
-          "id": "weather",
-          "enabled": false
-        },
-        {
-          "id": "status",
-          "enabled": false
-        },
-        {
-          "id": "volume",
-          "enabled": false
-        },
-        {
-          "id": "brightness",
-          "enabled": false
-        },
-        {
-          "id": "notifications",
-          "enabled": false
-        }
-      ],
-      "islandHomeCompactTight": true,
-      "islandNotificationPopups": true,
-      "islandNotificationExpand": true,
-      "islandSatellitePosition": "edges",
-      "islandSatellitesEnabled": true,
-      "islandSatelliteBackground": false
+      "widgetTransparency": 0.5
     }
   ],
   "builtInPluginSettings": {
     "dms_clipboard_search": {
-      "trigger": "cb",
-      "enabled": false
+      "enabled": false,
+      "trigger": "cb"
+    },
+    "dms_power": {
+      "trigger": "pw"
     },
     "dms_qr_generator": {
       "trigger": "qrg"
@@ -474,19 +542,16 @@
     "dms_settings_search": {
       "enabled": true,
       "trigger": "?"
-    },
-    "dms_power": {
-      "trigger": "pw"
     }
   },
   "launcherPluginVisibility": {
     "dankObsidian": {
       "allowWithoutTrigger": false
     },
-    "dms_vpn": {
+    "dms_clipboard_search": {
       "allowWithoutTrigger": false
     },
-    "dms_clipboard_search": {
+    "dms_vpn": {
       "allowWithoutTrigger": false
     }
   },
