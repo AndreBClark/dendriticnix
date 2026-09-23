@@ -38,6 +38,9 @@
     - [x] symbolic link image to .face
     - [x] use .face as user icon
     - [x] run script to sync those 2
+- [ ] no tofu on spotify
+    - [ ] custom font: monospace or noto?
+- [ ] grub OS LOGO
 
 ### Yak Shaving
 
