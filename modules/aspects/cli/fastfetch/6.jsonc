@@ -2,15 +2,23 @@
   "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
   "display": {
     "brightColor": true,
+    "disableLinewrap": true,
+    "freq": {
+      "spaceBeforeUnit": "never",
+      "ndigits": 1
+    },
     "key": {
-      "type": "both",
-      "width": 13,
-      "paddingLeft": 2
+      "type": "both-2",
+      "width": 14
     },
     "common": {
       "ndigits": 1
     },
     "separator": " "
+  },
+  "logo": {
+    "width": 24,
+    "preserveAspectRatio": true
   },
   "modules": [
     {
@@ -34,12 +42,7 @@
     {
       "type": "media",
       "keyColor": "blue",
-      "format": "{combined:40} {progress}"
-    },
-    {
-      "type": "localip",
-      "compact": true,
-      "keyColor": "blue"
+      "format": "{artist} - {title}"
     },
     {
       "type": "wifi",
@@ -54,7 +57,7 @@
     {
       "type": "chassis",
       "keyColor": "green",
-      "format": "{type} {vendor}"
+      "format": "{type}{vendor}{version}"
     },
     {
       "type": "host",
@@ -62,31 +65,37 @@
     },
     {
       "type": "cpu",
-      "keyColor": "green"
+      "keyColor": "green",
+      "format": "{name} {temperature} ",
+      "temp": true
+    },
+    {
+      "type": "cpu",
+      "keyColor": "green",
+      "format": "{cores-physical}Cores {cores-logical}Threads {freq-base}"
     },
     {
       "type": "gpu",
-      "keyColor": "green"
+      "keyColor": "green",
+      "format": "{vendor} {name} {temperature}",
+      "temp": true
     },
     {
-      "type": "disk",
+      "type": "gpu",
       "keyColor": "green",
-      "key": "disk",
-      "showExternal": false,
-      "format": "{mountpoint} {filesystem} {size-used}/{size-total}"
+      "format": "{driver}",
+      "key": "Driver"
     },
     {
       "type": "memory",
       "keyColor": "green"
     },
     {
-      "type": "swap",
-      "keyColor": "green"
-    },
-    {
       "type": "display",
       "keyColor": "green",
-      "key": "Screen"
+      "key": "Screen",
+      "compactType": "original-with-refresh-rate",
+      "order": "desc"
     },
     {
       "type": "battery",
@@ -106,7 +115,8 @@
     },
     {
       "type": "sound",
-      "keyColor": "green"
+      "keyColor": "green",
+      "format": "{name:25} {volume-percentage}"
     },
     "break",
     {
@@ -119,12 +129,8 @@
     },
     {
       "type": "terminalfont",
-      "keyColor": "yellow"
-    },
-    {
-      "type": "lm",
       "keyColor": "yellow",
-      "key": "Login"
+      "key": "Mono Font"
     },
     {
       "type": "de",
@@ -134,12 +140,7 @@
       "type": "wm",
       "keyColor": "yellow",
       "key": "WM",
-      "format": "{pretty-name} {version}"
-    },
-    {
-      "type": "theme",
-      "keyColor": "yellow",
-      "format": "{theme1} {theme2}"
+      "format": "{pretty-name} {version} {protocol-name}"
     },
     {
       "type": "icons",
