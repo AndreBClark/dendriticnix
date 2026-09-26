@@ -70,8 +70,7 @@
               tab_title_max_length = 0;
               tab_bar_min_tabs = 0;
               shell_integration = "no-rc no-cursor";
-              bell = false;
-
+              enable_audio_bell = false;
             };
           keybindings = {
             "ctrl+shift+T" = "new_tab_with_cwd";
