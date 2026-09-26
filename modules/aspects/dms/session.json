@@ -1,5 +1,5 @@
 {
-  "wallpaperPath": "/home/andrec/Pictures/Wallpaper-tokyo-night-dark/wallhaven.cc_6q3eqw.jpeg",
+  "wallpaperPath": "/home/andrec/Pictures/Wallpaper-tokyo-night-dark/aleksandre-lortkipanidze-anchorage-01-static-copy.jpeg",
   "weatherLocation": "",
   "terminalOverride": "kitty",
   "wallpaperPathLight": "/home/andrec/Pictures/Wallpapers-tokyonight/g7xdxl.jpeg",
@@ -24,11 +24,15 @@
     ]
   },
   "barPinnedApps": [
+    "vivaldi-stable",
     "dms_settings",
     "spotify",
     "org.gnome.Nautilus",
     "kitty",
     "steam"
+  ],
+  "hiddenTrayIds": [
+    "udiskie"
   ],
   "recentColors": [
     "#2e3138",
@@ -81,20 +85,31 @@
   },
   "activeDisplayProfileModes": {
     "niri": {
-      "DP-2": {
-        "mode": "2560x1440@59.951"
-      },
       "HDMI-A-1": {
         "mode": "1920x1080@60.000"
+      },
+      "DP-2": {
+        "mode": "2560x1440@59.951"
       }
     }
   },
+  "islandFreePositions": {
+    "[\"DP-2\",\"dot1790289577125\"]": {
+      "x": 0.4243464644579217,
+      "y": 0.14007365152570936
+    }
+  },
   "lastAppliedIconTheme": "Dracula",
-  "launcherLastMode": "apps",
+  "launcherLastQuery": "viv",
   "launcherQueryHistory": [
+    "viv",
+    ":e nixos",
+    "uxterm",
+    "gho",
+    "v",
+    "dgop",
     "not",
     ":e diamond",
-    "viv",
     "xter,",
     "=3390.82+",
     "=",
@@ -105,7 +120,6 @@
     "=85*.6",
     "`",
     "=1440/16",
-    "v",
     "term",
     "nvim",
     "dms",
@@ -123,7 +137,6 @@
     "fi",
     "obsidian",
     "obs",
-    "dgop",
     "sett",
     "asy",
     "eas",
