@@ -25,28 +25,19 @@
             fontconfig.enable = true;
           };
         };
-      fontPackages = pkgs: [
-        pkgs.noto-fonts
-        pkgs.dejavu_fonts
-        pkgs.unifont
-        pkgs.freefont_ttf
-        pkgs.liberation_ttf
-      ];
     in
     {
       nixos =
         { pkgs, ... }:
         {
           stylix = stylixFonts pkgs;
-          fonts.enableDefaultPackages = false;
-          environment.systemPackages = fontPackages pkgs;
+          fonts.enableDefaultPackages = true;
         };
 
       homeManager =
         { pkgs, ... }:
         {
           stylix = stylixFonts pkgs;
-          home.packages = fontPackages pkgs;
         };
     };
 }
