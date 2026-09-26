@@ -51,6 +51,7 @@
           windowManagerPatch = true;
           colorScheme = "custom";
           customColorScheme = stylixColorScheme;
+
           # https://gerg-l.github.io/spicetify-nix/custom-apps.html
           enabledCustomApps = builtins.attrValues {
             inherit (spicePkgs.apps)
@@ -63,9 +64,7 @@
             builtins.attrValues {
               inherit (spicePkgs.extensions)
                 allOfArtist
-                coverAmbience
                 keyboardShortcut
-                fullAppDisplay
                 shuffle
                 hidePodcasts
                 goToSong
@@ -74,12 +73,10 @@
                 songStats
                 aiBandBlocker
                 history
-                # betterGenres sortPlay provides this functionality
                 playNext
                 sectionMarker
                 autoSkip
                 playingSource
-                wikify
                 sortPlay
                 extendedCopy
                 ;
@@ -89,13 +86,14 @@
                 src = "${sources.spicetify-extensions}/playback-bar-waveform/dist";
                 name = "playback-bar-waveform.js";
               }
-              {
-                src = "${sources.Liquid-Lyrics}";
-                name = "liquid-lyrics.js";
-              }
             ];
           # View all snippets: https://github.com/spicetify/marketplace/blob/main/resources/snippets.json
           enabledSnippets = [
+            /* css */ ''
+              * {
+                font-family: ${config.stylix.fonts.monospace.name}, Noto Sans !important;
+              }
+            ''
             "Remove Popular sections from homepage"
             "Remove Unused Space in Topbar"
             "Remove top spacing"
@@ -107,21 +105,11 @@
             # big NPV when song has canvas
             /* css */ ''
               .main-nowPlayingView-container {
-                  width: 50dvh !important;
+                  width: 50dvw !important;
               }
 
               .main-nowPlayingView-nowPlayingGrid:has(.canvasVideoContainerNPV) .main-nowPlayingView-contextItemInfo {
                   margin-top: 30vh;
-              }
-            ''
-            # hide liquid lyrics npv panel when no lyrics
-            /* css */ ''
-              .main-nowPlayingView-nowPlayingGrid:has(.main-nowPlayingView-canvasVisualEnhancement .canvasVideoContainerNPV, .ll-sidebar-card-body)
-              .main-nowPlayingView-contextItemInfo {
-                margin-top: 5vh !important;
-              }
-              #liquid-lyrics-sidebar-card:has(.ll-sidebar-mini-empty) {
-                display: none;
               }
             ''
           ];
