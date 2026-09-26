@@ -71,6 +71,7 @@
               tab_bar_min_tabs = 0;
               shell_integration = "no-rc no-cursor";
               enable_audio_bell = false;
+              enabled_layouts = "tall,stack";
             };
           keybindings = {
             "ctrl+shift+T" = "new_tab_with_cwd";
