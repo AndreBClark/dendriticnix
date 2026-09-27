@@ -21,7 +21,7 @@
               "input.kdl"
               "window-rules.kdl"
               "binds.kdl"
-              "output-${host.name}.kdl"
+              "output-${host.hostName}.kdl"
             ];
           };
         xdg.configFile =
@@ -57,7 +57,7 @@
               variables = [ "@@OPACITY_APPLICATIONS@@" ];
               values = [ (toString user.theme.opacity.applications) ];
             };
-            "niri/output-${host.name}.kdl".source = ./output-${host.name}.kdl;
+            "niri/output-${host.hostName}.kdl".source = ./output-${host.hostName}.kdl;
           };
       };
   };

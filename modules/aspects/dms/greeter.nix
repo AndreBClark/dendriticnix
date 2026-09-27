@@ -1,3 +1,4 @@
+{ lib, ... }:
 {
   den.aspects.dms.greeter = {
     nixos =
@@ -34,7 +35,7 @@
             ];
           };
           autoLogin = {
-            enable = false;
+            enable = lib.mkDefault false;
             user = user.userName;
           };
 
