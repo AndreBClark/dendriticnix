@@ -6,6 +6,22 @@
       explorer.enabled = true;
       picker = {
         enabled = true;
+        win.input.keys = {
+          "<C-j>" = {
+            __unkeyed-1 = "list_down";
+            mode = [
+              "i"
+              "n"
+            ];
+          };
+          "<C-k>" = {
+            __unkeyed-1 = "list_up";
+            mode = [
+              "i"
+              "n"
+            ];
+          };
+        };
         sources = {
           explorer = {
             layout = {
@@ -35,9 +51,9 @@
                 height = 0.3;
                 row = -1;
                 col = -1;
-                footer_keys = true;
               };
             };
+            win.list.footer_keys = true;
           };
         };
       };

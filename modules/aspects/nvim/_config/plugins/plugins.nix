@@ -2,7 +2,6 @@
 {
   plugins = {
     emmet.enable = true;
-    glance.enable = true;
     modicator = {
       enable = true;
       settings = {
@@ -23,7 +22,6 @@
       };
     };
 
-    illuminate.enable = true;
     nix-develop.enable = true;
     render-markdown.enable = lib.mkDefault true;
     smart-splits.enable = true;
@@ -46,21 +44,7 @@
     let
       cfg = config.plugins;
     in
-    (lib.optionals (cfg.glance.enable or false) [
-      {
-        mode = "n";
-        key = "gd";
-        action = "<cmd>Glance definitions<CR>";
-        options.desc = "Peek Definition";
-      }
-      {
-        mode = "n";
-        key = "gr";
-        action = "<cmd>Glance references<CR>";
-        options.desc = "Peek References";
-      }
-    ])
-    ++ (lib.optional (cfg.goto-preview.enable or false) {
+    (lib.optional (cfg.goto-preview.enable or false) {
       mode = "n";
       key = "gp";
       action.__raw = "function() require('goto-preview').goto_preview_definition() end";
