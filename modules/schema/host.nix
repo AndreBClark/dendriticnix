@@ -43,6 +43,11 @@
             );
             default = "desktop";
           };
+          model = lib.mkOption {
+            type = lib.types.str;
+            default = "generic";
+          };
+
           gpuMode = lib.mkOption {
             type = lib.types.nullOr (
               lib.types.enum [
