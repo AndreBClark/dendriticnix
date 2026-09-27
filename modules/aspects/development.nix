@@ -6,7 +6,6 @@
         terminal
         cli
         nvim
-        my
         ;
     };
   };

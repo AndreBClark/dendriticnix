@@ -13,6 +13,7 @@
         nh
         zoxide
         fastfetch
+        gowall
         ;
     };
 

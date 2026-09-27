@@ -12,11 +12,6 @@
   ];
   den = {
     schema = {
-      flake-system = {
-        includes = [
-          den.aspects.my
-        ];
-      };
       user = {
         includes = [ den.provides.define-user ];
       };
