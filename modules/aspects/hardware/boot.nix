@@ -1,19 +1,26 @@
 {
+  den.default.nixos = {
+    boot = {
+      loader = {
+        grub = {
+          enable = true;
+          efiSupport = true;
+          devices = [ "nodev" ];
+          efiInstallAsRemovable = true;
+        };
+
+        efi.canTouchEfiVariables = false;
+      };
+
+      tmp.cleanOnBoot = true;
+    };
+  };
+
   den.aspects.hardware.boot.nixos =
     { lib, pkgs, ... }:
     {
       boot = {
-        loader = {
-          grub = {
-            enable = true;
-            efiSupport = true;
-            devices = [ "nodev" ];
-            configurationLimit = 20;
-            efiInstallAsRemovable = true;
-          };
-
-          efi.canTouchEfiVariables = false;
-        };
+        loader.grub.configurationLimit = 20;
 
         kernelPackages = pkgs.linuxPackages_xanmod_stable;
         kernelParams = [
@@ -31,7 +38,6 @@
           "ntfs"
           "cifs"
         ];
-        tmp.cleanOnBoot = true;
       };
     };
 }
