@@ -90,10 +90,10 @@
       };
 
       default = {
-        desktop = 0.500;
-        popups = 0.500;
+        desktop = 0.750;
+        popups = 0.750;
         applications = 0.900;
-        terminal = 0.750;
+        terminal = 0.80;
       };
     };
 
