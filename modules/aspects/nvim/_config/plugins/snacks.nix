@@ -1,9 +1,78 @@
 { lib, config, ... }:
+let
+  cfg = config.plugins.snacks.settings;
+in
 {
   plugins = {
     snacks = {
       enable = true;
       settings = {
+        dashboard = {
+          enabled = true;
+          sections = [
+            { section = "header"; }
+            {
+              icon = " ";
+              title = "Keymaps";
+              section = "keys";
+              indent = 2;
+              padding = 1;
+
+            }
+            {
+              icon = " ";
+              title = "Recent Files";
+              section = "recent_files";
+              indent = 2;
+              padding = 1;
+            }
+            {
+              icon = " ";
+              title = "Projects";
+              section = "projects";
+              indent = 2;
+              padding = 1;
+            }
+          ];
+          preset.keys = [
+            {
+              icon = " ";
+              key = "f";
+              desc = "Find File";
+              action = ":lua Snacks.dashboard.pick('files')";
+            }
+            {
+              icon = " ";
+              key = "n";
+              desc = "New File";
+              action = ":ene | startinsert";
+            }
+            {
+              icon = " ";
+              key = "g";
+              desc = "Find Text";
+              action = ":lua Snacks.dashboard.pick('live_grep')";
+            }
+            {
+              icon = " ";
+              key = "r";
+              desc = "Recent Files";
+              action = ":lua Snacks.dashboard.pick('oldfiles')";
+            }
+            {
+              icon = " ";
+              key = "q";
+              desc = "Quit";
+              action = ":qa";
+            }
+          ];
+        };
+
+        input = {
+          enabled = true;
+          win.footer_keys = true;
+        };
+        toggle.enable = true;
         animate.enable = true;
         bigFile.enable = true;
         bufdelete.enabled = true;
@@ -37,9 +106,6 @@
   };
 
   keymaps =
-    let
-      cfg = config.plugins.snacks.settings;
-    in
     (lib.optional (cfg.bufdelete.enabled or false) {
       mode = "n";
       key = "<leader>w";
