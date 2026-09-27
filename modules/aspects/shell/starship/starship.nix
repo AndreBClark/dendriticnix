@@ -28,6 +28,7 @@ let
           "$nix_shell"
           "$php"
           "$nodejs"
+          "$deno"
           "$rust"
           "$sudo"
           "$shell"
@@ -158,6 +159,24 @@ let
 
         nodejs = {
           symbol = "󰎙 ";
+          style = "bg:green bold fg:bright-black";
+          detect_files = [
+            "package.json"
+            ".node-version"
+            ".nvmrc"
+          ];
+          format = lib.concatStrings [
+            "[ ]()"
+            "[${separator.left}](bg:none fg:bright-black)"
+            "[$symbol](bg:prev_fg fg:green)"
+            "[${separator.right}](bg:green fg:bright-black)"
+            "[ $version]($style)"
+            "[${separator.right}](bg:none fg:green)"
+          ];
+        };
+
+        deno = {
+          symbol = " ";
           style = "bg:green bold fg:bright-black";
           format = lib.concatStrings [
             "[ ]()"
