@@ -116,4 +116,7 @@
               });
         };
     };
+  den.schema.flake-system.includes = [
+    den.aspects.nvim
+  ];
 }
