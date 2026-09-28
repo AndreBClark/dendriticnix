@@ -72,6 +72,7 @@
               shell_integration = "no-rc no-cursor";
               enable_audio_bell = false;
               enabled_layouts = "tall,stack";
+              custom_shaders = "cursor-trail-blaze";
             };
           keybindings = {
             "ctrl+shift+T" = "new_tab_with_cwd";
@@ -81,7 +82,6 @@
             active_tab_foreground  ${colors.base0C}
             inactive_tab_background ${colors.base00}
             inactive_tab_foreground  ${colors.base03}
-            custom_shaders cursor-trail-blaze
           '';
         };
 
