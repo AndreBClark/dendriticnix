@@ -1,3 +1,4 @@
+{ den, lib, ... }:
 {
   den.default.nixos = {
     boot = {
@@ -13,31 +14,40 @@
       };
 
       tmp.cleanOnBoot = true;
+
+      kernelParams = [
+        "console=tty1"
+        "tsc=reliable"
+        "quiet"
+        "systemd.show_status=false"
+      ];
+
+      supportedFilesystems = lib.mkForce [
+        "btrfs"
+        "reiserfs"
+        "vfat"
+        "f2fs"
+        "xfs"
+        "ntfs"
+        "cifs"
+      ];
     };
   };
 
-  den.aspects.hardware.boot.nixos =
-    { lib, pkgs, ... }:
-    {
-      boot = {
-        loader.grub.configurationLimit = 20;
-
-        kernelPackages = pkgs.linuxPackages_xanmod_stable;
-        kernelParams = [
-          "console=tty1"
-          "tsc=reliable"
-          "quiet"
-          "systemd.show_status=false"
-        ];
-        supportedFilesystems = lib.mkForce [
-          "btrfs"
-          "reiserfs"
-          "vfat"
-          "f2fs"
-          "xfs"
-          "ntfs"
-          "cifs"
-        ];
+  den.aspects.hardware.boot = {
+    includes = [
+      den.aspects.theme.grub
+    ];
+    nixos =
+      { pkgs, ... }:
+      {
+        boot = {
+          loader.grub = {
+            enable = lib.mkDefault true;
+            configurationLimit = 20;
+          };
+          kernelPackages = pkgs.linuxPackages_xanmod_stable;
+        };
       };
-    };
+  };
 }
