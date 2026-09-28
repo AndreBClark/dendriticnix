@@ -10,17 +10,22 @@
           networking.networkmanager.enable = true;
           services.pipewire.enable = true;
           security.rtkit.enable = true;
-          xdg.portal.enable = true;
           system.stateVersion = "25.11";
-          home-manager = {
+          programs.nix-ld.enable = true;
+        };
+      darwin.system.stateVersion = 6;
+    };
+    schema = {
+      user.classes = lib.mkDefault [ "homeManager" ];
+      hm-host.includes = [
+        {
+          nixos.home-manager = {
             backupFileExtension = "backup";
             overwriteBackup = true;
           };
-          programs.nix-ld.enable = true;
-        };
-      homeManager.home.stateVersion = "25.11";
-      darwin.system.stateVersion = 6;
+          homeManager.home.stateVersion = "25.11";
+        }
+      ];
     };
-    schema.user.classes = lib.mkDefault [ "homeManager" ];
   };
 }
