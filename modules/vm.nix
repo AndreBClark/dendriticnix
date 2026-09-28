@@ -8,46 +8,73 @@ let
   hosts = builtins.attrNames (
     lib.filterAttrs (_: type: type == "directory") (builtins.readDir ./hosts)
   );
+
+  mkRunner =
+    pkgs: name: cfgName:
+    pkgs.writeShellApplication {
+      inherit name;
+      text =
+        let
+          host = inputs.self.nixosConfigurations.${cfgName}.config;
+        in
+        ''RUST_LOG=error ${host.system.build.vm}/bin/run-${host.networking.hostName}-vm "$@"'';
+    };
 in
 {
-  den.aspects = lib.listToAttrs (
-    map (name: {
-      name = "${name}-vm";
-      value = {
-        includes = [
-          den.aspects.${name}
-          den.aspects.vm
+  den = {
+    aspects =
+      lib.listToAttrs (
+        map (name: {
+          name = "vm-${name}";
+          value = {
+            includes = [
+              den.aspects.${name}
+              den.aspects.vm
+            ];
+            excludes = [ den.aspects.hardware ];
+          };
+        }) hosts
+      )
+      // {
+        vm-grub.includes = [
+          den.aspects.hardware.boot
+          den.aspects.theme
+          den.aspects.vm-grub
         ];
-        excludes = [ den.aspects.hardware ];
-      };
-    }) hosts
-  );
 
-  den.hosts.x86_64-linux = lib.listToAttrs (
-    map (name: {
-      name = "${name}-vm";
-      value = {
-        hostName = name;
-        # mirror the real host's users so user aspects (andrec → home-manager, etc.) resolve identically
-        users = lib.mapAttrs (_: _: { }) (den.hosts.x86_64-linux.${name}.users or { });
-        # or if you need the full user config: users = den.hosts.x86_64-linux.${name}.users;
       };
-    }) hosts
-  );
+
+    hosts.x86_64-linux =
+      lib.listToAttrs (
+        map (name: {
+          name = "vm-${name}";
+          value = {
+            hostName = name;
+            users = lib.mapAttrs (_: _: { }) (den.hosts.x86_64-linux.${name}.users or { });
+          };
+        }) hosts
+      )
+      // {
+        vm-grub = {
+          theme.colorscheme = ./aspects/theme/tokyo-night-neon.yaml;
+          users.tester = {
+            classes = [ "user" ];
+            aspect = { };
+          };
+        };
+      };
+  };
 
   perSystem = { pkgs, ... }: {
-    packages = lib.listToAttrs (
-      map (name: {
-        name = "vm-${name}";
-        value = pkgs.writeShellApplication {
+    packages =
+      lib.listToAttrs (
+        map (name: {
           name = "vm-${name}";
-          text =
-            let
-              host = inputs.self.nixosConfigurations."${name}-vm".config;
-            in
-            ''RUST_LOG=error ${host.system.build.vm}/bin/run-${host.networking.hostName}-vm "$@"'';
-        };
-      }) hosts
-    );
+          value = mkRunner pkgs "vm-${name}" "vm-${name}";
+        }) hosts
+      )
+      // {
+        vm-grub-run = mkRunner pkgs "vm-grub-run" "vm-grub";
+      };
   };
 }

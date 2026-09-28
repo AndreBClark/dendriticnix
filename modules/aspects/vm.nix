@@ -1,16 +1,19 @@
 { lib, ... }:
 {
-  # parametric { host } at ASPECT level — returns class contents
+  # parametric { host } at ASPECT level — class functions don't see `host`
   den.aspects.vm = { host, ... }: {
     nixos.virtualisation.vmVariant =
       let
-        vmUser = builtins.head (builtins.attrNames host.users);
+        hasUsers = host.users != { };
+        vmUser = if hasUsers then builtins.head (builtins.attrNames host.users) else null;
       in
       {
         services = {
-          getty.autologinUser = vmUser; # was services.services.getty — doubled
           openssh.enable = true;
           qemuGuest.enable = true;
+        }
+        // lib.optionalAttrs hasUsers {
+          getty.autologinUser = vmUser;
           displayManager.autoLogin = {
             enable = true;
             user = vmUser;
@@ -32,27 +35,42 @@
             "-device virtio-vga-gl"
             "-display gtk,gl=on,grab-on-hover=on"
           ];
+
           sharedDirectories.wallpapers = {
             source = "/home/andrec/Pictures";
             target = "/home/andrec/Pictures";
           };
-          # wipes the fs.<host> UUID mounts for the VM build only
-          fileSystems."/" = lib.mkVMOverride {
-            device = "none";
-            fsType = "tmpfs";
-            options = [ "mode=755" ];
-          };
         };
 
-        # top-level option — was nested inside virtualisation
         swapDevices = lib.mkForce [ ];
       };
   };
-  den.aspects.vm-grub = { host, ... }: {
-    nixos.virtualisation.vmVariant.virtualisation = {
-      useBootLoader = true;
-      diskImage = "./${host.hostName}-vm-boot.qcow2";
-      diskSize = 8192;
+
+  # grub testbed: static aspect, no host coupling
+  den.aspects.vm-grub.nixos = {
+    networking.hostName = "vm-grub";
+    fileSystems."/" = {
+      device = "/dev/vda";
+      fsType = "tmpfs";
+    };
+
+    boot.loader.grub = {
+      efiSupport = lib.mkForce false;
+      efiInstallAsRemovable = lib.mkForce false;
+    };
+
+    virtualisation.vmVariant.virtualisation = {
+      useBootLoader = true; # real disk + grub, not -kernel direct boot
+      resolution = {
+        x = 1280;
+        y = 720;
+      };
+      diskImage = "./vm-grub.qcow2";
+      diskSize = 4096;
+      memorySize = 2048;
+      cores = 2;
+      qemu.options = [ "-display gtk" ];
     };
   };
+
 }
