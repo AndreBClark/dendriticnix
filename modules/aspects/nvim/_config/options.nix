@@ -1,68 +1,76 @@
 { lib, ... }:
 {
   opts = {
+    # ── UI ──
     number = true;
     relativenumber = true;
+    cursorline = true;
+    signcolumn = "no";
+    laststatus = 3;
+    showmode = false;
+    termguicolors = true;
+    pumheight = 10; # still used by ':' wildmenu
+    conceallevel = 2; # obsidian/render-markdown
+    winborder = "rounded"; # nvim 0.11+: rounded floats everywhere
+
+    # ── Editing ──
     shiftwidth = 2;
     tabstop = 2;
-    laststatus = 3;
-    completeopt = "menu,menuone,noselect";
-    conceallevel = 2;
-    confirm = true;
-    cursorline = true;
     expandtab = true;
-    formatoptions = "jcroqlnt";
-    grepformat = "%f:%l:%c:%m";
-    ignorecase = true;
-    inccommand = "nosplit";
-    list = true;
-    mouse = "a";
-    mousemodel = "popup";
-    pumblend = 10;
-    pumheight = 10;
-    scrolloff = 4;
-    sessionoptions = [
-      "buffers"
-      "curdir"
-      "tabpages"
-      "winsize"
-      "help"
-      "globals"
-      "skiprtp"
-      "folds"
-    ];
     shiftround = true;
-    showmode = false;
-    sidescrolloff = 8;
-    signcolumn = "yes";
-    smartcase = true;
-    smartindent = true;
-    splitbelow = true;
-    splitkeep = "screen";
-    splitright = true;
-    termguicolors = true;
-    spelllang = lib.mkDefault [ "en_us" ];
-    showmatch = true;
+    formatoptions = "jcroqlnt";
     infercase = true;
-    clipboard = "unnamedplus";
-    foldlevel = 99;
-    foldcolumn = "0";
-    foldenable = true;
-    foldlevelstart = 99;
-    fillchars = {
-      horiz = "━";
-      horizup = "┻";
-      horizdown = "┳";
-      vert = "┃";
-      vertleft = "┫";
-      vertright = "┣";
-      verthoriz = "╋";
-      eob = " ";
-      diff = "╱";
-      fold = " ";
-      foldopen = "";
-      foldclose = "";
-      msgsep = "‾";
+
+    # ── Search / grep ──
+    ignorecase = true;
+    smartcase = true;
+    inccommand = "nosplit";
+    grepprg = "rg --vimgrep --smart-case"; # pair with grepformat
+    grepformat = "%f:%l:%c:%m";
+    wildmode = "longest:full,full";
+
+    # ── Splits / scrolling ──
+    splitbelow = true;
+    splitright = true;
+    splitkeep = "screen";
+    scrolloff = 24;
+    sidescrolloff = 0;
+    smoothscroll = true;
+    jumpoptions = "view";
+
+    # ── Mouse ──
+    mouse = "a";
+
+    # ── Whitespace display ──
+    list = true;
+    listchars = {
+      tab = "→ ";
+      nbsp = "␣";
+      extends = "❯";
+      precedes = "❮";
     };
+
+    # ── Undo / files ──
+    undofile = true;
+    undolevels = 10000;
+    swapfile = false;
+    confirm = true;
+
+    spell = false;
+    spelllang = lib.mkDefault [ "en_us" ];
+
+    foldlevelstart = 8;
+    foldcolumn = "0";
+
+    # ── Timing ──
+    updatetime = 200; # gitsigns blame, illuminate
+    timeoutlen = 300; # which-key popup
+
+    # ── Diff ──
+    diffopt = "internal,filler,closeoff,indent-heuristic,linematch:60,algorithm:histogram";
+
+    virtualedit = "block";
+    showmatch = true;
+    clipboard = "unnamedplus";
   };
 }
