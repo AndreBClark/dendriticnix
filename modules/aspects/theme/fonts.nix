@@ -1,43 +1,38 @@
+{ den, lib, ... }:
 {
-  den.aspects.theme.fonts =
+  den.lib.theme.stylixFonts =
+    { pkgs, theme }:
     let
-      stylixFonts =
-        pkgs:
-        let
-          monospace = {
-            package = pkgs.nerd-fonts.jetbrains-mono;
-            name = "JetBrainsMono Nerd Font";
-          };
-        in
-        {
-          fonts = {
-            inherit monospace;
-            serif = monospace;
-            sansSerif = monospace;
-            emoji = {
-              name = "Noto Emoji";
-              package = pkgs.noto-fonts-monochrome-emoji;
-            };
-            sizes.terminal = 14;
-          };
+      resolve = f: {
+        inherit (f) name;
+        package = lib.getAttrFromPath (lib.splitString "." f.package) pkgs;
+      };
+    in
+    lib.mapAttrs (_: resolve) (removeAttrs theme.fonts [ "sizes" ]) // { inherit (theme.fonts) sizes; };
+
+  den.aspects.theme.fonts =
+    { user, ... }:
+    let
+      theme = den.lib.theme.resolveTheme { inherit user; };
+
+      fontModule = pkgs: {
+        stylix = {
+          fonts = den.lib.theme.stylixFonts { inherit pkgs theme; };
           targets = {
             font-packages.enable = true;
             fontconfig.enable = true;
           };
         };
+      };
     in
     {
       nixos =
         { pkgs, ... }:
-        {
-          stylix = stylixFonts pkgs;
-          fonts.enableDefaultPackages = true;
+        fontModule pkgs
+        // {
+          fonts.enableDefaultPackages = true; # nixos-only
         };
 
-      homeManager =
-        { pkgs, ... }:
-        {
-          stylix = stylixFonts pkgs;
-        };
+      homeManager = { pkgs, ... }: fontModule pkgs;
     };
 }

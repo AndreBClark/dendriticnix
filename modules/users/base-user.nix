@@ -6,7 +6,7 @@
       inherit (den.aspects)
         shell
         folders
-        stylix
+        theme
         wm
         development
         ;

@@ -41,13 +41,12 @@
 
         targets = {
           gnome.enable = lib.mkForce false;
-          nixos-icons.enable = lib.mkForce false;
           gtksourceview.enable = lib.mkForce false;
           gnome-text-editor.enable = lib.mkForce false;
         };
       };
 
-    aspects.stylix =
+    aspects.theme =
       { user, ... }:
       let
         stylix = den.lib.theme.stylixConfig { inherit user; };

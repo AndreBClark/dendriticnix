@@ -12,6 +12,49 @@
       default = "tokyo-night-dark";
     };
 
+    fonts = lib.mkOption {
+      type = lib.types.submodule {
+        options =
+          let
+            mkFont =
+              name: package:
+              lib.mkOption {
+                type = lib.types.submodule {
+                  options = {
+                    name = lib.mkOption {
+                      type = lib.types.str;
+                      default = name;
+                    };
+                    package = lib.mkOption {
+                      type = lib.types.str;
+                      default = package;
+                    };
+                  };
+                };
+                default = { };
+              };
+            mkSize =
+              default:
+              lib.mkOption {
+                type = lib.types.either lib.types.ints.unsigned lib.types.float;
+                inherit default;
+              };
+          in
+          {
+            monospace = mkFont "JetBrainsMono Nerd Font" "nerd-fonts.jetbrains-mono";
+            sansSerif = mkFont "JetBrainsMono Nerd Font" "nerd-fonts.jetbrains-mono";
+            serif = mkFont "JetBrainsMono Nerd Font" "nerd-fonts.jetbrains-mono";
+            emoji = mkFont "Noto Emoji" "noto-fonts-monochrome-emoji";
+            sizes = {
+              desktop = mkSize 10;
+              applications = mkSize 12;
+              terminal = mkSize 14;
+              popups = mkSize 10;
+            };
+          };
+      };
+      default = { };
+    };
     icons = lib.mkOption {
       type = lib.types.submodule {
         options =
