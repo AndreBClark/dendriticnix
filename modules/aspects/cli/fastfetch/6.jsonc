@@ -66,13 +66,13 @@
     {
       "type": "cpu",
       "keyColor": "green",
-      "format": "{name} {temperature} ",
+      "format": "{name}",
       "temp": true
     },
     {
       "type": "cpu",
       "keyColor": "green",
-      "format": "{cores-physical}Cores {cores-logical}Threads {freq-base}"
+      "format": "{cores-physical}C {cores-logical}T {freq-base} {temperature}"
     },
     {
       "type": "gpu",
