@@ -21,21 +21,15 @@
       folding.enable = true;
       highlight.enable = true;
       indent.enable = true;
-      settings.incremental_selection = {
-        enable = true;
-        keymaps = {
-          init_selection = "v<CR>";
-          node_incremental = "<CR>";
-          node_decremental = "<BS>";
-          scope_incremental = "<C-CR>";
-        };
-      };
     };
 
     treesitter-context = {
       enable = true;
       settings = {
-        max_lines = 6;
+        max_lines = 3; # reduce from 6 — less overlay area
+        min_window_height = 30; # hide context entirely in short windows
+        mode = "cursor"; # anchor context to cursor scope, not window top
+        multiline_threshold = 3;
       };
     };
 
