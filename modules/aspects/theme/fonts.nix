@@ -26,12 +26,10 @@
       };
     in
     {
-      nixos =
-        { pkgs, ... }:
-        fontModule pkgs
-        // {
-          fonts.enableDefaultPackages = true; # nixos-only
-        };
+      nixos = { pkgs, ... }: {
+        fonts.enableDefaultPackages = true;
+        inherit (fontModule pkgs) stylix;
+      };
 
       homeManager = { pkgs, ... }: fontModule pkgs;
     };
