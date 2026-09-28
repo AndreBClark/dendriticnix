@@ -14,6 +14,7 @@
         zoxide
         fastfetch
         gowall
+        update
         ;
     };
 
