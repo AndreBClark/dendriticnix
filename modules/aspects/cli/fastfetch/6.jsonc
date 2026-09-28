@@ -72,7 +72,8 @@
     {
       "type": "cpu",
       "keyColor": "green",
-      "format": "{cores-physical}C {cores-logical}T {freq-base} {temperature}"
+      "format": "{cores-physical}C {cores-logical}T {freq-base} {temperature}",
+      "temp": true
     },
     {
       "type": "gpu",
@@ -94,12 +95,15 @@
       "type": "display",
       "keyColor": "green",
       "key": "Screen",
-      "compactType": "original-with-refresh-rate",
+      "compactType": "original",
       "order": "desc"
     },
     {
       "type": "battery",
-      "keyColor": "green"
+      "keyColor": "green",
+      "key": "Battery",
+      "format": "{time-formatted} {status} {temperature}",
+      "temp": true
     },
     {
       "type": "poweradapter",
