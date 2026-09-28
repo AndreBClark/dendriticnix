@@ -146,7 +146,11 @@
   ],
   "currentThemeCategory": "custom",
   "popupTransparency": 0.75,
-  "dmsWindowsFloating": false,
+  "dmsWindowsFloatingSeeded": [
+    "niri",
+    "hyprland",
+    "mango"
+  ],
   "hostSurfaceColor": "s",
   "cardSurfaceColor": "sc",
   "chipSurfaceColor": "sch",
@@ -169,6 +173,18 @@
   "systemTrayIconTintSaturation": 100,
   "systemTrayIconTintStrength": 100,
   "controlCenterWidgets": [
+    {
+      "id": "userCard",
+      "enabled": true,
+      "w": 6.5,
+      "h": 1.5
+    },
+    {
+      "id": "quickActions",
+      "enabled": true,
+      "w": 1.5,
+      "h": 1.5
+    },
     {
       "enabled": true,
       "h": 1,
@@ -428,7 +444,7 @@
       "followInterfaceStyle": false,
       "fontScale": 1,
       "gothCornerRadiusOverride": true,
-      "gothCornerRadiusValue": 10,
+      "gothCornerRadiusValue": 12,
       "gothCornersEnabled": true,
       "iconScale": 1.25,
       "id": "default",
@@ -540,7 +556,8 @@
       "widgetOutlineThickness": 1,
       "widgetPadding": 16,
       "widgetStyle": "pills",
-      "widgetTransparency": 0.5
+      "widgetTransparency": 0.5,
+      "widgetFollowInterfaceStyle": false
     },
     {
       "attachToScreenEdge": false,
@@ -573,7 +590,7 @@
       "followInterfaceStyle": false,
       "fontScale": 1,
       "gothCornerRadiusOverride": true,
-      "gothCornerRadiusValue": 15,
+      "gothCornerRadiusValue": 12,
       "gothCornersEnabled": true,
       "iconScale": 1,
       "id": "bar1790186615257",
@@ -682,7 +699,8 @@
       "widgetOutlineThickness": 1,
       "widgetPadding": 12,
       "widgetStyle": "pills",
-      "widgetTransparency": 0.75
+      "widgetTransparency": 0.75,
+      "widgetFollowInterfaceStyle": false
     },
     {
       "attachToScreenEdge": false,
@@ -799,7 +817,8 @@
       "widgetOutlineOpacity": 0.4,
       "widgetOutlineThickness": 1,
       "widgetStyle": "pills",
-      "widgetTransparency": 0.5
+      "widgetTransparency": 0.5,
+      "widgetFollowInterfaceStyle": false
     }
   ],
   "builtInPluginSettings": {
@@ -839,5 +858,5 @@
   "barInsetPaddingShared": 8,
   "barInsetPaddingSyncAll": true,
   "frameBarInsetPadding": 0,
-  "configVersion": 29
+  "configVersion": 34
 }
