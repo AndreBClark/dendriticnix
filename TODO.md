@@ -1,15 +1,15 @@
-### [ ] declarative Vivaldi config
+### declarative Vivaldi config
   - [ ] theme
   - [ ] search
   - [ ] tab layout
   - [ ] workspaces
   - [ ] start page
-### [ ] grub
+### grub
   - [ ] encode logo for grub
   - [ ] copy output theme to new theme to replace stylix script
   - [ ] ensure caching reusability of different theme
   - [ ] reduce build time for vm-grub vm
-### [ ] Audacity 3
+### Audacity 3
   - [ ] save macro txt
   - [ ] other settings
 
