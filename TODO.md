@@ -43,6 +43,7 @@
 - [x] figure out why fonts on my terminal are not bold
 - [x] reduce the amount of jetbrains variants installed
 - [x] less distracting background, more blur
+- [ ] colorize kitty cursor blaze trail to lightblue
 - [ ] wallpaper colorscheme theme key
     - [ ] convert wallpaper directory as symbolic link to Wallpaper-${wallpaper-theme} folder
     - [ ] rename wallpaper directory as wallpaper-raw
