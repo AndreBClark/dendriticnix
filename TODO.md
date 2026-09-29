@@ -1,4 +1,19 @@
-- [x] global whichkey?
+### [ ] declarative Vivaldi config
+  - [ ] theme
+  - [ ] search
+  - [ ] tab layout
+  - [ ] workspaces
+  - [ ] start page
+### [ ] grub
+  - [ ] encode logo for grub
+  - [ ] copy output theme to new theme to replace stylix script
+  - [ ] ensure caching reusability of different theme
+  - [ ] reduce build time for vm-grub vm
+### [ ] Audacity 3
+  - [ ] save macro txt
+  - [ ] other settings
+
+- [ ] global whichkey?
     - [ ] as a dank OSD?
     - [ ] [wlr-which-key nixos options](https://search.nixos.org/options?channel=unstable&query=wlr-which-key&source=home_manager&type=options)
     - [ ] [wlr-which-key](https://github.com/MaxVerevkin/wlr-which-key)
@@ -38,9 +53,9 @@
     - [x] symbolic link image to .face
     - [x] use .face as user icon
     - [x] run script to sync those 2
-- [ ] no tofu on spotify
-    - [ ] custom font: monospace or noto?
-- [ ] grub OS LOGO
+- [x] no tofu on spotify
+    - [x] custom font: monospace or noto?
+- [x] grub OS LOGO
 
 ### Yak Shaving
 
@@ -51,6 +66,6 @@
 
 - ~sync user icon with greeter~
 - ~Picture in Picture [niri] [dms]~
-    - ~pin above all~
-    - ~overlay shell layer~
-    - ~set icon for pip~
+  - ~pin above all~
+  - ~overlay shell layer~
+  - ~set icon for pip~
