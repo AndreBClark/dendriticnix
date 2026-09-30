@@ -2,15 +2,9 @@
 {
   den.aspects.folders = {
     homeManager =
-      {
-        pkgs,
-        config,
-        ...
-      }:
-
+      { config, ... }:
       let
         homeDir = config.home.homeDirectory;
-
         directories = [
           {
             path = "vaults";
@@ -36,12 +30,20 @@
           };
         };
         mkLink = target: {
-          source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/${target}";
+          source = config.lib.file.mkOutOfStoreSymlink "${homeDir}/${target}";
         };
       in
       {
+        xdg.userDirs = {
+          enable = true;
+          createDirectories = true;
+          setSessionVariables = true;
+          desktop = null;
+          templates = null;
+          publicShare = null;
+        };
+
         home = {
-          packages = [ pkgs.xdg-user-dirs ];
           file = lib.listToAttrs (map mkDirectoryFile directories) // {
             "config" = mkLink ".config";
             "local-share" = mkLink ".local/share";
