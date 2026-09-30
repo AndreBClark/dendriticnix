@@ -18,7 +18,7 @@
     }
     {
       key = "<MiddleMouse>";
-      action = "<Nop";
+      action = "<Nop>";
     }
     {
       key = "<leader>q";
@@ -38,7 +38,6 @@
       action = "<cmd>vsplit<CR>";
       options.desc = "vertical split buffer";
     }
-
     {
       mode = [
         "n"
