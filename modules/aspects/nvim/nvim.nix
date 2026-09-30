@@ -37,7 +37,6 @@
         {
           user,
           pkgs,
-          config,
           ...
         }:
         {
@@ -57,7 +56,6 @@
 
           home.shellAliases = {
             v = "nvim";
-            nvpurge = "rm -rf ${config.home.homeDirectory}/.local/state/nvim/swap";
           };
 
         };
