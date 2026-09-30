@@ -1,9 +1,7 @@
 {
-  "wallpaperPath": "/home/andrec/Pictures/Wallpaper-tokyo-night-dark/aleksandre-lortkipanidze-anchorage-01-static-copy.jpeg",
+  "wallpaperPath": "/home/andrec/Pictures/Wallpaper-tokyo-night-dark/AC6_1305418.jpeg",
   "weatherLocation": "",
   "terminalOverride": "kitty",
-  "wallpaperPathLight": "/home/andrec/Pictures/Wallpapers-tokyonight/g7xdxl.jpeg",
-  "wallpaperPathDark": "/home/andrec/Pictures/Wallpapers-tokyonight/g7xdxl.jpeg",
   "includedTransitions": [
     "fade"
   ],
@@ -32,7 +30,8 @@
     "steam"
   ],
   "hiddenTrayIds": [
-    "udiskie"
+    "udiskie",
+    "blueman"
   ],
   "recentColors": [
     "#2e3138",
@@ -81,15 +80,12 @@
     }
   },
   "activeDisplayProfile": {
-    "niri": "profile_1780712333822_nbsu56u"
+    "niri": "profile_1790633887782_u0donjo"
   },
   "activeDisplayProfileModes": {
     "niri": {
-      "HDMI-A-1": {
-        "mode": "1920x1080@60.000"
-      },
-      "DP-2": {
-        "mode": "2560x1440@59.951"
+      "eDP-1": {
+        "mode": "1920x1080@59.963"
       }
     }
   },
@@ -100,8 +96,10 @@
     }
   },
   "lastAppliedIconTheme": "Dracula",
-  "launcherLastQuery": "viv",
   "launcherQueryHistory": [
+    "=316-262",
+    "p",
+    "au",
     "viv",
     ":e nixos",
     "uxterm",
@@ -148,8 +146,7 @@
     "file",
     "aut",
     "nautilus",
-    "iv",
-    "crash"
+    "iv"
   ],
-  "configVersion": 6
+  "configVersion": 7
 }

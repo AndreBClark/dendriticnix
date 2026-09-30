@@ -170,20 +170,18 @@
   "focusRingWidth": 4,
   "blurWallpaperOnOverview": true,
   "systemTrayIconTintMode": "primary",
-  "systemTrayIconTintSaturation": 100,
-  "systemTrayIconTintStrength": 100,
   "controlCenterWidgets": [
     {
-      "id": "userCard",
       "enabled": true,
-      "w": 6.5,
-      "h": 1.5
+      "h": 1.5,
+      "id": "userCard",
+      "w": 6.5
     },
     {
-      "id": "quickActions",
       "enabled": true,
-      "w": 1.5,
-      "h": 1.5
+      "h": 1.5,
+      "id": "quickActions",
+      "w": 1.5
     },
     {
       "enabled": true,
@@ -522,11 +520,17 @@
         },
         {
           "enabled": true,
-          "id": "systemTray"
+          "id": "systemTray",
+          "trayUseInlineExpansion": true,
+          "trayMaxVisibleItems": 0
         },
         {
           "enabled": true,
-          "id": "controlCenterButton"
+          "id": "controlCenterButton",
+          "showBatteryIcon": true,
+          "showMicIcon": true,
+          "showMicPercent": true,
+          "showAudioPercent": true
         }
       ],
       "screenPreferences": [
@@ -550,14 +554,14 @@
       "transparency": 0.8,
       "useOverlayLayer": false,
       "visible": true,
+      "widgetFollowInterfaceStyle": false,
       "widgetOutlineColor": "primary",
       "widgetOutlineEnabled": true,
       "widgetOutlineOpacity": 0.24,
       "widgetOutlineThickness": 1,
       "widgetPadding": 16,
       "widgetStyle": "pills",
-      "widgetTransparency": 0.5,
-      "widgetFollowInterfaceStyle": false
+      "widgetTransparency": 0.5
     },
     {
       "attachToScreenEdge": false,
@@ -693,14 +697,14 @@
       "transparency": 0.8,
       "useOverlayLayer": false,
       "visible": true,
+      "widgetFollowInterfaceStyle": false,
       "widgetOutlineColor": "primary",
       "widgetOutlineEnabled": true,
       "widgetOutlineOpacity": 0.4,
       "widgetOutlineThickness": 1,
       "widgetPadding": 12,
       "widgetStyle": "pills",
-      "widgetTransparency": 0.75,
-      "widgetFollowInterfaceStyle": false
+      "widgetTransparency": 0.75
     },
     {
       "attachToScreenEdge": false,
@@ -812,13 +816,13 @@
       "transparency": 0.8,
       "useOverlayLayer": false,
       "visible": true,
+      "widgetFollowInterfaceStyle": false,
       "widgetOutlineColor": "primary",
       "widgetOutlineEnabled": true,
       "widgetOutlineOpacity": 0.4,
       "widgetOutlineThickness": 1,
       "widgetStyle": "pills",
-      "widgetTransparency": 0.5,
-      "widgetFollowInterfaceStyle": false
+      "widgetTransparency": 0.5
     }
   ],
   "builtInPluginSettings": {
