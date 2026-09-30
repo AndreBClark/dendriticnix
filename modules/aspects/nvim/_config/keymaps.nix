@@ -48,6 +48,24 @@
       options.desc = "Select All Buffer Contents";
     }
     {
+      mode = [
+        "n"
+        "v"
+      ];
+      key = "<leader>ay";
+      action = "<cmd>%y<CR>";
+      options.desc = "Yank Buffer Contents";
+    }
+    {
+      mode = [
+        "n"
+        "v"
+      ];
+      key = "<leader>ad";
+      action = "<cmd>%d<CR>";
+      options.desc = "Delete Buffer Contents";
+    }
+    {
       key = "<ScrollWheelLeft>";
       action = "<Nop>";
       mode = [
