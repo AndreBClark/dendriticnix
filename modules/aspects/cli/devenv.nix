@@ -1,16 +1,33 @@
 { den, ... }:
 {
-  den.aspects.cli.devenv = {
-    includes = [
-      (den.batteries.shell-integrations [
-        "devenv"
-      ])
-    ];
+  den.aspects.cli.devenv =
+    let
+      direnv = {
+        enable = true;
+        silent = true;
+        nix-direnv.enable = true;
+      };
+    in
+    {
+      includes = [
+        (den.batteries.shell-integrations [
+          "devenv"
+          "direnv"
+        ])
+      ];
 
-    homeManager = {
-      programs = {
-        devenv.enable = true;
+      nixos = {
+        programs = {
+          inherit direnv;
+        };
+      };
+      homeManager = {
+        programs = {
+          inherit direnv;
+          devenv = {
+            enable = true;
+          };
+        };
       };
     };
-  };
 }
