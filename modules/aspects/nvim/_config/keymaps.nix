@@ -44,8 +44,8 @@
         "v"
       ];
       key = "<leader>a";
-      action = "ggV$G";
-      options.desc = "Select all";
+      action = "gg0vG$v";
+      options.desc = "Select All Buffer Contents";
     }
     {
       key = "<ScrollWheelLeft>";
