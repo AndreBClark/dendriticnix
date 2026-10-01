@@ -43,7 +43,7 @@
         "n"
         "v"
       ];
-      key = "<leader>a";
+      key = "<leader>aa";
       action = "gg0vG$v";
       options.desc = "Select All Buffer Contents";
     }
