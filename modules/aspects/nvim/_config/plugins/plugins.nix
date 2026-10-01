@@ -2,15 +2,6 @@
 {
   plugins = {
     emmet.enable = true;
-    modicator = {
-      enable = true;
-      settings = {
-        integration.lualine = {
-          enabled = true;
-          highlight = "bg";
-        };
-      };
-    };
 
     goto-preview.enable = true;
 
@@ -25,7 +16,6 @@
     nix-develop.enable = true;
     render-markdown.enable = lib.mkDefault true;
     smart-splits.enable = true;
-    kitty-navigator.enable = true;
     trouble.enable = true;
 
     web-devicons.enable = true;
