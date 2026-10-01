@@ -521,16 +521,16 @@
         {
           "enabled": true,
           "id": "systemTray",
-          "trayUseInlineExpansion": true,
-          "trayMaxVisibleItems": 0
+          "trayMaxVisibleItems": 0,
+          "trayUseInlineExpansion": true
         },
         {
           "enabled": true,
           "id": "controlCenterButton",
+          "showAudioPercent": true,
           "showBatteryIcon": true,
           "showMicIcon": true,
-          "showMicPercent": true,
-          "showAudioPercent": true
+          "showMicPercent": true
         }
       ],
       "screenPreferences": [

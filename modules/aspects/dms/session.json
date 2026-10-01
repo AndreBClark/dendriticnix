@@ -1,5 +1,5 @@
 {
-  "wallpaperPath": "/home/andrec/Pictures/Wallpaper-tokyo-night-dark/AC6_1305418.jpeg",
+  "wallpaperPath": "/home/andrec/Pictures/Wallpaper-tokyo-night-dark/AC6_1316189.jpeg",
   "weatherLocation": "",
   "terminalOverride": "kitty",
   "includedTransitions": [
@@ -80,12 +80,12 @@
     }
   },
   "activeDisplayProfile": {
-    "niri": "profile_1790633887782_u0donjo"
+    "niri": "auto_201b31"
   },
   "activeDisplayProfileModes": {
     "niri": {
-      "eDP-1": {
-        "mode": "1920x1080@59.963"
+      "DP-2": {
+        "mode": "2560x1440@59.951"
       }
     }
   },
