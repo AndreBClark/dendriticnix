@@ -5,9 +5,9 @@
   - [ ] workspaces
   - [ ] start page
 ### grub
-  - [ ] encode logo for grub
-  - [ ] copy output theme to new theme to replace stylix script
-  - [ ] ensure caching reusability of different theme
+  - [x] encode logo for grub
+  - [x] copy output theme to new theme to replace stylix script
+  - [x] ensure caching reusability of different theme
   - [ ] reduce build time for vm-grub vm
 ### Audacity 3
   - [ ] save macro txt
@@ -43,7 +43,7 @@
 - [x] figure out why fonts on my terminal are not bold
 - [x] reduce the amount of jetbrains variants installed
 - [x] less distracting background, more blur
-- [ ] colorize kitty cursor blaze trail to lightblue
+- [x] colorize kitty cursor blaze trail to lightblue
 - [ ] wallpaper colorscheme theme key
     - [ ] convert wallpaper directory as symbolic link to Wallpaper-${wallpaper-theme} folder
     - [ ] rename wallpaper directory as wallpaper-raw

@@ -3,7 +3,8 @@
     homeManager =
       { config, ... }:
       let
-        colors = config.lib.stylix.colors.withHashtag;
+        c = config.lib.stylix.colors;
+        colors = c.withHashtag;
         separator = {
           left = "";
           right = "";
@@ -65,26 +66,45 @@
               tab_bar_style = "custom";
               window_padding_width = 6;
               cursor_shape = "block";
-              cursor_trail = 50;
+              cursor_trail = 1000;
               tab_bar_margin_width = 6;
               tab_title_max_length = 0;
               tab_bar_min_tabs = 0;
               enable_audio_bell = false;
               enabled_layouts = "tall,stack";
-              custom_shaders = "cursor-trail-blaze";
+              custom_shaders = "cursor-trail-blaze-blue";
             };
+
           keybindings = {
             "ctrl+shift+T" = "new_tab_with_cwd";
           };
-          extraConfig = ''
-            active_tab_background  ${colors.base02}
-            active_tab_foreground  ${colors.base0C}
-            inactive_tab_background ${colors.base00}
-            inactive_tab_foreground  ${colors.base03}
+
+          extraConfig = with colors; ''
+            cursor                   ${base0C}
+            cursor_trail_color       ${base0C}
+            active_tab_background    ${base02}
+            active_tab_foreground    ${base0C}
+            inactive_tab_background  ${base01}
+            inactive_tab_foreground  ${base03}
+            tab_bar_background       ${base00}
           '';
         };
 
         xdg.configFile."kitty/tab_bar.py".text = tabBarPy ./tab_bar.py;
+
+        xdg.configFile."kitty/cursor-trail-blaze-blue.slang".text =
+          builtins.replaceStrings
+            [
+              "static const float4 TRAIL_COLOR = float4(1.0, 0.725, 0.161, 1.0);"
+              "static const float4 TRAIL_COLOR_ACCENT = float4(1.0, 0.0, 0.0, 1.0);"
+            ]
+            [
+              "static const float4 TRAIL_COLOR = float4(pow(float3(${c.base0C-dec-r}, ${c.base0C-dec-g}, ${c.base0C-dec-b}), float3(2.2)), 1.0);"
+              "static const float4 TRAIL_COLOR_ACCENT = float4(pow(float3(${c.base0D-dec-r}, ${c.base0D-dec-g}, ${c.base0D-dec-b}), float3(2.2)), 1.0);"
+            ]
+            (
+              builtins.readFile "${config.programs.kitty.package}/lib/kitty/kitty/shaders/custom/cursor-trail-blaze.slang"
+            );
       };
   };
 }
