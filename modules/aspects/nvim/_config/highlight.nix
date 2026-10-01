@@ -22,10 +22,6 @@
       Visual.link = "lualine_a_visual";
       StatusLineNC.bg = "none";
       StatusLine.bg = "none";
-      lualine_a_mode_command = {
-        link = "Special";
-        reverse = true;
-      };
     };
 
   plugins = {

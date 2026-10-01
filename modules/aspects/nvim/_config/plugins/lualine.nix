@@ -11,6 +11,14 @@
         in
         {
           options = {
+            theme.__raw = ''
+              (function()
+                local base = require("lualine.themes.base16")
+                local c = require("base16-colorscheme").colors
+                base.command = { a = { fg = c.base00, bg = c.base0C, gui = "bold" } }
+                return base
+              end)()
+            '';
             component_separators = "";
             section_separators = {
               left = separator.right;
@@ -18,7 +26,6 @@
             };
             globalstatus = true;
           };
-
           sections = {
             lualine_a = [
               {
