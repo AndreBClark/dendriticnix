@@ -60,15 +60,18 @@
     };
 
     virtualisation.vmVariant.virtualisation = {
-      useBootLoader = true; # real disk + grub, not -kernel direct boot
+      useBootLoader = true;
+      mountHostNixStore = true;
+      diskSize = 512; # overlay only needs room for writes
+      memorySize = 512;
+      cores = 1;
+      qemu.guestAgent.enable = false; # no qemu-guest-agent in the closure
+      restrictNetwork = true;
       resolution = {
         x = 1280;
         y = 720;
       };
       diskImage = "./vm-grub.qcow2";
-      diskSize = 4096;
-      memorySize = 2048;
-      cores = 2;
       qemu.options = [ "-display gtk" ];
     };
   };

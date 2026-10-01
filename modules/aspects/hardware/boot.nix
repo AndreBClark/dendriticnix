@@ -8,7 +8,6 @@
           efiSupport = true;
           devices = [ "nodev" ];
           efiInstallAsRemovable = true;
-          gfxmodeEfi = "1280x720,auto";
         };
 
         efi.canTouchEfiVariables = false;
