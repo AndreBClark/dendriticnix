@@ -9,7 +9,7 @@
           efiSupport = true;
           devices = [ "nodev" ];
           efiInstallAsRemovable = true;
-          gfxmodeEfi = "2560x1440,1920x1080,1024x768,auto";
+          gfxmodeEfi = "1024x768,auto";
           gfxpayloadEfi = "keep";
         };
 
