@@ -55,19 +55,12 @@
 
             lualine_c = [
               {
-                __unkeyed-1 = "filetype";
-                icon_only = true;
-                padding = {
-                  left = 1;
-                  right = 0;
-                };
+                __unkeyed-1 = "buffers";
+                show_filename_only = false;
+                use_mode_colors = true;
+                mode = 4;
+                show_modified_status = true;
               }
-              {
-                __unkeyed-1 = "filename";
-                path = 4;
-                padding.left = 0;
-              }
-              "diagnostics"
             ];
 
             lualine_x = [
@@ -87,6 +80,12 @@
             ];
 
             lualine_y = [
+              {
+                __unkeyed-1 = "searchcount";
+                maxcount = 999;
+                timeout = 500;
+              }
+              "diagnostics"
               {
                 __unkeyed-1 = "lsp_status";
                 padding = {
@@ -122,20 +121,21 @@
             in
             [
               {
-                inherit separator;
+
                 __unkeyed-1 = "filetype";
+                inherit separator;
                 icon_only = true;
-                padding = 0;
+                padding = 1;
                 color = {
                   bg = colorActive.fg;
                   gui = "bold";
                 };
               }
               {
+                __unkeyed-1 = "filename";
                 separator = { inherit (separator) right; };
                 padding = 1;
                 path = 4;
-                __unkeyed-1 = "filename";
                 color = colorActive;
               }
             ];
@@ -143,7 +143,7 @@
           inactive_winbar.lualine_c =
             let
               colorInactive = {
-                fg = colors.base02;
+                fg = colors.base04;
                 bg = colors.base01;
               };
             in
@@ -152,17 +152,17 @@
                 inherit separator;
                 __unkeyed-1 = "filetype";
                 icon_only = true;
-                padding = 0;
+                padding = 1;
                 color = {
                   bg = colorInactive.fg;
                   gui = "bold";
                 };
               }
               {
+                __unkeyed-1 = "filename";
                 separator = { inherit (separator) right; };
                 padding = 1;
                 path = 4;
-                __unkeyed-1 = "filename";
                 color = colorInactive;
               }
             ];
