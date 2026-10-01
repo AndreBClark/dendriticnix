@@ -99,8 +99,8 @@
               "static const float4 TRAIL_COLOR_ACCENT = float4(1.0, 0.0, 0.0, 1.0);"
             ]
             [
-              "static const float4 TRAIL_COLOR = float4(pow(float3(${c.base0C-dec-r}, ${c.base0C-dec-g}, ${c.base0C-dec-b}), float3(2.2)), 1.0);"
-              "static const float4 TRAIL_COLOR_ACCENT = float4(pow(float3(${c.base0D-dec-r}, ${c.base0D-dec-g}, ${c.base0D-dec-b}), float3(2.2)), 1.0);"
+              "static const float4 TRAIL_COLOR = float4(pow(float3(${c.base0D-dec-r}, ${c.base0D-dec-g}, ${c.base0D-dec-b}), float3(2.2)), 1.0);"
+              "static const float4 TRAIL_COLOR_ACCENT = float4(pow(float3(${c.base0C-dec-r}, ${c.base0C-dec-g}, ${c.base0C-dec-b}), float3(2.2)), 1.0);"
             ]
             (
               builtins.readFile "${config.programs.kitty.package}/lib/kitty/kitty/shaders/custom/cursor-trail-blaze.slang"
