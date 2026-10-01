@@ -1,4 +1,4 @@
-{ den, ... }:
+{ den, lib, ... }:
 {
   den.aspects.cli.devenv =
     let
@@ -11,7 +11,6 @@
     {
       includes = [
         (den.batteries.shell-integrations [
-          "devenv"
           "direnv"
         ])
       ];
@@ -26,6 +25,7 @@
           inherit direnv;
           devenv = {
             enable = true;
+            enableFishIntegration = lib.mkForce false;
           };
         };
       };

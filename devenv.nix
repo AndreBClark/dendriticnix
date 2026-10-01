@@ -25,12 +25,10 @@
     DIRENV_LOG_FORMAT = "";
   };
 
-  files = {
-    ".envrc".text = ''
-      eval "$(devenv direnvrc)"
-      devenv
-    '';
-  };
+  files.".envrc".text = ''
+    eval "$(devenv direnvrc --quiet)"
+    use devenv
+  '';
 
   # Format and lint changed files automatically through pre-commit hooks.
   git-hooks = {
@@ -38,16 +36,16 @@
     hooks = {
       treefmt = {
         enable = true;
-        excludes = [ "npins/default.nix" ];
+        excludes = [ "npins/*" ];
       };
       statix = {
         enable = true;
-        settings.ignore = [ "npins/default.nix" ];
-        excludes = [ "npins/default.nix" ];
+        settings.ignore = [ "npins/*" ];
+        excludes = [ "npins/*" ];
       };
       deadnix = {
         enable = true;
-        excludes = [ "npins/default.nix" ];
+        excludes = [ "npins/*" ];
       };
     };
   };
@@ -57,7 +55,7 @@
     enable = true;
     config = {
       programs.nixfmt.enable = true;
-      settings.global.excludes = [ "npins/default.nix" ];
+      settings.global.excludes = [ "npins/*" ];
     };
   };
 
