@@ -2,19 +2,13 @@
 {
   den.aspects.theme.grub.nixos =
     {
-      host,
       pkgs,
       config,
       options,
       ...
     }:
     let
-      logoSizes = {
-        small = 192;
-        medium = 256;
-        large = 512;
-      };
-      logoSize = logoSizes.${host.hardware.grubLogoSize};
+      logoSize = 256;
       half = logoSize / 2;
     in
     {
@@ -28,7 +22,7 @@
           stylixTheme = stylixModule.config.boot.loader.grub.content.theme;
 
           logo = pkgs.runCommand "grub-logo" { nativeBuildInputs = [ pkgs.imagemagick ]; } ''
-            magick ${pkgs.nixos-icons}/share/icons/hicolor/512x512/apps/nix-snowflake.png \
+            magick ${pkgs.nixos-icons}/share/icons/hicolor/256x256/apps/nix-snowflake.png \
               -resize ${toString logoSize}x${toString logoSize} \
               -background none -gravity center -extent ${toString logoSize}x${toString logoSize} \
               -depth 8 PNG32:$out
