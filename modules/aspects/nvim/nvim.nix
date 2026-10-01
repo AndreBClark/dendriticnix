@@ -30,6 +30,16 @@
         vimAlias = true;
         dependencies.ripgrep.enable = true;
         imports = [ (inputs.import-tree ./_config) ];
+        performance.byteCompileLua = {
+          enable = true;
+          nvimRuntime = true;
+          luaLib = true;
+          plugins = true;
+          excludedPlugins = [
+            "nvim-treesitter"
+            "snacks.nvim"
+          ];
+        };
       };
     in
     {
@@ -86,15 +96,6 @@
                         ];
                       in
                       {
-                        byteCompileLua = {
-                          enable = true;
-                          nvimRuntime = true;
-                          luaLib = true;
-                          initLua = true;
-                          plugins = true;
-                          inherit excludedPlugins;
-                        };
-
                         combinePlugins = {
                           enable = true;
                           standalonePlugins = excludedPlugins;
