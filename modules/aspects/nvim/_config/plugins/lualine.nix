@@ -1,3 +1,4 @@
+{ config, ... }:
 {
   plugins = {
     lualine = {
@@ -8,6 +9,7 @@
             left = "";
             right = "";
           };
+          colors = config.colorschemes.base16.colorscheme;
         in
         {
           options = {
@@ -25,6 +27,16 @@
               right = separator.left;
             };
             globalstatus = true;
+            disabled_filetypes = [
+              "snacks_picker"
+              "snacks_dashboard"
+              "snacks_explorer"
+              "trouble"
+              "qf"
+              "blink-cmp-menu"
+              "blink-cmp-documentation"
+              "blink-cmp-signature"
+            ];
           };
           sections = {
             lualine_a = [
@@ -100,6 +112,60 @@
               "mode"
             ];
           };
+          winbar.lualine_c =
+            let
+              colorActive = {
+                fg = colors.base02;
+                bg = colors.base0C;
+                gui = "bold";
+              };
+            in
+            [
+              {
+                inherit separator;
+                __unkeyed-1 = "filetype";
+                icon_only = true;
+                padding = 0;
+                color = {
+                  bg = colorActive.fg;
+                  gui = "bold";
+                };
+              }
+              {
+                separator = { inherit (separator) right; };
+                padding = 1;
+                path = 4;
+                __unkeyed-1 = "filename";
+                color = colorActive;
+              }
+            ];
+
+          inactive_winbar.lualine_c =
+            let
+              colorInactive = {
+                fg = colors.base02;
+                bg = colors.base01;
+              };
+            in
+            [
+              {
+                inherit separator;
+                __unkeyed-1 = "filetype";
+                icon_only = true;
+                padding = 0;
+                color = {
+                  bg = colorInactive.fg;
+                  gui = "bold";
+                };
+              }
+              {
+                separator = { inherit (separator) right; };
+                padding = 1;
+                path = 4;
+                __unkeyed-1 = "filename";
+                color = colorInactive;
+              }
+            ];
         };
     };
   };
