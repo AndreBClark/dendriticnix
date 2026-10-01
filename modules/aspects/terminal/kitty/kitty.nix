@@ -66,7 +66,7 @@
               tab_bar_style = "custom";
               window_padding_width = 6;
               cursor_shape = "block";
-              cursor_trail = 1000;
+              cursor_trail = 1;
               tab_bar_margin_width = 6;
               tab_title_max_length = 0;
               tab_bar_min_tabs = 0;
