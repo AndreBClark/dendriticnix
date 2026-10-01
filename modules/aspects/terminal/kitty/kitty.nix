@@ -64,7 +64,7 @@
               bold_italic_font = "family='${monoName}' style='ExtraBold Italic'";
               tab_bar_edge = "top";
               tab_bar_style = "custom";
-              window_padding_width = 6;
+              window_padding_width = "0 6";
               cursor_shape = "block";
               cursor_trail = 1;
               tab_bar_margin_width = 6;
