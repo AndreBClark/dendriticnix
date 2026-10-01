@@ -69,7 +69,6 @@
               tab_bar_margin_width = 6;
               tab_title_max_length = 0;
               tab_bar_min_tabs = 0;
-              shell_integration = "no-rc no-cursor";
               enable_audio_bell = false;
               enabled_layouts = "tall,stack";
               custom_shaders = "cursor-trail-blaze";
