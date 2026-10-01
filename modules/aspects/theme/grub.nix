@@ -2,11 +2,21 @@
 {
   den.aspects.theme.grub.nixos =
     {
+      host,
       pkgs,
       config,
       options,
       ...
     }:
+    let
+      logoSizes = {
+        small = 192;
+        medium = 256;
+        large = 512;
+      };
+      logoSize = logoSizes.${host.hardware.grubLogoSize};
+      half = logoSize / 2;
+    in
     {
       config = lib.optionalAttrs (options ? boot && options ? stylix) (
         let
@@ -17,13 +27,13 @@
           font = config.stylix.fonts.monospace.name;
           stylixTheme = stylixModule.config.boot.loader.grub.content.theme;
 
-          # cached separately — rebuilds only if size/source changes
           logo = pkgs.runCommand "grub-logo" { nativeBuildInputs = [ pkgs.imagemagick ]; } ''
             magick ${pkgs.nixos-icons}/share/icons/hicolor/512x512/apps/nix-snowflake.png \
-              -background none -gravity center -extent 512x512 -depth 8 PNG32:$out
+              -resize ${toString logoSize}x${toString logoSize} \
+              -background none -gravity center -extent ${toString logoSize}x${toString logoSize} \
+              -depth 8 PNG32:$out
           '';
 
-          # clean theme.txt: transform the stylix output, keep it inspectable
           themeTxt =
             with colors;
             pkgs.writeText "theme.txt" ''
@@ -32,11 +42,6 @@
               desktop-color: "${base00}"
 
               title-text: ""
-
-              terminal-left: "10%"
-              terminal-top: "20%"
-              terminal-width: "80%"
-              terminal-height: "60%"
 
               + progress_bar {
                 left = 25%
@@ -73,23 +78,26 @@
                 selected_item_pixmap_style = "selection_*.png"
               }
               + image {
-                left = 25%-256
-                top = 50%-256
+                left = 25%-${toString half}
+                top = 50%-${toString half}
                 file = "logo.png"
               }
             '';
         in
         {
-          boot.loader.grub.theme = lib.mkForce (
-            pkgs.runCommand "my-grub-theme" { } ''
-              mkdir $out
-              cp -r ${stylixTheme}/* $out/
-              chmod -R u+w $out
-              rm $out/theme.txt
-              cp ${themeTxt} $out/theme.txt
-              cp ${logo} $out/logo.png
-            ''
-          );
+          boot.loader.grub = {
+            theme = lib.mkForce (
+              pkgs.runCommand "my-grub-theme" { } ''
+                mkdir $out
+                cp -r ${stylixTheme}/* $out/
+                chmod -R u+w $out
+                rm $out/theme.txt
+                cp ${themeTxt} $out/theme.txt
+                cp ${logo} $out/logo.png
+              ''
+            );
+            fontSize = 24;
+          };
         }
       );
     };

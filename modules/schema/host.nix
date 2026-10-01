@@ -58,6 +58,14 @@
             );
             default = if host.hardware.formFactor == "laptop" then "hybrid" else null;
           };
+          grubLogoSize = lib.mkOption {
+            type = lib.types.enum [
+              "small"
+              "medium"
+              "large"
+            ];
+            default = "medium";
+          };
         };
       };
       config.assertions = [

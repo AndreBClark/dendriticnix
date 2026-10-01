@@ -11,6 +11,7 @@
         formFactor = "laptop";
         gpuMode = "intel";
         model = "dell-xps-15-9560";
+        grubLogoSize = "large";
       };
       users.andrec = { };
     };
