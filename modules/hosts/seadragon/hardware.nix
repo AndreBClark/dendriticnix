@@ -1,7 +1,9 @@
 {
   den.aspects.hardware.hosts.seadragon.nixos = {
+    blacklistedKernelModules = [ "sb_edac" ];
     boot.kernelParams = [
-      "edac_core.ecc_mask=0" # silence ECC ram false positive warning
+      "video=DP-2:2560x1440@60"
+      "video=HDMI-A-1:d"
     ];
   };
 }

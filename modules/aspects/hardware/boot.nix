@@ -2,12 +2,15 @@
 {
   den.default.nixos = {
     boot = {
+      consoleLogLevel = 2;
       loader = {
         grub = {
           enable = true;
           efiSupport = true;
           devices = [ "nodev" ];
           efiInstallAsRemovable = true;
+          gfxmodeEfi = "2560x1440,1920x1080,1024x768,auto";
+          gfxpayloadEfi = "keep";
         };
 
         efi.canTouchEfiVariables = false;
@@ -16,7 +19,6 @@
       tmp.cleanOnBoot = true;
 
       kernelParams = [
-        "console=tty1"
         "tsc=reliable"
         "quiet"
         "systemd.show_status=false"
