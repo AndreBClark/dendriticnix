@@ -38,12 +38,16 @@
 - [x] audit keymaps
     - [x] make sure they fit which key groups
     - [x] remove redundant, overlapping, not useful keymaps
+- [ ] winbar edits
+    - [ ] dark icon bubble
+- [ ] remove fish PWD truncation AGAIN
 
 ### Design
 - [x] figure out why fonts on my terminal are not bold
 - [x] reduce the amount of jetbrains variants installed
 - [x] less distracting background, more blur
 - [x] colorize kitty cursor blaze trail to lightblue
+    - try blue cursor with cyan accent?
 - [ ] wallpaper colorscheme theme key
     - [ ] convert wallpaper directory as symbolic link to Wallpaper-${wallpaper-theme} folder
     - [ ] rename wallpaper directory as wallpaper-raw
