@@ -54,8 +54,14 @@
             };
             "niri/window-rules.kdl".text = mkConfigFile {
               path = ./window-rules.kdl;
-              variables = [ "@@OPACITY_APPLICATIONS@@" ];
-              values = [ (toString user.theme.opacity.applications) ];
+              variables = [
+                "@@TERMINAL@@"
+                "@@OPACITY_APPLICATIONS@@"
+              ];
+              values = [
+                user.terminal
+                (toString user.theme.opacity.applications)
+              ];
             };
             "niri/output-${host.hostName}.kdl".source = ./output-${host.hostName}.kdl;
           };
