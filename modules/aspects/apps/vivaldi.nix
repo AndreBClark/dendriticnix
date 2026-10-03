@@ -14,9 +14,14 @@
           vivaldi = {
             enable = true;
             package = pkgs.vivaldi.override {
-              proprietaryCodecs = true;
-              inherit (pkgs) vivaldi-ffmpeg-codecs;
+              # uses chromium-codecs-ffmpeg-extra which didnt work?
+              proprietaryCodecs = false;
               enableWidevine = true;
+              inherit (pkgs) vivaldi-ffmpeg-codecs;
+              commandLineArgs = [
+                "--enable-features=UseOzonePlatform"
+                "--ozone-platform-hint=auto"
+              ];
             };
             extensions = [
               {
@@ -26,21 +31,7 @@
               { id = "cjpalhdlnbpafiamejdnhcphjbkeiagm"; } # UBlock Origin
               { id = "mnjggcdmjocbbbhaepdhchncahnbgone"; } # Sponsor Block
             ];
-            commandLineArgs = [
-              "--enable-features=UseOzonePlatform"
-              "--ozone-platform-hint=auto"
-            ];
           };
-        };
-        home.packages = builtins.attrValues {
-          inherit (pkgs.gst_all_1)
-            gstreamer
-            gst-plugins-base
-            gst-plugins-bad
-            gst-plugins-ugly
-            gst-plugins-good
-            gst-libav
-            ;
         };
       };
   };
