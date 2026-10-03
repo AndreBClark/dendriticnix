@@ -1,6 +1,6 @@
 {
   "currentThemeName": "custom",
-  "customThemeFile": "/nix/store/zw1fqdigczh7f64pzahscpzq20fzk72a-dankMaterialShell-stylix-color-theme.json",
+  "customThemeFile": "/nix/store/jp68sg4wasip1iqqxcxci9jnx0hasjpx-dankMaterialShell-stylix-color-theme.json",
   "registryThemeVariants": {
     "catppuccin": {
       "dark": {
@@ -172,16 +172,31 @@
   "systemTrayIconTintMode": "primary",
   "controlCenterWidgets": [
     {
+      "id": "user",
       "enabled": true,
-      "h": 1.5,
-      "id": "userCard",
-      "w": 6.5
+      "w": 6.5,
+      "h": 1.5
     },
     {
+      "id": "settings",
       "enabled": true,
-      "h": 1.5,
-      "id": "quickActions",
-      "w": 1.5
+      "w": 1,
+      "h": 1,
+      "small": true
+    },
+    {
+      "id": "lock",
+      "enabled": true,
+      "w": 1,
+      "h": 1,
+      "small": true
+    },
+    {
+      "id": "power",
+      "enabled": true,
+      "w": 1,
+      "h": 1,
+      "small": true
     },
     {
       "enabled": true,
@@ -212,6 +227,13 @@
       "h": 1,
       "id": "idleInhibitor",
       "w": 4
+    },
+    {
+      "id": "runningApps",
+      "enabled": true,
+      "w": 4,
+      "h": 1,
+      "footer": true
     }
   ],
   "audioWheelScrollAmount": 10,
@@ -385,7 +407,6 @@
   "osdPowerProfileEnabled": true,
   "updaterUseCustomCommand": true,
   "updaterCustomCommand": "nh os switch ~/nixconfig",
-  "updaterIntervalSeconds": 86400,
   "screenPreferences": {
     "lockScreen": [
       "DP-2"
@@ -862,5 +883,5 @@
   "barInsetPaddingShared": 8,
   "barInsetPaddingSyncAll": true,
   "frameBarInsetPadding": 0,
-  "configVersion": 34
+  "configVersion": 36
 }

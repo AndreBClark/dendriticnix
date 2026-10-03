@@ -1,5 +1,5 @@
 {
-  "wallpaperPath": "/home/andrec/Pictures/Wallpaper-tokyo-night-dark/AC6_1316189.jpeg",
+  "wallpaperPath": "/home/andrec/Pictures/Wallpaper-tokyo-night-dark/AC6_AC6-Interview_02-03-23.jpg",
   "weatherLocation": "",
   "terminalOverride": "kitty",
   "includedTransitions": [
@@ -80,10 +80,13 @@
     }
   },
   "activeDisplayProfile": {
-    "niri": "auto_201b31"
+    "niri": "profile_1780712333822_nbsu56u"
   },
   "activeDisplayProfileModes": {
     "niri": {
+      "HDMI-A-1": {
+        "mode": "1920x1080@60.000"
+      },
       "DP-2": {
         "mode": "2560x1440@59.951"
       }
