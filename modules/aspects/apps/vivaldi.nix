@@ -33,6 +33,9 @@
             ];
           };
         };
+        home.packages = builtins.attrValues {
+          inherit (pkgs) vivaldi-ffmpeg-codecs;
+        };
       };
   };
 }
