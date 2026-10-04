@@ -40,6 +40,7 @@
 
     # ── Mouse ──
     mouse = "a";
+    mousescroll = "ver:3,hor:0";
 
     # ── Whitespace display ──
     list = true;
