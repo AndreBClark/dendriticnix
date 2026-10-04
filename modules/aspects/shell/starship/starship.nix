@@ -58,6 +58,7 @@ let
               "[ $path]($style)"
             ];
             fish_style_pwd_dir_length = 0;
+            truncation_length = 0;
             before_repo_root_style = "bg:blue black dimmed";
             repo_root_format = lib.concatStrings [
               "[  $repo_root]($repo_root_style)"

@@ -58,6 +58,11 @@
         programs = {
           fish = {
             enable = true;
+            generateCompletions = false;
+            interactiveShellInit = ''
+              set -g fish_prompt_pwd_dir_length 0
+              set -g fish_prompt_pwd_full_dirs 0
+            '';
             plugins = mkFishPlugins pluginNames;
             binds = {
               "alt-g" = {
