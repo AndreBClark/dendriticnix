@@ -20,8 +20,6 @@
       LineNrAbove = lib.mkIf transparentBackground.numberLine transparent;
       LineNrBelow = lib.mkIf transparentBackground.numberLine transparent;
       Visual.link = "lualine_a_visual";
-      StatusLineNC = transparent;
-      StatusLine = transparent;
     };
 
   plugins = {

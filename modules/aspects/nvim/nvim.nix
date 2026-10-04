@@ -61,7 +61,12 @@
 
           stylix.targets.nixvim = {
             plugin = "base16-nvim";
-            transparentBackground.main = true;
+            transparentBackground = {
+              main = true;
+
+              signColumn = false;
+              numberLine = false;
+            };
           };
 
           home.shellAliases = {
