@@ -1,4 +1,4 @@
-{ lib, ... }:
+{ lib, config, ... }:
 {
   highlightOverride =
     let
@@ -11,6 +11,7 @@
         signColumn = false;
         numberLine = false;
       };
+      colors = config.colorschemes.base16.colorscheme;
     in
     {
       Normal = lib.mkIf transparentBackground.main transparent;
@@ -20,6 +21,7 @@
       LineNrAbove = lib.mkIf transparentBackground.numberLine transparent;
       LineNrBelow = lib.mkIf transparentBackground.numberLine transparent;
       Visual.link = "lualine_a_visual";
+      GitSignsCurrentLineBlame.fg = colors.base01;
     };
 
   plugins = {
