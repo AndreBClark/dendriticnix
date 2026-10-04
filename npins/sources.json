@@ -64,9 +64,9 @@
       },
       "branch": "master",
       "submodules": false,
-      "revision": "0bff4524e208deeed99834614e7740421e9e6692",
-      "url": "https://github.com/AvengeMedia/DankMaterialShell/archive/0bff4524e208deeed99834614e7740421e9e6692.tar.gz",
-      "hash": "sha256-jbVuguJ+bvSaMf9eJxPNQUxVfo5LU9HQ3nNd9DsPcnA="
+      "revision": "b48fce0447e5ec943ff80775d66e2c47a0774cb3",
+      "url": "https://github.com/AvengeMedia/DankMaterialShell/archive/b48fce0447e5ec943ff80775d66e2c47a0774cb3.tar.gz",
+      "hash": "sha256-Obl3ZlmJKR8fj/PmK9ETSDORecipt0cuifhWxfmnxuo="
     },
     "dms-plugin-registry": {
       "type": "Git",
@@ -77,9 +77,9 @@
       },
       "branch": "master",
       "submodules": false,
-      "revision": "f106c3ca71b28ba70fd51b8b01c5db2dc822b83e",
-      "url": "https://github.com/AvengeMedia/dms-plugin-registry/archive/f106c3ca71b28ba70fd51b8b01c5db2dc822b83e.tar.gz",
-      "hash": "sha256-eB04cIVhTctNAAxuGO/cI7Wf5JHxISOGSkK64gFa2z0="
+      "revision": "04944dd8a4136d5be976c115c3ded1d3868f0926",
+      "url": "https://github.com/AvengeMedia/dms-plugin-registry/archive/04944dd8a4136d5be976c115c3ded1d3868f0926.tar.gz",
+      "hash": "sha256-UKvwk+qPla7Mh234d3zw9kCz5ldwdoHcQ/9Ky71xfao="
     },
     "flake-parts": {
       "type": "Git",
@@ -194,9 +194,9 @@
       },
       "branch": "main",
       "submodules": false,
-      "revision": "243dbfa1b4445460337b2d869ae26801e32bcf04",
-      "url": "https://github.com/hoeci/sort-play/archive/243dbfa1b4445460337b2d869ae26801e32bcf04.tar.gz",
-      "hash": "sha256-2lQ3JYchADWkoVftp9QjIv43ypDyAaOecbHpUpNoXHg="
+      "revision": "0b2158e87a20b0eb207e38751875964d6c0a9344",
+      "url": "https://github.com/hoeci/sort-play/archive/0b2158e87a20b0eb207e38751875964d6c0a9344.tar.gz",
+      "hash": "sha256-Q8IrTLPDykmOTVNDp32Ih9Ubrz3IZ7m73TIlD90fUVs="
     },
     "spicetify-apps": {
       "type": "Git",
