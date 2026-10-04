@@ -84,6 +84,9 @@
       "showTrash": false,
       "trashFileManager": "default",
       "trashCustomCommand": "",
+      "magnification": false,
+      "magnificationScale": 130,
+      "magnificationProfile": "parabolic",
       "order": [],
       "widgets": [
         {
@@ -172,31 +175,31 @@
   "systemTrayIconTintMode": "primary",
   "controlCenterWidgets": [
     {
+      "enabled": true,
+      "h": 1.5,
       "id": "user",
-      "enabled": true,
-      "w": 6.5,
-      "h": 1.5
+      "w": 6.5
     },
     {
+      "enabled": true,
+      "h": 1,
       "id": "settings",
-      "enabled": true,
-      "w": 1,
-      "h": 1,
-      "small": true
+      "small": true,
+      "w": 1
     },
     {
+      "enabled": true,
+      "h": 1,
       "id": "lock",
-      "enabled": true,
-      "w": 1,
-      "h": 1,
-      "small": true
+      "small": true,
+      "w": 1
     },
     {
-      "id": "power",
       "enabled": true,
-      "w": 1,
       "h": 1,
-      "small": true
+      "id": "power",
+      "small": true,
+      "w": 1
     },
     {
       "enabled": true,
@@ -229,11 +232,20 @@
       "w": 4
     },
     {
-      "id": "runningApps",
       "enabled": true,
-      "w": 4,
+      "footer": true,
       "h": 1,
-      "footer": true
+      "id": "runningApps",
+      "w": 4
+    },
+    {
+      "id": "edit",
+      "enabled": true,
+      "w": 1,
+      "h": 1,
+      "small": true,
+      "footer": true,
+      "footerEnd": true
     }
   ],
   "audioWheelScrollAmount": 10,
@@ -883,5 +895,5 @@
   "barInsetPaddingShared": 8,
   "barInsetPaddingSyncAll": true,
   "frameBarInsetPadding": 0,
-  "configVersion": 36
+  "configVersion": 37
 }
