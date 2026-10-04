@@ -103,6 +103,7 @@ in
               {
                 __unkeyed-1 = "encoding";
                 cond.__raw = ''function() return vim.bo.fileencoding ~= "" and vim.bo.fileencoding ~= "utf-8" end'';
+                color.__raw = ''_G.mk_mode_color("fg")'';
               }
               {
                 __unkeyed-1 = "fileformat";
@@ -112,6 +113,7 @@ in
                   dos = "CRLF";
                   mac = "CR";
                 };
+                color.__raw = ''_G.mk_mode_color("fg")'';
               }
             ];
 
@@ -120,6 +122,7 @@ in
                 __unkeyed-1 = "searchcount";
                 maxcount = 999;
                 timeout = 500;
+                color.__raw = ''_G.mk_mode_color("fg")'';
               }
               "diagnostics"
               {
