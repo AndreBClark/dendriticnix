@@ -34,6 +34,11 @@ def draw_tab(draw_data, screen, tab, before, max_title_length, index, is_last, e
         screen.cursor.fg = index_bg
         screen.draw(PILL_LEFT)
 
+    def draw_right_sep():
+        screen.cursor.bg = as_rgb(color_as_int(draw_data.default_bg))
+        screen.cursor.fg = index_bg
+        screen.draw(PILL_RIGHT)
+
     def draw_index():
         screen.cursor.bg = index_bg
         screen.cursor.fg = INDEX_FG
@@ -50,6 +55,7 @@ def draw_tab(draw_data, screen, tab, before, max_title_length, index, is_last, e
 
     draw_left_sep()
     index_end = draw_index()
+    draw_right_sep()
     screen.cursor.bg = orig_bg
     screen.cursor.fg = orig_fg
     screen.draw(" ")
