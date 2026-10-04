@@ -248,6 +248,9 @@ in
         postInstall = ''
           substituteInPlace $out/lua/moody/utils.lua --replace-fail \
           'name = "Normal"' 'name = "CursorLine"'
+          substituteInPlace $out/lua/moody/config.lua --replace-fail \
+            '["r"] = "ns_replace",' \
+            '["r"] = "ns_replace", ["R"] = "ns_replace", ["Rv"] = "ns_replace", ["Rc"] = "ns_replace", ["Rx"] = "ns_replace",'
           rm $out/plugin/moody.vim
           cat > $out/plugin/moody.lua <<'EOF'
           ${moodyConfig}
