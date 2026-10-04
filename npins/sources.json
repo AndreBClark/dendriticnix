@@ -120,6 +120,22 @@
       "url": "https://github.com/nix-community/home-manager/archive/acd21c5a3420a9d5fd0ed06299b10828267ef9ba.tar.gz",
       "hash": "sha256-ZN+riaeFuE+DZ5zfqJiXlM12jLwZzeIXiNkU1YeHMXI="
     },
+    "moody-nvim": {
+      "type": "GitRelease",
+      "repository": {
+        "type": "GitHub",
+        "owner": "svampkorg",
+        "repo": "moody.nvim"
+      },
+      "pre_releases": false,
+      "version_upper_bound": null,
+      "release_prefix": null,
+      "submodules": false,
+      "version": "v0.1.0",
+      "revision": "2010458a254ccfe318c24a60304fec21b31bac46",
+      "url": "https://api.github.com/repos/svampkorg/moody.nvim/tarball/refs/tags/v0.1.0",
+      "hash": "sha256-trxEcLEcCsyACyhyf5q4zLCvKgOkAAk3DhPygqYO094="
+    },
     "niri": {
       "type": "GitRelease",
       "repository": {

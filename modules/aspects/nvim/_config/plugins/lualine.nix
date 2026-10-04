@@ -1,4 +1,8 @@
-{ config, ... }:
+{ config, pkgs, ... }:
+let
+  colors = config.colorschemes.base16.colorscheme;
+  sources = import ../../../../../npins;
+in
 {
   plugins = {
     lualine = {
@@ -9,7 +13,6 @@
             left = "";
             right = "";
           };
-          colors = config.colorschemes.base16.colorscheme;
         in
         {
           options = {
@@ -18,14 +21,37 @@
                 local base = require("lualine.themes.base16")
                 local c = require("base16-colorscheme").colors
                 base.command = { a = { fg = c.base00, bg = c.base0C, gui = "bold" } }
+                _G.mk_mode_color = function(target)
+                  return function()
+                    local theme = require("lualine.themes.base16")
+                    local m = require("lualine.utils.mode").get_mode()
+                    local map = {
+                      NORMAL = theme.normal, INSERT = theme.insert, VISUAL = theme.visual,
+                      ["V-LINE"] = theme.visual, ["V-BLOCK"] = theme.visual,
+                      COMMAND = theme.command, REPLACE = theme.replace,
+                      TERMINAL = theme.terminal or theme.normal,
+                    }
+                    local hl = (map[m] or theme.normal).a
+                    if target == "bg" then
+                      return { fg = hl.fg, bg = hl.bg, gui = "bold" }  -- pill
+                    else
+                      return { fg = hl.bg } -- tinted text
+                    end
+                  end
+                end
+                for _, mode in pairs(base) do
+                  if mode.a then
+                    mode.c = { fg = mode.a.fg, bg = mode.a.bg }
+                  end
+                end
                 return base
               end)()
             '';
-            component_separators = "";
             section_separators = {
               left = separator.right;
               right = separator.left;
             };
+            component_separators = "";
             globalstatus = true;
             disabled_filetypes = [
               "snacks_picker"
@@ -36,6 +62,11 @@
               "blink-cmp-menu"
               "blink-cmp-documentation"
               "blink-cmp-signature"
+            ];
+            ignore_focus = [
+              "snacks_picker"
+              "snacks_explorer"
+              "snacks_dashboard"
             ];
           };
           sections = {
@@ -49,21 +80,26 @@
             ];
 
             lualine_b = [
-              "branch"
+              {
+                __unkeyed-1 = "branch";
+                color.__raw = ''_G.mk_mode_color("fg")'';
+              }
               "diff"
             ];
 
             lualine_c = [
               {
-                __unkeyed-1 = "buffers";
-                show_filename_only = false;
-                use_mode_colors = true;
-                mode = 4;
-                show_modified_status = true;
+                inherit (separator) right;
+                __unkeyed-1 = "%=";
+                color.__raw = ''_G.mk_mode_color("bg")'';
               }
             ];
-
             lualine_x = [
+              {
+                inherit (separator) left;
+                __unkeyed-1 = "%=";
+                color.__raw = ''_G.mk_mode_color("bg")'';
+              }
               {
                 __unkeyed-1 = "encoding";
                 cond.__raw = ''function() return vim.bo.fileencoding ~= "" and vim.bo.fileencoding ~= "utf-8" end'';
@@ -94,6 +130,7 @@
                 };
                 icon = "";
                 ignore_lsp = [ "null-ls" ];
+                color.__raw = ''_G.mk_mode_color("fg")'';
               }
             ];
 
@@ -111,34 +148,32 @@
               "mode"
             ];
           };
-          winbar.lualine_c =
-            let
-              colorActive = {
-                fg = colors.base02;
-                bg = colors.base0C;
-                gui = "bold";
+          winbar.lualine_c = [
+            {
+              __unkeyed-1.__raw = ''function() return " " end'';
+              padding = 0;
+              draw_empty = true;
+              color = "WinBar";
+            }
+            {
+              __unkeyed-1 = "filetype";
+              inherit separator;
+              icon_only = true;
+              padding = 1;
+              color = {
+                bg = colors.base02;
+                fg = colors.base0C;
               };
-            in
-            [
-              {
+            }
+            {
+              __unkeyed-1 = "filename";
+              separator = { inherit (separator) right; };
+              padding = 1;
+              path = 4;
+              color.__raw = ''_G.mk_mode_color("bg")'';
+            }
 
-                __unkeyed-1 = "filetype";
-                inherit separator;
-                icon_only = true;
-                padding = 1;
-                color = {
-                  bg = colorActive.fg;
-                  gui = "bold";
-                };
-              }
-              {
-                __unkeyed-1 = "filename";
-                separator = { inherit (separator) right; };
-                padding = 1;
-                path = 4;
-                color = colorActive;
-              }
-            ];
+          ];
 
           inactive_winbar.lualine_c =
             let
@@ -154,8 +189,7 @@
                 icon_only = true;
                 padding = 1;
                 color = {
-                  bg = colorInactive.fg;
-                  gui = "bold";
+                  inherit (colorInactive) bg;
                 };
               }
               {
@@ -165,8 +199,60 @@
                 path = 4;
                 color = colorInactive;
               }
+
             ];
         };
     };
+
   };
+  extraPlugins =
+    let
+      moodyConfig =
+        with colors;
+        # lua
+        ''
+          local blend = { dark = 0.5, bright = 0.8, base = 0.75 }
+          require("moody").setup({
+            blends = {
+              insert = blend.dark,
+              visual = blend.bright,
+              normal = blend.base,
+              command = blend.bright,
+              operator = blend.bright,
+              replace = blend.bright,
+              select = blend.bright,
+            },
+
+            colors = {
+              normal = "${base0D}",
+              insert = "${base0B}",
+              visual = "${base0E}",
+              command = "${base0C}",
+              operator = "${base0C}",
+              replace = "${base09}",
+              select = "${base0E}",
+              terminal = "${base0C}",
+              terminal_n = "${base0D}"
+            },
+            bold_line_number = true,
+            recording = { enabled = true },
+            column = { enabled = false }
+          })
+        '';
+    in
+    [
+      (pkgs.vimUtils.buildVimPlugin {
+        name = "moody.nvim";
+        src = sources.moody-nvim;
+        nvimSkipModules = [ "moody.statuscolumn" ];
+        postInstall = ''
+          substituteInPlace $out/lua/moody/utils.lua --replace-fail \
+          'name = "Normal"' 'name = "CursorLine"'
+          rm $out/plugin/moody.vim
+          cat > $out/plugin/moody.lua <<'EOF'
+          ${moodyConfig}
+          EOF
+        '';
+      })
+    ];
 }
