@@ -22,6 +22,7 @@
       LineNrBelow = lib.mkIf transparentBackground.numberLine transparent;
       Visual.link = "lualine_a_visual";
       GitSignsCurrentLineBlame.fg = colors.base01;
+      Statusline = lib.mkIf transparentBackground.main transparent;
     };
 
   plugins = {
