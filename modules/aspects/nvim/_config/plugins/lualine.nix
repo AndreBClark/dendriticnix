@@ -228,7 +228,7 @@ in
               normal = blend.base,
               command = blend.bright,
               operator = blend.bright,
-              replace = blend.bright,
+              replace = blend.dark,
               select = blend.bright,
             },
 
