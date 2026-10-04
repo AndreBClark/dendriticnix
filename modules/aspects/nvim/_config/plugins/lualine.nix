@@ -13,6 +13,10 @@ in
             left = "";
             right = "";
           };
+          separator_flipped = {
+            left = "";
+            right = "";
+          };
         in
         {
           options = {
@@ -47,11 +51,9 @@ in
                 return base
               end)()
             '';
-            section_separators = {
-              left = separator.right;
-              right = separator.left;
-            };
+            section_separators = separator_flipped;
             component_separators = "";
+            always_divide_middle = false;
             globalstatus = true;
             disabled_filetypes = [
               "snacks_picker"
@@ -69,6 +71,8 @@ in
               "snacks_dashboard"
             ];
           };
+          extensions = [ "trouble" ];
+
           sections = {
             lualine_a = [
               {
