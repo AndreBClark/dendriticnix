@@ -92,19 +92,21 @@
 
         xdg.configFile."kitty/tab_bar.py".text = tabBarPy ./tab_bar.py;
 
-        xdg.configFile."kitty/cursor-trail-blaze-blue.slang".text =
-          builtins.replaceStrings
-            [
-              "static const float4 TRAIL_COLOR = float4(1.0, 0.725, 0.161, 1.0);"
-              "static const float4 TRAIL_COLOR_ACCENT = float4(1.0, 0.0, 0.0, 1.0);"
-            ]
-            [
-              "static const float4 TRAIL_COLOR = float4(pow(float3(${c.base0D-dec-r}, ${c.base0D-dec-g}, ${c.base0D-dec-b}), float3(2.2)), 1.0);"
-              "static const float4 TRAIL_COLOR_ACCENT = float4(pow(float3(${c.base0C-dec-r}, ${c.base0C-dec-g}, ${c.base0C-dec-b}), float3(2.2)), 1.0);"
-            ]
-            (
-              builtins.readFile "${config.programs.kitty.package}/lib/kitty/kitty/shaders/custom/cursor-trail-blaze.slang"
-            );
+        xdg.configFile."kitty/shaders/cursor-trail-blaze-blue.pipeline".text =
+          let
+            base0D = "float3(${c.base0D-dec-r}, ${c.base0D-dec-g}, ${c.base0D-dec-b})";
+            base0C = "float3(${c.base0C-dec-r}, ${c.base0C-dec-g}, ${c.base0C-dec-b})";
+          in
+          ''
+            startgroup
+              animation_start cursor-trail-move
+              animation_stop cursor-trail-stop
+              var float4 TRAIL_COLOR = float4(pow(${base0D},float3(2.2)), 1.0)
+              var float4 TRAIL_COLOR_ACCENT = float4(pow(${base0C}, float3(2.2)), 1.0)
+              var float DURATION = 0.45
+              shaders cursor-trail-blaze
+            endgroup
+          '';
       };
   };
 }
