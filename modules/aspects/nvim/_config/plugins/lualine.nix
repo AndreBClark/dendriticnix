@@ -89,9 +89,11 @@ in
 
             lualine_c = [
               {
-                inherit (separator) right;
-                __unkeyed-1 = "%=";
-                color.__raw = ''_G.mk_mode_color("bg")'';
+                separator = {
+                  inherit (separator) right;
+                };
+                __unkeyed-1 = "buffers";
+                use_mode_colors = true;
               }
             ];
             lualine_x = [
