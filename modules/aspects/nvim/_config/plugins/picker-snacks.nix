@@ -53,7 +53,10 @@
                 col = -1;
               };
             };
-            win.list.footer_keys = true;
+            win = {
+              preview.wo.winbar = "";
+              list.footer_keys = true;
+            };
           };
         };
       };
