@@ -80,13 +80,18 @@
         options.desc = "Registers";
       }
       {
+        key = "<leader>s'";
+        action.__raw = "function() Snacks.picker.marks() end";
+        options.desc = "Marks";
+      }
+      {
         key = "<leader>sq";
         action.__raw = "function() Snacks.picker.qflist() end";
         options.desc = "Quickfix List";
       }
       {
         mode = "n";
-        key = "<leader>fr";
+        key = "<leader>sf";
         action.__raw = "function() Snacks.picker.recent() end";
         options.desc = "Recent Files";
       }
@@ -98,7 +103,7 @@
       }
       {
         mode = "n";
-        key = "<leader>sd";
+        key = "<leader>cd";
         action.__raw = "function() Snacks.picker.diagnostics() end";
         options.desc = "Diagnostics";
       }
@@ -160,19 +165,19 @@
       }
       {
         mode = "n";
-        key = "<leader>ss";
+        key = "<leader>cs";
         action.__raw = "function() Snacks.picker.lsp_symbols() end";
         options.desc = "LSP Symbols";
       }
       {
         mode = "n";
-        key = "<leader>sS";
+        key = "<leader>cS";
         action.__raw = "function() Snacks.picker.lsp_workspace_symbols() end";
         options.desc = "LSP Workspace Symbols";
       }
       {
         mode = "n";
-        key = "gr";
+        key = "<leader>cg";
         action.__raw = "function() Snacks.picker.lsp_references() end";
         options.desc = "LSP References";
       }

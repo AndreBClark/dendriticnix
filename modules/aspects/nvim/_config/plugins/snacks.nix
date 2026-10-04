@@ -108,7 +108,7 @@ in
   keymaps =
     (lib.optional (cfg.bufdelete.enabled or false) {
       mode = "n";
-      key = "<leader>w";
+      key = "<leader>bd"; # was <leader>w — frees w for the windows proxy
       action.__raw = "function() Snacks.bufdelete() end";
       options.desc = "Delete Buffer";
     })
@@ -151,7 +151,7 @@ in
           "n"
           "t"
         ];
-        key = "]]";
+        key = "]r";
         action.__raw = "function() Snacks.words.jump(vim.v.count1) end";
         options.desc = "Next Reference";
       }
@@ -160,7 +160,7 @@ in
           "n"
           "t"
         ];
-        key = "[[";
+        key = "[r";
         action.__raw = "function() Snacks.words.jump(-vim.v.count1) end";
         options.desc = "Prev Reference";
       }

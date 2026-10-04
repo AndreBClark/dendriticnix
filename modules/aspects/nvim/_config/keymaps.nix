@@ -19,6 +19,7 @@
     {
       key = "<MiddleMouse>";
       action = "<Nop>";
+      options.silent = true;
     }
     {
       key = "<leader>q";
@@ -65,42 +66,57 @@
       action = "<cmd>%d<CR>";
       options.desc = "Delete Buffer Contents";
     }
-    {
-      key = "<ScrollWheelLeft>";
-      action = "<Nop>";
-      mode = [
-        "n"
-        "i"
-        "v"
-      ];
-    }
-    {
-      key = "<ScrollWheelRight>";
-      action = "<Nop>";
-      mode = [
-        "n"
-        "i"
-        "v"
-      ];
-    }
   ];
   plugins.which-key = {
     enable = true;
     settings = {
       preset = "modern";
-      layout = {
-        spacing = 5;
-        width = {
-          min = 40;
-          max = 80;
-        };
+      filter.__raw = ''
+        function(mapping)
+          return not require("which-key.util").is_nop(mapping.rhs)
+        end
+      '';
+      # ── smaller window ──
+      win = {
+        height = {
+          min = 4;
+          max = 10;
+        }; # cap total popup height
+        padding = [
+          0
+          1
+        ]; # was default {1,2}; saves 2 rows
+        no_overlap = true;
+        title = false; # drop title row/border
       };
+      show_help = false; # removes the "+1" help line
+      show_keys = false; # breadcrumb still shows in title if enabled
+
+      layout = {
+        spacing = 2;
+        width = {
+          min = 30;
+          max = 60;
+        }; # narrower columns → more columns → fewer rows
+      };
+
+      # ── QoL ──
+      delay = 100; # you have timeoutlen=300; popup can be snappier
+      expand = 1; # auto-expand groups with <=1 mapping
+      sort = [
+        "local"
+        "order"
+        "alphanum"
+        "group"
+        "mod"
+      ];
+      icons.rules = [ ]; # rely on defaults + your devicons/mini.icons
+
       spec = [
         {
-          __unkeyed-1 = "<leader>f";
-          group = "Find";
-          icon = "󰈞 ";
-        }
+          __unkeyed-1 = "<leader>a";
+          group = "All/Buffer";
+        } # you already have aa/ay/ad
         {
           __unkeyed-1 = "<leader>g";
           group = "Git";
@@ -135,6 +151,13 @@
           __unkeyed-1 = "<leader>b";
           group = "Buffer";
           icon = "󰓩 ";
+          # dynamic buffer switcher: <leader>b1..9 jumps to a buffer
+          expand.__raw = ''function() return require("which-key.extras").expand.buf() end'';
+        }
+        {
+          __unkeyed-1 = "<leader>w";
+          proxy = "<c-w>";
+          group = "windows";
         }
       ];
     };
