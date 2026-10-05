@@ -107,8 +107,7 @@
               animation_stop cursor-trail-stop
               var float4 TRAIL_COLOR = float4(pow(${base0D},float3(2.2)), 1.0)
               var float4 TRAIL_COLOR_ACCENT = float4(pow(${base0C}, float3(2.2)), 1.0)
-              var float DURATION = 0.45
-              shaders cursor-trail-blaze
+              shaders cursor-trail-motion-blur cursor-trail-blaze
             endgroup
           '';
       };
