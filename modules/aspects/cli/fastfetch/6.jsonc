@@ -17,7 +17,8 @@
     "separator": " "
   },
   "logo": {
-    "width": 24,
+    "height": 28,
+    "width": 28,
     "preserveAspectRatio": true
   },
   "modules": [
@@ -95,7 +96,7 @@
       "type": "display",
       "keyColor": "green",
       "key": "Screen",
-      "compactType": "original",
+      "preciseRefreshRate": false,
       "order": "desc"
     },
     {
