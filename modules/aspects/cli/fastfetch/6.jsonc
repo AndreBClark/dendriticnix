@@ -17,8 +17,8 @@
     "separator": " "
   },
   "logo": {
-    "height": 28,
-    "width": 28,
+    "height": 20,
+    "width": 20,
     "preserveAspectRatio": true
   },
   "modules": [
@@ -97,7 +97,8 @@
       "keyColor": "green",
       "key": "Screen",
       "preciseRefreshRate": false,
-      "order": "desc"
+      "order": "desc",
+      "format": "{width}x{height}@{refresh-rate}Hz {inch}in {name}"
     },
     {
       "type": "battery",
