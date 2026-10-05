@@ -64,9 +64,9 @@
       },
       "branch": "master",
       "submodules": false,
-      "revision": "2f5a438e1e8fd789c0bdd4c8b4b98c782b038c00",
-      "url": "https://github.com/AvengeMedia/DankMaterialShell/archive/2f5a438e1e8fd789c0bdd4c8b4b98c782b038c00.tar.gz",
-      "hash": "sha256-mxXDw9aShDIDin3t6MB09ONVFv3FGsPbZQ4XNirNo34="
+      "revision": "9ec48c4f1382e76ffa7dfd71b810a8539a707a3e",
+      "url": "https://github.com/AvengeMedia/DankMaterialShell/archive/9ec48c4f1382e76ffa7dfd71b810a8539a707a3e.tar.gz",
+      "hash": "sha256-KYIL7OPLwQLUr9fgkl63GJeNMUtwu4iS+c3tBjVNcWU="
     },
     "dms-plugin-registry": {
       "type": "Git",
@@ -116,9 +116,9 @@
       },
       "branch": "master",
       "submodules": false,
-      "revision": "f53f3267f5d009dd8f99443505e609389d7ff267",
-      "url": "https://github.com/nix-community/home-manager/archive/f53f3267f5d009dd8f99443505e609389d7ff267.tar.gz",
-      "hash": "sha256-DiuwfdoZtEqVRsWuAhXcHa+cfvkr0t/xWW8ugkcxNyI="
+      "revision": "aa23f720d022187228bc264f759aef6b80233bcf",
+      "url": "https://github.com/nix-community/home-manager/archive/aa23f720d022187228bc264f759aef6b80233bcf.tar.gz",
+      "hash": "sha256-+lrD+sxc2RKUWXRBAcggn7uBCFeJgnV75jD/cz7gJRA="
     },
     "moody-nvim": {
       "type": "GitRelease",
@@ -181,9 +181,9 @@
       },
       "branch": "main",
       "submodules": false,
-      "revision": "1cdfef1a6eb583d65b606b04fc97687491479d62",
-      "url": "https://github.com/nix-community/nixvim/archive/1cdfef1a6eb583d65b606b04fc97687491479d62.tar.gz",
-      "hash": "sha256-EeMn6SmrBe4gnxaMyb3NZYMXG8FPF9PY0OCcbPDFFNI="
+      "revision": "8fbc7d3ff1154fab898895e7c4e71a4d06936ce3",
+      "url": "https://github.com/nix-community/nixvim/archive/8fbc7d3ff1154fab898895e7c4e71a4d06936ce3.tar.gz",
+      "hash": "sha256-ySIbhYpjg8CnfuJTs/cfkEQuGpk02IzT+a3VDz7Cec0="
     },
     "sortPlay": {
       "type": "Git",
