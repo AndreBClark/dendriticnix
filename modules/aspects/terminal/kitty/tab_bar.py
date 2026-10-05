@@ -35,7 +35,7 @@ def draw_tab(draw_data, screen, tab, before, max_title_length, index, is_last, e
         screen.draw(PILL_LEFT)
 
     def draw_right_sep():
-        screen.cursor.bg = as_rgb(color_as_int(draw_data.default_bg))
+        screen.cursor.bg = orig_bg
         screen.cursor.fg = index_bg
         screen.draw(PILL_RIGHT)
 
