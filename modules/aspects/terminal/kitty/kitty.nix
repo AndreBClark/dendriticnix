@@ -73,10 +73,14 @@
               enable_audio_bell = false;
               enabled_layouts = "tall,stack";
               custom_shaders = "cursor-trail-blaze-blue";
+              dynamic_background_opacity = true;
+              kitty_mod = "ctrl+shift";
             };
 
           keybindings = {
-            "ctrl+shift+T" = "new_tab_with_cwd";
+            "kitty_mod+T" = "new_tab_with_cwd";
+            "kitty_mod+enter" = "new_window_with_cwd";
+
           };
 
           extraConfig = with colors; ''
