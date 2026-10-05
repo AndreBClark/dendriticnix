@@ -39,7 +39,6 @@
     "#7aa2f7",
     "#4d2e21"
   ],
-  "showThirdPartyPlugins": true,
   "hiddenApps": [
     "nvim",
     "xterm",
