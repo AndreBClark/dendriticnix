@@ -81,14 +81,14 @@
                 '';
 
               };
+
               codecontext = {
                 body = ''
-                  code2prompt $argv --no-codeblock --token-map --hidden | fish_clipboard_copy
+                  code2prompt $argv --no-codeblock --token-map --hidden -O - | string trim -r | head -c 49000 | fish_clipboard_copy
                 '';
-                description = "copy code files";
+                description = "copy code files, truncated to 49k bytes";
               };
             };
-
           };
           man.generateCaches = false;
           nix-your-shell = {
