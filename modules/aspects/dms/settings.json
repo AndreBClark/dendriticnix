@@ -176,96 +176,99 @@
   "systemTrayIconTintStrength": 200,
   "controlCenterWidgets": [
     {
-      "enabled": true,
-      "h": 1.5,
-      "id": "user",
-      "w": 5,
       "col": 0,
-      "row": 0
+      "enabled": true,
+      "h": 1,
+      "id": "user",
+      "row": 0,
+      "w": 5
     },
     {
+      "col": 6,
       "enabled": true,
       "h": 1,
       "id": "settings",
-      "small": true,
-      "w": 1,
-      "col": 6,
-      "row": 0
+      "row": 0,
+      "small": false,
+      "w": 1
     },
     {
+      "col": 5,
       "enabled": true,
       "h": 1,
       "id": "lock",
-      "small": true,
-      "w": 1,
-      "col": 5,
-      "row": 0
+      "row": 0,
+      "small": false,
+      "w": 1
     },
     {
+      "col": 7,
       "enabled": true,
       "h": 1,
       "id": "power",
-      "small": true,
-      "w": 1,
-      "col": 7,
-      "row": 0
+      "row": 0,
+      "small": false,
+      "w": 1
     },
     {
+      "col": 0,
       "enabled": true,
       "h": 1,
       "id": "volumeSlider",
-      "w": 8,
-      "col": 0,
-      "row": 1.5
+      "row": 1,
+      "w": 8
     },
     {
+      "col": 0,
       "enabled": true,
       "h": 1,
       "id": "wifi",
-      "w": 4,
-      "col": 0,
-      "row": 3.5
+      "row": 2,
+      "w": 4
     },
     {
+      "col": 0,
       "enabled": true,
       "h": 1,
       "id": "audioOutput",
-      "w": 4,
-      "col": 0,
-      "row": 2.5
+      "row": 3,
+      "w": 4
     },
     {
+      "col": 4,
       "enabled": true,
       "h": 1,
       "id": "audioInput",
-      "w": 4,
-      "col": 4,
-      "row": 2.5
+      "row": 2,
+      "w": 4
     },
     {
+      "col": 4,
       "enabled": true,
       "h": 1,
       "id": "idleInhibitor",
-      "w": 4,
-      "col": 4,
-      "row": 3.5
+      "row": 3,
+      "w": 4
     },
     {
       "enabled": true,
       "footer": true,
+      "footerW": 5,
       "h": 1,
       "id": "runningApps",
-      "w": 4,
-      "footerW": 4
+      "w": 4
     },
     {
       "enabled": true,
-      "footer": true,
-      "footerEnd": true,
       "h": 1,
       "id": "edit",
       "small": true,
-      "w": 1
+      "w": 1,
+      "col": 5,
+      "row": 1,
+      "footer": true,
+      "footerW": 1,
+      "footerEnd": true
     }
   ],
   "audioWheelScrollAmount": 10,
@@ -332,28 +335,28 @@
   "spotlightBarShowModeChips": true,
   "dashTabs": [
     {
-      "id": "overview",
-      "enabled": true
+      "enabled": true,
+      "id": "overview"
     },
     {
-      "id": "media",
-      "enabled": true
+      "enabled": true,
+      "id": "media"
     },
     {
-      "id": "wallpaper",
-      "enabled": true
+      "enabled": true,
+      "id": "wallpaper"
     },
     {
-      "id": "weather",
-      "enabled": true
+      "enabled": true,
+      "id": "weather"
     },
     {
-      "id": "notifications",
-      "enabled": true
+      "enabled": true,
+      "id": "notifications"
     },
     {
-      "id": "wellbeing",
-      "enabled": true
+      "enabled": true,
+      "id": "wellbeing"
     }
   ],
   "dashCards": [
@@ -441,11 +444,11 @@
   "notificationFocusedMonitor": true,
   "osdAlwaysShowValue": true,
   "osdPositionOverrides": {
-    "volume": 0,
     "mediaPlayback": 0,
     "mediaVolume": 0,
     "mic": 0,
-    "powerProfile": 1
+    "powerProfile": 1,
+    "volume": 0
   },
   "osdMediaPlaybackEnabled": true,
   "osdPowerProfileEnabled": true,
@@ -457,8 +460,8 @@
     ],
     "notepad": [
       {
-        "name": "DP-2",
-        "model": "K272HUL"
+        "model": "K272HUL",
+        "name": "DP-2"
       }
     ],
     "notifications": [
@@ -502,16 +505,9 @@
       "bottomGap": 0,
       "centerWidgets": [
         {
-          "id": "music",
-          "enabled": true
-        },
-        {
+          "enabled": true,
           "id": "clock",
-          "enabled": true
-        },
-        {
-          "id": "weather",
-          "enabled": true
+          "clockDateOrder": "dateFirst"
         }
       ],
       "enabled": true,
@@ -561,11 +557,11 @@
       "islandSatellitesEnabled": true,
       "leftWidgets": [
         {
-          "id": "launcherButton",
           "enabled": true,
+          "id": "launcherButton",
+          "launcherLogoColorOverride": "primary",
           "launcherLogoMode": "os",
           "launcherLogoSizeOffset": 12,
-          "launcherLogoColorOverride": "primary",
           "overflowMode": "bar"
         },
         {
@@ -590,31 +586,34 @@
       "position": 0,
       "rightWidgets": [
         {
-          "id": "systemTray",
-          "enabled": true
-        },
-        {
-          "id": "clipboard",
-          "enabled": true
-        },
-        {
-          "id": "notificationButton",
-          "enabled": true
-        },
-        {
-          "id": "battery",
           "enabled": true,
-          "batteryStyle": "ring",
-          "showBatteryPercentOnlyOnBattery": true,
-          "showBatteryTime": true,
-          "showBatteryPowerDischarging": true,
-          "showBatteryPowerCharging": true,
-          "showBatteryTimeOnlyOnBattery": true,
+          "id": "systemTray",
           "overflowMode": "section"
         },
         {
+          "enabled": true,
+          "id": "clipboard"
+        },
+        {
+          "enabled": true,
+          "id": "notificationButton",
+          "overflowMode": "section"
+        },
+        {
+          "enabled": true,
           "id": "controlCenterButton",
-          "enabled": true
+          "showMicIcon": true,
+          "showMicPercent": true,
+          "showAudioPercent": true,
+          "showBatteryIcon": true,
+          "showIdleInhibitorIcon": true,
+          "showDoNotDisturbIcon": true
+        },
+        {
+          "id": "music",
+          "enabled": true,
+          "mediaSize": 3,
+          "mediaAdaptiveWidthEnabled": true
         }
       ],
       "screenPreferences": [
@@ -635,6 +634,7 @@
       "spacing": 0,
       "squareCorners": true,
       "surfaceColor": "s",
+      "surfaceCustomColor": "#6750A4",
       "transparency": 0.8,
       "useOverlayLayer": false,
       "visible": true,
@@ -645,8 +645,7 @@
       "widgetOutlineThickness": 1,
       "widgetPadding": 16,
       "widgetStyle": "pills",
-      "widgetTransparency": 0.5,
-      "surfaceCustomColor": "#6750A4"
+      "widgetTransparency": 0.5
     },
     {
       "attachToScreenEdge": false,
@@ -859,12 +858,12 @@
       "islandSatellitesEnabled": true,
       "leftWidgets": [
         {
-          "id": "workspaceSwitcher",
-          "enabled": true
+          "enabled": true,
+          "id": "workspaceSwitcher"
         },
         {
-          "id": "focusedWindow",
-          "enabled": true
+          "enabled": true,
+          "id": "focusedWindow"
         }
       ],
       "maximizeWidgetIcons": false,
