@@ -1,6 +1,7 @@
 {
   lib,
   config,
+  pkgs,
   ...
 }:
 {
@@ -13,6 +14,17 @@
         config = {
           formatting.command = [ "nixfmt" ];
           nixpkgs.expr = "import (builtins.getFlake \"pkgs\") { }";
+          options = {
+            nixos.expr = ''
+              (builtins.getFlake ("git+file://" + builtins.toString ./.))
+                .nixosConfigurations.seadragon.options
+            '';
+            home-manager.expr = ''
+              (builtins.getFlake ("git+file://" + builtins.toString ./.))
+                .nixosConfigurations.seadragon.options.home-manager.users.type.getSubOptions []
+            '';
+            nixvim.expr = "(builtins.getFlake \"path/to/flake\").packages.${pkgs.stdenv.hostPlatform.system}.nixvim.options";
+          };
         };
       };
       ts_ls.enable = true;
@@ -61,7 +73,18 @@
       settings = {
         show_all_diags_on_cursorline = true;
         options = {
+
+          multilines = {
+            enabled = true;
+            always_show = true;
+            trim_whitespaces = true;
+            tabstop = 4;
+          };
           show_source.if_many = true;
+          break_line = {
+            enabled = true;
+            after = 70;
+          };
           virt_texts.priority = 2048;
         };
       };
