@@ -7,11 +7,11 @@
         environment.systemPackages = builtins.attrValues {
           inherit (pkgs)
             rnnoise-plugin
-            pwvucontrol
             easyeffects
             ;
         };
         security.rtkit.enable = true;
+        hardware.alsa.enablePersistence = true;
         services = {
           pulseaudio.enable = false;
           pipewire = {
@@ -33,4 +33,5 @@
       };
     };
   };
+
 }

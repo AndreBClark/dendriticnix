@@ -24,6 +24,7 @@
             den.aspects.hardware.laptop.${host.hardware.model or "generic"}
         ++ [
           (den.aspects.hardware.hosts.${host.hostName} or { })
+          (den.aspects.hardware.hosts.${host.hostName}.audio or { })
         ];
     };
 }
