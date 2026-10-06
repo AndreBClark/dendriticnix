@@ -12,6 +12,12 @@
         override_del = true;
       };
     };
+    toggler = {
+      enable = true;
+      settings = {
+        remove_default_keybinds = true;
+      };
+    };
 
     nix-develop.enable = true;
     render-markdown.enable = lib.mkDefault true;

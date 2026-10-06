@@ -1,10 +1,11 @@
-{ lib, ... }:
+{ lib, config, ... }:
 {
   userCommands = {
     W.command = "wall";
     Q.command = "qall";
     WQ.command = "wqall";
     QW.command = "wqall";
+    Qw.command = "wq";
   };
 
   globals.mapleader = lib.mkDefault " ";
@@ -69,5 +70,17 @@
       action = "<cmd>%d<CR>";
       options.desc = "Delete Buffer Contents";
     }
-  ];
+  ]
+  ++ (lib.optional config.plugins.toggler.enable or false {
+    mode = [
+      "n"
+      "v"
+    ];
+    key = "<leader>ci";
+    action.__raw = "require('nvim-toggler').toggle";
+    options = {
+      desc = "Invert Boolean value";
+      silent = true;
+    };
+  });
 }
