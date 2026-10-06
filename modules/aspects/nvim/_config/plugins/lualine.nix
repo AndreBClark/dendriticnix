@@ -13,8 +13,8 @@ in
             right = "";
           };
           separator_flipped = {
-            left = "";
-            right = "";
+            left = separator.right;
+            right = separator.left;
           };
         in
         {
@@ -63,6 +63,9 @@ in
               "blink-cmp-menu"
               "blink-cmp-documentation"
               "blink-cmp-signature"
+              "help"
+              "snacks_picker_input"
+              "snacks_picker_list"
             ];
             ignore_focus = [
               "snacks_picker"
@@ -94,6 +97,10 @@ in
               {
                 separator = {
                   inherit (separator) right;
+                };
+                filetype_names = {
+                  snacks_picker_input = "";
+                  snacks_picker_list = "";
                 };
                 __unkeyed-1 = "buffers";
                 use_mode_colors = true;
@@ -149,11 +156,6 @@ in
                 __unkeyed-1 = "location";
                 color.gui = "bold";
               }
-            ];
-          };
-          inactive_sections = {
-            lualine_a = [
-              "mode"
             ];
           };
           winbar.lualine_c = [

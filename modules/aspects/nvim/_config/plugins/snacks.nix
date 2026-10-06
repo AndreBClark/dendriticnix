@@ -68,13 +68,10 @@ in
           ];
         };
 
-        input = {
-          enabled = true;
-          win.footer_keys = true;
-        };
-        toggle.enable = true;
-        animate.enable = true;
-        bigFile.enable = true;
+        input.enabled = true;
+        toggle.enabled = true;
+        animate.enabled = true;
+        bigFile.enabled = true;
         bufdelete.enabled = true;
         dim.enabled = true;
         quickfile.enabled = true;
@@ -98,7 +95,18 @@ in
         notifier.enabled = true;
 
         zen.enabled = true;
-        scope.enabled = true;
+        scope = {
+          enabled = true;
+          min_size = 3;
+          cursor = false;
+          edge = false;
+          siblings = true;
+          treesitter = {
+            enabled = true;
+            injections = true;
+          };
+
+        };
         rename.enabled = true;
         words.enabled = true;
       };
