@@ -1,8 +1,10 @@
 { pkgs, config, ... }:
+let
+  colors = config.colorschemes.base16.colorscheme;
+in
 {
   extraPlugins =
     let
-      colors = config.colorschemes.base16.colorscheme;
       sources = import ../../../../../npins;
 
       moodyConfig =
@@ -34,9 +36,6 @@
             },
             bold_line_number = true,
 
-            extend = {
-              line_number = true,
-            },
 
             recording = { enabled = true },
             column = { enabled = false }
