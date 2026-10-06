@@ -49,13 +49,28 @@
     lspconfig.enable = true;
     lsp-format.enable = true;
     lspkind.enable = true;
-
+    trouble.enable = true;
     lint.enable = true;
     trim.enable = true;
     fastaction = {
       enable = true;
     };
 
+    tiny-inline-diagnostic = {
+      enable = true;
+      settings = {
+        show_all_diags_on_cursorline = true;
+        options = {
+          show_source.if_many = true;
+          virt_texts.priority = 2048;
+        };
+      };
+    };
+
+    refactoring = {
+      enable = true;
+      enableTelescope = false;
+    };
     none-ls = {
       enable = true;
       sources = {
@@ -76,17 +91,36 @@
       };
     };
   };
-  keymaps = lib.optional (config.plugins.fastaction.enable or false) {
-    mode = [
-      "n"
-      "v"
-    ];
-    key = "<leader>ca";
-    action.__raw = ''
-      function() require('fastaction').code_action({
-        filter = function(action) return not action.disabled end,
-      }) end
-    '';
-    options.desc = "Code action";
-  };
+  keymaps =
+    let
+      cfg = config.plugins;
+    in
+    lib.optional (cfg.fastaction.enable or false) {
+      mode = [
+        "n"
+        "v"
+      ];
+      key = "<leader>ca";
+      action.__raw = ''
+        function() require('fastaction').code_action({
+          filter = function(action) return not action.disabled end,
+        }) end
+      '';
+      options.desc = "Code action";
+    }
+    ++ (lib.optional (cfg.trouble.enable or false) {
+      mode = "n";
+      key = "<leader>xx";
+      action = "<cmd>Trouble diagnostics toggle<CR>";
+      options.desc = "Toggle Diagnostics (Trouble)";
+    })
+    ++ (lib.optional (cfg.refactoring.enable or false) {
+      mode = [
+        "n"
+        "v"
+      ];
+      key = "<leader>cr";
+      action.__raw = "function() require('refactoring').select_refactor() end";
+      options.desc = "Select Refactor";
+    });
 }

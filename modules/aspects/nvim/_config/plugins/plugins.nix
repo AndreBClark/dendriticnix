@@ -16,18 +16,8 @@
     nix-develop.enable = true;
     render-markdown.enable = lib.mkDefault true;
     smart-splits.enable = true;
-    trouble.enable = true;
 
     web-devicons.enable = true;
-    tiny-inline-diagnostic = {
-      enable = true;
-      settings.virt_texts.priority = 2048;
-    };
-
-    refactoring = {
-      enable = true;
-      enableTelescope = false;
-    };
   };
 
   keymaps =
@@ -39,21 +29,6 @@
       key = "gp";
       action.__raw = "function() require('goto-preview').goto_preview_definition() end";
       options.desc = "Preview Definition";
-    })
-    ++ (lib.optional (cfg.trouble.enable or false) {
-      mode = "n";
-      key = "<leader>xx";
-      action = "<cmd>Trouble diagnostics toggle<CR>";
-      options.desc = "Toggle Diagnostics (Trouble)";
-    })
-    ++ (lib.optional (cfg.refactoring.enable or false) {
-      mode = [
-        "n"
-        "v"
-      ];
-      key = "<leader>cr";
-      action.__raw = "function() require('refactoring').select_refactor() end";
-      options.desc = "Select Refactor";
     })
     ++ (lib.optionals (cfg.smart-splits.enable or false) [
       {
