@@ -16,6 +16,12 @@
           kdl
           html
           css
+          bash
+          jsdoc
+          regex
+          tsx
+          svelte
+          jq
           ;
       };
       folding.enable = true;
@@ -29,6 +35,7 @@
         max_lines = 3; # reduce from 6 — less overlay area
         min_window_height = 30; # hide context entirely in short windows
         mode = "cursor"; # anchor context to cursor scope, not window top
+        trim_scope = "inner";
         multiline_threshold = 3;
       };
     };
@@ -60,6 +67,18 @@
           [
             "["
             "]"
+          ]
+          [
+            "{"
+            "};"
+          ]
+          [
+            "["
+            "];"
+          ]
+          [
+            "("
+            ");"
           ]
         ];
       };
