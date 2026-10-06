@@ -5,6 +5,7 @@
       (den.batteries.unfree [
         "steam"
         "steam-unwrapped"
+        "lsfg-vk"
       ])
     ];
     nixos =
