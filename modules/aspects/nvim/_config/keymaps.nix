@@ -3,7 +3,10 @@
   userCommands = {
     W.command = "wall";
     Q.command = "qall";
+    WQ.command = "wqall";
+    QW.command = "wqall";
   };
+
   globals.mapleader = lib.mkDefault " ";
   keymaps = [
     {
