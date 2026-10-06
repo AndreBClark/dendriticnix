@@ -28,6 +28,7 @@
               -depth 8 PNG32:$out
           '';
 
+          # TODO: prevent blank terminal box from covering screen after enter
           themeTxt =
             with colors;
             pkgs.writeText "theme.txt" ''
