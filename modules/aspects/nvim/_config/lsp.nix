@@ -93,6 +93,17 @@
     refactoring = {
       enable = true;
       enableTelescope = false;
+      lazyLoad.settings.keys = [
+        {
+          __unkeyed-1 = "<leader>cr";
+          __unkeyed-2.__raw = "function() require('refactoring').select_refactor() end";
+          mode = [
+            "n"
+            "x"
+          ];
+          desc = "Select Refactor";
+        }
+      ];
     };
     none-ls = {
       enable = true;
@@ -135,15 +146,6 @@
       mode = "n";
       key = "<leader>xx";
       action = "<cmd>Trouble diagnostics toggle<CR>";
-      options.desc = "Toggle Diagnostics (Trouble)";
-    })
-    ++ (lib.optional (cfg.refactoring.enable or false) {
-      mode = [
-        "n"
-        "v"
-      ];
-      key = "<leader>cr";
-      action.__raw = "function() require('refactoring').select_refactor() end";
-      options.desc = "Select Refactor";
+      options.desc = "Toggle (Trouble)";
     });
 }

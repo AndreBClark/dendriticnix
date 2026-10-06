@@ -1,7 +1,18 @@
 { lib, config, ... }:
 {
   plugins = {
-    emmet.enable = true;
+    lz-n.enable = true;
+    emmet = {
+      enable = true;
+      lazyLoad.settings.ft = [
+        "html"
+        "css"
+        "astro"
+        "svelte"
+        "javascriptreact"
+        "typescriptreact"
+      ];
+    };
 
     goto-preview.enable = true;
 
@@ -20,7 +31,10 @@
     };
 
     nix-develop.enable = true;
-    render-markdown.enable = lib.mkDefault true;
+    render-markdown = {
+      enable = lib.mkDefault true;
+      lazyLoad.settings.ft = [ "markdown" ];
+    };
     smart-splits.enable = true;
 
     web-devicons.enable = true;
