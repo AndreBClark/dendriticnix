@@ -2,7 +2,10 @@
   den.aspects.hardware.hosts.dragonfly.audio.nixos =
     { pkgs, ... }:
     {
-      environment.systemPackages = [ pkgs.alsa-utils ];
+      environment.systemPackages = [
+        pkgs.alsa-utils
+        pkgs.alsa-tools
+      ];
 
       # Disable internal speaker + internal mic pins so they can never be used.
       # Pin IDs are laptop-specific — pull them from /proc/asound/card0/codec#0.
