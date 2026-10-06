@@ -25,12 +25,28 @@
       Statusline = lib.mkIf transparentBackground.main transparent;
     };
 
-  plugins = {
-    mini-hipatterns = {
-      enable = true;
-      settings.highlighters.hex_color.__raw = ''
+  plugins.mini-hipatterns = {
+    enable = true;
+    settings.highlighters = {
+      hex_color.__raw = ''
         require('mini.hipatterns').gen_highlighter.hex_color()
       '';
+      fixme = {
+        pattern = "%f[%w]()FIXME.*$";
+        group = "MiniHipatternsFixme";
+      };
+      hack = {
+        pattern = "%f[%w]()HACK.*$";
+        group = "MiniHipatternsHack";
+      };
+      todo = {
+        pattern = "%f[%w]()TODO.*$";
+        group = "MiniHipatternsTodo";
+      };
+      note = {
+        pattern = "%f[%w]()NOTE.*$";
+        group = "MiniHipatternsNote";
+      };
     };
   };
 }
