@@ -27,7 +27,21 @@
           };
         };
       };
-      ts_ls.enable = true;
+      ts_ls = {
+        enable = true;
+        config.before_init.__raw = ''
+          function(_, config)
+            local root = config.root_dir
+            local ws = root and (root .. "/node_modules/typescript/lib")
+            if ws and vim.uv.fs_stat(ws .. "/tsserverlibrary.js") then
+              config.init_options = config.init_options or {}
+              config.init_options.typescript = config.init_options.typescript or {}
+              config.init_options.typescript.tsdk = ws
+            end
+          end
+        '';
+        config.init_options.typescript.tsdk = "${pkgs.typescript}/lib/node_modules/typescript/lib";
+      };
       biome = {
         enable = true;
         config = {
