@@ -87,6 +87,7 @@
       "magnification": false,
       "magnificationScale": 130,
       "magnificationProfile": "parabolic",
+      "magnificationExpand": false,
       "order": [],
       "widgets": [
         {
@@ -259,16 +260,16 @@
       "w": 4
     },
     {
+      "col": 5,
       "enabled": true,
+      "footer": true,
+      "footerEnd": true,
+      "footerW": 1,
       "h": 1,
       "id": "edit",
-      "small": true,
-      "w": 1,
-      "col": 5,
       "row": 1,
-      "footer": true,
-      "footerW": 1,
-      "footerEnd": true
+      "small": true,
+      "w": 1
     }
   ],
   "audioWheelScrollAmount": 10,
@@ -411,8 +412,10 @@
   },
   "soundsEnabled": false,
   "acMonitorTimeout": 300,
-  "acProfileName": "0",
+  "acProfileName": "1",
   "acPostLockMonitorTimeout": 600,
+  "batteryProfileName": "0",
+  "batteryAutoPowerSaver": true,
   "terminalsAlwaysDark": true,
   "muxType": "zellij",
   "matugenTemplateHyprland": false,
@@ -505,9 +508,9 @@
       "bottomGap": 0,
       "centerWidgets": [
         {
+          "clockDateOrder": "dateFirst",
           "enabled": true,
-          "id": "clock",
-          "clockDateOrder": "dateFirst"
+          "id": "clock"
         }
       ],
       "enabled": true,
@@ -602,18 +605,18 @@
         {
           "enabled": true,
           "id": "controlCenterButton",
-          "showMicIcon": true,
-          "showMicPercent": true,
           "showAudioPercent": true,
           "showBatteryIcon": true,
+          "showDoNotDisturbIcon": true,
           "showIdleInhibitorIcon": true,
-          "showDoNotDisturbIcon": true
+          "showMicIcon": true,
+          "showMicPercent": true
         },
         {
-          "id": "music",
           "enabled": true,
-          "mediaSize": 3,
-          "mediaAdaptiveWidthEnabled": true
+          "id": "music",
+          "mediaAdaptiveWidthEnabled": true,
+          "mediaSize": 3
         }
       ],
       "screenPreferences": [
@@ -939,5 +942,5 @@
   "barInsetPaddingShared": 8,
   "barInsetPaddingSyncAll": true,
   "frameBarInsetPadding": 0,
-  "configVersion": 37
+  "configVersion": 38
 }
