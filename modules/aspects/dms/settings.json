@@ -240,15 +240,15 @@
       "enabled": true,
       "h": 1,
       "id": "audioInput",
-      "row": 2,
+      "row": 3,
       "w": 4
     },
     {
-      "col": 4,
+      "col": 0,
       "enabled": true,
       "h": 1,
       "id": "idleInhibitor",
-      "row": 3,
+      "row": 4,
       "w": 4
     },
     {
@@ -270,6 +270,22 @@
       "row": 1,
       "small": true,
       "w": 1
+    },
+    {
+      "col": 4,
+      "enabled": true,
+      "h": 1,
+      "id": "bluetooth",
+      "row": 2,
+      "w": 4
+    },
+    {
+      "col": 4,
+      "enabled": true,
+      "h": 1,
+      "id": "battery",
+      "row": 4,
+      "w": 4
     }
   ],
   "audioWheelScrollAmount": 10,
@@ -415,7 +431,9 @@
   "acProfileName": "1",
   "acPostLockMonitorTimeout": 600,
   "batteryProfileName": "0",
+  "batteryNotifyLow": true,
   "batteryAutoPowerSaver": true,
+  "lowerDisplayRefreshRateOnBattery": true,
   "terminalsAlwaysDark": true,
   "muxType": "zellij",
   "matugenTemplateHyprland": false,
