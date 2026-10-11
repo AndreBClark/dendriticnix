@@ -28,7 +28,6 @@ let
           "$nix_shell"
           "$php"
           "$nodejs"
-          "$deno"
           "$rust"
           "$sudo"
           "$shell"
@@ -177,6 +176,7 @@ let
         };
 
         deno = {
+          enabled = false;
           symbol = " ";
           style = "bg:green bold fg:bright-black";
           format = lib.concatStrings [
