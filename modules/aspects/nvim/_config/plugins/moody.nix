@@ -6,7 +6,7 @@ in
   extraPlugins =
     let
       sources = import ../../../../../npins;
-
+      # TODO: lower brightness of base blend amount
       moodyConfig =
         with colors;
         # lua

@@ -82,6 +82,7 @@
       enable = true;
     };
 
+    # TODO: show diagnostics as count instead of dots
     tiny-inline-diagnostic = {
       enable = true;
       settings = {
