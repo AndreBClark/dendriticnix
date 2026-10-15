@@ -58,7 +58,7 @@
         programs = {
           fish = {
             enable = true;
-            generateCompletions = false;
+            generateCompletions = true;
             interactiveShellInit = ''
               set -g fish_prompt_pwd_dir_length 0
               set -g fish_prompt_pwd_full_dirs 0
@@ -79,13 +79,17 @@
                   test "$SHLVL" -le 2; or return
                   fastfetch
                 '';
-
+              };
+              ns = {
+                body = "nix-shell -p $argv";
+                wraps = "nix-shell";
               };
 
               codecontext = {
                 body = ''
                   code2prompt $argv --no-codeblock --token-map --hidden -O - | string trim -r | head -c 49000 | fish_clipboard_copy
                 '';
+                wraps = "code2prompt";
                 description = "copy code files, truncated to 49k bytes";
               };
             };
