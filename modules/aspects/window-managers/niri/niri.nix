@@ -26,6 +26,7 @@
           };
         };
       homeManager = {
+        stylix.targets.kde.enable = false;
         wayland.windowManager.niri = {
           enable = true;
           systemd.enable = true;
