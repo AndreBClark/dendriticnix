@@ -27,50 +27,100 @@
           };
         };
       };
+      statix.enable = true;
+
+      oxlint = {
+        enable = true;
+        config.init_options = {
+          run = "onType";
+          fixKind = "safe_fix_or_suggestion";
+          unusedDisableDirectives = "warn";
+          # typeAware = true; # enable once nixpkgs ships oxlint-tsgolint
+        };
+      };
+
+      # ── oxc: textDocument/formatting ──
+      oxfmt.enable = true;
       ts_ls = {
         enable = true;
-        config.before_init.__raw = ''
-          function(_, config)
-            local root = config.root_dir
-            local ws = root and (root .. "/node_modules/typescript/lib")
-            if ws and vim.uv.fs_stat(ws .. "/tsserverlibrary.js") then
-              config.init_options = config.init_options or {}
-              config.init_options.typescript = config.init_options.typescript or {}
-              config.init_options.typescript.tsdk = ws
-            end
-          end
-        '';
-        config.init_options.typescript.tsdk = "${pkgs.typescript}/lib/node_modules/typescript/lib";
-      };
-      biome = {
-        enable = true;
         config = {
-          linter = {
-            enabled = true;
-            rules.recommended = true;
-          };
-          assist = {
-            enabled = true;
-            actions.source.organizeImports = "on";
+          filetypes = [
+            "javascript"
+            "javascriptreact"
+            "javascript.jsx"
+            "typescript"
+            "typescriptreact"
+            "typescript.tsx"
+            "vue"
+          ];
+          before_init.__raw = ''
+            function(_, config)
+              local root = config.root_dir
+              local ws = root and (root .. "/node_modules/typescript/lib")
+              if ws and vim.uv.fs_stat(ws .. "/tsserverlibrary.js") then
+                config.init_options = config.init_options or {}
+                config.init_options.typescript = config.init_options.typescript or {}
+                config.init_options.typescript.tsdk = ws
+              end
+            end
+          '';
+          init_options = {
+            typescript.tsdk = "${pkgs.typescript_5}/lib/node_modules/typescript/lib";
+            plugins = [
+              {
+                name = "@vue/typescript-plugin";
+                location = "${pkgs.vue-language-server}/lib/language-tools/packages/language-server";
+                languages = [ "vue" ];
+              }
+            ];
           };
         };
       };
       cssls.enable = true;
       tailwindcss.enable = true;
       html.enable = true;
-      astro.enable = true;
+      astro = {
+        enable = true;
+        config.init_options.typescript.tsdk = "${pkgs.typescript_5}/lib/node_modules/typescript/lib";
+      };
+
+      vue_ls.enable = true;
       svelte.enable = true;
+      emmet_language_server.enable = true;
 
       jsonls.enable = true;
       pyright.enable = true;
-      marksman = {
+      taplo.enable = true;
+      markdown_oxide = {
         enable = true;
-        config.markdown.preferredLinkStyle = "wiki";
       };
       bashls.enable = true;
       yamlls.enable = true;
+      emmylua_ls.enable = true;
     };
   };
+  autoCmd = [
+    {
+      event = "BufWritePre";
+      pattern = [
+        "*.js"
+        "*.jsx"
+        "*.ts"
+        "*.tsx"
+        "*.vue"
+        "*.svelte"
+        "*.astro"
+      ];
+      callback.__raw = ''
+        function()
+          vim.lsp.buf.code_action({
+            context = { only = { "source.fixAll.oxc" } },
+            apply = true,
+          })
+        end
+      '';
+    }
+  ];
   plugins = {
     lspconfig.enable = true;
     lsp-format.enable = true;
@@ -124,19 +174,13 @@
       enable = true;
       sources = {
         formatting = {
-          nixfmt.enable = true;
           stylua.enable = true;
-          biome.enable = true;
         };
 
         diagnostics = {
-          statix.enable = true;
           deadnix.enable = true;
         };
 
-        code_actions = {
-          statix.enable = true;
-        };
       };
     };
   };
@@ -144,7 +188,18 @@
     let
       cfg = config.plugins;
     in
-    lib.optional (cfg.fastaction.enable or false) {
+    [
+      {
+        mode = [
+          "n"
+          "v"
+        ];
+        key = "<leader>cf";
+        action.__raw = "function() vim.lsp.buf.format({ async = true }) end";
+        options.desc = "Format buffer/selection";
+      }
+    ]
+    ++ lib.optional (cfg.fastaction.enable or false) {
       mode = [
         "n"
         "v"

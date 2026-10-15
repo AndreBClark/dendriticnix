@@ -73,5 +73,8 @@
     virtualedit = "block";
     showmatch = true;
     clipboard = "unnamedplus";
+    textwidth = 80; # Hard-wrap column for formatting (gq)
+    wrap = true; # Visually wrap long lines
+    linebreak = true; # Wrap at word boundaries, not mid-word
   };
 }

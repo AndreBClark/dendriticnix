@@ -22,6 +22,7 @@
           tsx
           svelte
           jq
+          vue
           ;
       };
       folding.enable = true;
