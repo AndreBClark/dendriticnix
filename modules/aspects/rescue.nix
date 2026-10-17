@@ -7,7 +7,7 @@
   # Host entity → flake.nixosConfigurations.rescue
   den = {
     hosts.x86_64-linux.rescue = {
-      users.andrec.aspect = den.aspects.rescue-user; # ← binds the aspect; userName = "andrec"
+      users.andrec.aspect = den.aspects.rescue-user;
     };
 
     aspects.rescue-user.includes = [
@@ -47,6 +47,7 @@
             gptfdisk
             parted
             btrfs-progs
+            ntfsprogs
             xfsprogs
             dosfstools
             ntfs3g
@@ -65,12 +66,15 @@
           };
           xserver = {
             enable = true;
-            desktopManager.xfce.enable = true;
+            desktopManager.xfce = {
+              enable = true;
+              enableScreensaver = false;
+            };
             displayManager.lightdm.enable = true;
           };
           displayManager.autoLogin = {
-            enable = true;
-            user = "andrec";
+            enable = lib.mkForce true;
+            user = lib.mkForce "andrec";
           };
         };
 
