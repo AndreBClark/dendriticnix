@@ -17,7 +17,6 @@
       };
       # Base OS-level user settings
       user = {
-        initialPassword = "yolo";
         extraGroups = [
           "wheel"
           "networkmanager"

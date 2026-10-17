@@ -13,6 +13,9 @@
           superfile
           ;
       };
+
+      user.initialPassword = "yolo";
+
       homeManager = { };
     };
   };
