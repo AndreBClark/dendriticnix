@@ -80,7 +80,7 @@
                   fastfetch
                 '';
               };
-              ns = {
+              nsh = {
                 body = "nix-shell -p $argv";
                 wraps = "nix-shell";
               };
