@@ -39,17 +39,15 @@
   den.aspects.hardware.boot = {
     includes = [
       den.aspects.theme.grub
+      den.aspects.kernel.kernel
     ];
-    nixos =
-      { pkgs, ... }:
-      {
-        boot = {
-          loader.grub = {
-            enable = lib.mkDefault true;
-            configurationLimit = 20;
-          };
-          kernelPackages = lib.mkDefault pkgs.linuxPackages_xanmod_stable;
+    nixos = {
+      boot = {
+        loader.grub = {
+          enable = lib.mkDefault true;
+          configurationLimit = 20;
         };
       };
+    };
   };
 }

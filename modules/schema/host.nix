@@ -3,6 +3,14 @@
     { lib, host, ... }:
     {
       options = {
+        kernel = lib.mkOption {
+          type = lib.types.enum [
+            "xanmod"
+            "cachyos"
+            "latest"
+          ];
+          default = "xanmod";
+        };
         windowManager = lib.mkOption {
           type = lib.types.str;
           default = "niri";
