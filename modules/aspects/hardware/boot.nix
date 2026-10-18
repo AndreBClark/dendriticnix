@@ -48,7 +48,7 @@
             enable = lib.mkDefault true;
             configurationLimit = 20;
           };
-          kernelPackages = pkgs.linuxPackages_xanmod_stable;
+          kernelPackages = lib.mkDefault pkgs.linuxPackages_xanmod_stable;
         };
       };
   };

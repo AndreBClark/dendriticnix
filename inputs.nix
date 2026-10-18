@@ -30,6 +30,7 @@
     url = "github:nix-community/home-manager";
   };
   import-tree.url = "github:denful/import-tree";
+  nix-cachyos-kernel.url = "github:xddxdd/nix-cachyos-kernel/release";
   nixpkgs.url = "https://channels.nixos.org/nixpkgs-unstable/nixexprs.tar.zst";
   nixvim.url = "github:nix-community/nixvim";
   spicetify-nix = {
