@@ -28,6 +28,7 @@
         # *inside* these modules; to cancel an existing mkForce you must re-force:
         boot = {
           supportedFilesystems = lib.mkForce [
+            "zfs"
             "btrfs"
             "ext4"
             "vfat"

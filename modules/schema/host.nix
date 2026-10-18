@@ -30,7 +30,10 @@
           };
           storage = lib.mkOption {
             type = lib.types.listOf (lib.types.enum [ "ssd" ]);
-            default = [ "ssd" ];
+            default = [
+              "ssd"
+              "hdd"
+            ];
           };
           gpu = lib.mkOption {
             type = lib.types.nullOr (
