@@ -11,6 +11,10 @@
     inputs.nixpkgs.follows = "nixpkgs";
     url = "github:AvengeMedia/dgop";
   };
+  disko = {
+    inputs.nixpkgs.follows = "nixpkgs";
+    url = "github:nix-community/disko/latest";
+  };
   dms = {
     inputs.nixpkgs.follows = "nixpkgs";
     url = "github:AvengeMedia/DankMaterialShell";
