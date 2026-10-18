@@ -25,11 +25,8 @@
       ];
 
       supportedFilesystems = lib.mkForce [
-        "zfs"
         "btrfs"
-        "reiserfs"
         "vfat"
-        "f2fs"
         "xfs"
         "ntfs"
         "cifs"
@@ -40,7 +37,7 @@
   den.aspects.hardware.boot = {
     includes = [
       den.aspects.theme.grub
-      den.aspects.kernel.kernel
+      den.aspects.kernel
     ];
     nixos = {
       boot = {

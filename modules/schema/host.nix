@@ -29,10 +29,14 @@
             default = "intel";
           };
           storage = lib.mkOption {
-            type = lib.types.listOf (lib.types.enum [ "ssd" ]);
+            type = lib.types.listOf (
+              lib.types.enum [
+                "ssd"
+                "hdd"
+              ]
+            );
             default = [
               "ssd"
-              "hdd"
             ];
           };
           gpu = lib.mkOption {
