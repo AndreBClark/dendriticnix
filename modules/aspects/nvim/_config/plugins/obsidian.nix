@@ -21,12 +21,6 @@
           };
         };
         ui.enable = true;
-        workspaces = [
-          {
-            name = "coursenotes";
-            path = "~/vaults/coursenotes";
-          }
-        ];
         note_id_func.__raw = ''
           function(title)
             -- Just return the title, no numbering here
