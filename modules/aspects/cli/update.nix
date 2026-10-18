@@ -1,7 +1,7 @@
 { den, ... }:
 {
   den.aspects.cli.update = {
-    packages = { pkgs, host, ... }: {
+    packages = { pkgs, ... }: {
       update = pkgs.writeShellApplication {
         name = "update";
         runtimeInputs = [
@@ -9,7 +9,6 @@
           pkgs.git
         ];
         text = ''
-          cd ${host.configRepo}
           npins update
           nix flake update
           git reset HEAD -- *
