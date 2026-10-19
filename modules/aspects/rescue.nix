@@ -27,6 +27,7 @@
         # mkImageMediaOverride (pri 1200) beats mkForce (pri 100) only if used
         # *inside* these modules; to cancel an existing mkForce you must re-force:
         boot = {
+          zfs.forceImportAll = false;
           supportedFilesystems = lib.mkForce [
             "zfs"
             "btrfs"
