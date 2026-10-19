@@ -59,7 +59,7 @@
       type = lib.types.submodule {
         options =
           let
-            defaultName = "Dracula";
+            defaultName = "Papirus-Dark";
           in
           {
             enable = lib.mkOption {
@@ -73,11 +73,11 @@
 
             light = lib.mkOption {
               type = lib.types.str;
-              default = defaultName;
+              default = "Papirus-Light";
             };
             package = lib.mkOption {
               type = lib.types.str;
-              default = "dracula-icon-theme";
+              default = "papirus-icon-theme";
             };
           };
       };

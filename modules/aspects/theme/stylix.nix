@@ -62,7 +62,14 @@
         };
       in
       {
-        includes = builtins.attrValues { inherit (den.aspects.theme) fonts gtk qt; };
+        includes = builtins.attrValues {
+          inherit (den.aspects.theme)
+            fonts
+            gtk
+            qt
+            icons
+            ;
+        };
 
         nixos =
           { pkgs, ... }:
@@ -75,7 +82,7 @@
             environment.systemPackages = [
               pkgs.${stylix.cursor.package}
               pkgs.${stylix.icons.package}
-              pkgs.kdePackages.breeze-icons
+              pkgs.dracula-icon-theme
             ]
             ++ builtins.attrValues {
               inherit (pkgs)
@@ -101,7 +108,7 @@
             home.packages = [
               pkgs.${stylix.cursor.package}
               pkgs.${stylix.icons.package}
-              pkgs.kdePackages.breeze-icons
+              pkgs.dracula-icon-theme
             ]
             ++ builtins.attrValues {
               inherit (pkgs)
