@@ -1,5 +1,5 @@
 {
-  "wallpaperPath": "/home/andrec/Pictures/Wallpaper-tokyo-night-dark/AC6_AC6-Interview_02-03-23.jpg",
+  "wallpaperPath": "/home/andrec/Pictures/Wallpapers-tokyo-night-dark/AC6_1305418.jpeg",
   "weatherLocation": "",
   "terminalOverride": "kitty",
   "includedTransitions": [
@@ -7,8 +7,8 @@
   ],
   "wallpaperCyclingEnabled": true,
   "wallpaperCyclingRandom": true,
+  "wallpaperCyclingRecursive": true,
   "wallpaperCyclingInterval": 900,
-  "wallpaperCyclingFolderPath": "/home/andrec/Pictures/Wallpaper-tokyo-night-dark",
   "dockPins": {
     "dock": [
       "kitty",
@@ -79,13 +79,10 @@
     }
   },
   "activeDisplayProfile": {
-    "niri": "profile_1780712333822_nbsu56u"
+    "niri": "auto_201b31"
   },
   "activeDisplayProfileModes": {
     "niri": {
-      "HDMI-A-1": {
-        "mode": "1920x1080@60.000"
-      },
       "DP-2": {
         "mode": "2560x1440@59.951"
       }
@@ -97,8 +94,10 @@
       "y": 0.14007365152570936
     }
   },
-  "lastAppliedIconTheme": "Dracula",
+  "lastAppliedIconTheme": "Papirus-Dark",
+  "launcherLastQuery": "chro",
   "launcherQueryHistory": [
+    "chro",
     "=316-262",
     "p",
     "au",
@@ -147,8 +146,7 @@
     "i",
     "file",
     "aut",
-    "nautilus",
-    "iv"
+    "nautilus"
   ],
   "configVersion": 7
 }

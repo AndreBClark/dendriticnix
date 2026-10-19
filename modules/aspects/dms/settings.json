@@ -102,9 +102,7 @@
         },
         {
           "appsDockColorizeActive": true,
-          "appsDockEnlargeOnHover": false,
           "appsDockHideIndicators": true,
-          "appsDockIconSizePercentage": 100,
           "enabled": true,
           "id": "dock_1789947026734",
           "runningAppsCurrentWorkspace": false,
@@ -252,26 +250,6 @@
       "w": 4
     },
     {
-      "enabled": true,
-      "footer": true,
-      "footerW": 5,
-      "h": 1,
-      "id": "runningApps",
-      "w": 4
-    },
-    {
-      "col": 5,
-      "enabled": true,
-      "footer": true,
-      "footerEnd": true,
-      "footerW": 1,
-      "h": 1,
-      "id": "edit",
-      "row": 1,
-      "small": true,
-      "w": 1
-    },
-    {
       "col": 4,
       "enabled": true,
       "h": 1,
@@ -286,6 +264,24 @@
       "id": "battery",
       "row": 4,
       "w": 4
+    },
+    {
+      "enabled": true,
+      "h": 1,
+      "id": "runningApps",
+      "w": 5,
+      "small": true,
+      "col": 0,
+      "row": 5
+    },
+    {
+      "col": 7,
+      "enabled": true,
+      "h": 1,
+      "id": "edit",
+      "row": 5,
+      "small": true,
+      "w": 1
     }
   ],
   "audioWheelScrollAmount": 10,
@@ -421,7 +417,7 @@
       "forecast": "cards"
     }
   },
-  "iconThemeDark": "Dracula",
+  "iconThemeDark": "Papirus-Dark",
   "cursorSettings": {
     "cursor": 32,
     "theme": "BreezeX-RosePine-Linux"
@@ -649,7 +645,7 @@
       ],
       "scrollEnabled": true,
       "scrollXBehavior": "workspace",
-      "scrollYBehavior": "column",
+      "scrollYBehavior": "focusWindow",
       "shadowIntensity": 0,
       "showOnLastDisplay": true,
       "spacing": 0,
@@ -792,7 +788,7 @@
         }
       ],
       "scrollEnabled": true,
-      "scrollXBehavior": "column",
+      "scrollXBehavior": "focusWindow",
       "scrollYBehavior": "workspace",
       "shadowIntensity": 0,
       "showOnLastDisplay": true,
@@ -905,7 +901,7 @@
       ],
       "screenPreferences": [],
       "scrollEnabled": true,
-      "scrollXBehavior": "column",
+      "scrollXBehavior": "focusWindow",
       "scrollYBehavior": "workspace",
       "shadowIntensity": 0,
       "showOnLastDisplay": false,
@@ -960,5 +956,5 @@
   "barInsetPaddingShared": 8,
   "barInsetPaddingSyncAll": true,
   "frameBarInsetPadding": 0,
-  "configVersion": 38
+  "configVersion": 42
 }
