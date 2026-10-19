@@ -56,10 +56,8 @@
             package = pkgs.${stylix.cursor.package};
           };
           icons = {
-            inherit (stylix.icons) enable;
-            dark = "Papirus Dark";
-            light = "Papirus Light";
-            package = pkgs.papirus-icon-theme;
+            inherit (stylix.icons) enable dark light;
+            package = pkgs.${stylix.icons.package};
           };
         };
       in
