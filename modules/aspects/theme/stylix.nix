@@ -75,6 +75,7 @@
             environment.systemPackages = [
               pkgs.${stylix.cursor.package}
               pkgs.${stylix.icons.package}
+              pkgs.kdePackages.breeze-icons
             ]
             ++ builtins.attrValues {
               inherit (pkgs)
@@ -100,6 +101,7 @@
             home.packages = [
               pkgs.${stylix.cursor.package}
               pkgs.${stylix.icons.package}
+              pkgs.kdePackages.breeze-icons
             ]
             ++ builtins.attrValues {
               inherit (pkgs)
