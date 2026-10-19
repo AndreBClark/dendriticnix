@@ -1,6 +1,4 @@
 { den, ... }:
 {
-  den.schema.user = {
-    imports = [ den.schema.profile ];
-  };
+  den.schema.user.inherits = [ den.schema.profile ];
 }

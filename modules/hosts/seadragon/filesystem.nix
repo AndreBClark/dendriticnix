@@ -6,8 +6,7 @@
   };
 
   den.aspects.fs.seadragon = {
-    nixos =
-    {
+    nixos = {
       imports = [ inputs.disko.nixosModules.disko ];
 
       disko = {
@@ -34,10 +33,31 @@
                   type = "btrfs";
                   extraArgs = [ "-f" ];
                   subvolumes = {
-                    "/root" = { mountpoint = "/";   mountOptions = [ "compress=zstd" "noatime" ]; };
-                    "/nix"  = { mountpoint = "/nix"; mountOptions = [ "compress=zstd" "noatime" ]; };
-                    "/home" = { mountpoint = "/home"; mountOptions = [ "compress=zstd" "noatime" ]; };
-                    "/swap" = { mountpoint = "/.swapvol"; swap.swapfile.size = "8G"; };
+                    "/root" = {
+                      mountpoint = "/";
+                      mountOptions = [
+                        "compress=zstd"
+                        "noatime"
+                      ];
+                    };
+                    "/nix" = {
+                      mountpoint = "/nix";
+                      mountOptions = [
+                        "compress=zstd"
+                        "noatime"
+                      ];
+                    };
+                    "/home" = {
+                      mountpoint = "/home";
+                      mountOptions = [
+                        "compress=zstd"
+                        "noatime"
+                      ];
+                    };
+                    "/swap" = {
+                      mountpoint = "/.swapvol";
+                      swap.swapfile.size = "8G";
+                    };
                   };
                 };
               };
