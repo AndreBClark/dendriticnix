@@ -74,8 +74,15 @@
             };
             environment.systemPackages = [
               pkgs.${stylix.cursor.package}
+              pkgs.${stylix.icons.package}
             ]
-            ++ builtins.attrValues { inherit (pkgs) adwaita-icon-theme hicolor-icon-theme; };
+            ++ builtins.attrValues {
+              inherit (pkgs)
+                adwaita-icon-theme
+                hicolor-icon-theme
+                papirus-icon-theme
+                ;
+            };
             xdg.icons.enable = true;
           };
 
@@ -90,7 +97,17 @@
                 rofi.enable = false;
               };
             };
-            home.packages = [ pkgs.${stylix.cursor.package} ];
+            home.packages = [
+              pkgs.${stylix.cursor.package}
+              pkgs.${stylix.icons.package}
+            ]
+            ++ builtins.attrValues {
+              inherit (pkgs)
+                adwaita-icon-theme
+                hicolor-icon-theme
+                papirus-icon-theme
+                ;
+            };
           };
       };
 
