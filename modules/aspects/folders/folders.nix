@@ -6,22 +6,13 @@
       let
         homeDir = config.home.homeDirectory;
         directories = [
-          {
-            path = "vaults";
-            icon = "folder-obsidian";
-          }
-          {
-            path = "repos";
-            icon = "folder-github";
-          }
-          {
-            path = "audio";
-            icon = "folder-sound";
-          }
+          { path = "vaults"; icon = "folder-obsidian"; }
+          { path = "repos";  icon = "folder-github"; }
+          { path = "audio"; icon = "folder-music"; }
         ];
 
         mkDirectoryFile = dir: {
-          name = "${homeDir}/${dir.path}/.directory";
+          name = "${dir.path}/.directory";
           value = {
             text = ''
               [Desktop Entry]
@@ -41,6 +32,7 @@
           desktop = null;
           templates = null;
           publicShare = null;
+          projects = null;
         };
 
         home = {
@@ -50,16 +42,6 @@
           };
         };
 
-        xdg.dataFile."mime/packages/inode-directory.xml".text = ''
-          <?xml version="1.0" encoding="utf-8"?>
-          <mime-info xmlns="http://www.freedesktop.org/standards/shared-mime-info">
-            <mime-type type="inode/directory">
-              <comment>Folder</comment>
-              <icon name="folder"/>
-              <glob-deleteall/>
-            </mime-type>
-          </mime-info>
-        '';
+        };
       };
-  };
 }
