@@ -64,9 +64,9 @@
       },
       "branch": "master",
       "submodules": false,
-      "revision": "a9dd3be408e641cef31b8e3b9aad4afc7f0d4d72",
-      "url": "https://github.com/AvengeMedia/DankMaterialShell/archive/a9dd3be408e641cef31b8e3b9aad4afc7f0d4d72.tar.gz",
-      "hash": "sha256-18++uRN38URca+YuR54nw8bgYhJYTVLDNDKCB66oU+4="
+      "revision": "806799614cd5be90c7db9b45a5567fc26a396881",
+      "url": "https://github.com/AvengeMedia/DankMaterialShell/archive/806799614cd5be90c7db9b45a5567fc26a396881.tar.gz",
+      "hash": "sha256-k6u7ZMNOVK7iIVHgfuM6TBrDkuiBlZin5SXBBixmBAM="
     },
     "dms-plugin-registry": {
       "type": "Git",
@@ -116,9 +116,9 @@
       },
       "branch": "master",
       "submodules": false,
-      "revision": "640725978b99076e18e069f6e7d2959124584f8f",
-      "url": "https://github.com/nix-community/home-manager/archive/640725978b99076e18e069f6e7d2959124584f8f.tar.gz",
-      "hash": "sha256-u4DIIZgznEGzByxXrxWCXK19VcMtTBmi/M9gZ7Jk9bM="
+      "revision": "b74e23e34d3172802fdd60d4a1a01978f95e1898",
+      "url": "https://github.com/nix-community/home-manager/archive/b74e23e34d3172802fdd60d4a1a01978f95e1898.tar.gz",
+      "hash": "sha256-C9hsBAUY/K7W7+CBSRdrT7XaX/ulVm3RuRBJNjmEM/A="
     },
     "moody-nvim": {
       "type": "GitRelease",
