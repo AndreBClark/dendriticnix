@@ -17,7 +17,7 @@
   };
   dms = {
     inputs.nixpkgs.follows = "nixpkgs";
-    url = "github:AvengeMedia/DankMaterialShell";
+    url = "github:AvengeMedia/DankMaterialShell/stable";
   };
   dms-plugin-registry = {
     inputs.nixpkgs.follows = "nixpkgs";
