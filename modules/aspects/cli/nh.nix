@@ -10,7 +10,7 @@
             extraArgs = "--keep-since 4d --keep 3";
             dates = "monthly";
           };
-          flake = "${config.home.homeDirectory}/nixconfig";
+          flake = "${config.home.homeDirectory}/repos/nixconfig";
         };
         home.shellAliases = {
           nhs = "nh search";
