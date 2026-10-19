@@ -218,4 +218,7 @@
       action = "<cmd>Trouble diagnostics toggle<CR>";
       options.desc = "Toggle (Trouble)";
     });
+  extraPackages = [
+    pkgs.nixfmt
+  ];
 }
