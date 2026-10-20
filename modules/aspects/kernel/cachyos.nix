@@ -1,3 +1,4 @@
+{ inputs, ... }:
 {
 
   flake-file.inputs = {
@@ -5,12 +6,12 @@
   };
   den.aspects.kernel.cachyos = {
     nixos =
-      { pkgs, inputs, ... }:
+      { pkgs, ... }:
       {
         nixpkgs.overlays = [
           inputs.nix-cachyos-kernel.overlays.pinned
         ];
-        boot.kernelPackages = pkgs.cachyosKernels.linux-cachyos-lts-x86_64-v3;
+        boot.kernelPackages = pkgs.cachyosKernels.linuxPackages-cachyos-latest-x86_64-v3;
       };
   };
 }

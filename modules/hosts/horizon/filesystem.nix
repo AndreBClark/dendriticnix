@@ -1,6 +1,12 @@
+{ inputs }:
 {
+  flake-file.inputs.disko = {
+    url = "github:nix-community/disko/latest";
+    inputs.nixpkgs.follows = "nixpkgs";
+  };
   den.aspects.fs.horizon = {
     nixos = {
+      imports = [ inputs.disko.nixosModules.disko ];
       networking.hostId = "8876697a";
 
       disko.devices = {
