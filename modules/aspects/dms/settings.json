@@ -266,13 +266,13 @@
       "w": 4
     },
     {
+      "col": 0,
       "enabled": true,
       "h": 1,
       "id": "runningApps",
-      "w": 5,
+      "row": 5,
       "small": true,
-      "col": 0,
-      "row": 5
+      "w": 5
     },
     {
       "col": 7,

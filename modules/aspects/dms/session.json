@@ -1,6 +1,7 @@
 {
-  "wallpaperPath": "/home/andrec/Pictures/Wallpapers-tokyo-night-dark/AC6_1305418.jpeg",
+  "wallpaperPath": "/home/andrec/Pictures/Wallpaper-tokyo-night-dark/AC6_1305418.jpeg",
   "weatherLocation": "",
+  "changelogSeenVersion": "1.7",
   "terminalOverride": "kitty",
   "includedTransitions": [
     "fade"
@@ -9,6 +10,7 @@
   "wallpaperCyclingRandom": true,
   "wallpaperCyclingRecursive": true,
   "wallpaperCyclingInterval": 900,
+  "wallpaperCyclingFolderPath": "/home/andrec/Pictures/Wallpaper-tokyo-night-dark",
   "dockPins": {
     "dock": [
       "kitty",
