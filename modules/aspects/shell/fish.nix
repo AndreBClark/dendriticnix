@@ -84,7 +84,12 @@
                 body = "nix-shell -p $argv";
                 wraps = "nix-shell";
               };
-
+              nsr = {
+                body = ''
+                  nix-shell -p $argv[1] --run (string join " " -- $argv[2..-1])
+                '';
+                wraps = "nix-shell";
+              };
               codecontext = {
                 body = ''
                   code2prompt $argv --no-codeblock --token-map --hidden -O - | string trim -r | head -c 49000 | fish_clipboard_copy
