@@ -1,10 +1,10 @@
 {
-  den.aspects.dms.facePicker = {
+  den.aspects.dux.facePicker = {
     homeManager =
       { pkgs, config, ... }:
       let
         faceFile = "${config.home.homeDirectory}/.face";
-        dmsPickFace = pkgs.writeShellApplication {
+        duxPickFace = pkgs.writeShellApplication {
           name = "dms-face-picker";
           runtimeInputs = [
             pkgs.dms-shell
@@ -25,7 +25,7 @@
         };
       in
       {
-        home.packages = [ dmsPickFace ];
+        home.packages = [ duxPickFace ];
 
         systemd.user.services.dms.Service.ExecStartPost =
 
@@ -44,7 +44,7 @@
                   ${pkgs.dms-shell}/bin/dms ipc call profile setImage "$FACE" 2>/dev/null || true
                   exit 0
                 fi
-                sleep 0.5
+                sleep 2
               done
             ''
           );

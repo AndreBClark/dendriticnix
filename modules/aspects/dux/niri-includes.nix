@@ -1,6 +1,6 @@
 { lib, ... }:
 {
-  den.aspects.dms.niri-includes = {
+  den.aspects.dux.niri-includes = {
     homeManager =
       let
         sources = import ../../../npins;

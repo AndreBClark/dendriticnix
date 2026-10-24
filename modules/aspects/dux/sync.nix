@@ -1,5 +1,5 @@
 {
-  den.aspects.dms.syncCmd = {
+  den.aspects.dux.syncCmd = {
     homeManager =
       { pkgs, config, ... }:
       let
@@ -15,7 +15,7 @@
             pkgs.coreutils
           ];
           text = ''
-            TARGET_DIR="${nixConfigRepo}/modules/aspects/dms"
+            TARGET_DIR="${nixConfigRepo}/modules/aspects/dux"
 
             dms ipc call settings dump > $TARGET_DIR/settings.json
             dms ipc call settings dumpSession > $TARGET_DIR/session.json

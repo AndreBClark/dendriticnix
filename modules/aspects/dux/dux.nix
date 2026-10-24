@@ -16,18 +16,13 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    danksearch = {
-      url = "github:AvengeMedia/danksearch";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    dms-plugin-registry = {
-      url = "github:duxlabs-dev/dux-plugin-registry";
+    dfiles = {
+      url = "github:duxlabs-dev/dux-files";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
-  den.aspects.dms = {
+  den.aspects.dux = {
     includes = builtins.attrValues {
       inherit (den.aspects.dms)
         greeter
@@ -40,13 +35,12 @@
       { user, pkgs, ... }:
       {
         imports = [
-          inputs.dms.homeModules.dank-material-shell
           inputs.dms-plugin-registry.homeModules.default
-          inputs.danksearch.homeModules.dsearch
+          inputs.dfiles.homeModules.dank-files
         ];
 
         programs = {
-          dank-material-shell = {
+          dms-shell = {
             enable = true;
             systemd.enable = true;
             enableSystemMonitoring = true;

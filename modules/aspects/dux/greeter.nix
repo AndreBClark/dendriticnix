@@ -1,6 +1,6 @@
 { lib, ... }:
 {
-  den.aspects.dms.greeter = {
+  den.aspects.dux.greeter = {
     nixos =
       {
         user,
