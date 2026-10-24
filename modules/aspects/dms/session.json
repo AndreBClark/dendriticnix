@@ -1,7 +1,6 @@
 {
-  "wallpaperPath": "/home/andrec/Pictures/Wallpaper-tokyo-night-dark/AC6_1305418.jpeg",
+  "wallpaperPath": "/home/andrec/Pictures/Wallpapers-tokyo-night-dark/wallhaven.cc_vqpoql.jpeg",
   "weatherLocation": "",
-  "changelogSeenVersion": "1.7",
   "terminalOverride": "kitty",
   "includedTransitions": [
     "fade"
@@ -10,7 +9,6 @@
   "wallpaperCyclingRandom": true,
   "wallpaperCyclingRecursive": true,
   "wallpaperCyclingInterval": 900,
-  "wallpaperCyclingFolderPath": "/home/andrec/Pictures/Wallpaper-tokyo-night-dark",
   "dockPins": {
     "dock": [
       "kitty",
@@ -70,7 +68,7 @@
       "vrrOnDemand": true
     },
     "HDMI-A-1": {
-      "disabled": false,
+      "disabled": true,
       "hotCorners": {
         "corners": [
           "bottom-left",
@@ -81,12 +79,15 @@
     }
   },
   "activeDisplayProfile": {
-    "niri": "auto_201b31"
+    "niri": "auto_5857370a"
   },
   "activeDisplayProfileModes": {
     "niri": {
       "DP-2": {
         "mode": "2560x1440@59.951"
+      },
+      "HDMI-A-1": {
+        "mode": "1920x1080@60.000"
       }
     }
   },

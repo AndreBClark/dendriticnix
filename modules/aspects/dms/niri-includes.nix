@@ -4,17 +4,17 @@
     homeManager =
       let
         sources = import ../../../npins;
-        dmsSrc = "${sources.DankMaterialShell}/core/internal/config/embedded/niri";
+        duxShell = "${sources.dux-shell}/core/internal/config/embedded/niri";
       in
       {
         xdg.configFile = {
           "niri/dms.kdl".text = lib.concatStringsSep "\n" (
-            lib.lists.dropEnd 9 (lib.splitString "\n" (builtins.readFile "${dmsSrc}.kdl"))
+            lib.lists.dropEnd 9 (lib.splitString "\n" (builtins.readFile "${duxShell}.kdl"))
           );
-          "niri/dms/alttab.kdl".source = "${dmsSrc}-alttab.kdl";
-          "niri/dms/binds.kdl".source = "${dmsSrc}-binds.kdl";
-          "niri/dms/input.kdl".source = "${dmsSrc}-input.kdl";
-          "niri/dms/layout.kdl".source = "${dmsSrc}-layout.kdl";
+          "niri/dms/alttab.kdl".source = "${duxShell}-alttab.kdl";
+          "niri/dms/binds.kdl".source = "${duxShell}-binds.kdl";
+          "niri/dms/input.kdl".source = "${duxShell}-input.kdl";
+          "niri/dms/layout.kdl".source = "${duxShell}-layout.kdl";
         };
         wayland.windowManager.niri.extraConfig = lib.mkBefore ''
           include optional=true "dms.kdl"

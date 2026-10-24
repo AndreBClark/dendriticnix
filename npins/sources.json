@@ -1,21 +1,5 @@
 {
   "pins": {
-    "DankMaterialShell": {
-      "type": "GitRelease",
-      "repository": {
-        "type": "GitHub",
-        "owner": "AvengeMedia",
-        "repo": "DankMaterialShell"
-      },
-      "pre_releases": false,
-      "version_upper_bound": null,
-      "release_prefix": null,
-      "submodules": false,
-      "version": "v2.0.0",
-      "revision": "1e6263efb3eebbd4884e14c6c57cebe782db9945",
-      "url": "https://api.github.com/repos/AvengeMedia/DankMaterialShell/tarball/refs/tags/v2.0.0",
-      "hash": "sha256-hyWdbsyOGXsJxvXG4Tqg0uRI1s3JwPi8DKyWips3Ta8="
-    },
     "Liquid-Lyrics": {
       "type": "Git",
       "repository": {
@@ -29,57 +13,21 @@
       "url": "https://github.com/NMWplays/Liquid-Lyrics/archive/613323f491076848ea1def32120d09246f69acce.tar.gz",
       "hash": "sha256-xAnglccL1/rheG9E9HMGw/OI53kAdniY++9l291GXq4="
     },
-    "danksearch": {
-      "type": "Git",
+    "dux-shell": {
+      "type": "GitRelease",
       "repository": {
         "type": "GitHub",
-        "owner": "AvengeMedia",
-        "repo": "danksearch"
+        "owner": "duxlabs-dev",
+        "repo": "dux-shell"
       },
-      "branch": "master",
+      "pre_releases": false,
+      "version_upper_bound": null,
+      "release_prefix": null,
       "submodules": false,
-      "revision": "235f80650ba0bfe6e10583400cefeeb42aaa73db",
-      "url": "https://github.com/AvengeMedia/danksearch/archive/235f80650ba0bfe6e10583400cefeeb42aaa73db.tar.gz",
-      "hash": "sha256-r8sZa+1xsHxV+ljHsPvK90EmjQ+axLpv3fNoJPUH3vI="
-    },
-    "dgop": {
-      "type": "Git",
-      "repository": {
-        "type": "GitHub",
-        "owner": "AvengeMedia",
-        "repo": "dgop"
-      },
-      "branch": "master",
-      "submodules": false,
-      "revision": "c1dbfaf3d2fab4fb602ef564da9462d3a1482712",
-      "url": "https://github.com/AvengeMedia/dgop/archive/c1dbfaf3d2fab4fb602ef564da9462d3a1482712.tar.gz",
-      "hash": "sha256-b2Wn6ySG7aqvi/6hF1t+DWpQzg0qA9rixrKIGe9IQ+Q="
-    },
-    "dms": {
-      "type": "Git",
-      "repository": {
-        "type": "GitHub",
-        "owner": "AvengeMedia",
-        "repo": "DankMaterialShell"
-      },
-      "branch": "master",
-      "submodules": false,
-      "revision": "6f36e49c68a9ed7c86ab8d7cc9c5b3bd14270fd0",
-      "url": "https://github.com/AvengeMedia/DankMaterialShell/archive/6f36e49c68a9ed7c86ab8d7cc9c5b3bd14270fd0.tar.gz",
-      "hash": "sha256-CxFssllWmwJWCiyooF1zR0M7h5sBnwbGiqFQSEvXFM0="
-    },
-    "dms-plugin-registry": {
-      "type": "Git",
-      "repository": {
-        "type": "GitHub",
-        "owner": "AvengeMedia",
-        "repo": "dms-plugin-registry"
-      },
-      "branch": "master",
-      "submodules": false,
-      "revision": "75d00ab83d0147ebc13aa728dd18a8c36db3188b",
-      "url": "https://github.com/AvengeMedia/dms-plugin-registry/archive/75d00ab83d0147ebc13aa728dd18a8c36db3188b.tar.gz",
-      "hash": "sha256-G1zwNJy8ngjyMBqD2EbzXrf0LwLEVB90mDe82FmFUhw="
+      "version": "v2.0.0",
+      "revision": "1e6263efb3eebbd4884e14c6c57cebe782db9945",
+      "url": "https://api.github.com/repos/duxlabs-dev/dux-shell/tarball/refs/tags/v2.0.0",
+      "hash": "sha256-hyWdbsyOGXsJxvXG4Tqg0uRI1s3JwPi8DKyWips3Ta8="
     },
     "flake-parts": {
       "type": "Git",

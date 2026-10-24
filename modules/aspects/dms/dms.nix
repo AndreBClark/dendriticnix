@@ -7,12 +7,12 @@
 {
   flake-file.inputs = {
     dgop = {
-      url = "github:AvengeMedia/dgop";
+      url = "github:duxlabs-dev/dux-gop";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
     dms = {
-      url = "github:AvengeMedia/DankMaterialShell";
+      url = "github:duxlabs-dev/dux-shell/stable";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -22,7 +22,7 @@
     };
 
     dms-plugin-registry = {
-      url = "github:AvengeMedia/dms-plugin-registry";
+      url = "github:duxlabs-dev/dux-plugin-registry";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
@@ -52,7 +52,7 @@
             enableSystemMonitoring = true;
             enableDynamicTheming = true;
             enableAudioWavelength = true;
-            enableCalendarEvents = true;
+            enableCalendarEvents = false;
             settings = lib.mapAttrs (_: lib.mkDefault) (
               builtins.fromJSON (builtins.readFile ./settings.json)
               // {
