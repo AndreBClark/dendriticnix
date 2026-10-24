@@ -10,7 +10,6 @@
           wm
           ;
         inherit (den.aspects.apps)
-          nautilus
           vivaldi
           obsidian
           ;

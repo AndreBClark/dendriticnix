@@ -37,10 +37,5 @@
           pathsToLink = [ "share/thumbnailers" ];
         };
       };
-    homeManager = {
-      services.udiskie = {
-        enable = true;
-      };
-    };
   };
 }

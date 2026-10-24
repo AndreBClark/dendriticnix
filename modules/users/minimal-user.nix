@@ -1,4 +1,4 @@
-{ den, ... }:
+{ den, lib, ... }:
 {
   den.aspects = {
     minimal-user = {
@@ -16,7 +16,9 @@
 
       user.initialPassword = "yolo";
 
-      homeManager = { };
+      homeManager = {
+        xdg.userDirs.enable = lib.mkDefault false;
+      };
     };
   };
 }
