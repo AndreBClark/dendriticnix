@@ -9,7 +9,7 @@
   den.url = "github:vic/den";
   dgop = {
     inputs.nixpkgs.follows = "nixpkgs";
-    url = "github:AvengeMedia/dgop";
+    url = "github:duxlabs-dev/dux-gop";
   };
   disko = {
     inputs.nixpkgs.follows = "nixpkgs";
@@ -17,11 +17,11 @@
   };
   dms = {
     inputs.nixpkgs.follows = "nixpkgs";
-    url = "github:AvengeMedia/DankMaterialShell";
+    url = "github:duxlabs-dev/dux-shell/stable";
   };
   dms-plugin-registry = {
     inputs.nixpkgs.follows = "nixpkgs";
-    url = "github:AvengeMedia/dms-plugin-registry";
+    url = "github:duxlabs-dev/dux-plugin-registry";
   };
   flake-file.url = "github:vic/flake-file";
   flake-parts = {
