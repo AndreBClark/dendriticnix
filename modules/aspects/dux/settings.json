@@ -61,7 +61,7 @@
       "useOverlayLayer": true,
       "editOnRightClick": true,
       "showOnFullscreen": false,
-      "openOnOverview": true,
+      "openOnOverview": false,
       "groupByApp": true,
       "separatePinnedAndRunningApps": false,
       "restoreSpecialWorkspaceOnClick": false,
