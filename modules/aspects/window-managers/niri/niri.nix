@@ -7,9 +7,9 @@
         builtins.attrValues {
           inherit (den.aspects.niri) config;
         }
-        ++ lib.optionals (user.desktopShell == "dms") [
-          den.aspects.dms.niri-includes
-          den.aspects.dms
+        ++ lib.optionals (user.desktopShell == "dux") [
+          den.aspects.dux.niri-includes
+          den.aspects.dux
         ];
 
       nixos =

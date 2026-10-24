@@ -37,7 +37,7 @@
 
         desktopShell = lib.mkOption {
           type = lib.types.str;
-          default = host.desktopShell or "dms";
+          default = host.desktopShell or "dux";
         };
 
         theme = lib.mkOption {

@@ -5,7 +5,7 @@
       let
         faceFile = "${config.home.homeDirectory}/.face";
         duxPickFace = pkgs.writeShellApplication {
-          name = "dms-face-picker";
+          name = "dux-face-picker";
           runtimeInputs = [
             pkgs.dms-shell
             pkgs.imagemagick
@@ -18,7 +18,7 @@
               echo "No image selected" >&2
               exit 1
             fi
-            magick "$PICKED" "${faceFile}"
+            magick convert "$PICKED" "${faceFile}"
             dms ipc call profile setImage "${faceFile}"
             echo "Saved profile image to ${faceFile}"
           '';
@@ -31,7 +31,7 @@
 
           "-"
           + toString (
-            pkgs.writeShellScript "dms-set-profile-image" ''
+            pkgs.writeShellScript "dux-set-profile-image" ''
               FACE="${faceFile}"
               [ -f "$FACE" ] || exit 0
 

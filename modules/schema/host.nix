@@ -17,7 +17,7 @@
         };
         desktopShell = lib.mkOption {
           type = lib.types.str;
-          default = "dms";
+          default = "dux";
         };
         theme = lib.mkOption {
           type = lib.types.submodule (import ./theme.nix);

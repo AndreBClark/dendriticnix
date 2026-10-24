@@ -24,7 +24,7 @@
 
   den.aspects.dux = {
     includes = builtins.attrValues {
-      inherit (den.aspects.dms)
+      inherit (den.aspects.dux)
         greeter
         syncCmd
         facePicker

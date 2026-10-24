@@ -8,7 +8,7 @@
             config.programs.nh.flake
           else
             "${config.home.homeDirectory}/nixconfig";
-        dmsSync = pkgs.writeShellApplication {
+        duxSync = pkgs.writeShellApplication {
           name = "dms-sync";
           runtimeInputs = [
             pkgs.jq
@@ -30,7 +30,7 @@
       in
       {
         home.packages = [
-          dmsSync
+          duxSync
         ];
       };
   };
