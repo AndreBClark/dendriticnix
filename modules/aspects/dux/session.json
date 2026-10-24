@@ -9,6 +9,7 @@
   "wallpaperCyclingRandom": true,
   "wallpaperCyclingRecursive": true,
   "wallpaperCyclingInterval": 900,
+  "wallpaperCyclingFolderPath": "/home/andrec/Pictures/Wallpapers-tokyo-night-dark",
   "dockPins": {
     "dock": [
       "kitty",
@@ -25,9 +26,9 @@
     "vivaldi-stable",
     "dms_settings",
     "spotify",
-    "org.gnome.Nautilus",
     "kitty",
-    "steam"
+    "steam",
+    "dev.duxlabs.files"
   ],
   "hiddenTrayIds": [
     "udiskie",
