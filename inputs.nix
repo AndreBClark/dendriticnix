@@ -2,11 +2,11 @@
 # To re-generate use: nix-shell . -A flake-file.sh --run write-inputs
 {
   base16.url = "github:SenchoPens/base16.nix";
-  danksearch = {
-    inputs.nixpkgs.follows = "nixpkgs";
-    url = "github:AvengeMedia/danksearch";
-  };
   den.url = "github:vic/den";
+  dfiles = {
+    inputs.nixpkgs.follows = "nixpkgs";
+    url = "github:duxlabs-dev/dux-files";
+  };
   dgop = {
     inputs.nixpkgs.follows = "nixpkgs";
     url = "github:duxlabs-dev/dux-gop";
@@ -15,11 +15,11 @@
     inputs.nixpkgs.follows = "nixpkgs";
     url = "github:nix-community/disko/latest";
   };
-  dms = {
+  dux = {
     inputs.nixpkgs.follows = "nixpkgs";
     url = "github:duxlabs-dev/dux-shell/stable";
   };
-  dms-plugin-registry = {
+  dux-plugin-registry = {
     inputs.nixpkgs.follows = "nixpkgs";
     url = "github:duxlabs-dev/dux-plugin-registry";
   };

@@ -5,11 +5,11 @@
 
   inputs = {
     base16.url = "github:SenchoPens/base16.nix";
-    danksearch = {
-      url = "github:AvengeMedia/danksearch";
+    den.url = "github:vic/den";
+    dfiles = {
+      url = "github:duxlabs-dev/dux-files";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    den.url = "github:vic/den";
     dgop = {
       url = "github:duxlabs-dev/dux-gop";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -18,11 +18,11 @@
       url = "github:nix-community/disko/latest";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    dms = {
+    dux = {
       url = "github:duxlabs-dev/dux-shell/stable";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    dms-plugin-registry = {
+    dux-plugin-registry = {
       url = "github:duxlabs-dev/dux-plugin-registry";
       inputs.nixpkgs.follows = "nixpkgs";
     };

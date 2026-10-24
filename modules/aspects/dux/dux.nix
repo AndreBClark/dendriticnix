@@ -6,18 +6,23 @@
 }:
 {
   flake-file.inputs = {
+    dux = {
+      url = "github:duxlabs-dev/dux-shell/stable";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     dgop = {
       url = "github:duxlabs-dev/dux-gop";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    dms = {
-      url = "github:duxlabs-dev/dux-shell/stable";
+    dfiles = {
+      url = "github:duxlabs-dev/dux-files";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    dfiles = {
-      url = "github:duxlabs-dev/dux-files";
+    dux-plugin-registry = {
+      url = "github:duxlabs-dev/dux-plugin-registry";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
@@ -32,15 +37,21 @@
     };
 
     homeManager =
-      { user, pkgs, ... }:
+      {
+        user,
+        pkgs,
+        config,
+        ...
+      }:
       {
         imports = [
-          inputs.dms-plugin-registry.homeModules.default
-          inputs.dfiles.homeModules.dank-files
+          inputs.dux-plugin-registry.homeModules.default
+          inputs.dfiles.homeModules.dux-files
+          inputs.dux.homeModules.default
         ];
 
         programs = {
-          dms-shell = {
+          dank-material-shell = {
             enable = true;
             systemd.enable = true;
             enableSystemMonitoring = true;
@@ -107,13 +118,29 @@
                 enable = true;
                 settings = {
                   api_wallhavencc = "evxZa5kqPQ0wHFD6St5hfeox0qNAbiUR";
-                  downloadLocation = "/home/andrec/Pictures/Wallpapers";
+                  downloadLocation = "${config.home.homeDirectory}/Pictures/Wallpapers-source";
                 };
               };
             };
           };
 
-          dsearch.enable = true;
+          dux-files = {
+            enable = true;
+
+            # Keep a resident instance so windows open fast and the portal answers at once
+            systemd = {
+              enable = true;
+              target = "graphical-session.target";
+              restartIfChanged = true;
+            };
+            # Serve other apps' open and save dialogs
+            portal = {
+              enable = true; # register the dfiles backend with xdg-desktop-portal
+              preferred = true; # prefer it for org.freedesktop.impl.portal.FileChooser
+              desktop = "niri"; # which xdg.portal.config entry gets the preference, "common" by default
+            };
+            settings = builtins.fromJSON (builtins.readFile ./dFiles-settings.json);
+          };
         };
 
         home.packages = [ pkgs.dgop ];
@@ -127,7 +154,15 @@
             "gtk-3.0/gtk.css".text = colorsImport;
             "gtk-3.0/assets".source = "${pkgs.adw-gtk3}/share/themes/adw-gtk3/gtk-3.0/assets";
           };
-
       };
+    nixos = {
+      programs.dsearch = {
+        enable = true;
+        systemd = {
+          enable = true;
+          target = "default.target";
+        };
+      };
+    };
   };
 }
