@@ -33,6 +33,7 @@
         "ntfs"
         "cifs"
       ];
+      plymouth.enable = true;
     };
   };
 
