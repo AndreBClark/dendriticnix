@@ -45,74 +45,77 @@
           inputs.spicetify-nix.homeManagerModules.spicetify
         ];
         stylix.targets.spicetify.enable = false;
-        programs.spicetify = {
-          enable = true;
-          wayland = true;
-          windowManagerPatch = true;
-          colorScheme = "custom";
-          customColorScheme = stylixColorScheme;
+        programs = {
+          spicetify = {
+            enable = true;
+            wayland = true;
+            windowManagerPatch = true;
+            colorScheme = "custom";
+            customColorScheme = stylixColorScheme;
 
-          # https://gerg-l.github.io/spicetify-nix/custom-apps.html
-          enabledCustomApps = builtins.attrValues {
-            inherit (spicePkgs.apps)
-              newReleases
-              marketplace
-              ;
-          };
-          # https://gerg-l.github.io/spicetify-nix/extensions.html
-          enabledExtensions =
-            builtins.attrValues {
-              inherit (spicePkgs.extensions)
-                allOfArtist
-                keyboardShortcut
-                shuffle
-                hidePodcasts
-                goToSong
-                listPlaylistsWithSong
-                skipStats
-                songStats
-                aiBandBlocker
-                history
-                playNext
-                sectionMarker
-                autoSkip
-                playingSource
-                sortPlay
-                extendedCopy
+            # https://gerg-l.github.io/spicetify-nix/custom-apps.html
+            enabledCustomApps = builtins.attrValues {
+              inherit (spicePkgs.apps)
+                newReleases
+                marketplace
                 ;
-            }
-            ++ [
-              {
-                src = "${sources.spicetify-extensions}/playback-bar-waveform/dist";
-                name = "playback-bar-waveform.js";
+            };
+            # https://gerg-l.github.io/spicetify-nix/extensions.html
+            enabledExtensions =
+              builtins.attrValues {
+                inherit (spicePkgs.extensions)
+                  allOfArtist
+                  keyboardShortcut
+                  shuffle
+                  hidePodcasts
+                  goToSong
+                  listPlaylistsWithSong
+                  skipStats
+                  songStats
+                  aiBandBlocker
+                  history
+                  playNext
+                  sectionMarker
+                  autoSkip
+                  playingSource
+                  sortPlay
+                  extendedCopy
+                  ;
               }
-            ];
-          # View all snippets: https://github.com/spicetify/marketplace/blob/main/resources/snippets.json
-          enabledSnippets = [
-            /* css */ ''
-              * {
-                font-family: ${config.stylix.fonts.monospace.name}, Noto Sans !important;
-              }
-            ''
-            "Remove Popular sections from homepage"
-            "Remove Unused Space in Topbar"
-            "Remove top spacing"
-            "Pointers"
-            "Modern ScrollBar"
-            "Fix 'DJ' Icon"
-            "Fix 'Episodes' Icon"
-            "Queue Top Side Panel"
-            # big NPV when song has canvas
-            /* css */ ''
-              .main-nowPlayingView-container {
-                  width: 50dvw !important;
-              }
+              ++ [
+                {
+                  src = "${sources.spicetify-extensions}/playback-bar-waveform/dist";
+                  name = "playback-bar-waveform.js";
+                }
+              ];
+            # View all snippets: https://github.com/spicetify/marketplace/blob/main/resources/snippets.json
+            enabledSnippets = [
+              /* css */ ''
+                * {
+                  font-family: ${config.stylix.fonts.monospace.name}, Noto Sans !important;
+                }
+              ''
+              "Remove Popular sections from homepage"
+              "Remove Unused Space in Topbar"
+              "Remove top spacing"
+              "Pointers"
+              "Modern ScrollBar"
+              "Fix 'DJ' Icon"
+              "Fix 'Episodes' Icon"
+              "Queue Top Side Panel"
+              # big NPV when song has canvas
+              /* css */ ''
+                .main-nowPlayingView-container {
+                    width: 50dvw !important;
+                }
 
-              .main-nowPlayingView-nowPlayingGrid:has(.canvasVideoContainerNPV) .main-nowPlayingView-contextItemInfo {
-                  margin-top: 30vh;
-              }
-            ''
-          ];
+                .main-nowPlayingView-nowPlayingGrid:has(.canvasVideoContainerNPV) .main-nowPlayingView-contextItemInfo {
+                    margin-top: 30vh;
+                }
+              ''
+            ];
+          };
+          ncspot.enable = true;
         };
       };
   };
