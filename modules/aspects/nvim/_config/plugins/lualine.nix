@@ -144,7 +144,10 @@ in
                   right = 1;
                 };
                 icon = "";
-                ignore_lsp = [ "null-ls" ];
+                ignore_lsp = [
+                  "null-ls"
+                  "emmet_language_server"
+                ];
                 color.__raw = ''_G.mk_mode_color("fg")'';
               }
             ];
@@ -159,6 +162,7 @@ in
             ];
           };
           winbar.lualine_c = [
+            # TODO: keep pill even with no filetype?
             {
               __unkeyed-1.__raw = ''function() return " " end'';
               padding = 0;
@@ -170,6 +174,7 @@ in
               inherit separator;
               icon_only = true;
               padding = 1;
+              draw_empty = true;
               color = {
                 bg = colors.base02;
                 fg = colors.base0C;
