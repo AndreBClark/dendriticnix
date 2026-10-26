@@ -12,13 +12,37 @@
       half = logoSize / 2;
     in
     {
+      options.den.theme.grub.boldFont = lib.mkOption {
+        type = lib.types.bool;
+        default = true;
+        description = "Use a Bold variant of the monospace font for GRUB.";
+      };
+
       config = lib.optionalAttrs (options ? boot && options ? stylix) (
         let
           stylixModule = import "${inputs.stylix}/modules/grub/nixos.nix" {
             inherit pkgs config lib;
           };
           colors = config.lib.stylix.colors.withHashtag;
-          font = config.stylix.fonts.monospace.name;
+
+          boldEnabled = config.den.theme.grub.boldFont;
+          baseFont = config.stylix.fonts.monospace;
+
+          mkGrubFont =
+            font: style:
+            pkgs.runCommand "${font.package.name}-${style}.pf2"
+              {
+                FONTCONFIG_FILE = pkgs.makeFontsConf { fontDirectories = [ font.package ]; };
+              }
+              ''
+                file=$(${lib.getExe' pkgs.fontconfig "fc-match"} "${font.name}:style=${style}" --format=%{file})
+                ${lib.getExe' pkgs.grub2 "grub-mkfont"} "$file" --output $out --size 32
+              '';
+
+          boldFontFile = mkGrubFont baseFont "Bold";
+
+          font = if boldEnabled then "${baseFont.name} Bold" else baseFont.name;
+
           stylixTheme = stylixModule.config.boot.loader.grub.content.theme;
 
           logo = pkgs.runCommand "grub-logo" { nativeBuildInputs = [ pkgs.imagemagick ]; } ''
@@ -63,14 +87,19 @@
                 menu_pixmap_style = "background_*.png"
 
                 item_height = 40
-                item_icon_space = 8
+                item_icon_space = 0
                 item_spacing = 0
-                item_padding = 0
+                item_padding = 4
                 item_font = "${font}"
                 item_color = "${base05}"
 
                 selected_item_color = "${base01}"
                 selected_item_pixmap_style = "selection_*.png"
+
+                terminal-left = "50%"
+                terminal-top = "20%"
+                terminal-width = "40%"
+                terminal-height = "60%"
               }
               + image {
                 left = 25%-${toString half}
@@ -89,6 +118,7 @@
                 rm $out/theme.txt
                 cp ${themeTxt} $out/theme.txt
                 cp ${logo} $out/logo.png
+                ${lib.optionalString boldEnabled "cp ${boldFontFile} $out/bold.pf2"}
               ''
             );
             fontSize = 24;
