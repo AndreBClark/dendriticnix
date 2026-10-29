@@ -41,7 +41,7 @@
                   # Re-apply once more after a short delay in case accountsServiceAvailable
                   # flips true right after this call succeeded against the in-memory-only path
                   sleep 2
-                  ${pkgs.dms-shell}/bin/dms ipc call profile setImage "$FACE" 2>/dev/null || true
+                  ${pkgs.dux-shell}/bin/dms ipc call profile setImage "$FACE" 2>/dev/null || true
                   exit 0
                 fi
                 sleep 2

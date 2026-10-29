@@ -11,7 +11,7 @@
       {
         services.displayManager = {
           sddm.enable = false;
-          dms-greeter = {
+          dux-greeter = {
             enable = true;
             compositor = {
               name = host.windowManager;

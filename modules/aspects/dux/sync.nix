@@ -9,7 +9,7 @@
           else
             "${config.home.homeDirectory}/nixconfig";
         duxSync = pkgs.writeShellApplication {
-          name = "dms-sync";
+          name = "dux-sync";
           runtimeInputs = [
             pkgs.jq
             pkgs.coreutils

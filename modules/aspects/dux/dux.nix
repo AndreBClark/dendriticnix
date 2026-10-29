@@ -156,7 +156,7 @@
           };
       };
     nixos = {
-      programs.dsearch = {
+      programs.dux-search = {
         enable = true;
         systemd = {
           enable = true;
