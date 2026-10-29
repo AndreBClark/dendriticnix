@@ -36,7 +36,7 @@
               }
               ''
                 file=$(${lib.getExe' pkgs.fontconfig "fc-match"} "${font.name}:style=${style}" --format=%{file})
-                ${lib.getExe' pkgs.grub2 "grub-mkfont"} "$file" --output $out --size 32
+                ${lib.getExe' pkgs.grub2 "grub-mkfont"} "$file" --output $out --size 24
               '';
 
           boldFontFile = mkGrubFont baseFont "Bold";
@@ -89,7 +89,7 @@
                 item_height = 40
                 item_icon_space = 0
                 item_spacing = 0
-                item_padding = 4
+                item_padding = 0
                 item_font = "${font}"
                 item_color = "${base05}"
 
@@ -121,7 +121,7 @@
                 ${lib.optionalString boldEnabled "cp ${boldFontFile} $out/bold.pf2"}
               ''
             );
-            fontSize = 24;
+            fontSize = 16;
           };
         }
       );
