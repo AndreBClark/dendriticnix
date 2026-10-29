@@ -20,7 +20,6 @@
           "--no-user"
           "--short-nix"
           "--follow-symlinks"
-          "--git-ignore"
         ];
       };
 
