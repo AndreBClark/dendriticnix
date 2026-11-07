@@ -37,6 +37,15 @@
         long_message_to_split = true; # long msgs go to split, not scroll
         lsp_doc_border = true; # rounded hover/signature borders
       };
+      routes = [
+        {
+          filter = {
+            event = "notify";
+            find = "No code actions available";
+          };
+          opts.skip = true;
+        }
+      ];
     };
   };
 }

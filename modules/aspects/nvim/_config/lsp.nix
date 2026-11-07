@@ -31,11 +31,21 @@
 
       oxlint = {
         enable = true;
-        config.init_options = {
-          run = "onType";
-          fixKind = "safe_fix_or_suggestion";
-          unusedDisableDirectives = "warn";
-          # typeAware = true; # enable once nixpkgs ships oxlint-tsgolint
+        config = {
+          init_options = {
+            run = "onType";
+            fixKind = "safe_fix_or_suggestion";
+            unusedDisableDirectives = "warn";
+            typeAware = true;
+          };
+          filetypes = [
+            "javascript"
+            "javascriptreact"
+            "typescript"
+            "typescriptreact"
+            "vue"
+            "svelte"
+          ];
         };
       };
 
@@ -56,11 +66,22 @@
           before_init.__raw = ''
             function(_, config)
               local root = config.root_dir
-              local ws = root and (root .. "/node_modules/typescript/lib")
-              if ws and vim.uv.fs_stat(ws .. "/tsserverlibrary.js") then
+              if not root then return end
+
+              local ws = root .. "/node_modules/typescript/lib"
+              if vim.uv.fs_stat(ws .. "/tsserverlibrary.js") then
                 config.init_options = config.init_options or {}
                 config.init_options.typescript = config.init_options.typescript or {}
                 config.init_options.typescript.tsdk = ws
+              end
+
+              local astro_plugin = root .. "/node_modules/@astrojs/ts-plugin"
+              if vim.uv.fs_stat(astro_plugin .. "/dist/index.js") then
+                config.init_options.plugins = config.init_options.plugins or {}
+                table.insert(config.init_options.plugins, {
+                  name = "@astrojs/ts-plugin",
+                  location = astro_plugin,
+                })
               end
             end
           '';
@@ -76,7 +97,21 @@
           };
         };
       };
-      cssls.enable = true;
+      cssls = {
+        enable = true;
+        config = {
+          settings = {
+            css.lint.unknownAtRules = "ignore";
+            scss.lint.unknownAtRules = "ignore";
+            less.lint.unknownAtRules = "ignore";
+          };
+          on_attach.__raw = ''
+            function(client)
+              client.server_capabilities.documentFormattingProvider = false
+            end
+          '';
+        };
+      };
       tailwindcss.enable = true;
       html.enable = true;
       astro = {
@@ -109,7 +144,6 @@
         "*.tsx"
         "*.vue"
         "*.svelte"
-        "*.astro"
       ];
       callback.__raw = ''
         function()
@@ -138,7 +172,11 @@
       settings = {
         show_all_diags_on_cursorline = true;
         options = {
-
+          add_messages = {
+            display_count = true;
+            show_multiple_glyphs = false;
+          };
+          override_open_float = true;
           multilines = {
             enabled = true;
             always_show = true;
@@ -148,9 +186,8 @@
           show_source.if_many = true;
           break_line = {
             enabled = true;
-            after = 70;
+            after = 80;
           };
-          virt_texts.priority = 2048;
         };
       };
     };
@@ -218,7 +255,7 @@
       action = "<cmd>Trouble diagnostics toggle<CR>";
       options.desc = "Toggle (Trouble)";
     });
-  extraPackages = [
-    pkgs.nixfmt
-  ];
+  extraPackages = builtins.attrValues {
+    inherit (pkgs) nixfmt tsgolint;
+  };
 }
