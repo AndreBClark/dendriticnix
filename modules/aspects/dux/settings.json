@@ -509,7 +509,7 @@
     "osd": true,
     "toast": true
   },
-  "displayProfileAutoSelect": true,
+  "displayProfileAutoSelect": false,
   "barConfigs": [
     {
       "attachToScreenEdge": false,
@@ -604,33 +604,15 @@
       "rightWidgets": [
         {
           "enabled": true,
-          "id": "systemTray",
-          "overflowMode": "section"
-        },
-        {
-          "enabled": true,
-          "id": "clipboard"
-        },
-        {
-          "enabled": true,
-          "id": "notificationButton",
-          "overflowMode": "section"
-        },
-        {
-          "enabled": true,
-          "id": "controlCenterButton",
-          "showAudioPercent": true,
-          "showBatteryIcon": true,
-          "showDoNotDisturbIcon": true,
-          "showIdleInhibitorIcon": true,
-          "showMicIcon": true,
-          "showMicPercent": true
-        },
-        {
-          "enabled": true,
           "id": "music",
           "mediaAdaptiveWidthEnabled": true,
           "mediaSize": 3
+        },
+        {
+          "id": "controlCenterButton",
+          "enabled": true,
+          "showAudioPercent": true,
+          "showMicIcon": true
         }
       ],
       "screenPreferences": [
@@ -752,7 +734,7 @@
       ],
       "maximizeWidgetIcons": false,
       "maximizeWidgetText": false,
-      "name": "Bar 2",
+      "name": "left",
       "noBackground": false,
       "openOnOverview": true,
       "popupGapsAuto": true,
@@ -761,7 +743,7 @@
       "rightWidgets": [
         {
           "enabled": true,
-          "id": "colorPicker"
+          "id": "weather"
         },
         {
           "enabled": true,
@@ -770,11 +752,23 @@
         },
         {
           "enabled": true,
-          "id": "weather"
+          "id": "cpuTemp"
+        },
+        {
+          "enabled": true,
+          "id": "colorPicker"
         },
         {
           "enabled": true,
           "id": "clipboard"
+        },
+        {
+          "enabled": true,
+          "id": "notificationButton"
+        },
+        {
+          "enabled": true,
+          "id": "systemTray"
         },
         {
           "enabled": true,

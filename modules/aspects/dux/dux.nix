@@ -143,7 +143,7 @@
           };
         };
 
-        home.packages = [ pkgs.dgop ];
+        home.packages = [ pkgs.dux-gop ];
 
         xdg.configFile =
           let
@@ -153,6 +153,7 @@
             "gtk-4.0/gtk.css".text = colorsImport;
             "gtk-3.0/gtk.css".text = colorsImport;
             "gtk-3.0/assets".source = "${pkgs.adw-gtk3}/share/themes/adw-gtk3/gtk-3.0/assets";
+            "dms/monitors.json".source = ./monitors.json;
           };
       };
     nixos = {

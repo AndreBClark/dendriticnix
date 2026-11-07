@@ -17,14 +17,15 @@
           text = ''
             TARGET_DIR="${nixConfigRepo}/modules/aspects/dux"
 
-            dms ipc call settings dump > $TARGET_DIR/settings.json
-            dms ipc call settings dumpSession > $TARGET_DIR/session.json
+            dms ipc call settings dump > "$TARGET_DIR/settings.json"
 
-            cd "${nixConfigRepo}" || { echo "Failed to cd to repo" >&2; exit 1; }
-            git add $TARGET_DIR/settings.json
-            git add $TARGET_DIR/session.json
+            dms ipc call settings dumpSession \
+              | jq 'del(.activeDisplayProfile, .activeDisplayProfileModes,
+                        .launcherLastQuery, .launcherQueryHistory)' \
+              > "$TARGET_DIR/session.json"
 
-            echo "settings.json and session.json updated in repo"
+            cd "${nixConfigRepo}" || exit 1
+            git add "$TARGET_DIR/settings.json" "$TARGET_DIR/session.json"
           '';
         };
       in

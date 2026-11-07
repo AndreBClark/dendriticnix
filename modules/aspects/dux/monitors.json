@@ -1,0 +1,92 @@
+{
+  "version": 1,
+  "configurations": [
+    {
+      "id": "seadragon_dual",
+      "name": "Dual",
+      "outputs": {
+        "DP-2": {
+          "mode": "2560x1440@59.951",
+          "position": {
+            "x": 0,
+            "y": 0
+          },
+          "scale": 1,
+          "transform": "Normal",
+          "vrr": true,
+          "disabled": false,
+          "niri": {
+            "focusAtStartup": true,
+            "vrrOnDemand": true
+          }
+        },
+        "HDMI-A-1": {
+          "mode": "1920x1080@60.000",
+          "position": {
+            "x": 0,
+            "y": 720
+          },
+          "scale": 1,
+          "transform": "Normal",
+          "vrr": true,
+          "disabled": false,
+          "niri": {
+            "vrrOnDemand": true
+          }
+        }
+      }
+    },
+    {
+      "id": "seadragon_single",
+      "name": "Single",
+      "outputs": {
+        "DP-2": {
+          "mode": "2560x1440@59.951",
+          "position": {
+            "x": 0,
+            "y": 0
+          },
+          "scale": 1,
+          "transform": "Normal",
+          "vrr": true,
+          "disabled": false,
+          "niri": {
+            "focusAtStartup": true,
+            "vrrOnDemand": true
+          }
+        },
+        "HDMI-A-1": {
+          "mode": "1920x1080@60.000",
+          "position": {
+            "x": 0,
+            "y": 720
+          },
+          "scale": 1,
+          "transform": "Normal",
+          "vrr": true,
+          "disabled": true
+        }
+      }
+    },
+    {
+      "id": "dragonfly_laptop",
+      "name": "Laptop",
+      "outputs": {
+        "eDP-1": {
+          "mode": "1920x1080@60.000",
+          "position": {
+            "x": 0,
+            "y": 0
+          },
+          "scale": 1,
+          "transform": "Normal",
+          "vrr": false,
+          "disabled": false,
+          "niri": {
+            "focusAtStartup": true
+          }
+        }
+      }
+    }
+  ]
+}

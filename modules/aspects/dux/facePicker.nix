@@ -7,7 +7,7 @@
         duxPickFace = pkgs.writeShellApplication {
           name = "dux-face-picker";
           runtimeInputs = [
-            pkgs.dms-shell
+            pkgs.dux-shell
             pkgs.imagemagick
           ];
           text = ''
@@ -27,7 +27,7 @@
       {
         home.packages = [ duxPickFace ];
 
-        systemd.user.services.dms.Service.ExecStartPost =
+        systemd.user.services.dux.Service.ExecStartPost =
 
           "-"
           + toString (
@@ -36,7 +36,7 @@
               [ -f "$FACE" ] || exit 0
 
               for i in $(seq 1 20); do
-                RESULT=$(${pkgs.dms-shell}/bin/dms ipc call profile setImage "$FACE" 2>/dev/null || true)
+                RESULT=$(${pkgs.dux-shell}/bin/dms ipc call profile setImage "$FACE" 2>/dev/null || true)
                 if echo "$RESULT" | grep -q "^SUCCESS"; then
                   # Re-apply once more after a short delay in case accountsServiceAvailable
                   # flips true right after this call succeeded against the in-memory-only path
