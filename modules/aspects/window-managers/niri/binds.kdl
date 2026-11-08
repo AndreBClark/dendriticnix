@@ -1,4 +1,7 @@
 binds {
-    Mod+T hotkey-overlay-title="Open Terminal" { spawn-sh "@@TERMINAL@@"; }
-    Alt+Y hotkey-overlay-title="Toggle wallpaper Carousel" { spawn-sh "dms ipc wallpaperCarousel toggle"; }
+  Mod+T hotkey-overlay-title="Open Terminal" { spawn-sh "@@TERMINAL@@"; }
+  Alt+Y hotkey-overlay-title="Toggle wallpaper Carousel" { spawn-sh "dms ipc wallpaperCarousel toggle"; }
+  Mod+Shift+M hotkey-overlay-title="Toggle Display Profile" {
+      spawn-sh "dms ipc outputs status | rg -q 'active: Dual' && dms ipc outputs setProfile Single || dms ipc outputs setProfile Dual";
+  }
 }
