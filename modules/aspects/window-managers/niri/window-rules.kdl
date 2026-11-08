@@ -34,15 +34,19 @@ window-rule {
 
 window-rule {
     match app-id="(?i)^steam$" title="(?i)^Steam$"
-    open-maximized true
+    open-maximized-to-edges true
+}
+
+window-rule {
+  match app-id="(?i)^steam" title="(?i)^Steam Big Picture Mode"
+  open-fullscreen true
 }
 
 window-rule {
     match app-id="steam_app_\\d+"
-    open-floating true
-    open-maximized true
+    open-fullscreen true
     open-on-output "DP-2"
-    open-on-workspace "2"
+    open-on-workspace "3"
     opacity 1.0
 }
 
@@ -65,7 +69,7 @@ window-rule {
 
 window-rule {
     match app-id="(?i)spotify"
-    open-on-workspace "3"
+    open-on-workspace "4"
     open-on-output "HDMI-A-1"
     open-maximized-to-edges true
 }
