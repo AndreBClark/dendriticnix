@@ -1,6 +1,6 @@
 { den, ... }:
 {
-  den.aspects.apps.vivaldi = {
+  den.aspects.browser.vivaldi = {
     includes = [
       (den.batteries.unfree [
         "vivaldi"
@@ -15,14 +15,11 @@
             enable = true;
             package = pkgs.vivaldi.override {
               # uses chromium-codecs-ffmpeg-extra which didnt work?
-              proprietaryCodecs = false;
+              proprietaryCodecs = true;
               enableWidevine = true;
-              inherit (pkgs) vivaldi-ffmpeg-codecs;
-              commandLineArgs = [
-                "--enable-features=UseOzonePlatform"
-                "--ozone-platform-hint=auto"
-              ];
+              inherit (pkgs) vivaldi-ffmpeg-codecs widevine-cdm;
             };
+            commandLineArgs = [ "--use-gl=egl" ];
             extensions = [
               {
                 id = "lkbebcjgcmobigpeffafkodonchffocl";
@@ -32,9 +29,6 @@
               { id = "mnjggcdmjocbbbhaepdhchncahnbgone"; } # Sponsor Block
             ];
           };
-        };
-        home.packages = builtins.attrValues {
-          inherit (pkgs) vivaldi-ffmpeg-codecs;
         };
       };
   };

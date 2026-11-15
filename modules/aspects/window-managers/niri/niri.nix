@@ -17,7 +17,6 @@
         {
           programs.niri.enable = true;
           environment = {
-            variables.NIXOS_OZONE_WL = "1";
             systemPackages = builtins.attrValues {
               inherit (pkgs)
                 libsecret
