@@ -103,16 +103,6 @@
               "Fix 'DJ' Icon"
               "Fix 'Episodes' Icon"
               "Queue Top Side Panel"
-              # big NPV when song has canvas
-              /* css */ ''
-                .main-nowPlayingView-container {
-                    width: 50dvw !important;
-                }
-
-                .main-nowPlayingView-nowPlayingGrid:has(.canvasVideoContainerNPV) .main-nowPlayingView-contextItemInfo {
-                    margin-top: 30vh;
-                }
-              ''
             ];
           };
           ncspot.enable = true;
