@@ -23,6 +23,10 @@
     inputs.nixpkgs.follows = "nixpkgs";
     url = "github:duxlabs-dev/dux-plugin-registry";
   };
+  firefox-addons = {
+    inputs.nixpkgs.follows = "nixpkgs";
+    url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
+  };
   flake-file.url = "github:vic/flake-file";
   flake-parts = {
     inputs.nixpkgs-lib.follows = "nixpkgs";
@@ -46,4 +50,11 @@
     url = "github:nix-community/stylix";
   };
   treefmt-nix.url = "github:numtide/treefmt-nix";
+  zen-browser = {
+    inputs = {
+      home-manager.follows = "home-manager";
+      nixpkgs.follows = "nixpkgs";
+    };
+    url = "github:0xc000022070/zen-browser-flake";
+  };
 }

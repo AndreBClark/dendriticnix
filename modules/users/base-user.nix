@@ -10,9 +10,9 @@
           wm
           ;
         inherit (den.aspects.apps)
-          vivaldi
           obsidian
           ;
+        inherit (den.aspects.browser) vivaldi;
       };
       # Base OS-level user settings
       user = {

@@ -26,7 +26,10 @@
         ];
 
       };
-      extraOptions = "experimental-features = nix-command flakes";
+      extraOptions = ''
+        experimental-features = nix-command flakes
+        !include /etc/nix/access-tokens.conf
+      '';
     };
   };
 

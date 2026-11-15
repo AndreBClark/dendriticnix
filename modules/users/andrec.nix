@@ -7,6 +7,7 @@
         den.aspects.base-user
         den.aspects.apps.spotify
         den.aspects.apps.discord
+        den.aspects.browser.zen
       ];
 
       homeManager = {
