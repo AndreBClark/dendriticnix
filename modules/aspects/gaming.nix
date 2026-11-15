@@ -3,6 +3,7 @@
   den.aspects.gaming = {
     includes = [
       den.aspects.apps.steam
+      den.aspects.apps.discord
     ];
     nixos = {
       boot = {
