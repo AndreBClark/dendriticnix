@@ -16,14 +16,6 @@
         services = {
           upower.enable = true;
           blueman.enable = true;
-          usbmuxd = {
-            enable = true;
-            package = pkgs.usbmuxd2;
-          };
-          fwupd.enable = true;
-        };
-        environment.systemPackages = builtins.attrValues {
-          inherit (pkgs) libimobiledevice ifuse;
         };
       };
   };
