@@ -4,12 +4,14 @@
     nixos =
       { pkgs, ... }:
       {
-        environment.systemPackages = builtins.attrValues {
-          inherit (pkgs)
-            rnnoise-plugin
-            easyeffects
-            ;
-        };
+        environment.systemPackages =
+          builtins.attrValues {
+            inherit (pkgs)
+              rnnoise-plugin
+              easyeffects
+              ;
+          }
+          ++ [ pkgs.pipewire.jack ];
         security.rtkit.enable = true;
         hardware.alsa.enablePersistence = true;
         services = {
@@ -19,7 +21,6 @@
             alsa.enable = true;
             alsa.support32Bit = true;
             pulse.enable = true;
-            jack.enable = true;
           };
         };
       };
