@@ -8,6 +8,7 @@
         den.aspects.apps.spotify
         den.aspects.apps.discord
         den.aspects.browser.zen
+        den.aspects.video-editor
       ];
 
       homeManager = {
