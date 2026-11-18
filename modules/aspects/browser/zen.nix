@@ -16,7 +16,7 @@
     { pkgs, ... }:
     {
       imports = [
-        inputs.zen-browser.homeModules.beta # beta, twilight, or twilight-official
+        inputs.zen-browser.homeModules.twilight
       ];
 
       programs.zen-browser =
@@ -105,7 +105,7 @@
                       ];
                     };
                     githubCode = {
-                      name = "GitHub Repo Search";
+                      name = "GitHub Code Search";
                       urls = [
                         {
                           template = "https://github.com/search?q={searchTerms}&type=code";
@@ -120,7 +120,7 @@
                       name = "GitHub Nix Code Search";
                       urls = [
                         {
-                          template = "https://github.com/search?q=language%3Anix+%s&type=code";
+                          template = "https://github.com/search?q=language%3Anix+{searchTerms}&type=code";
                           inherit params;
                         }
                       ];

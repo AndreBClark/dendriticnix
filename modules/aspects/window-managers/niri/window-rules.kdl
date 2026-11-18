@@ -1,6 +1,7 @@
 workspace "1"
 workspace "2"
 workspace "3"
+workspace "4"
 
 window-rule {
     opacity @@OPACITY_APPLICATIONS@@
@@ -65,6 +66,7 @@ window-rule {
 
 window-rule {
   match app-id="(?i)vivaldi"
+  match app-id="(?i)zen"
   open-on-workspace "2"
   open-maximized-to-edges true
 }
