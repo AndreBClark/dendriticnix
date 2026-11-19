@@ -10,15 +10,18 @@
   };
 
   # Command-line tools available in the project environment.
-  packages = [
-    pkgs.nh
-    pkgs.npins
-    pkgs.nurl
-    pkgs.nil
-    pkgs.treefmt
-    pkgs.statix
-    pkgs.deadnix
-  ];
+  packages = builtins.attrValues {
+    inherit (pkgs)
+      nh
+      npins
+      nurl
+      nil
+      treefmt
+      statix
+      deadnix
+      sops
+      ;
+  };
 
   # Keep direnv quiet and load this environment automatically from the project.
   env = {
