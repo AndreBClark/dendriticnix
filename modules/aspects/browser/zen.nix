@@ -178,7 +178,6 @@
                     consent-o-matic
                     steam-database
                     dark-mode-webextension
-                    bypass-paywalls-clean
                     clearurls
                     dearrow
                     darkreader
