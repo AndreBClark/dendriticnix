@@ -47,6 +47,7 @@
       "showOnLastDisplay": true,
       "position": 3,
       "mode": "taskbar",
+      "middleClickAction": "close",
       "taskbarAlign": "end",
       "widgetExpansion": "inline",
       "iconSize": 96,
@@ -479,6 +480,10 @@
       {
         "model": "K272HUL",
         "name": "DP-2"
+      },
+      {
+        "name": "HDMI-A-1",
+        "model": "EM2FPAB27B"
       }
     ],
     "notifications": [
@@ -609,10 +614,14 @@
           "mediaSize": 3
         },
         {
-          "id": "controlCenterButton",
           "enabled": true,
+          "id": "controlCenterButton",
           "showAudioPercent": true,
           "showMicIcon": true
+        },
+        {
+          "id": "notepadButton",
+          "enabled": true
         }
       ],
       "screenPreferences": [

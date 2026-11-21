@@ -51,8 +51,14 @@
     "qt6ct",
     "khal",
     "qt5ct",
-    "samrewritten"
+    "samrewritten",
+    "hdajackretask"
   ],
+  "appOverrides": {
+    "zen-twilight": {
+      "name": "Zen"
+    }
+  },
   "lastPlayerIdentity": "Spotify",
   "hiddenOutputDeviceNames": [
     "easyeffects_sink"
@@ -69,7 +75,6 @@
       "vrrOnDemand": true
     },
     "HDMI-A-1": {
-      "disabled": true,
       "hotCorners": {
         "corners": [
           "bottom-left",
@@ -79,19 +84,6 @@
       "vrrOnDemand": true
     }
   },
-  "activeDisplayProfile": {
-    "niri": "auto_5857370a"
-  },
-  "activeDisplayProfileModes": {
-    "niri": {
-      "DP-2": {
-        "mode": "2560x1440@59.951"
-      },
-      "HDMI-A-1": {
-        "mode": "1920x1080@60.000"
-      }
-    }
-  },
   "islandFreePositions": {
     "[\"DP-2\",\"dot1790289577125\"]": {
       "x": 0.4243464644579217,
@@ -99,58 +91,5 @@
     }
   },
   "lastAppliedIconTheme": "Papirus-Dark",
-  "launcherLastQuery": "chro",
-  "launcherQueryHistory": [
-    "chro",
-    "=316-262",
-    "p",
-    "au",
-    "viv",
-    ":e nixos",
-    "uxterm",
-    "gho",
-    "v",
-    "dgop",
-    "not",
-    ":e diamond",
-    "xter,",
-    "=3390.82+",
-    "=",
-    "=307.35+290.04+634.67+749.92+598.20+546.43",
-    "=616.66+934.40+308.69+185.75+299.72+431.96",
-    "=142.16+167.69+396.78+329.95+609.26+263.77",
-    "=432.35+558.26+330.26+582.64+597.58+556.09+333.64",
-    "=85*.6",
-    "`",
-    "=1440/16",
-    "term",
-    "nvim",
-    "dms",
-    "F",
-    "steam",
-    "=28/7",
-    "=90*.25*16",
-    "a",
-    "=380*1.5",
-    "disc",
-    "stea",
-    "ob",
-    "team",
-    "s",
-    "fi",
-    "obsidian",
-    "obs",
-    "sett",
-    "asy",
-    "eas",
-    "as",
-    "vs",
-    "elem",
-    "f",
-    "i",
-    "file",
-    "aut",
-    "nautilus"
-  ],
   "configVersion": 7
 }
